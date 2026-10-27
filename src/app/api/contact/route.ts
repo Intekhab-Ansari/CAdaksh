@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { supabase } from '@/lib/supabase';
 
 export async function POST(request: Request) {
   try {
@@ -13,14 +14,32 @@ export async function POST(request: Request) {
       );
     }
 
-    // In production, integrate with nodemailer, SendGrid, or AWS SES:
-    // console.log('Contact submission received:', { firstName, lastName, email, phone, subject, message });
+    // If Supabase is connected via Hostinger environment variables, record the enquiry
+    if (supabase) {
+      try {
+        await supabase.from('enquiries').insert([
+          {
+            first_name: firstName,
+            last_name: lastName,
+            email,
+            phone: phone || null,
+            subject: subject || 'General Enquiry',
+            message: message || '',
+            consent: Boolean(consent),
+            created_at: new Date().toISOString(),
+          },
+        ]);
+      } catch (dbErr) {
+        // Log gracefully so form submission proceeds even if custom table schema is pending
+        console.warn('Supabase enquiry insert warning:', dbErr);
+      }
+    }
 
     return NextResponse.json({
       success: true,
       message: 'Enquiry received pursuant to ICAI Code of Ethics and DPDP Act 2023.',
     });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: 'Failed to process enquiry' },
       { status: 500 }
