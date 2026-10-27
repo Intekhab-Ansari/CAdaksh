@@ -1,0 +1,896 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Daksh Desai & Associates Website</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a quiet professional site with one bold moment per page (the Caslon headline);
+   firm particulars set like an ICAI register entry; content in ruled lists, not cards. */
+:root{
+  --paper:#F3F5F3; --surface:#FFFFFF; --ink:#16211F; --muted:#56635F; --rule:#D3DBD7;
+  --deep:#173A34; --deep-ink:#F3F5F3; --brass:#8E6A22; --brass-soft:#EFE6D3;
+  --fill-bg:#FFF0BD; --fill-fg:#5E4400; --fill-bd:#D4A20C;
+  --review-bg:#2B2416; --review-fg:#F6E7C3;
+  --f-display:"Libre Caslon Text", Georgia, "Times New Roman", serif;
+  --f-body:"Public Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --measure:66ch;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#0F1614; --surface:#151F1C; --ink:#E4EBE8; --muted:#9BABA6; --rule:#2A3733;
+  --deep:#9CCBBF; --deep-ink:#0F1614; --brass:#D4AE62; --brass-soft:#2C2616;
+  --fill-bg:#3A2F0E; --fill-fg:#F5D98A; --fill-bd:#8C7120;
+  --review-bg:#E9D9B0; --review-fg:#221B0C; color-scheme:dark; } }
+:root[data-theme="dark"]{
+  --paper:#0F1614; --surface:#151F1C; --ink:#E4EBE8; --muted:#9BABA6; --rule:#2A3733;
+  --deep:#9CCBBF; --deep-ink:#0F1614; --brass:#D4AE62; --brass-soft:#2C2616;
+  --fill-bg:#3A2F0E; --fill-fg:#F5D98A; --fill-bd:#8C7120;
+  --review-bg:#E9D9B0; --review-fg:#221B0C; color-scheme:dark; }
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;margin:0}
+a{color:var(--deep);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:clamp(2rem,4.6vw,3.3rem)}
+h2{font-size:clamp(1.5rem,2.8vw,2rem)}
+h3{font-size:1.2rem}
+p{margin:0;max-width:var(--measure)}
+ul{margin:0;padding:0}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brass)}
+.muted{color:var(--muted)}
+.stack{display:flex;flex-direction:column;gap:1rem}
+
+/* placeholders */
+.fill{background:var(--fill-bg);color:var(--fill-fg);border:1px dashed var(--fill-bd);border-radius:3px;padding:0 .3em;font-family:var(--f-mono);font-size:.86em;font-style:normal;white-space:normal}
+body.plain .fill{background:none;border-color:transparent;color:inherit;font-family:inherit;font-size:inherit;padding:0}
+.devnote{display:block;border-left:3px solid var(--fill-bd);background:var(--fill-bg);color:var(--fill-fg);padding:.6rem .9rem;font-size:.88rem;max-width:var(--measure)}
+body.plain .devnote{display:none}
+
+/* review strip (preview only) */
+.review{background:var(--review-bg);color:var(--review-fg);font-size:.85rem}
+.review .wrap{display:flex;flex-wrap:wrap;gap:.5rem 1rem;align-items:center;padding-block:.55rem}
+.review strong{font-weight:600}
+.review button,.review a{font:inherit;color:inherit;background:none;border:1px solid currentColor;border-radius:999px;padding:.15rem .7rem;cursor:pointer;text-decoration:none;opacity:.92}
+.review .spacer{flex:1}
+
+/* header */
+header.site{background:var(--paper);border-bottom:1px solid var(--rule);position:sticky;top:env(safe-area-inset-top,0px);z-index:20}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+header.site .wrap{display:flex;align-items:center;gap:1rem;padding-block:.8rem}
+.brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:var(--ink)}
+.calogo{width:42px;height:42px;flex:none;border:1px dashed var(--fill-bd);background:var(--fill-bg);color:var(--fill-fg);font:500 .55rem/1.15 var(--f-mono);display:grid;place-items:center;text-align:center;border-radius:4px}
+body.plain .calogo{background:var(--surface);border-style:solid;border-color:var(--rule);color:var(--muted)}
+.brand-name{font-family:var(--f-display);font-size:1.12rem;line-height:1.15}
+.brand-sub{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+nav.main{margin-left:auto;display:flex;gap:.2rem;flex-wrap:wrap}
+nav.main a{text-decoration:none;color:var(--ink);padding:.4rem .7rem;border-radius:4px;font-size:.95rem}
+nav.main a[aria-current="page"]{color:var(--deep);box-shadow:inset 0 -2px 0 var(--brass)}
+nav.main a:hover{background:var(--brass-soft)}
+.menu-btn{display:none;margin-left:auto;font:inherit;background:none;border:1px solid var(--rule);color:var(--ink);border-radius:4px;padding:.35rem .8rem;cursor:pointer}
+@media (max-width:860px){
+  .menu-btn{display:block}
+  nav.main{display:none;width:100%;flex-direction:column;margin-left:0}
+  nav.main.open{display:flex}
+  header.site .wrap{flex-wrap:wrap}
+}
+
+/* pages */
+main section.page{display:none}
+main section.page.active{display:block}
+.band{padding-block:clamp(2.5rem,6vw,4.5rem)}
+.band + .band{border-top:1px solid var(--rule)}
+.band.deep{background:var(--deep);color:var(--deep-ink)}
+.band.deep a{color:var(--deep-ink)}
+.band.deep .eyebrow{color:var(--brass-soft)}
+:root[data-theme="dark"] .band.deep .eyebrow{color:var(--deep-ink)}
+.lede{font-size:1.15rem;color:var(--muted);max-width:60ch}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,3.5rem);align-items:start}
+.hero > *{min-width:0}
+@media (max-width:860px){.hero{grid-template-columns:1fr}}
+.hero h1 em{font-style:italic;color:var(--brass)}
+.btns{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{display:inline-block;text-decoration:none;font-weight:600;padding:.7rem 1.2rem;border-radius:4px;border:1px solid var(--deep);font-size:.95rem;cursor:pointer;font-family:var(--f-body)}
+.btn.primary{background:var(--deep);color:var(--deep-ink)}
+.btn.ghost{background:transparent;color:var(--deep)}
+
+/* register (firm particulars) */
+.register{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:1.25rem 1.25rem 1rem}
+.register h3{font-size:1rem;font-family:var(--f-body);font-weight:600;margin-bottom:.6rem}
+.register dl{margin:0;display:grid;grid-template-columns:minmax(0,auto) minmax(0,1fr);gap:.55rem 1rem;font-size:.9rem}
+.register dt{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:.2rem}
+.register dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.register .foot{margin-top:.9rem;padding-top:.7rem;border-top:1px solid var(--rule);font-size:.78rem;color:var(--muted)}
+
+/* service index */
+.svc-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem 3rem}
+@media (max-width:760px){.svc-groups{grid-template-columns:1fr}}
+.svc-list{list-style:none;border-top:1px solid var(--rule)}
+.svc-list li{border-bottom:1px solid var(--rule)}
+.svc-list a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.2rem 1rem;padding:1rem 0;text-decoration:none;color:var(--ink)}
+.svc-list a:hover .svc-t{color:var(--deep);text-decoration:underline;text-underline-offset:3px}
+.svc-t{font-family:var(--f-display);font-size:1.18rem}
+.svc-d{grid-column:1/2;color:var(--muted);font-size:.93rem}
+.svc-arrow{grid-row:1/3;grid-column:2;align-self:center;color:var(--brass);font-size:1.2rem}
+
+/* two-col generic */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:clamp(1.5rem,4vw,3rem)}
+.split > *{min-width:0}
+@media (max-width:760px){.split{grid-template-columns:1fr}}
+.ruled{list-style:none;border-top:1px solid var(--rule)}
+.ruled li{padding:.8rem 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:minmax(0,1fr);gap:.15rem}
+.ruled li strong{font-weight:600}
+.cols3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem 2rem}
+@media (max-width:860px){.cols3{grid-template-columns:1fr}}
+.cols3 > div{border-top:2px solid var(--brass);padding-top:.8rem;display:flex;flex-direction:column;gap:.35rem}
+.cols3 h3{font-family:var(--f-body);font-weight:600;font-size:1rem}
+
+/* steps */
+.steps{list-style:none;counter-reset:s;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem}
+@media (max-width:860px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.steps{grid-template-columns:1fr}}
+.steps li{counter-increment:s;display:flex;flex-direction:column;gap:.35rem;padding-top:.8rem;border-top:1px solid var(--rule)}
+.steps li::before{content:"Step " counter(s);font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brass)}
+.steps strong{font-weight:600}
+
+/* faq */
+details.qa{border-bottom:1px solid var(--rule)}
+details.qa:first-of-type{border-top:1px solid var(--rule)}
+details.qa summary{cursor:pointer;padding:1rem 2rem 1rem 0;font-weight:600;list-style:none;position:relative}
+details.qa summary::-webkit-details-marker{display:none}
+details.qa summary::after{content:"+";position:absolute;right:.2rem;top:.85rem;color:var(--brass);font-size:1.3rem;font-weight:400}
+details.qa[open] summary::after{content:"–"}
+details.qa .a{padding:0 0 1.1rem;color:var(--muted);display:flex;flex-direction:column;gap:.6rem}
+
+/* service page head */
+.crumb{font-size:.85rem;color:var(--muted)}
+.crumb a{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{font-size:.8rem;border:1px solid var(--rule);border-radius:999px;padding:.15rem .7rem;color:var(--muted);background:var(--surface)}
+
+/* team */
+.person{display:grid;grid-template-columns:150px minmax(0,1fr);gap:1.75rem;align-items:start}
+@media (max-width:560px){.person{grid-template-columns:1fr}}
+.passport{width:150px;aspect-ratio:35/45;max-width:100%;border:1px dashed var(--fill-bd);background:var(--fill-bg);color:var(--fill-fg);display:grid;place-items:center;text-align:center;font:500 .72rem/1.4 var(--f-mono);padding:.5rem;border-radius:3px}
+
+/* insights */
+.posts{list-style:none;border-top:1px solid var(--rule)}
+.posts li{display:grid;grid-template-columns:8.5rem minmax(0,1fr);gap:.4rem 1.5rem;padding:1.1rem 0;border-bottom:1px solid var(--rule)}
+@media (max-width:560px){.posts li{grid-template-columns:1fr}}
+.posts .tag{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;color:var(--brass);padding-top:.25rem}
+.posts h3{font-size:1.15rem;margin-bottom:.25rem}
+
+/* contact */
+form.contact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+@media (max-width:560px){form.contact{grid-template-columns:1fr}}
+form.contact .full{grid-column:1/-1}
+form.contact label{display:flex;flex-direction:column;gap:.35rem;font-size:.88rem;font-weight:500}
+form.contact input,form.contact select,form.contact textarea{font:inherit;font-weight:400;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.6rem .7rem;width:100%}
+form.contact textarea{min-height:8rem;resize:vertical}
+form.contact .check{flex-direction:row;align-items:flex-start;gap:.6rem;font-weight:400;color:var(--muted)}
+form.contact .check input{width:auto;margin-top:.3rem}
+.status{font-size:.9rem;padding:.7rem .9rem;border-radius:4px;background:var(--brass-soft);color:var(--ink)}
+
+/* prose pages */
+.prose{display:flex;flex-direction:column;gap:1rem;max-width:var(--measure)}
+.prose h2{margin-top:1rem;font-size:1.35rem}
+.prose ul{padding-left:1.2rem;display:flex;flex-direction:column;gap:.4rem}
+
+/* review page */
+.rv-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem 3rem}
+@media (max-width:860px){.rv-grid{grid-template-columns:1fr}}
+.rv-grid > div{min-width:0;display:flex;flex-direction:column;gap:.75rem}
+.checklist{list-style:none;display:flex;flex-direction:column;gap:.5rem;font-size:.93rem}
+.checklist li{display:grid;grid-template-columns:1.4rem minmax(0,1fr);gap:.4rem}
+.checklist li::before{content:"☐";color:var(--brass)}
+.checklist.x li::before{content:"✕";color:var(--muted)}
+.blocker{border:1px solid var(--fill-bd);background:var(--fill-bg);color:var(--fill-fg);border-radius:6px;padding:1rem 1.2rem;display:flex;flex-direction:column;gap:.5rem}
+.blocker strong{font-weight:700}
+table.map{border-collapse:collapse;width:100%;font-size:.88rem}
+table.map th,table.map td{text-align:left;padding:.45rem .6rem;border-bottom:1px solid var(--rule);vertical-align:top}
+table.map th{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:500}
+table.map code{font-family:var(--f-mono);font-size:.85em}
+.scroll{overflow-x:auto}
+
+/* footer */
+footer.site{background:var(--surface);border-top:1px solid var(--rule);font-size:.9rem}
+footer.site .wrap{padding-block:2.5rem 1.5rem;display:flex;flex-direction:column;gap:2rem}
+.foot-cols{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:1.5rem 2rem}
+@media (max-width:860px){.foot-cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.foot-cols{grid-template-columns:1fr}}
+.foot-cols > div{min-width:0;display:flex;flex-direction:column;gap:.45rem}
+.foot-cols h4{margin:0;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.foot-cols a{color:var(--ink);text-decoration:none}
+.foot-cols a:hover{text-decoration:underline}
+.legal{border-top:1px solid var(--rule);padding-top:1rem;color:var(--muted);font-size:.8rem;display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between}
+
+/* entry disclaimer */
+.overlay{position:fixed;inset:0;background:rgba(10,16,14,.62);display:grid;place-items:center;z-index:50;padding:1rem max(16px,env(safe-area-inset-right,0px)) 1rem max(16px,env(safe-area-inset-left,0px))}
+.modal{background:var(--surface);color:var(--ink);max-width:600px;width:100%;border-radius:6px;padding:1.6rem;display:flex;flex-direction:column;gap:.9rem;max-height:90vh;overflow:auto}
+.modal h2{font-size:1.4rem}
+.modal p{font-size:.92rem;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){ main section.page.active{animation:in .25s ease-out} @keyframes in{from{opacity:.4}to{opacity:1}} }
+</style>
+<style>
+.glance{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem 2.5rem}
+@media (max-width:860px){.glance{grid-template-columns:1fr}}
+.glance > div{min-width:0;display:flex;flex-direction:column;gap:.6rem}
+.glance h3{font-family:var(--f-body);font-weight:600;font-size:1rem;padding-bottom:.5rem;border-bottom:2px solid var(--brass)}
+.glance ul{list-style:none;display:flex;flex-direction:column;gap:.35rem;color:var(--muted)}
+.glance a{color:var(--ink);text-decoration:none}
+.glance a:hover{text-decoration:underline}
+.cat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:1rem 3rem;padding-block:2rem;border-top:1px solid var(--rule)}
+.cat:last-child{border-bottom:1px solid var(--rule)}
+@media (max-width:760px){.cat{grid-template-columns:1fr}}
+.cat > *{min-width:0}
+.cat ul{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.45rem 1.5rem}
+@media (max-width:560px){.cat ul{grid-template-columns:1fr}}
+.cat li{padding-left:1rem;position:relative}
+.cat li::before{content:"";position:absolute;left:0;top:.7em;width:.4rem;height:1px;background:var(--brass)}
+.faq-group + .faq-group{margin-top:2.5rem}
+.faq-group h2{font-size:1.35rem;margin-bottom:.8rem}
+.empty{border:1px dashed var(--rule);border-radius:6px;padding:1.5rem;color:var(--muted);display:flex;flex-direction:column;gap:.4rem}
+.desk{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem 2rem}
+@media (max-width:860px){.desk{grid-template-columns:1fr}}
+.desk > div{border-top:2px solid var(--brass);padding-top:.8rem;display:flex;flex-direction:column;gap:.35rem;min-width:0}
+.desk h3{font-family:var(--f-body);font-weight:600;font-size:1rem}
+.src{font-family:var(--f-mono);font-size:.7rem;color:var(--muted);letter-spacing:.04em}
+body.plain .src{display:none}
+</style>
+
+<div class="review" role="region" aria-label="Review bar">
+  <div class="wrap">
+    <span><strong>Preview for review.</strong> Yellow fields need your input: <strong id="fillCount">–</strong> on the site.</span>
+    <span class="spacer"></span>
+    <button type="button" id="toggleFill" aria-pressed="true">Highlight blanks: on</button>
+    <button type="button" id="openDisc">Show entry disclaimer</button>
+    <a href="#review">Open items &amp; developer notes →</a>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#home" aria-label="Home">
+      <span class="calogo" title="CA India logo (from ICAI)">CA India logo</span>
+      <span>
+        <span class="brand-name">Daksh Desai &amp; Associates</span><br>
+        <span class="brand-sub">Chartered Accountants</span>
+      </span>
+    </a>
+    <button class="menu-btn" type="button" id="menuBtn" aria-expanded="false" aria-controls="mainNav">Menu</button>
+    <nav class="main" id="mainNav" aria-label="Main">
+      <a href="#home">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#team">Our Team</a>
+      <a href="#services">Services</a>
+      <a href="#insights">Insights</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HOME -->
+<section class="page" id="p-home" data-route="home">
+  <div class="band"><div class="wrap hero">
+    <div class="stack" style="gap:1.4rem">
+      <span class="eyebrow">Chartered Accountants · Mumbai</span>
+      <h1>Taxation, audit, accounting and <em>advisory</em></h1>
+      <p class="lede">We help businesses, professionals and individuals handle finance, taxation and compliance with clarity, from routine filings to tax notices and appeals.</p>
+      <div class="btns">
+        <a class="btn primary" href="#services">Our services</a>
+        <a class="btn ghost" href="#contact">Contact us</a>
+      </div>
+    </div>
+    <aside class="register" aria-label="Firm particulars">
+      <h3>Firm particulars</h3>
+      <dl>
+        <dt>Firm name</dt><dd>Daksh Desai &amp; Associates, Chartered Accountants <span class="fill">[confirm name exactly as approved by ICAI]</span></dd>
+        <dt>ICAI FRN</dt><dd><span class="fill">[Firm Registration No. — awaiting ICAI]</span></dd>
+        <dt>Established</dt><dd><span class="fill">[year as per ICAI records]</span></dd>
+        <dt>Head office</dt><dd>Mumbai</dd>
+        <dt>Core focus</dt><dd>Tax · Audit · Advisory</dd>
+        <dt>Proprietor</dt><dd>CA Daksh Desai, M. No. <span class="fill">[membership no.]</span></dd>
+      </dl>
+      <p class="foot">Particulars as registered with the Institute of Chartered Accountants of India.</p>
+    </aside>
+  </div></div>
+
+  <div class="band"><div class="wrap stack" style="gap:2rem">
+    <div class="stack" style="gap:.5rem"><span class="eyebrow">Services</span><h2>Our services at a glance</h2></div>
+    <div class="glance">
+      <div><h3>Tax compliance</h3><ul>
+        <li><a href="#income-tax">Income Tax</a></li><li><a href="#income-tax">TDS / TCS</a></li><li><a href="#gst">GST</a></li><li><a href="#income-tax">Professional Tax</a></li><li><a href="#gst">VAT</a></li><li><a href="#international-tax">NRI Taxation</a></li><li><a href="#corporate-law">ROC compliances</a></li>
+      </ul></div>
+      <div><h3>Audit &amp; assurance</h3><ul>
+        <li><a href="#audit">Statutory Audit</a></li><li><a href="#audit">Tax Audit</a></li><li><a href="#audit">GST Audit</a></li><li><a href="#audit">Internal Audit</a></li><li><a href="#audit">Stock Audit</a></li><li><a href="#audit">Certification of Investments &amp; Debtors</a></li>
+      </ul></div>
+      <div><h3>Other services</h3><ul>
+        <li><a href="#cfo-advisory">Tax &amp; Financial Planning</a></li><li><a href="#accounting">Accounting Services</a></li><li><a href="#accounting">MIS Reporting</a></li><li><a href="#cfo-advisory">Virtual CFO</a></li><li><a href="#international-tax">International Taxation</a></li><li><a href="#corporate-law">Company Formation</a></li><li><a href="#corporate-law">ESIC, PF &amp; Labour Law</a></li>
+      </ul></div>
+    </div>
+  </div></div>
+
+  <div class="band"><div class="wrap split">
+    <div class="stack"><span class="eyebrow">About the firm</span><h2>Daksh Desai &amp; Associates</h2></div>
+    <div class="stack">
+      <p>Established in <span class="fill">[year]</span>, Daksh Desai &amp; Associates is a Chartered Accountancy practice based in Mumbai. We aim to give every client the clarity and attention of an in-house team for taxation, accounts, audit and compliance.</p>
+      <p>We work with <span class="fill">[client types, e.g. SMEs, startups, professionals, HNIs and NRIs]</span>.</p>
+      <a href="#about">More about the firm →</a>
+    </div>
+  </div></div>
+
+  <div class="band"><div class="wrap stack" style="gap:1.5rem">
+    <div class="stack" style="gap:.5rem"><span class="eyebrow">Industries</span><h2>Industries we serve</h2>
+      <p class="muted">We support businesses across sectors with taxation, compliance, audit and advisory services.</p></div>
+    <div class="chips"><span class="chip"><span class="fill">[Industry 1]</span></span><span class="chip"><span class="fill">[Industry 2]</span></span><span class="chip"><span class="fill">[Industry 3]</span></span><span class="chip"><span class="fill">[Industry 4]</span></span><span class="chip"><span class="fill">[Industry 5]</span></span><span class="chip"><span class="fill">[Industry 6]</span></span></div>
+    <span class="devnote">Pick the industries you serve. Ritesh Shah &amp; Co. lists Manufacturing, Pharma &amp; Healthcare, Software &amp; IT, Service industries, Wholesalers and Retailers. Your own focus (banks, NBFCs, AIFs, FPIs, InvITs/REITs, GIFT City units) can go here instead.</span>
+  </div></div>
+
+  <div class="band"><div class="wrap split">
+    <div class="stack"><span class="eyebrow">Approach</span><h2>Our approach</h2></div>
+    <ul class="ruled">
+      <li><strong>Direct access to a Chartered Accountant</strong><span class="muted">You deal with the proprietor directly on your matters.</span></li>
+      <li><strong>Personal attention to every client</strong><span class="muted">Advice based on your facts, not a template.</span></li>
+      <li><strong>Timely compliance</strong><span class="muted">Structured workflows to meet income tax, GST and MCA deadlines.</span></li>
+      <li><strong>Advice ahead of deadlines</strong><span class="muted">Planning before the due date rather than reacting after it.</span></li>
+      <li><strong>Confidentiality and ethics</strong><span class="muted">Client data handled under the ICAI Code of Ethics.</span></li>
+    </ul>
+  </div></div>
+
+  <div class="band"><div class="wrap split">
+    <div class="stack" style="gap:.5rem"><span class="eyebrow">Insights</span><h2>Tax &amp; finance insights</h2><a href="#insights">All articles →</a></div>
+    <div class="empty"><strong><span class="fill">[Latest article title]</span></strong><span><span class="fill">[date]</span> · <span class="fill">[one-line summary]</span></span></div>
+  </div></div>
+
+  <div class="band deep"><div class="wrap split" style="align-items:center">
+    <h2>Ready to connect?</h2>
+    <div class="stack">
+      <p>Whether you need help with returns, compliance, audit or tax planning, write to us and we will discuss what fits your needs.</p>
+      <div class="btns"><a class="btn primary" style="background:var(--deep-ink);color:var(--deep);border-color:var(--deep-ink)" href="#contact">Get in touch</a></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ABOUT -->
+<section class="page" id="p-about" data-route="about">
+  <div class="band"><div class="wrap stack" style="gap:1.2rem">
+    <span class="eyebrow">About Us</span>
+    <h1>Navigating finance and compliance with clarity and confidence</h1>
+    <p class="lede">Daksh Desai &amp; Associates is a Chartered Accountancy firm established in <span class="fill">[year]</span> by CA Daksh Desai.</p>
+  </div></div>
+  <div class="band"><div class="wrap split">
+    <div class="stack"><span class="eyebrow">Who we are</span><h2>The firm</h2></div>
+    <div class="stack">
+      <p>We are a Mumbai-based firm supporting businesses, entrepreneurs, professionals and individuals with finance, taxation and compliance.</p>
+      <p>We go beyond routine compliance to give practical, technology-enabled advice suited to each client, so that financial information turns into sound business decisions.</p>
+      <div class="register" style="margin-top:.5rem"><dl>
+        <dt>Established</dt><dd><span class="fill">[year]</span></dd>
+        <dt>Head office</dt><dd>Mumbai</dd>
+        <dt>Core focus</dt><dd>Tax · Audit · Advisory</dd>
+        <dt>ICAI FRN</dt><dd><span class="fill">[FRN]</span></dd>
+      </dl></div>
+    </div>
+  </div></div>
+  <div class="band"><div class="wrap split">
+    <div class="stack"><span class="eyebrow">Vision</span><h2>Our vision</h2></div>
+    <p style="font-family:var(--f-display);font-size:1.35rem;line-height:1.5">To be a dependable, long-term professional partner to our clients through complete, ethical and solution-focused services.</p>
+  </div></div>
+  <div class="band"><div class="wrap split">
+    <div class="stack"><span class="eyebrow">Services</span><h2>What we do</h2><p class="muted">Integrated services under one roof, so clients get consistent advice across tax, accounts and compliance.</p></div>
+    <ul class="ruled" id="aboutAreas"></ul>
+  </div></div>
+  <div class="band"><div class="wrap split">
+    <div class="stack"><span class="eyebrow">Approach</span><h2>How we work</h2></div>
+    <ul class="ruled">
+      <li><strong>Direct professional interaction</strong><span class="muted">Your queries are handled by a qualified Chartered Accountant.</span></li>
+      <li><strong>Clear engagement terms</strong><span class="muted">Scope of work agreed before an assignment begins.</span></li>
+      <li><strong>Technology integration</strong><span class="muted">Work on Tally, Zoho Books, SAP and other standard accounting software.</span></li>
+      <li><strong>Notice assistance</strong><span class="muted">Factual responses and documentation for income tax and GST proceedings.</span></li>
+      <li><strong>Timely compliance support</strong><span class="muted">Workflows built around income tax, GST and MCA deadlines.</span></li>
+      <li><strong>Professional ethics</strong><span class="muted">Work carried out under the ICAI Code of Ethics and applicable quality standards.</span></li>
+    </ul>
+  </div></div>
+</section>
+
+<!-- TEAM -->
+<section class="page" id="p-team" data-route="team">
+  <div class="band"><div class="wrap stack" style="gap:1.2rem">
+    <span class="eyebrow">Our Team</span>
+    <h1>Our team</h1>
+  </div></div>
+  <div class="band"><div class="wrap split">
+    <div class="stack"><span class="eyebrow">Proprietor</span><h2>CA Daksh Desai</h2></div>
+    <div class="person">
+      <div class="passport">Passport-style photograph<br>(only this style is permitted)</div>
+      <div class="stack" style="gap:.8rem">
+        <p class="muted">Proprietor · <span class="fill">[ACA]</span> · Membership No. <span class="fill">[M. No.]</span></p>
+        <div class="register"><dl>
+          <dt>Member of ICAI since</dt><dd><span class="fill">[date of becoming ACA]</span></dd>
+          <dt>Certificate of Practice</dt><dd>Held since <span class="fill">[COP date]</span></dd>
+          <dt>Qualifications</dt><dd>Chartered Accountant; <span class="fill">[degree, college, university]</span></dd>
+          <dt>Languages</dt><dd><span class="fill">[languages known]</span></dd>
+        </dl></div>
+        <p><strong>Experience.</strong> Two years in the Global Business Tax practice of <span class="fill">[firm name — confirm whether to name it]</span>, working on direct tax for financial-services clients. <span class="fill">[add any other experience]</span></p>
+        <p><strong>Core practice expertise.</strong> <span class="fill">[e.g. income tax, assessments and appeals, international taxation and transfer pricing, financial-services taxation]</span></p>
+      </div>
+    </div>
+  </div></div>
+  <div class="band"><div class="wrap stack" style="gap:1.5rem">
+    <div class="stack" style="gap:.5rem"><span class="eyebrow">Practice desks</span><h2>Specialised desks</h2></div>
+    <div class="desk">
+      <div><h3>Taxation &amp; GST desk</h3><p class="muted">Income tax, GST returns and input tax credit, and representation in departmental notices.</p></div>
+      <div><h3>Audit &amp; assurance desk</h3><p class="muted">Statutory and tax audits, internal control reviews and inventory verification.</p></div>
+      <div><h3>Corporate compliance desk</h3><p class="muted">Company incorporation, annual ROC filings, statutory registers and Virtual CFO support.</p></div>
+    </div>
+  </div></div>
+  <div class="band"><div class="wrap split">
+    <div class="stack"><span class="eyebrow">Team</span><h2>Team members</h2></div>
+    <div class="stack">
+      <ul class="ruled">
+        <li><strong><span class="fill">[Name]</span></strong><span class="muted"><span class="fill">[Designation, qualification]</span></span></li>
+        <li><strong><span class="fill">[Name]</span></strong><span class="muted"><span class="fill">[Designation, qualification]</span></span></li>
+      </ul>
+      <span class="devnote">Add team members as they join (name, designation, qualification; passport-style photo only). Hide this block at launch if there are none yet.</span>
+    </div>
+  </div></div>
+</section>
+
+<!-- SERVICES INDEX (RSC-style categories) -->
+<section class="page" id="p-services" data-route="services">
+  <div class="band"><div class="wrap stack" style="gap:1.2rem">
+    <span class="eyebrow">What we do</span>
+    <h1>Our services</h1>
+    <p class="lede">A wide range of integrated professional services, so you can get tax, audit, accounting and compliance support from one firm.</p>
+  </div></div>
+  <div class="band"><div class="wrap" id="svcIndex"></div></div>
+</section>
+
+<div id="svcPages"></div>
+
+<!-- INSIGHTS -->
+<section class="page" id="p-insights" data-route="insights">
+  <div class="band"><div class="wrap stack" style="gap:1.2rem">
+    <span class="eyebrow">Insights</span>
+    <h1>Tax &amp; finance insights</h1>
+    <p class="lede">Articles and guides on income tax, GST and corporate compliance.</p>
+  </div></div>
+  <div class="band"><div class="wrap stack">
+    <span class="eyebrow">Published articles (<span class="fill">[n]</span>)</span>
+    <div class="empty"><span class="tag" style="font-family:var(--f-mono);font-size:.74rem;color:var(--brass);text-transform:uppercase"><span class="fill">[category]</span></span><strong style="font-family:var(--f-display);font-size:1.2rem"><span class="fill">[Article title]</span></strong><span><span class="fill">[date]</span> · <span class="fill">[summary]</span></span></div>
+    <span class="devnote">Add articles as you write them. Keep the page hidden at launch if none are ready.</span>
+  </div></div>
+</section>
+
+<!-- FAQ -->
+<section class="page" id="p-faq" data-route="faq">
+  <div class="band"><div class="wrap stack" style="gap:1.2rem">
+    <span class="eyebrow">FAQ</span>
+    <h1>Frequently asked questions</h1>
+    <p class="lede">Answers to common questions, grouped by service.</p>
+  </div></div>
+  <div class="band"><div class="wrap" id="faqAll" style="max-width:860px;margin-left:auto;margin-right:auto"></div></div>
+</section>
+
+<!-- CONTACT -->
+<section class="page" id="p-contact" data-route="contact">
+  <div class="band"><div class="wrap stack" style="gap:1.2rem">
+    <span class="eyebrow">Contact us</span>
+    <h1>Let's simplify your taxation and compliance</h1>
+    <p class="lede">Reach out about income tax, GST, audit, accounting, international tax or corporate compliance.</p>
+  </div></div>
+  <div class="band"><div class="wrap split">
+    <div class="stack" style="align-self:start">
+      <div class="register">
+        <h3>Ways to connect</h3>
+        <dl>
+          <dt>Email</dt><dd><span class="fill">[e.g. info@cadakshdesaiassociates.com]</span></dd>
+          <dt>Call / WhatsApp</dt><dd><span class="fill">[+91 number]</span></dd>
+          <dt>Office</dt><dd><span class="fill">[full office address, Mumbai PIN]</span></dd>
+          <dt>Office hours</dt><dd><span class="fill">[e.g. Monday to Saturday, 10:00 AM – 7:00 PM IST]</span></dd>
+          <dt>LinkedIn</dt><dd><span class="fill">[profile URL, or remove]</span></dd>
+        </dl>
+        <p class="foot">Find us: <span class="fill">[Google Maps link]</span></p>
+      </div>
+      <ul class="ruled">
+        <li>Strictly confidential</li>
+        <li>Direct consultation with a Chartered Accountant</li>
+        <li>Clear engagement terms</li>
+      </ul>
+    </div>
+    <form class="contact" id="contactForm" novalidate>
+      <label>First name<input id="cf-first" name="first" required autocomplete="given-name"></label>
+      <label>Last name<input id="cf-last" name="last" required autocomplete="family-name"></label>
+      <label>Email address<input id="cf-email" name="email" type="email" required autocomplete="email"></label>
+      <label>Phone number (optional)<input id="cf-phone" name="phone" type="tel" autocomplete="tel"></label>
+      <label class="full">I need help with<select id="cf-subject" name="subject">
+        <option>Income Tax</option><option>GST</option><option>International Taxation</option><option>Audit &amp; Assurance</option><option>Accounting &amp; MIS</option><option>Business Advisory &amp; Virtual CFO</option><option>Labour &amp; Corporate Law</option><option>Other enquiry</option>
+      </select></label>
+      <label class="full">Brief details<textarea id="cf-msg" name="message"></textarea></label>
+      <label class="full check"><input id="cf-consent" type="checkbox" required> I agree that the firm may use these details to respond to my enquiry, as described in the Privacy Notice.</label>
+      <div class="full btns"><button class="btn primary" type="submit">Submit enquiry</button></div>
+      <p class="full status" id="cfStatus" hidden></p>
+    </form>
+  </div></div>
+  <div class="band"><div class="wrap stack" style="gap:1.5rem">
+    <div class="stack" style="gap:.4rem"><span class="eyebrow">How we work</span><h2>From enquiry to action</h2></div>
+    <ol class="steps" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+      <li><strong>Share your requirement</strong><span class="muted">Tell us what you need: tax planning, GST, a return, an audit, an NRI matter or company compliance.</span></li>
+      <li><strong>Assessment call</strong><span class="muted">We identify deadlines, risk areas and the right course for your matter.</span></li>
+      <li><strong>Action plan</strong><span class="muted">You receive a clear plan with timelines and responsibilities for each task.</span></li>
+    </ol>
+  </div></div>
+</section>
+
+<!-- DISCLAIMER -->
+<section class="page" id="p-disclaimer" data-route="disclaimer">
+  <div class="band"><div class="wrap prose">
+    <span class="eyebrow">Legal</span>
+    <h1>Disclaimer</h1>
+    <p>Under the regulations of the Institute of Chartered Accountants of India, Chartered Accountants are not permitted to solicit work or advertise. This website provides information about Daksh Desai &amp; Associates, its members and the services it offers, for persons who seek it on their own initiative.</p>
+    <p>By using this website, you confirm that you are seeking information about the firm of your own accord and that there has been no advertisement, solicitation or inducement from the firm or its members.</p>
+    <p>The content on this website is general information and does not constitute professional advice. Laws, rules and their interpretation change; please consult us on your specific facts before acting. Viewing this site or contacting us through it does not create a client relationship.</p>
+    <p>The firm is not responsible for the content of external websites linked from this site.</p>
+  </div></div>
+</section>
+
+<!-- PRIVACY -->
+<section class="page" id="p-privacy" data-route="privacy">
+  <div class="band"><div class="wrap prose">
+    <span class="eyebrow">Legal</span>
+    <h1>Privacy notice</h1>
+    <span class="devnote">Draft notice for the contact form under the Digital Personal Data Protection Act, 2023. Have it reviewed before launch and match it to what the form and hosting actually do.</span>
+    <h2>What we collect</h2>
+    <p>When you use the contact form we collect your name, email address, phone number (if given) and your message.</p>
+    <h2>Why we use it</h2>
+    <p>Only to respond to your enquiry and, if you engage us, to set up the engagement. We do not sell or share it for marketing.</p>
+    <h2>How long we keep it</h2>
+    <p>Enquiries that do not lead to an engagement are deleted after <span class="fill">[period]</span>.</p>
+    <h2>Cookies and analytics</h2>
+    <p><span class="fill">[State whether the site uses analytics. If yes, name the tool and add a consent banner.]</span></p>
+    <h2>Your rights</h2>
+    <p>You may ask us to access, correct or erase your information, or withdraw consent, by writing to <span class="fill">[grievance email]</span>. Contact person: <span class="fill">[name]</span>.</p>
+    <p class="muted">Last updated: <span class="fill">[date]</span></p>
+  </div></div>
+</section>
+
+<!-- REVIEW (remove before launch) -->
+<section class="page" id="p-review" data-route="review">
+  <div class="band"><div class="wrap stack" style="gap:1.2rem">
+    <span class="eyebrow">Not part of the website · remove before launch</span>
+    <h1>Open items &amp; developer notes</h1>
+    <p class="lede">What is needed from Daksh, where each section's content comes from, what was left out for ICAI compliance, and how the pages map to real URLs.</p>
+    <div class="blocker">
+      <strong>Launch blocker: the site should not go live until ICAI issues the Firm Registration Number and approves the firm name.</strong>
+      <span>The site must state the FRN, and the firm's particulars on it must match ICAI records. The firm name in the header (and the domain) should follow the name ICAI approves. Build and test on a staging link until then.</span>
+    </div>
+  </div></div>
+
+  <div class="band"><div class="wrap stack">
+    <h2>Where the content comes from</h2>
+    <p class="muted">All page content is adapted from the two reference sites. The only additions are the ICAI and privacy items listed at the end of this table.</p>
+    <div class="scroll"><table class="map">
+      <thead><tr><th>Page / section</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>Home: hero, services at a glance, about snippet, industries, approach, "Ready to connect"</td><td>Ritesh Shah &amp; Co. home page; hero line from KM Associates About</td></tr>
+        <tr><td>About Us: headline, who we are, vision, what we do, how we work</td><td>KM About + RSC About</td></tr>
+        <tr><td>Our Team: proprietor profile, specialised desks, team members</td><td>KM Team (profile layout, three desks) + RSC About (team list)</td></tr>
+        <tr><td>Services overview (six categories)</td><td>RSC Services page</td></tr>
+        <tr><td>Seven service pages: overview, scope, documents, steps, FAQs</td><td>KM service pages, with RSC service items merged in (TDS/TCS, Professional Tax, VAT, GST Audit, certification of investments &amp; debtors, debtor analysis, Tally controls, ESIC/PF/labour law, tax and financial planning)</td></tr>
+        <tr><td>FAQ page</td><td>KM FAQ page (same questions, in plain language, technical ones dropped)</td></tr>
+        <tr><td>Insights</td><td>KM Blog (structure only; no articles yet)</td></tr>
+        <tr><td>Contact: form fields, confidentiality points, three-step "how we work"</td><td>KM Contact (form) + RSC Contact (channels, hours, steps)</td></tr>
+        <tr><td>Firm particulars panel, entry disclaimer, Disclaimer page, Privacy notice, consent tick-box</td><td>Added for ICAI Website Guidelines and the DPDP Act, 2023</td></tr>
+        <tr><td>"Income Tax Appellate Tribunal" and "GSTAT" in the appeals lines</td><td>Added from your practice focus (KM mentions appeals up to the Commissioner). Remove if you want reference content only.</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+
+  <div class="band"><div class="wrap rv-grid">
+    <div>
+      <h2>Data needed from Daksh</h2>
+      <ul class="checklist">
+        <li>ICAI-approved firm name (exact spelling), FRN and year of establishment</li>
+        <li>Office address, PIN, phone / WhatsApp, email on the domain, office hours, Maps link</li>
+        <li>Client types for the home page and the six industries you serve</li>
+        <li>Membership number, ACA date, COP date, degree, languages</li>
+        <li>Passport-style photograph</li>
+        <li>Experience text, and whether to name Deloitte</li>
+        <li>Core practice expertise line for your profile</li>
+        <li>Team members, or confirm the block is hidden at launch</li>
+        <li>LinkedIn URL, or confirm removal</li>
+        <li>First article(s) for Insights, or confirm the page is hidden at launch</li>
+        <li>Privacy notice: retention period, analytics, grievance contact</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Confirmations needed</h2>
+      <ul class="checklist">
+        <li>Keep all seven service pages? Audit and company-law work were marked "say no" in the 2026–35 roadmap.</li>
+        <li>Bank concurrent / branch audits: keep only if eligible for the bank audit panel.</li>
+        <li>Keep the ITAT and GSTAT mentions (see table above).</li>
+        <li>Download the CA India logo from ICAI and follow its usage rules; no other logo or monogram for the firm name.</li>
+        <li>Confirm the "ca…" domain is acceptable for the approved firm name; point the .in to the .com.</li>
+      </ul>
+    </div>
+  </div></div>
+
+  <div class="band"><div class="wrap rv-grid">
+    <div>
+      <h2>Left out on purpose</h2>
+      <p class="muted">Content on the reference sites that the ICAI Website and Advertisement Guidelines restrict.</p>
+      <ul class="checklist x">
+        <li>"Why choose us" sections (both sites), and claims such as "zero missed deadlines", "15+ years", "24–48 hour turnaround", "trusted by founders, SMEs and NRIs" (RSC)</li>
+        <li>SEO keywords such as "Top CA firm in India" and "Best CA near me" in KM's meta tags</li>
+        <li>Slogans and taglines: "Brains that lead…" and the per-service taglines (RSC)</li>
+        <li>Personal awards, ranks, scholarships and felicitations (KM team page)</li>
+        <li>The ICAI AI certification in RSC's timeline</li>
+        <li>RSC's "AI Solutions" service line (office automation is not a CA professional service)</li>
+        <li>"Financing assistance" (RSC): ICAI bars "arrangement of loans"; capital structuring advice is kept</li>
+        <li>Newsletter sign-up (KM): pushing information about exclusive CA services is not allowed</li>
+        <li>Floating WhatsApp chat button (KM); the number is listed on Contact instead</li>
+        <li>Stock photos of people; only passport-style photos are allowed</li>
+        <li>Long statutory summaries, section numbers, form tables and penalty tables (KM), as asked</li>
+        <li>Other occupations or associations (LLB studies, the CJS Legal retainer)</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Notes for the developer</h2>
+      <ul class="checklist">
+        <li>Build as real pages at the URLs below, not a one-page app.</li>
+        <li>Show the entry disclaimer once per visit with an "I agree" button.</li>
+        <li>Contact form sends to the firm email; keep submissions only as long as the privacy notice says; add spam protection.</li>
+        <li>No ad scripts or tracking pixels. If analytics are used, add a consent banner.</li>
+        <li>Page titles and meta descriptions must be factual (service + firm name + Mumbai), with no superlatives.</li>
+        <li>.in redirects (301) to .com; HTTPS on both.</li>
+        <li>Mobile first; light and dark themes; keyboard accessible.</li>
+        <li>Insights editable by Daksh without code.</li>
+        <li>Remove this page and the yellow review bar before launch.</li>
+      </ul>
+      <div class="scroll"><table class="map">
+        <thead><tr><th>Page</th><th>Suggested URL</th></tr></thead>
+        <tbody id="urlMap"></tbody>
+      </table></div>
+    </div>
+  </div></div>
+
+  <div class="band"><div class="wrap stack">
+    <h2>References</h2>
+    <ul class="ruled">
+      <li><a href="https://kmassociatesca.com/about" target="_blank" rel="noopener">Kedia Mayank &amp; Associates (kmassociatesca.com)</a></li>
+      <li><a href="https://rscindia.com/" target="_blank" rel="noopener">Ritesh Shah &amp; Co. (rscindia.com)</a></li>
+      <li><a href="https://icai.org/post/advisory-website-guidelines-of-the-institute" target="_blank" rel="noopener">ICAI advisory: Website Guidelines (prohibited contents and features)</a></li>
+      <li><a href="https://www.icai.org/post/16461" target="_blank" rel="noopener">ICAI advisory: no mention of fees</a></li>
+      <li><a href="https://resource.cdn.icai.org/92475coe2026v1.pdf" target="_blank" rel="noopener">ICAI Code of Ethics 2026, Volume I (PDF)</a></li>
+    </ul>
+  </div></div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-cols">
+      <div>
+        <span class="brand-name">Daksh Desai &amp; Associates</span>
+        <span class="brand-sub">Chartered Accountants</span>
+        <span class="muted">FRN <span class="fill">[FRN]</span></span>
+        <span class="muted"><span class="fill">[office address]</span>, Mumbai</span>
+        <span class="muted"><span class="fill">[phone]</span> · <span class="fill">[email]</span></span>
+        <span class="muted"><span class="fill">[office hours]</span></span>
+      </div>
+      <div><h4>Services</h4><a href="#income-tax">Income Tax</a><a href="#gst">GST</a><a href="#international-tax">International Taxation</a><a href="#audit">Audit &amp; Assurance</a></div>
+      <div><h4>&nbsp;</h4><a href="#accounting">Accounting &amp; MIS</a><a href="#cfo-advisory">Business Advisory &amp; Virtual CFO</a><a href="#corporate-law">Labour &amp; Corporate Law</a></div>
+      <div><h4>Quick links</h4><a href="#about">About Us</a><a href="#team">Our Team</a><a href="#insights">Insights</a><a href="#faq">FAQ</a><a href="#contact">Contact</a><a href="#disclaimer">Disclaimer</a><a href="#privacy">Privacy notice</a></div>
+    </div>
+    <div class="legal">
+      <span>© <span class="fill">[year]</span> Daksh Desai &amp; Associates, Chartered Accountants.</span>
+      <span>This website is for information only and is not solicitation or advertisement. <a href="#disclaimer">Read the disclaimer</a>.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="disc" hidden role="dialog" aria-modal="true" aria-labelledby="discTitle">
+  <div class="modal">
+    <span class="eyebrow">Before you continue</span>
+    <h2 id="discTitle">Disclaimer</h2>
+    <p>The rules of the Institute of Chartered Accountants of India do not permit Chartered Accountants to solicit work or advertise. By clicking "I agree", you confirm that:</p>
+    <p>• you are seeking information about Daksh Desai &amp; Associates of your own accord, and there has been no advertisement, solicitation or inducement from the firm;<br>• the information on this site is general and is not professional advice;<br>• using this site does not create a client relationship.</p>
+    <div class="btns"><button class="btn primary" type="button" id="discAgree">I agree</button><a class="btn ghost" href="https://www.google.com" target="_blank" rel="noopener">Leave site</a></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var SERVICES = [
+  { id:"income-tax", cat:"Tax & Compliance", title:"Income Tax", sub:"Return filing, tax planning, and notice and assessment support.",
+    overview:["Income tax needs close attention to changing rules, the information the department already holds about you in the AIS, and the choice between the old and new tax regimes.","We handle returns for salaried individuals, professionals, HNIs and NRIs, and for firms, LLPs and companies. We also prepare replies to notices, handle assessments and reassessments, and file appeals."],
+    scope:["Income tax returns for individuals, HUFs, firms, LLPs, companies and trusts","Old vs new tax regime comparison before filing","Reconciliation of your records with Form 26AS and the AIS","Tax planning for individuals, firms and companies","Advance tax computation and quarterly instalments","TDS / TCS returns, reconciliation and Form 16 / 16A","Professional tax registration and returns","Capital gains on property, shares and mutual funds","Replies to notices, assessments and reassessments","Appeals before the Commissioner (Appeals) and the Income Tax Appellate Tribunal"],
+    docs:["PAN and Aadhaar","Form 16 / 16A","Form 26AS and AIS","Bank statements for all accounts","Capital gains statements from brokers or mutual funds","Financial statements (for businesses)","Proofs of deductions claimed"],
+    steps:[["Collect and reconcile","Your documents are matched against Form 26AS and the AIS."],["Compute","Tax is worked out under both regimes to find the right option."],["Your approval","You review the computation before anything is filed."],["File","The return is filed and we help you e-verify it."]],
+    faqs:[
+      ["What happens if I miss the return due date?","You can still file a late return within the time allowed, but a late fee and interest apply, and some losses can no longer be carried forward."],
+      ["Should I choose the old or the new tax regime?","The new regime has lower rates but allows few deductions. The old regime can work out better if you have large deductions such as home-loan interest, insurance or tuition fees. We compute both before filing."],
+      ["Why doesn't my tax computation match Form 26AS or the AIS?","Form 26AS shows only the tax deducted or collected on your behalf. The AIS also shows high-value transactions reported by banks, brokers and others. Any differences should be explained or reported in the return to avoid a mismatch notice."],
+      ["What should I do if I receive an income tax notice?","Don't ignore it. Notices have a fixed time to respond. We review what is being asked and prepare a reply with supporting documents."],
+      ["Who has to pay advance tax?","Anyone whose tax for the year, after TDS, is ₹10,000 or more, in four instalments during the year. Late or short payment attracts interest."],
+      ["Can I correct a return after filing it?","Yes. A revised return can be filed within the time allowed, or before the assessment is completed, whichever is earlier."]
+    ]},
+  { id:"gst", cat:"Tax & Compliance", title:"GST", sub:"Registration, returns, input tax credit matching and notice support.",
+    overview:["GST affects your cash flow, pricing and choice of vendors. Claiming input tax credit correctly depends on your suppliers' filings, so monthly checks matter.","We handle registration, monthly and quarterly returns, input tax credit reconciliation, annual returns, export refunds, and replies to notices and departmental audits."],
+    scope:["New GST registration and amendments","GSTR-1 and GSTR-3B, monthly or quarterly","Matching purchases with GSTR-2B to claim the right input tax credit","Annual return and reconciliation (GSTR-9 / 9C)","Letter of Undertaking (LUT) for exporters","Refunds for exports and inverted duty structures","Replies to notices, departmental audits and appeals, including before the GST Appellate Tribunal","Pending VAT matters from the pre-GST period"],
+    docs:["PAN and Aadhaar of proprietor, partners or directors","Incorporation certificate or partnership deed","Proof of business premises","Cancelled cheque or bank statement","Digital signature or Aadhaar for OTP","Monthly sales and purchase registers"],
+    steps:[["Collect data","Sales and purchase registers from your accounting software."],["Match credit","Purchases matched with GSTR-2B to confirm eligible credit."],["Compute tax","Net tax worked out after credit and challans prepared."],["File","Returns filed and acknowledgements shared with you."]],
+    faqs:[
+      ["Who has to register under GST?","Businesses whose turnover crosses ₹40 lakh for goods or ₹20 lakh for services (lower limits in some states). Some businesses must register whatever their turnover, such as those making inter-state supplies, e-commerce sellers and those liable under reverse charge."],
+      ["Why is monthly GSTR-2B reconciliation important?","Input tax credit depends on your supplier reporting the invoice. Matching your purchases with GSTR-2B every month shows missing invoices and mismatches before you file, and avoids later demands, interest and penalties."],
+      ["What if GSTR-1 or GSTR-3B is filed late?","A late fee applies for each day of delay, and interest is charged on tax paid late."],
+      ["Who files the GST annual return?","The annual return is required for regular taxpayers with turnover above ₹2 crore, and the reconciliation statement for those above ₹5 crore."],
+      ["Can exporters get a refund of GST?","Yes. Exports can be made without paying GST under a Letter of Undertaking and unused credit refunded, or GST can be paid and then refunded, subject to conditions."],
+      ["What should I do if I receive a GST notice?","Check the notice and the reply date, reconcile the figures it relates to, and file a reply with supporting records within the time given."]
+    ]},
+  { id:"international-tax", cat:"Tax & Compliance", title:"International Taxation", sub:"Foreign remittances, tax treaties, transfer pricing and NRI tax.",
+    overview:["Cross-border payments, foreign investments and NRI income need careful handling of withholding tax and tax treaty rules.","We certify foreign remittances, advise on tax treaty relief, prepare transfer pricing documentation, and handle NRI returns and repatriation of funds."],
+    scope:["Chartered Accountant's certificate (Form 15CB) for foreign remittances","Online filing of Form 15CA","Tax treaty (DTAA) relief and Tax Residency Certificate review","Withholding tax on royalty, technical fees and other payments to non-residents","Transfer pricing documentation, benchmarking and accountant's report","Advice on permanent establishment and place of effective management","NRI tax returns and NRI taxation","Repatriation of funds from NRO accounts"],
+    docs:["Agreement or invoice with the foreign party","Tax Residency Certificate of the foreign party","Form 10F filed online by the foreign party","No permanent establishment declaration","Remittance details from your bank","PAN of the remitter"],
+    steps:[["Review the payment","Agreement and nature of the income reviewed."],["Check the rate","Indian law and tax treaty rates compared."],["Certify","Certificate prepared and signed."],["File","Form 15CA filed and documents ready for your bank."]],
+    faqs:[
+      ["When does a foreign payment need a CA certificate?","When a payment to a non-resident is taxable in India and the total paid in the year is above ₹5 lakh, a Chartered Accountant's certificate is needed before your bank can send the money."],
+      ["What does a foreign vendor need to give us to get a lower treaty rate?","Usually a Tax Residency Certificate from its home country, Form 10F filed online, and a declaration that it has no permanent establishment in India."],
+      ["How are NRIs taxed in India?","Only on income earned or received in India, such as rent, capital gains on Indian property or shares, and interest on NRO deposits. Income earned abroad is not taxed in India."],
+      ["How can an NRI move money from an NRO account abroad?","Up to USD 1 million can be repatriated in a financial year. The bank needs a CA certificate confirming that Indian taxes have been paid."],
+      ["What is transfer pricing?","Transactions between an Indian business and related companies abroad must be priced as they would be between unrelated parties. Such businesses must keep documentation and file an accountant's report."]
+    ]},
+  { id:"audit", cat:"Audit & Assurance", title:"Audit & Assurance", sub:"Statutory, tax, GST, internal and stock audits, and certifications.",
+    confirm:"Confirm this service page: the 2026–35 roadmap marked statutory audit as a line to avoid. Keep bank audits only if eligible for the bank audit panel.",
+    overview:["An audit builds credibility with banks, investors, tax authorities and shareholders, and strengthens your internal controls.","We carry out audits following ICAI Standards on Auditing, from statutory and tax audits to stock verification and certification of investments and debtors."],
+    scope:["Statutory audit under the Companies Act, including CARO","Tax audit under the Income-tax Act","GST audit","Review of internal financial controls","Internal audit, statutory and management","Stock audit: physical verification and inspection","Bank concurrent and branch audits","Certification of investments and debtors","Financial due diligence for investors"],
+    docs:["Books of accounts, trial balance, P&L and balance sheet","Bank statements and bank confirmations","GST and TDS returns for the year","Fixed asset register","Previous year's audited accounts and tax audit report","Stock valuation and physical verification sheets","Board minutes and statutory registers (companies)"],
+    steps:[["Plan","Understand the business, set materiality and assess risks."],["Test","Check vouchers, payments and bank transactions on a sample basis."],["Review controls","Assess internal controls and reconcile turnover with GST returns."],["Report","Issue the audit report and file it online."]],
+    faqs:[
+      ["When is a tax audit required?","When a business's turnover crosses ₹1 crore (₹10 crore if cash transactions are within 5%), or a professional's receipts cross ₹50 lakh (₹75 lakh in the same case)."],
+      ["What is the deadline for the tax audit report?","30 September, or 31 October where transfer pricing applies."],
+      ["Does every private limited company need a statutory audit?","Yes. Every company must have its annual accounts audited by an independent auditor, whatever its size."],
+      ["How does an internal audit help?","It reviews operations through the year and finds gaps and leakages early, so the statutory audit goes smoothly without qualifications."]
+    ]},
+  { id:"accounting", cat:"Accounting & MIS", title:"Accounting & MIS", sub:"Bookkeeping, reconciliations, payroll and monthly MIS reports.",
+    overview:["Up-to-date books are the base for compliance, audits, bank finance and management decisions. An in-house accounts team adds cost and risk.","We maintain books for startups, proprietorships, firms and private companies, or run your accounts department end to end, and turn the numbers into monthly MIS reports."],
+    scope:["Bookkeeping and chart of accounts set-up","Full outsourcing of the accounts department","Receivables and payables ageing, and debtor analysis","Monthly bank and credit card reconciliations","Monthly entries for TDS, GST, PF and ESI","Payroll, payslips and statutory payments","Periodic balance sheet, profit and loss and trial balance","MIS on sales, expenses, budgets, margins and working capital","Internal controls through Tally ERP"],
+    docs:["Bank and credit card statements","Sales invoices and debit notes","Purchase bills and expense vouchers","Payment-gateway summaries","Employee details and attendance","Last audited balance sheet"],
+    steps:[["Set up","Chart of accounts and document workflow in your software."],["Record","Sales, purchases and expenses posted regularly."],["Close","Reconciliations, GST and TDS checks and month-end entries."],["Report","Monthly financial statements and MIS delivered."]],
+    faqs:[
+      ["Why outsource bookkeeping to a CA firm?","Your books are kept by qualified professionals who follow tax and company-law requirements, without the cost of a full-time team, and stay ready for audit and filings."],
+      ["Which accounting software do you use?","Tally Prime, Zoho Books, QuickBooks, SAP Business One, Busy and other ERPs. We can work in your system or set one up."],
+      ["What is in a monthly MIS report?","Profit and loss and balance sheet, cash flow, receivables and payables ageing, key margins, and budget versus actual."],
+      ["How do you handle payroll?","We compute salaries from attendance, deduct TDS, PF, ESI and professional tax, issue payslips and prepare payment files."],
+      ["How often are bank accounts reconciled?","Weekly or monthly, depending on the number of transactions."]
+    ]},
+  { id:"cfo-advisory", cat:"Business Advisory", title:"Business Advisory & Virtual CFO", sub:"Cash-flow forecasting, budgets, financial models and advisory.",
+    overview:["Growing businesses face decisions on cash, pricing, funding and working capital, but a full-time CFO is expensive.","We provide part-time CFO support, financial models and cash forecasts, budgets, and advice on direct and indirect tax, financial planning and regulatory matters."],
+    scope:["Virtual CFO support for management","Financial models: profit and loss, balance sheet and cash flow","Rolling 13-week cash flow forecasts","Unit economics and contribution margins","Annual budgets and monthly variance review","Working capital and inventory review","Investor due diligence preparation and cap table","Direct and indirect tax advisory","Strategic financial planning and capital structuring","Business and regulatory consulting"],
+    docs:["Financial statements for the last 2–3 years","Monthly trial balances and MIS","Sales and customer data","Loan agreements and cap table","Current budgets and headcount plans"],
+    steps:[["Diagnose","Review revenue quality, cash cycle and costs."],["Build","Set up the budget and projection model."],["Control","Put cash tracking and approval limits in place."],["Review","Monthly review with management on results and decisions."]],
+    faqs:[
+      ["How is a Virtual CFO different from an accountant?","An accountant records past transactions and files returns. A Virtual CFO looks ahead: cash flow, budgets, margins and growth decisions."],
+      ["When does a business need a Virtual CFO?","When cash flow is uneven despite good sales, margins are falling, the business is preparing for bank or investor funding, or founders spend too much time on finance."],
+      ["How does a Virtual CFO help with cash flow?","With a rolling 13-week forecast that gives early warning of shortfalls and helps manage payments and collections."],
+      ["Can you help with investor due diligence?","Yes. We prepare financial models, clean up the cap table, set up the data room and answer diligence queries."],
+      ["How is the engagement structured?","Usually a monthly engagement covering management meetings, cash oversight and monthly reviews, with the scope agreed in advance."]
+    ]},
+  { id:"corporate-law", cat:"Labour & Corporate Law", title:"Labour & Corporate Law", sub:"Company and LLP compliance, ROC filings, and ESIC, PF and labour law.",
+    overview:["Company and labour-law compliance affects your eligibility for contracts, bank loans and investment. Defaults lead to penalties, director disqualification and even strike-off.","We handle incorporation, annual and event-based ROC filings, secretarial records, and ESIC, PF and labour law compliance."],
+    scope:["Company and LLP incorporation","Annual ROC filings for companies (financial statements and annual return)","LLP annual filings","Director KYC every year","Board resolutions, AGM / EGM notices, minutes and statutory registers","Filings for changes: directors, share capital, registered office","ESIC and PF registration and returns","Labour law compliance advice","Regulatory filings and documentation"],
+    docs:["PAN and ID proof of directors or partners","Address proof of directors or partners","Proof of registered office and owner's NOC","Digital signature certificates","MOA and AOA, or LLP agreement","Audited financial statements (for annual filings)"],
+    steps:[["Structure","Choose the entity type and reserve the name."],["Prepare","Draft MOA / AOA and obtain digital signatures."],["Incorporate","File for incorporation and complete PAN, TAN and bank account."],["Maintain","Annual ROC filings, meetings and director KYC each year."]],
+    faqs:[
+      ["What annual filings does a private limited company make?","Its audited financial statements and annual return after the AGM, director KYC for each director, and a return of deposits where applicable."],
+      ["What does an LLP have to file every year?","An annual return and a statement of accounts and solvency. Accounts must be audited above certain turnover or contribution limits."],
+      ["What if annual returns are filed late?","A late fee of ₹100 per day per form applies, with no upper limit. Long delays can lead to penalties on the company and directors."],
+      ["What if a director misses KYC?","The director's DIN is deactivated. It can be reactivated by filing KYC with a fee of ₹5,000."],
+      ["What if a company does not file for two years or more?","The Registrar can begin strike-off, and directors can be disqualified for five years."]
+    ]}
+  ];
+
+  function qa(list){ return list.map(function(q){ return '<details class="qa"><summary>'+q[0]+'</summary><div class="a"><p>'+q[1]+'</p></div></details>'; }).join(''); }
+
+  // Services index: RSC-style categories
+  var CATS = [
+    ["Audit & Assurance","Audits carried out independently, from statutory audits to stock verification and certification.",["audit"]],
+    ["Tax & Compliance","Statutory compliance under the Income-tax Act, GST and allied laws, and tax planning.",["income-tax","gst","international-tax"]],
+    ["Accounting & MIS","Books managed end to end, with MIS that shows management how the business is doing.",["accounting"]],
+    ["Labour & Corporate Law","Compliance under company law, ESIC, PF and labour laws.",["corporate-law"]],
+    ["Business Advisory","Advice across tax, finance and regulation, and Virtual CFO support.",["cfo-advisory"]]
+  ];
+  var byId = {}; SERVICES.forEach(function(s){ byId[s.id]=s; });
+  document.getElementById('svcIndex').innerHTML = CATS.map(function(c){
+    var items = c[2].map(function(id){ return byId[id]; });
+    return '<div class="cat"><div class="stack" style="gap:.5rem"><h2 style="font-size:1.5rem">'+c[0]+'</h2><p class="muted">'+c[1]+'</p>'+
+      items.map(function(s){ return '<a href="#'+s.id+'">'+s.title+' →</a>'; }).join('')+'</div>'+
+      '<ul>'+items.map(function(s){ return s.scope.slice(0, items.length>1?4:8).map(function(x){return '<li>'+x+'</li>';}).join(''); }).join('')+'</ul></div>';
+  }).join('');
+
+  document.getElementById('aboutAreas').innerHTML = [
+    "Audit & Assurance","Income Tax & GST","Accounting & Bookkeeping","MIS & Financial Reporting","International Taxation & Transfer Pricing","Labour & Corporate Law Compliance","Business Advisory","Virtual CFO Support"
+  ].map(function(t){ return '<li><strong>'+t+'</strong></li>'; }).join('');
+
+  document.getElementById('faqAll').innerHTML = SERVICES.map(function(s){
+    return '<div class="faq-group"><h2>'+s.title+'</h2>'+qa(s.faqs)+'</div>';
+  }).join('');
+
+  document.getElementById('svcPages').innerHTML = SERVICES.map(function(s){
+    var others = SERVICES.filter(function(o){return o.id!==s.id;});
+    return '<section class="page" id="p-'+s.id+'" data-route="'+s.id+'">'+
+      '<div class="band"><div class="wrap stack" style="gap:1.1rem">'+
+        '<p class="crumb"><a href="#services">Services</a> / '+s.title+'</p>'+
+        '<h1>'+s.title+'</h1><p class="lede">'+s.sub+'</p>'+
+        (s.confirm ? '<span class="devnote">'+s.confirm+'</span>' : '')+
+        '<div class="btns"><a class="btn primary" href="#contact">Contact us</a></div>'+
+      '</div></div>'+
+      '<div class="band"><div class="wrap split">'+
+        '<div class="stack"><span class="eyebrow">Overview</span>'+s.overview.map(function(p){return '<p>'+p+'</p>';}).join('')+'</div>'+
+        '<div class="stack"><span class="eyebrow">Scope of work</span><ul class="ruled">'+
+          s.scope.map(function(i){return '<li>'+i+'</li>';}).join('')+
+        '</ul></div>'+
+      '</div></div>'+
+      '<div class="band"><div class="wrap stack" style="gap:1.5rem"><div class="stack" style="gap:.4rem"><span class="eyebrow">Process</span><h2>How we work</h2></div>'+
+        '<ol class="steps">'+s.steps.map(function(x){return '<li><strong>'+x[0]+'</strong><span class="muted">'+x[1]+'</span></li>';}).join('')+'</ol>'+
+      '</div></div>'+
+      '<div class="band"><div class="wrap split">'+
+        '<div class="stack"><span class="eyebrow">Documents</span><h2>Documents required</h2><ul class="ruled">'+s.docs.map(function(n){return '<li>'+n+'</li>';}).join('')+'</ul></div>'+
+        '<div class="stack"><span class="eyebrow">FAQs</span><h2>Frequently asked questions</h2><div>'+qa(s.faqs)+'</div></div>'+
+      '</div></div>'+
+      '<div class="band"><div class="wrap stack"><span class="eyebrow">Other services</span><div class="chips">'+others.map(function(o){return '<a class="chip" href="#'+o.id+'">'+o.title+'</a>';}).join('')+'</div>'+
+        '<p class="muted" style="font-size:.85rem">The information on this page is general and is not professional advice.</p></div></div>'+
+    '</section>';
+  }).join('');
+
+  var URLS = [["Home","/"],["About Us","/about"],["Our Team","/team"],["Services","/services"]].concat(SERVICES.map(function(s){return [s.title,"/services/"+s.id];})).concat([["Insights","/insights"],["FAQ","/faq"],["Contact","/contact"],["Disclaimer","/disclaimer"],["Privacy notice","/privacy"]]);
+  document.getElementById('urlMap').innerHTML = URLS.map(function(u){return '<tr><td>'+u[0].replace(/&/g,'&amp;')+'</td><td><code>cadakshdesaiassociates.com'+u[1]+'</code></td></tr>';}).join('');
+
+  var pages = Array.prototype.slice.call(document.querySelectorAll('main section.page'));
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('nav.main a'));
+  function route(){
+    var h = (location.hash||'').replace('#','') || 'home';
+    var target = pages.filter(function(p){return p.dataset.route===h;})[0] || pages[0];
+    pages.forEach(function(p){ p.classList.toggle('active', p===target); });
+    var isSvc = !!byId[target.dataset.route];
+    navLinks.forEach(function(a){
+      var r = a.getAttribute('href').slice(1);
+      if (r===target.dataset.route || (isSvc && r==='services')) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
+    });
+    document.getElementById('mainNav').classList.remove('open');
+    document.getElementById('menuBtn').setAttribute('aria-expanded','false');
+    window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange', route); route();
+
+  document.getElementById('fillCount').textContent = document.querySelectorAll('.fill').length;
+
+  document.getElementById('menuBtn').addEventListener('click', function(){
+    var n = document.getElementById('mainNav'); var open = n.classList.toggle('open'); this.setAttribute('aria-expanded', open);
+  });
+  var tf = document.getElementById('toggleFill');
+  tf.addEventListener('click', function(){
+    var plain = document.body.classList.toggle('plain');
+    tf.setAttribute('aria-pressed', String(!plain)); tf.textContent = 'Highlight blanks: ' + (plain ? 'off' : 'on');
+  });
+  var disc = document.getElementById('disc');
+  document.getElementById('openDisc').addEventListener('click', function(){ disc.hidden = false; document.getElementById('discAgree').focus(); });
+  document.getElementById('discAgree').addEventListener('click', function(){ disc.hidden = true; });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') disc.hidden = true; });
+
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var st = document.getElementById('cfStatus');
+    st.hidden = false;
+    st.textContent = this.checkValidity() ? 'Preview only: this form is not connected yet. On the live site it will send to the firm\'s email address.' : 'Please fill in your name, a valid email address, and tick the consent box.';
+  });
+})();
+</script>
+
+</body></html>

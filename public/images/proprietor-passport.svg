@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 450" width="350" height="450" fill="none" role="img" aria-label="CA Daksh Desai Passport Photo Placeholder">
+  <rect width="350" height="450" fill="#E8ECE9" />
+  <rect x="6" y="6" width="338" height="438" fill="none" stroke="#B88D30" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.8" />
+  
+  <!-- Silhouette -->
+  <circle cx="175" cy="160" r="62" fill="#CAD3CE" />
+  <path d="M 75 360 C 75 270, 115 250, 175 250 C 235 250, 275 270, 275 360 L 275 430 L 75 430 Z" fill="#CAD3CE" />
+  
+  <!-- Collar & Tie -->
+  <path d="M 155 250 L 175 285 L 195 250 Z" fill="#0C251F" opacity="0.3"/>
+  <path d="M 170 285 L 180 285 L 184 350 L 175 365 L 166 350 Z" fill="#0C251F" opacity="0.3"/>
+  
+  <!-- Label -->
+  <rect x="30" y="375" width="290" height="45" rx="4" fill="#0C251F" opacity="0.9" />
+  <text x="175" y="395" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" fill="#FFFFFF">PASSPORT-STYLE PHOTOGRAPH</text>
+  <text x="175" y="410" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#B88D30" letter-spacing="1">(ICAI COMPLIANT SPECIFICATION)</text>
+</svg>
