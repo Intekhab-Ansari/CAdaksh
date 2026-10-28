@@ -337,6 +337,10 @@ export default function HomePage() {
                 sizes="(max-width: 900px) 100vw, 45vw"
                 className="about-img-cover"
               />
+              <div className="about-chamber-stamp">
+                <Image src="/images/ca-logo.svg" alt="CA Logo" width={20} height={20} />
+                <span>MUMBAI CHAMBERS · ESTABLISHED PRACTICE</span>
+              </div>
               <div className="about-map-floating-card">
                 <div className="floating-card-badge">✦ PAN-INDIA ADVISORY REACH</div>
                 <p className="floating-card-text">Direct representation &amp; filings across Central &amp; State tax jurisdictions from Mumbai.</p>
@@ -344,7 +348,10 @@ export default function HomePage() {
             </div>
           </div>
           <div className="about-content-side">
-            <span className="eyebrow-red">✦ ABOUT THE PRACTICE</span>
+            <div className="about-eyebrow-wrap">
+              <span className="about-eyebrow-tag">✦ ABOUT THE PRACTICE</span>
+              <span className="about-eyebrow-code">ESTD. MUMBAI</span>
+            </div>
             <h2 className="editorial-heading">
               Built on trust, <span className="hero-serif-accent">driven by precision</span>
             </h2>
@@ -356,32 +363,36 @@ export default function HomePage() {
             </p>
 
             <div className="milestones-list">
-              <div className="milestone-row">
-                <span className="milestone-badge">01 · ORIGIN</span>
+              <div className="milestone-card">
+                <div className="milestone-number-badge">01</div>
                 <div className="milestone-text">
+                  <div className="milestone-tag">ORIGIN &amp; ETHICS</div>
                   <strong>Founded upon Qualifying from ICAI</strong>
                   <p>Built the practice ground-up in Mumbai with an uncompromising dedication to professional ethics and statutory independence.</p>
                 </div>
               </div>
-              <div className="milestone-row">
-                <span className="milestone-badge">02 · JURISDICTION</span>
+              <div className="milestone-card">
+                <div className="milestone-number-badge">02</div>
                 <div className="milestone-text">
+                  <div className="milestone-tag">JURISDICTION</div>
                   <strong>Pan-India Compliance &amp; Cross-Border Remittances</strong>
                   <p>Advising corporate entities, growing businesses, and professionals across Mumbai and major Indian industrial centers.</p>
                 </div>
               </div>
-              <div className="milestone-row">
-                <span className="milestone-badge">03 · PRINCIPAL ACCESS</span>
+              <div className="milestone-card">
+                <div className="milestone-number-badge">03</div>
                 <div className="milestone-text">
+                  <div className="milestone-tag">PRINCIPAL ACCESS</div>
                   <strong>Direct Oversight by CA Daksh Desai</strong>
                   <p>Every assignment is managed with personalized attention, strict adherence to statutory deadlines, and partner-level accountability.</p>
                 </div>
               </div>
             </div>
 
-            <div style={{ marginTop: '2rem' }}>
-              <Link href="/about" className="link-arrow">
-                Explore Practice Profile &amp; Firm Particulars <span>→</span>
+            <div style={{ marginTop: '2.25rem' }}>
+              <Link href="/about" className="btn-executive-pill">
+                <span>Explore Practice Profile &amp; Firm Particulars</span>
+                <span className="arrow" aria-hidden="true">→</span>
               </Link>
             </div>
           </div>
