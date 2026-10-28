@@ -64,62 +64,56 @@ export default function HomePage() {
           <div className="rsc-hero-grid">
             {/* Card 1: Direct & Indirect Tax Compliances (Navy Card) */}
             <div className="rsc-navy-card">
-              <div className="rsc-desk-pill">
-                <span>✦</span> DESK 01 · DIRECT &amp; INDIRECT TAXES
-              </div>
-              <h3 className="rsc-card-title">Tax Compliances</h3>
-              <p className="rsc-card-desc">Proactive filings, scrutiny representations &amp; statutory reconciliations</p>
-              <ul className="rsc-card-list">
+              <div className="rsc-num-pill">01</div>
+              <h3 className="rsc-service-title">Tax &amp; Compliance</h3>
+              <span className="rsc-service-tagline">COMPLIANT TODAY. PREPARED FOR TOMORROW.</span>
+              <p className="rsc-service-desc">
+                End-to-end statutory compliance across Companies Act, Income Tax Act, GST, and allied business laws — keeping you on the right side of every regulation.
+              </p>
+              <ul className="rsc-service-list">
                 <li>
-                  <Link href="/services/gst">
-                    <span className="list-bullet">✦</span>
-                    <span className="list-text">Goods &amp; Services Tax (GST) Returns &amp; 2B Matching</span>
-                    <span className="list-arrow">→</span>
-                  </Link>
+                  <span className="bullet-dot dot-red-bg" />
+                  <span className="bullet-text">
+                    <Link href="/services/gst" style={{ color: 'inherit' }}>Goods &amp; Services Tax (GST) Returns &amp; 2B Matching</Link>
+                  </span>
                 </li>
                 <li>
-                  <Link href="/services/income-tax">
-                    <span className="list-bullet">✦</span>
-                    <span className="list-text">Corporate &amp; Individual Income Tax Filings (ITR 1–7)</span>
-                    <span className="list-arrow">→</span>
-                  </Link>
+                  <span className="bullet-dot dot-blue-bg" />
+                  <span className="bullet-text">
+                    <Link href="/services/income-tax" style={{ color: 'inherit' }}>Corporate &amp; Individual Income Tax Filings (ITR 1–7)</Link>
+                  </span>
                 </li>
                 <li>
-                  <Link href="/services/income-tax">
-                    <span className="list-bullet">✦</span>
-                    <span className="list-text">TDS &amp; TCS Compliance (Form 24Q, 26Q, 27Q &amp; TRACES)</span>
-                    <span className="list-arrow">→</span>
-                  </Link>
+                  <span className="bullet-dot dot-red-bg" />
+                  <span className="bullet-text">
+                    <Link href="/services/income-tax" style={{ color: 'inherit' }}>TDS / TCS Compliance (Form 24Q, 26Q &amp; 27Q)</Link>
+                  </span>
                 </li>
                 <li>
-                  <Link href="/services/income-tax">
-                    <span className="list-bullet">✦</span>
-                    <span className="list-text">Professional Tax (PTEC &amp; PTRC Registrations)</span>
-                    <span className="list-arrow">→</span>
-                  </Link>
+                  <span className="bullet-dot dot-blue-bg" />
+                  <span className="bullet-text">
+                    <Link href="/services/income-tax" style={{ color: 'inherit' }}>Professional Tax (PTEC &amp; PTRC Registrations)</Link>
+                  </span>
                 </li>
                 <li>
-                  <Link href="/services/gst">
-                    <span className="list-bullet">✦</span>
-                    <span className="list-text">VAT &amp; Legacy Tax Dispute Assessments</span>
-                    <span className="list-arrow">→</span>
-                  </Link>
+                  <span className="bullet-dot dot-red-bg" />
+                  <span className="bullet-text">
+                    <Link href="/services/international-tax" style={{ color: 'inherit' }}>Form 15CA &amp; 15CB Foreign Remittance Certificates</Link>
+                  </span>
                 </li>
                 <li>
-                  <Link href="/services/corporate-law">
-                    <span className="list-bullet">✦</span>
-                    <span className="list-text">ROC Compliances &amp; Annual MCA Regulatory Filings</span>
-                    <span className="list-arrow">→</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services/international-tax">
-                    <span className="list-bullet">✦</span>
-                    <span className="list-text">NRI Taxation &amp; Foreign Remittance (Form 15CA/CB)</span>
-                    <span className="list-arrow">→</span>
-                  </Link>
+                  <span className="bullet-dot dot-blue-bg" />
+                  <span className="bullet-text">
+                    <Link href="/services/corporate-law" style={{ color: 'inherit' }}>ROC Compliances &amp; Annual MCA Filings</Link>
+                  </span>
                 </li>
               </ul>
+              <div className="rsc-pills-row">
+                <span className="rsc-keyword-pill">INCOME TAX</span>
+                <span className="rsc-keyword-pill">GST</span>
+                <span className="rsc-keyword-pill">TDS</span>
+                <span className="rsc-keyword-pill">ROC</span>
+              </div>
             </div>
 
             {/* Card 2: CA Consulting Photo */}
@@ -141,55 +135,56 @@ export default function HomePage() {
 
             {/* Card 3: Audit & Assurance (Navy Card) */}
             <div className="rsc-navy-card">
-              <div className="rsc-desk-pill">
-                <span>✦</span> DESK 02 · STATUTORY &amp; ASSURANCE
-              </div>
-              <h3 className="rsc-card-title">Audit &amp; Assurance</h3>
-              <p className="rsc-card-desc">Independent statutory attestations adhering to ICAI Auditing Standards</p>
-              <ul className="rsc-card-list">
+              <div className="rsc-num-pill">02</div>
+              <h3 className="rsc-service-title">Audit &amp; Assurance</h3>
+              <span className="rsc-service-tagline">INDEPENDENT. THOROUGH. TRUSTED.</span>
+              <p className="rsc-service-desc">
+                Comprehensive audit services conducted with rigour and independence — from statutory audits to stock verification and investment certification.
+              </p>
+              <ul className="rsc-service-list">
                 <li>
-                  <Link href="/services/audit">
-                    <span className="list-bullet">✦</span>
-                    <span className="list-text">Statutory Audit under Companies Act, 2013 Sec 139</span>
-                    <span className="list-arrow">→</span>
-                  </Link>
+                  <span className="bullet-dot dot-red-bg" />
+                  <span className="bullet-text">
+                    <Link href="/services/audit" style={{ color: 'inherit' }}>Statutory Audit under the Companies Act</Link>
+                  </span>
                 </li>
                 <li>
-                  <Link href="/services/audit">
-                    <span className="list-bullet">✦</span>
-                    <span className="list-text">Tax Audit under Income-tax Act Sec 44AB</span>
-                    <span className="list-arrow">→</span>
-                  </Link>
+                  <span className="bullet-dot dot-blue-bg" />
+                  <span className="bullet-text">
+                    <Link href="/services/audit" style={{ color: 'inherit' }}>Tax Audit under Income Tax Act Sec 44AB</Link>
+                  </span>
                 </li>
                 <li>
-                  <Link href="/services/audit">
-                    <span className="list-bullet">✦</span>
-                    <span className="list-text">GST Audit &amp; Annual Reconciliation (GSTR-9 / 9C)</span>
-                    <span className="list-arrow">→</span>
-                  </Link>
+                  <span className="bullet-dot dot-red-bg" />
+                  <span className="bullet-text">
+                    <Link href="/services/audit" style={{ color: 'inherit' }}>GST Audit &amp; Reconciliation (GSTR-9C)</Link>
+                  </span>
                 </li>
                 <li>
-                  <Link href="/services/audit">
-                    <span className="list-bullet">✦</span>
-                    <span className="list-text">Internal Financial Controls &amp; Risk Governance (IFCoFR)</span>
-                    <span className="list-arrow">→</span>
-                  </Link>
+                  <span className="bullet-dot dot-blue-bg" />
+                  <span className="bullet-text">
+                    <Link href="/services/audit" style={{ color: 'inherit' }}>Internal Audit — Statutory &amp; Management</Link>
+                  </span>
                 </li>
                 <li>
-                  <Link href="/services/audit">
-                    <span className="list-bullet">✦</span>
-                    <span className="list-text">Stock &amp; Working Capital Audits for Banking Consortia</span>
-                    <span className="list-arrow">→</span>
-                  </Link>
+                  <span className="bullet-dot dot-red-bg" />
+                  <span className="bullet-text">
+                    <Link href="/services/audit" style={{ color: 'inherit' }}>Stock Audit — physical verification &amp; inspection</Link>
+                  </span>
                 </li>
                 <li>
-                  <Link href="/services/audit">
-                    <span className="list-bullet">✦</span>
-                    <span className="list-text">UDIN Verified Net Worth &amp; Debtor Certifications</span>
-                    <span className="list-arrow">→</span>
-                  </Link>
+                  <span className="bullet-dot dot-blue-bg" />
+                  <span className="bullet-text">
+                    <Link href="/services/audit" style={{ color: 'inherit' }}>Certification of Investments &amp; Debtors</Link>
+                  </span>
                 </li>
               </ul>
+              <div className="rsc-pills-row">
+                <span className="rsc-keyword-pill">STATUTORY</span>
+                <span className="rsc-keyword-pill">TAX AUDIT</span>
+                <span className="rsc-keyword-pill">GST AUDIT</span>
+                <span className="rsc-keyword-pill">INTERNAL</span>
+              </div>
             </div>
 
             {/* Card 4: Tax Law Bare Acts Photo */}
@@ -208,57 +203,58 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Card 5: Other Services & Corporate Advisory (Navy Card) */}
+            {/* Card 5: Accounting & MIS / Advisory (Navy Card) */}
             <div className="rsc-navy-card">
-              <div className="rsc-desk-pill">
-                <span>✦</span> DESK 03 · CORPORATE &amp; FINANCIAL ADVISORY
-              </div>
-              <h3 className="rsc-card-title">Advisory &amp; Corporate</h3>
-              <p className="rsc-card-desc">Strategic financial governance, structuring &amp; regulatory alignment</p>
-              <ul className="rsc-card-list">
+              <div className="rsc-num-pill">03</div>
+              <h3 className="rsc-service-title">Accounting &amp; MIS</h3>
+              <span className="rsc-service-tagline">NUMBERS THAT TELL YOUR STORY.</span>
+              <p className="rsc-service-desc">
+                Dedicated accounting teams manage your books end-to-end, paired with sharp MIS reporting that gives management real-time visibility into performance.
+              </p>
+              <ul className="rsc-service-list">
                 <li>
-                  <Link href="/services/cfo-advisory">
-                    <span className="list-bullet">✦</span>
-                    <span className="list-text">Tax &amp; Financial Planning for Corporates &amp; HNIs</span>
-                    <span className="list-arrow">→</span>
-                  </Link>
+                  <span className="bullet-dot dot-red-bg" />
+                  <span className="bullet-text">
+                    <Link href="/services/accounting" style={{ color: 'inherit' }}>MIS reporting — Sales, Expenses &amp; Budgeting</Link>
+                  </span>
                 </li>
                 <li>
-                  <Link href="/services/accounting">
-                    <span className="list-bullet">✦</span>
-                    <span className="list-text">Accounting Services &amp; Management Information (MIS)</span>
-                    <span className="list-arrow">→</span>
-                  </Link>
+                  <span className="bullet-dot dot-blue-bg" />
+                  <span className="bullet-text">
+                    <Link href="/services/accounting" style={{ color: 'inherit' }}>Debtor analysis &amp; working capital review</Link>
+                  </span>
                 </li>
                 <li>
-                  <Link href="/services/cfo-advisory">
-                    <span className="list-bullet">✦</span>
-                    <span className="list-text">Virtual CFO Support for Growing Enterprises</span>
-                    <span className="list-arrow">→</span>
-                  </Link>
+                  <span className="bullet-dot dot-red-bg" />
+                  <span className="bullet-text">
+                    <Link href="/services/accounting" style={{ color: 'inherit' }}>Full accounts department outsourcing</Link>
+                  </span>
                 </li>
                 <li>
-                  <Link href="/services/international-tax">
-                    <span className="list-bullet">✦</span>
-                    <span className="list-text">Cross-Border Remittances (Form 15CA &amp; Form 15CB)</span>
-                    <span className="list-arrow">→</span>
-                  </Link>
+                  <span className="bullet-dot dot-blue-bg" />
+                  <span className="bullet-text">
+                    <Link href="/services/accounting" style={{ color: 'inherit' }}>Internal controls via Tally ERP Software</Link>
+                  </span>
                 </li>
                 <li>
-                  <Link href="/services/corporate-law">
-                    <span className="list-bullet">✦</span>
-                    <span className="list-text">Corporate Incorporation (Private Limited, LLP, OPC)</span>
-                    <span className="list-arrow">→</span>
-                  </Link>
+                  <span className="bullet-dot dot-red-bg" />
+                  <span className="bullet-text">
+                    <Link href="/services/cfo-advisory" style={{ color: 'inherit' }}>Virtual CFO Support for Growing Enterprises</Link>
+                  </span>
                 </li>
                 <li>
-                  <Link href="/services/corporate-law">
-                    <span className="list-bullet">✦</span>
-                    <span className="list-text">ESIC, EPFO, Labour Laws &amp; MSME Registrations</span>
-                    <span className="list-arrow">→</span>
-                  </Link>
+                  <span className="bullet-dot dot-blue-bg" />
+                  <span className="bullet-text">
+                    <Link href="/services/international-tax" style={{ color: 'inherit' }}>Cross-Border Remittances (Form 15CA &amp; Form 15CB)</Link>
+                  </span>
                 </li>
               </ul>
+              <div className="rsc-pills-row">
+                <span className="rsc-keyword-pill">MIS</span>
+                <span className="rsc-keyword-pill">ACCOUNTING</span>
+                <span className="rsc-keyword-pill">BUDGETING</span>
+                <span className="rsc-keyword-pill">TALLY ERP</span>
+              </div>
             </div>
 
             {/* Card 6: Modern Financial Workspace Photo */}
