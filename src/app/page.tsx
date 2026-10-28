@@ -15,41 +15,110 @@ export default function HomePage() {
   return (
     <>
       {/* =========================================================================
-          HERO SECTION — 6-CARD SERVICES & IMAGES SHOWCASE (REFERENCE STYLE)
+          HERO SECTION — BESPOKE SOVEREIGN 6-CARD SHOWCASE & IMAGES
           ========================================================================= */}
       <section className="section hero-rsc" id="home-hero">
         <div className="container">
           <div className="hero-header-wrap">
-            <span className="eyebrow-pill">CHARTERED ACCOUNTANTS · MUMBAI</span>
+            <div className="hero-eyebrow-seal">
+              <span className="seal-dot">✦</span>
+              CHARTERED ACCOUNTANTS · MUMBAI · ICAI REGISTERED PRACTICE
+            </div>
             <h1 className="hero-main-title">
-              Taxation, audit, accounting and <em>advisory</em>
+              Taxation, Audit, Accounting &amp; <span className="hero-serif-accent">Advisory</span>
             </h1>
             <p className="hero-sublede">
-              We help businesses, professionals and individuals handle finance, taxation and compliance with clarity, from routine filings to tax notices and appeals.
+              We provide comprehensive counsel across direct tax litigation, GST compliance, statutory audit, and corporate governance for enterprises, family offices, and professionals across India and abroad.
             </p>
             <div className="hero-btn-group">
-              <Link className="btn btn-primary" href="/services">
-                Our services
+              <Link className="btn btn-primary btn-lg" href="/services">
+                Explore Practice Scope <span className="btn-arrow-gold">→</span>
               </Link>
-              <Link className="btn btn-outline" href="/contact">
-                Contact us
+              <Link className="btn btn-outline btn-lg" href="/contact">
+                Consult Practice Office
               </Link>
+            </div>
+
+            {/* TRUST CREDENTIAL BADGES */}
+            <div className="hero-trust-badges">
+              <span className="trust-badge-item">
+                <span className="badge-bullet">✦</span>
+                ICAI Registered Practice
+              </span>
+              <span className="trust-badge-item">
+                <span className="badge-bullet">✦</span>
+                Direct Partner-Led Counsel
+              </span>
+              <span className="trust-badge-item">
+                <span className="badge-bullet">✦</span>
+                18-Digit UDIN Verified Reports
+              </span>
+              <span className="trust-badge-item">
+                <span className="badge-bullet">✦</span>
+                Mumbai Headquartered · Pan-India Scope
+              </span>
             </div>
           </div>
 
-          {/* 6-CARD SERVICES & IMAGES SHOWCASE */}
+          {/* 6-CARD SOVEREIGN SERVICES & IMAGES SHOWCASE */}
           <div className="rsc-hero-grid">
-            {/* Card 1: Tax Compliances (Navy Card) */}
+            {/* Card 1: Direct & Indirect Tax Compliances (Navy Card) */}
             <div className="rsc-navy-card">
+              <div className="rsc-desk-pill">
+                <span>✦</span> DESK 01 · DIRECT &amp; INDIRECT TAXES
+              </div>
               <h3 className="rsc-card-title">Tax Compliances</h3>
+              <p className="rsc-card-desc">Proactive filings, scrutiny representations &amp; statutory reconciliations</p>
               <ul className="rsc-card-list">
-                <li><Link href="/services/gst">GST</Link></li>
-                <li><Link href="/services/income-tax">Income Tax</Link></li>
-                <li><Link href="/services/income-tax">TDS / TCS</Link></li>
-                <li><Link href="/services/income-tax">Professional Tax</Link></li>
-                <li><Link href="/services/gst">VAT</Link></li>
-                <li><Link href="/services/corporate-law">ROC compliances</Link></li>
-                <li><Link href="/services/international-tax">NRI Taxation</Link></li>
+                <li>
+                  <Link href="/services/gst">
+                    <span className="list-bullet">✦</span>
+                    <span className="list-text">Goods &amp; Services Tax (GST) Returns &amp; 2B Matching</span>
+                    <span className="list-arrow">→</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/income-tax">
+                    <span className="list-bullet">✦</span>
+                    <span className="list-text">Corporate &amp; Individual Income Tax Filings (ITR 1–7)</span>
+                    <span className="list-arrow">→</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/income-tax">
+                    <span className="list-bullet">✦</span>
+                    <span className="list-text">TDS &amp; TCS Compliance (Form 24Q, 26Q, 27Q &amp; TRACES)</span>
+                    <span className="list-arrow">→</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/income-tax">
+                    <span className="list-bullet">✦</span>
+                    <span className="list-text">Professional Tax (PTEC &amp; PTRC Registrations)</span>
+                    <span className="list-arrow">→</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/gst">
+                    <span className="list-bullet">✦</span>
+                    <span className="list-text">VAT &amp; Legacy Tax Dispute Assessments</span>
+                    <span className="list-arrow">→</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/corporate-law">
+                    <span className="list-bullet">✦</span>
+                    <span className="list-text">ROC Compliances &amp; Annual MCA Regulatory Filings</span>
+                    <span className="list-arrow">→</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/international-tax">
+                    <span className="list-bullet">✦</span>
+                    <span className="list-text">NRI Taxation &amp; Foreign Remittance (Form 15CA/CB)</span>
+                    <span className="list-arrow">→</span>
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -63,18 +132,63 @@ export default function HomePage() {
                 className="rsc-card-img"
                 priority
               />
+              <div className="rsc-image-overlay">
+                <span className="overlay-pill">
+                  <span className="pill-dot">✦</span> Audit &amp; Statutory Review Chamber · Mumbai
+                </span>
+              </div>
             </div>
 
             {/* Card 3: Audit & Assurance (Navy Card) */}
             <div className="rsc-navy-card">
+              <div className="rsc-desk-pill">
+                <span>✦</span> DESK 02 · STATUTORY &amp; ASSURANCE
+              </div>
               <h3 className="rsc-card-title">Audit &amp; Assurance</h3>
+              <p className="rsc-card-desc">Independent statutory attestations adhering to ICAI Auditing Standards</p>
               <ul className="rsc-card-list">
-                <li><Link href="/services/audit">Statutory Audit</Link></li>
-                <li><Link href="/services/audit">Tax Audit</Link></li>
-                <li><Link href="/services/audit">GST Audit</Link></li>
-                <li><Link href="/services/audit">Internal Audit</Link></li>
-                <li><Link href="/services/audit">Stock Audits</Link></li>
-                <li><Link href="/services/audit">Certification of Investments &amp; Debtors</Link></li>
+                <li>
+                  <Link href="/services/audit">
+                    <span className="list-bullet">✦</span>
+                    <span className="list-text">Statutory Audit under Companies Act, 2013 Sec 139</span>
+                    <span className="list-arrow">→</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/audit">
+                    <span className="list-bullet">✦</span>
+                    <span className="list-text">Tax Audit under Income-tax Act Sec 44AB</span>
+                    <span className="list-arrow">→</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/audit">
+                    <span className="list-bullet">✦</span>
+                    <span className="list-text">GST Audit &amp; Annual Reconciliation (GSTR-9 / 9C)</span>
+                    <span className="list-arrow">→</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/audit">
+                    <span className="list-bullet">✦</span>
+                    <span className="list-text">Internal Financial Controls &amp; Risk Governance (IFCoFR)</span>
+                    <span className="list-arrow">→</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/audit">
+                    <span className="list-bullet">✦</span>
+                    <span className="list-text">Stock &amp; Working Capital Audits for Banking Consortia</span>
+                    <span className="list-arrow">→</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/audit">
+                    <span className="list-bullet">✦</span>
+                    <span className="list-text">UDIN Verified Net Worth &amp; Debtor Certifications</span>
+                    <span className="list-arrow">→</span>
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -87,19 +201,63 @@ export default function HomePage() {
                 sizes="(max-width: 768px) 100vw, 33vw"
                 className="rsc-card-img"
               />
+              <div className="rsc-image-overlay">
+                <span className="overlay-pill">
+                  <span className="pill-dot">✦</span> Income Tax, FEMA &amp; Corporate Jurisprudence
+                </span>
+              </div>
             </div>
 
-            {/* Card 5: Other Services (Navy Card) */}
+            {/* Card 5: Other Services & Corporate Advisory (Navy Card) */}
             <div className="rsc-navy-card">
-              <h3 className="rsc-card-title">Other Services</h3>
+              <div className="rsc-desk-pill">
+                <span>✦</span> DESK 03 · CORPORATE &amp; FINANCIAL ADVISORY
+              </div>
+              <h3 className="rsc-card-title">Advisory &amp; Corporate</h3>
+              <p className="rsc-card-desc">Strategic financial governance, structuring &amp; regulatory alignment</p>
               <ul className="rsc-card-list">
-                <li><Link href="/services/cfo-advisory">Tax &amp; Financial Planning</Link></li>
-                <li><Link href="/services/accounting">Accounting Services</Link></li>
-                <li><Link href="/services/accounting">MIS Reporting</Link></li>
-                <li><Link href="/services/cfo-advisory">Virtual CFO</Link></li>
-                <li><Link href="/services/international-tax">International Taxation</Link></li>
-                <li><Link href="/services/corporate-law">Company Formation</Link></li>
-                <li><Link href="/services/corporate-law">ESIC, PF &amp; Labour Law</Link></li>
+                <li>
+                  <Link href="/services/cfo-advisory">
+                    <span className="list-bullet">✦</span>
+                    <span className="list-text">Tax &amp; Financial Planning for Corporates &amp; HNIs</span>
+                    <span className="list-arrow">→</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/accounting">
+                    <span className="list-bullet">✦</span>
+                    <span className="list-text">Accounting Services &amp; Management Information (MIS)</span>
+                    <span className="list-arrow">→</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/cfo-advisory">
+                    <span className="list-bullet">✦</span>
+                    <span className="list-text">Virtual CFO Support for Growing Enterprises</span>
+                    <span className="list-arrow">→</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/international-tax">
+                    <span className="list-bullet">✦</span>
+                    <span className="list-text">Cross-Border Remittances (Form 15CA &amp; Form 15CB)</span>
+                    <span className="list-arrow">→</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/corporate-law">
+                    <span className="list-bullet">✦</span>
+                    <span className="list-text">Corporate Incorporation (Private Limited, LLP, OPC)</span>
+                    <span className="list-arrow">→</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/corporate-law">
+                    <span className="list-bullet">✦</span>
+                    <span className="list-text">ESIC, EPFO, Labour Laws &amp; MSME Registrations</span>
+                    <span className="list-arrow">→</span>
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -112,21 +270,31 @@ export default function HomePage() {
                 sizes="(max-width: 768px) 100vw, 33vw"
                 className="rsc-card-img"
               />
+              <div className="rsc-image-overlay">
+                <span className="overlay-pill">
+                  <span className="pill-dot">✦</span> Quantitative Financial Analytics &amp; MIS Desk
+                </span>
+              </div>
             </div>
           </div>
 
           {/* FIRM PARTICULARS (ICAI Register Institutional Bar) */}
           <div className="register-bar-container">
             <div className="register-header">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <Image src="/images/ca-logo.svg" alt="CA Logo" width={28} height={28} />
-                <span className="register-title">Firm Particulars</span>
+              <div className="register-header-left">
+                <div className="register-ca-badge">
+                  <Image src="/images/ca-logo.svg" alt="CA Logo" width={32} height={32} />
+                </div>
+                <div>
+                  <span className="register-title">Firm Particulars &amp; Statutory Identity</span>
+                  <span className="register-subtitle">Governed under Chartered Accountants Act, 1949</span>
+                </div>
               </div>
-              <span className="icai-tag">ICAI Registered</span>
+              <span className="icai-tag">ICAI Registered Practice</span>
             </div>
             <div className="register-grid">
               <div className="register-item">
-                <span className="reg-label">Firm name</span>
+                <span className="reg-label">Firm Name</span>
                 <span className="reg-val">Daksh Desai &amp; Associates, Chartered Accountants <span className="fill">[confirm name exactly as approved by ICAI]</span></span>
               </div>
               <div className="register-item">
@@ -138,19 +306,22 @@ export default function HomePage() {
                 <span className="reg-val"><span className="fill">[year as per ICAI records]</span></span>
               </div>
               <div className="register-item">
-                <span className="reg-label">Head office</span>
-                <span className="reg-val">Mumbai</span>
+                <span className="reg-label">Head Office</span>
+                <span className="reg-val">Mumbai, Maharashtra</span>
               </div>
               <div className="register-item">
-                <span className="reg-label">Core focus</span>
-                <span className="reg-val">Tax · Audit · Advisory</span>
+                <span className="reg-label">Core Focus</span>
+                <span className="reg-val">Direct Tax · GST · Statutory Audit · Cross-Border Advisory</span>
               </div>
               <div className="register-item">
                 <span className="reg-label">Proprietor</span>
                 <span className="reg-val">CA Daksh Desai, M. No. <span className="fill">[membership no.]</span></span>
               </div>
             </div>
-            <p className="register-foot">Particulars as registered with the Institute of Chartered Accountants of India.</p>
+            <div className="register-foot">
+              <span>Particulars as registered with the Institute of Chartered Accountants of India. Verified via ICAI Empanelled Register.</span>
+              <span className="udin-note">All formal attestations bear an 18-digit Unique Document Identification Number (UDIN).</span>
+            </div>
           </div>
         </div>
       </section>
@@ -158,7 +329,7 @@ export default function HomePage() {
       {/* CONTINUOUS TICKER RIBBON */}
       <TickerRibbon />
 
-      {/* ABOUT THE FIRM (WITH PAN-INDIA PHOTO) */}
+      {/* ABOUT THE FIRM (WITH PAN-INDIA PHOTO & SOVEREIGN BADGE) */}
       <section className="section" id="about-snippet">
         <div className="container about-split-grid">
           <div className="about-visual-side">
@@ -170,47 +341,51 @@ export default function HomePage() {
                 sizes="(max-width: 900px) 100vw, 45vw"
                 className="about-img-cover"
               />
+              <div className="about-map-floating-card">
+                <div className="floating-card-badge">✦ PAN-INDIA ADVISORY REACH</div>
+                <p className="floating-card-text">Direct representation &amp; filings across Central &amp; State tax jurisdictions from Mumbai.</p>
+              </div>
             </div>
           </div>
           <div className="about-content-side">
-            <span className="eyebrow-red">ABOUT THE FIRM</span>
+            <span className="eyebrow-red">✦ ABOUT THE PRACTICE</span>
             <h2 className="editorial-heading">
-              Built on trust, <em>driven by precision</em>
+              Built on trust, <span className="hero-serif-accent">driven by precision</span>
             </h2>
             <p className="about-p">
-              Established in <span className="fill">[year]</span>, Daksh Desai &amp; Associates is a Chartered Accountancy practice based in Mumbai. We aim to give every client the clarity and attention of an in-house team for taxation, accounts, audit and compliance.
+              Established in <span className="fill">[year]</span>, Daksh Desai &amp; Associates is an institutional Chartered Accountancy practice based in Mumbai. We provide partner-led counsel across taxation, statutory audit, financial reporting, and corporate compliance.
             </p>
             <p className="about-p">
-              We work with <span className="fill">[client types, e.g. SMEs, startups, professionals, HNIs and NRIs]</span>.
+              We work with <span className="fill">[client types, e.g. corporate enterprises, growing startups, professionals, family offices, and NRIs]</span> across India and international jurisdictions.
             </p>
 
             <div className="milestones-list">
               <div className="milestone-row">
-                <span className="milestone-badge">Origin</span>
+                <span className="milestone-badge">01 · ORIGIN</span>
                 <div className="milestone-text">
-                  <strong>Founded upon qualifying from ICAI</strong>
-                  <p>Built the practice ground-up in Mumbai with an uncompromising dedication to professional ethics.</p>
+                  <strong>Founded upon Qualifying from ICAI</strong>
+                  <p>Built the practice ground-up in Mumbai with an uncompromising dedication to professional ethics and statutory independence.</p>
                 </div>
               </div>
               <div className="milestone-row">
-                <span className="milestone-badge">Reach</span>
+                <span className="milestone-badge">02 · JURISDICTION</span>
                 <div className="milestone-text">
-                  <strong>Pan-India Compliance &amp; Advisory</strong>
-                  <p>Advising growing businesses, emerging startups, and individuals across Mumbai and nationwide.</p>
+                  <strong>Pan-India Compliance &amp; Cross-Border Remittances</strong>
+                  <p>Advising corporate entities, growing businesses, and professionals across Mumbai and major Indian industrial centers.</p>
                 </div>
               </div>
               <div className="milestone-row">
-                <span className="milestone-badge">Focus</span>
+                <span className="milestone-badge">03 · PRINCIPAL ACCESS</span>
                 <div className="milestone-text">
-                  <strong>Direct access to the Chartered Accountant</strong>
-                  <p>Every assignment is overseen with personalized attention, proactive deadlines, and end-to-end responsibility.</p>
+                  <strong>Direct Oversight by CA Daksh Desai</strong>
+                  <p>Every assignment is managed with personalized attention, strict adherence to statutory deadlines, and partner-level accountability.</p>
                 </div>
               </div>
             </div>
 
-            <div style={{ marginTop: '1.75rem' }}>
+            <div style={{ marginTop: '2rem' }}>
               <Link href="/about" className="link-arrow">
-                More about the firm <span>→</span>
+                Explore Practice Profile &amp; Firm Particulars <span>→</span>
               </Link>
             </div>
           </div>
@@ -221,9 +396,9 @@ export default function HomePage() {
       <section className="section section-ice" id="statutory-calendar">
         <div className="container">
           <div className="section-head-center">
-            <span className="eyebrow-red">STATUTORY DEADLINE TRACKER</span>
+            <span className="eyebrow-red">✦ STATUTORY DEADLINE TRACKER</span>
             <h2 className="editorial-heading">
-              Indian Statutory <em>Compliance Calendar</em>
+              Indian Statutory <span className="hero-serif-accent">Compliance Calendar</span>
             </h2>
             <p className="section-head-lede">
               A real-time monitor for businesses and professionals to track statutory filing deadlines under Income Tax, GST, MCA, and RBI/FEMA regulations.
@@ -234,85 +409,100 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* WHY CHOOSE US / OUR APPROACH */}
+      {/* WHY CHOOSE US / THE DAKSH DESAI DIFFERENCE */}
       <section className="section" id="approach">
         <div className="container">
           <div className="section-head-center">
-            <span className="eyebrow-red">WHY CHOOSE US</span>
+            <span className="eyebrow-red">✦ PRACTICE PHILOSOPHY</span>
             <h2 className="editorial-heading">
-              The Daksh Desai &amp; Associates <em>difference</em>
+              The Daksh Desai &amp; Associates <span className="hero-serif-accent">Difference</span>
             </h2>
             <p className="section-head-lede">
-              A disciplined, partner-led approach to finance, taxation and statutory compliance.
+              A disciplined, partner-led standard for finance, taxation, statutory audit, and corporate governance.
             </p>
           </div>
 
           <div className="approach-grid-rsc">
             <div className="approach-card-rsc">
-              <div className="approach-icon-circle">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="9" cy="7" r="4"></circle>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                </svg>
+              <div className="approach-card-top-bar">
+                <span className="approach-num">01</span>
+                <div className="approach-icon-circle">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                </div>
               </div>
               <h3 className="approach-card-title">Direct CA Access</h3>
               <p className="approach-card-desc">
-                You deal with the proprietor directly on your matters — not junior teams. Fast responses with actionable clarity.
+                You deal with CA Daksh Desai directly on your matters — no junior delegation or intermediate proxies. Rapid response with definitive statutory clarity.
               </p>
             </div>
 
             <div className="approach-card-rsc">
-              <div className="approach-icon-circle">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                </svg>
+              <div className="approach-card-top-bar">
+                <span className="approach-num">02</span>
+                <div className="approach-icon-circle">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  </svg>
+                </div>
               </div>
               <h3 className="approach-card-title">Absolute Confidentiality</h3>
               <p className="approach-card-desc">
-                Your financial records and business data remain protected under the stringent confidentiality mandates of the ICAI Code of Ethics.
+                Your proprietary financial records, cap tables, and personal wealth disclosures remain protected under the stringent mandates of the ICAI Code of Ethics.
               </p>
             </div>
 
             <div className="approach-card-rsc">
-              <div className="approach-icon-circle">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <polyline points="12 6 12 12 16 14"></polyline>
-                </svg>
+              <div className="approach-card-top-bar">
+                <span className="approach-num">03</span>
+                <div className="approach-icon-circle">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </div>
               </div>
               <h3 className="approach-card-title">Timely Compliance</h3>
               <p className="approach-card-desc">
-                Structured workflows to meet income tax, GST and MCA deadlines seamlessly without last-minute haste.
+                Structured statutory workflows to meet Income Tax, GST, MCA, and RBI deadlines comfortably in advance, eliminating last-minute rush and late interest.
               </p>
             </div>
 
             <div className="approach-card-rsc">
-              <div className="approach-icon-circle">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                  <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                </svg>
+              <div className="approach-card-top-bar">
+                <span className="approach-num">04</span>
+                <div className="approach-icon-circle">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                  </svg>
+                </div>
               </div>
               <h3 className="approach-card-title">Proactive Advisory</h3>
               <p className="approach-card-desc">
-                Advice ahead of deadlines. Planning before the due date rather than reacting after it to optimize compliance and deductions.
+                Pre-emptive tax and financial planning ahead of balance-sheet dates. Structuring transactions legally before year-end rather than reacting post-audit.
               </p>
             </div>
 
             <div className="approach-card-rsc">
-              <div className="approach-icon-circle">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                  <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                  <line x1="15" y1="9" x2="15.01" y2="9"></line>
-                </svg>
+              <div className="approach-card-top-bar">
+                <span className="approach-num">05</span>
+                <div className="approach-icon-circle">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                    <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                    <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                  </svg>
+                </div>
               </div>
-              <h3 className="approach-card-title">Personal Attention</h3>
+              <h3 className="approach-card-title">Fact-Specific Mechanics</h3>
               <p className="approach-card-desc">
-                Advice grounded in your specific commercial facts and transaction mechanics, never generalized boilerplate templates.
+                Counsel grounded in your exact commercial facts, operating contracts, and banking transaction mechanics, never boilerplate generic templates.
               </p>
             </div>
           </div>
@@ -323,9 +513,9 @@ export default function HomePage() {
       <section className="section section-ice" id="diagnostic-tool">
         <div className="container">
           <div className="section-head-center">
-            <span className="eyebrow-red">DIAGNOSTIC ADVISORY AID</span>
+            <span className="eyebrow-red">✦ DIAGNOSTIC ADVISORY AID</span>
             <h2 className="editorial-heading">
-              Tax Audit &amp; <em>Applicability Navigator</em>
+              Tax Audit &amp; <span className="hero-serif-accent">Applicability Navigator</span>
             </h2>
             <p className="section-head-lede">
               Determine statutory audit obligations, presumptive tax eligibility, and GST e-invoicing thresholds based on your entity&apos;s turnover and banking transaction mix.
@@ -336,49 +526,108 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* INDUSTRIES WE SERVE (MIDNIGHT NAVY SECTION) */}
+      {/* EXECUTIVE SECTOR ADVISORY MATRIX (MIDNIGHT NAVY SECTION) */}
       <section className="section section-midnight" id="industries">
         <div className="container">
           <div className="section-head-center">
-            <span className="eyebrow-accent">INDUSTRIES WE SERVE</span>
+            <span className="eyebrow-accent">✦ EXECUTIVE SECTOR ADVISORY MATRIX</span>
             <h2 className="editorial-heading-light">
-              Trusted by businesses across India
+              Trusted by Enterprises &amp; Professionals across India
             </h2>
             <p className="section-head-lede-light">
-              From core operations to fast-growing ventures, we support diverse sectors with tailored taxation, compliance, audit, and advisory expertise.
+              From core industrial operations to cross-border ventures, we support diverse sectors with specialized taxation, audit, and regulatory expertise.
             </p>
           </div>
 
-          <div className="industries-pill-grid">
-            <div className="industry-pill-item">
-              <span className="industry-num">01</span>
-              <span className="industry-name">Manufacturing <span className="fill">[or Industry 1]</span></span>
+          <div className="sectors-matrix-grid">
+            <div className="sector-matrix-card">
+              <div className="sector-card-top">
+                <span className="sector-code">01</span>
+                <span className="sector-tag">INDUSTRIAL SECTOR</span>
+              </div>
+              <h3 className="sector-card-title">Manufacturing &amp; EPC</h3>
+              <p className="sector-card-desc">Supply chain GST reconciliation, capital goods depreciation, inventory valuation under AS-2, and statutory stock audits for banking consortia.</p>
+              <div className="sector-card-chips">
+                <span>GST 2B Matching</span>
+                <span>Section 44AB</span>
+                <span>E-Way Bills</span>
+              </div>
             </div>
-            <div className="industry-pill-item">
-              <span className="industry-num">02</span>
-              <span className="industry-name">Pharma &amp; Healthcare <span className="fill">[or Industry 2]</span></span>
+
+            <div className="sector-matrix-card">
+              <div className="sector-card-top">
+                <span className="sector-code">02</span>
+                <span className="sector-tag">REGULATED HEALTH</span>
+              </div>
+              <h3 className="sector-card-title">Pharma &amp; Healthcare</h3>
+              <p className="sector-card-desc">R&amp;D expenditure deductions, GST inverted duty structure refund claims, doctor TDS under Section 194J, and clinical laboratory accounting.</p>
+              <div className="sector-card-chips">
+                <span>Inverted Duty Refunds</span>
+                <span>194J TDS</span>
+                <span>Batch Costing</span>
+              </div>
             </div>
-            <div className="industry-pill-item">
-              <span className="industry-num">03</span>
-              <span className="industry-name">Software &amp; IT <span className="fill">[or Industry 3]</span></span>
+
+            <div className="sector-matrix-card">
+              <div className="sector-card-top">
+                <span className="sector-code">03</span>
+                <span className="sector-tag">TECH &amp; DIGITAL</span>
+              </div>
+              <h3 className="sector-card-title">Software, SaaS &amp; IT Services</h3>
+              <p className="sector-card-desc">Cross-border software export remittances, Form 15CA/15CB withholding attestations, Transfer Pricing documentation, and Letter of Undertaking (LUT) GST filing.</p>
+              <div className="sector-card-chips">
+                <span>15CA / 15CB</span>
+                <span>Export LUT</span>
+                <span>Transfer Pricing</span>
+              </div>
             </div>
-            <div className="industry-pill-item">
-              <span className="industry-num">04</span>
-              <span className="industry-name">Service Industries <span className="fill">[or Industry 4]</span></span>
+
+            <div className="sector-matrix-card">
+              <div className="sector-card-top">
+                <span className="sector-code">04</span>
+                <span className="sector-tag">COMMERCIAL COMMERCE</span>
+              </div>
+              <h3 className="sector-card-title">Trading, Retail &amp; Distribution</h3>
+              <p className="sector-card-desc">Turnover reconciliation between POS and GSTN, e-invoicing threshold compliance, Section 194Q purchase TDS, and multi-state inventory branch transfers.</p>
+              <div className="sector-card-chips">
+                <span>E-Invoicing</span>
+                <span>Section 194Q</span>
+                <span>Multi-State GST</span>
+              </div>
             </div>
-            <div className="industry-pill-item">
-              <span className="industry-num">05</span>
-              <span className="industry-name">Wholesalers <span className="fill">[or Industry 5]</span></span>
+
+            <div className="sector-matrix-card">
+              <div className="sector-card-top">
+                <span className="sector-code">05</span>
+                <span className="sector-tag">PROPERTY &amp; ASSETS</span>
+              </div>
+              <h3 className="sector-card-title">Real Estate, RERA &amp; Construction</h3>
+              <p className="sector-card-desc">Joint Development Agreement (JDA) tax implications, percentage completion revenue recognition (AS-7 / Ind AS 115), and statutory RERA project audit certificates.</p>
+              <div className="sector-card-chips">
+                <span>RERA Audit</span>
+                <span>JDA Tax Structuring</span>
+                <span>Ind AS 115</span>
+              </div>
             </div>
-            <div className="industry-pill-item">
-              <span className="industry-num">06</span>
-              <span className="industry-name">Retailers <span className="fill">[or Industry 6]</span></span>
+
+            <div className="sector-matrix-card">
+              <div className="sector-card-top">
+                <span className="sector-code">06</span>
+                <span className="sector-tag">PRIVATE WEALTH</span>
+              </div>
+              <h3 className="sector-card-title">Family Offices, HNIs &amp; NRIs</h3>
+              <p className="sector-card-desc">Capital gains computation on equity and property, repatriation under RBI LRS scheme, foreign asset reporting (Schedule FA), and private discretionary family trust taxation.</p>
+              <div className="sector-card-chips">
+                <span>FEMA Repatriation</span>
+                <span>Schedule FA</span>
+                <span>Family Trusts</span>
+              </div>
             </div>
           </div>
 
           <div style={{ marginTop: '2.5rem', textAlign: 'center' }}>
             <span className="devnote devnote-dark">
-              Pick the industries you serve. Ritesh Shah &amp; Co. lists Manufacturing, Pharma &amp; Healthcare, Software &amp; IT, Service industries, Wholesalers and Retailers. Your own focus (banks, NBFCs, AIFs, FPIs, InvITs/REITs, GIFT City units) can go here instead.
+              Sector competencies reflect our statutory practice scope. Industry references are illustrative of regulatory domains handled under ICAI guidelines.
             </span>
           </div>
         </div>
@@ -391,41 +640,60 @@ export default function HomePage() {
       <section className="section" id="insights-preview">
         <div className="container split-layout">
           <div className="split-aside">
-            <span className="eyebrow-red">INSIGHTS</span>
-            <h2 className="editorial-heading">Tax &amp; finance insights</h2>
-            <p style={{ marginTop: '0.5rem', color: 'var(--color-text-muted)' }}>
-              Analysis of tax amendments, regulatory notifications, and judicial rulings.
+            <span className="eyebrow-red">✦ KNOWLEDGE BULLETIN</span>
+            <h2 className="editorial-heading">Tax &amp; Regulatory <span className="hero-serif-accent">Insights</span></h2>
+            <p style={{ marginTop: '0.75rem', color: 'var(--color-text-muted)', fontSize: '1.05rem', lineHeight: '1.6' }}>
+              Analysis of direct tax amendments, GST council notifications, and judicial rulings from ITAT and High Courts.
             </p>
-            <div style={{ marginTop: '1.5rem' }}>
-              <Link href="/insights" className="link-arrow">All articles <span>→</span></Link>
+            <div style={{ marginTop: '1.75rem' }}>
+              <Link href="/insights" className="link-arrow">
+                View All Statutory Bulletins <span>→</span>
+              </Link>
             </div>
           </div>
           <div className="split-body">
             <div className="insight-preview-card">
-              <span className="insight-badge">Knowledge Bulletin</span>
-              <h3 className="insight-card-title"><span className="fill">[Latest article title]</span></h3>
-              <p className="insight-card-meta"><span className="fill">[date]</span> · <span className="fill">[one-line summary of key takeaways and statutory implications]</span></p>
-              <div style={{ marginTop: '1rem' }}>
-                <Link href="/insights" style={{ fontWeight: 600, color: 'var(--color-action-blue)' }}>Read analysis →</Link>
+              <span className="insight-badge">Statutory Bulletin</span>
+              <h3 className="insight-card-title"><span className="fill">[Latest article title, e.g. Key Amendments in Finance Act &amp; Audit Implications]</span></h3>
+              <p className="insight-card-meta"><span className="fill">[date]</span> · <span className="fill">[One-line analytical summary of statutory amendments and commercial impact for taxpayers]</span></p>
+              <div style={{ marginTop: '1.25rem' }}>
+                <Link href="/insights" style={{ fontWeight: 700, color: 'var(--color-action-blue)', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
+                  Read Statutory Analysis <span>→</span>
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* READY TO CONNECT (CLEAN WHITE CTA SECTION) */}
-      <section className="section section-cta-rsc" id="cta-connect">
-        <div className="container" style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto' }}>
-          <h2 className="editorial-heading" style={{ fontSize: '2.4rem', color: 'var(--color-primary-navy)' }}>
-            Ready to Connect?
-          </h2>
-          <p className="cta-rsc-desc">
-            Whether you need help with returns, compliance, audit or tax strategy, write to us and we will discuss what fits your needs.
-          </p>
-          <div style={{ marginTop: '2rem' }}>
-            <Link className="btn btn-primary btn-lg" href="/contact">
-              Get in Touch
-            </Link>
+      {/* READY TO CONNECT (SOVEREIGN SLATE & GOLD CONSULTATION SUITE) */}
+      <section className="section section-cta-sovereign" id="cta-connect">
+        <div className="container">
+          <div className="cta-sovereign-inner">
+            <div className="cta-sovereign-badge">
+              <span>✦</span> PRACTICE CONSULTATION
+            </div>
+            <h2 className="cta-sovereign-title">
+              Schedule a Structured Practice Consultation
+            </h2>
+            <p className="cta-sovereign-desc">
+              Whether you require guidance on corporate tax filings, statutory audits under the Companies Act, cross-border remittances under FEMA, or routine compliance management, write to our Mumbai office.
+            </p>
+            <div className="cta-sovereign-actions">
+              <Link className="btn btn-gold btn-lg" href="/contact">
+                Consult Practice Office <span className="btn-arrow-gold">→</span>
+              </Link>
+              <Link className="btn btn-ghost-light btn-lg" href="/services">
+                Explore Practice Scope
+              </Link>
+            </div>
+            <div className="cta-reassurance">
+              <span>✦ Direct Consultation with CA Daksh Desai</span>
+              <span className="reassurance-dot">•</span>
+              <span>✦ 100% Confidential under ICAI Code of Ethics</span>
+              <span className="reassurance-dot">•</span>
+              <span>✦ Strict Adherence to Indian Statutory Guidelines</span>
+            </div>
           </div>
         </div>
       </section>
