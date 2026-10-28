@@ -5,21 +5,45 @@
 
 ---
 
-## 1. Executive Summary & Purpose
+## 1. Executive Summary & Statutory Purpose
 This is a production-grade, bespoke web application for **Daksh Desai & Associates**, a Chartered Accountancy practice in Mumbai, India.
 The website serves as the firm's official institutional digital portal, built strictly compliant with:
 1. **Institute of Chartered Accountants of India (ICAI) Code of Ethics & Website Guidelines**:
    - Zero prohibited promotional claims, superlatives, or advertising.
    - Mandatory entry disclaimer modal acknowledged before browsing.
    - Genuine institutional photography and CA India emblems only.
-2. **Digital Personal Data Protection Act, 2023 (DPDP Act)**:
+2. **Reserve Bank of India (RBI) Regulations & FEMA, 1999**:
+   - Accurate compliance references (FLA Return, Form FC-GPR/FC-TRS, APR, 15CA/15CB).
+   - Zero false claims of "RBI Agent" or "guaranteed RBI clearances".
+3. **Digital Personal Data Protection Act, 2023 (DPDP Act)**:
    - Explicit consent checkbox on all enquiry forms.
    - Transparent privacy notice (`/privacy`).
    - Secure API handling with rate limiting and sanitization.
 
 ---
 
-## 2. Technology Stack & Design System
+## 2. Inviolable Regulatory & Legal Commandments (ICAI, RBI & Government of India)
+
+All AI models and developers editing this repository **MUST STRICTLY COMPLY** with the following legal rules (see detailed reference in `REGULATORY_COMPLIANCE.md`):
+
+### 🚫 ABSOLUTE PROHIBITIONS (Must NEVER be violated):
+1. **No Superlatives or Comparison**: Never use words like *"Best CA"*, *"Top Chartered Accountant"*, *"#1"*, *"Leading"*, *"Cheapest"*, *"Fastest"*, or *"Guaranteed"*. Never compare the firm to any other CA firm.
+2. **No Commercial Solicitations**: Never use pushy sales CTAs like *"Hire Us"*, *"Book a Deal"*, or *"Free Filing"*. Only use dignified invitations such as *"Consult Practice Office"*, *"Schedule Practice Consultation"*, or *"Explore Practice Scope"*.
+3. **No Fee Quotes or Packages**: Never publish pricing tiers, hourly fees, packages (e.g. Basic/Pro/Enterprise), discounts, or money-back guarantees on the public site.
+4. **No Client Names or Logos**: Never display corporate logos, client brand names, ratings, or client reviews on the website (strictly prohibited by ICAI Clause 6 & 7).
+5. **No False RBI Claims**: Never claim to be an *"RBI Authorized Agent"* or promise guaranteed remittance approvals. RBI does not certify agents.
+6. **No Modeling / Glamour Photos**: Proprietor and partner photos must strictly adhere to the sober **35×45mm passport photo format**.
+
+### ✅ MANDATORY INCLUSIONS (Must ALWAYS be preserved):
+1. **Mandatory ICAI Disclaimer Modal (`DisclaimerModal.tsx`)**: Must remain active and require acknowledgment before site browsing.
+2. **Firm Particulars**: Accurate representation of ICAI Firm Registration Number (FRN), Member No., Constitution, and Mumbai Office.
+3. **Mandatory 18-Digit UDIN**: All references to audit reports and certifications must emphasize the mandatory ICAI Unique Document Identification Number.
+4. **DPDP Act 2023 Consent Checkbox**: Every form must have an unticked, mandatory consent checkbox linked to `/privacy`.
+5. **Official CA India Logo**: Authentic emblem strictly as issued by the ICAI.
+
+---
+
+## 3. Technology Stack & Design System
 
 | Layer | Technology | Details |
 | :--- | :--- | :--- |
@@ -46,10 +70,11 @@ The visual identity is a bespoke, sovereign corporate standard tailored specific
 
 ---
 
-## 3. Directory & File Structure
+## 4. Directory & File Structure
 
 ```
 CA_website/
+├── REGULATORY_COMPLIANCE.md         # Inviolable ICAI, RBI & Govt of India rulebook
 ├── public/
 │   ├── images/
 │   │   ├── ca-logo.svg              # Official CA India emblem
@@ -102,7 +127,7 @@ CA_website/
 
 ---
 
-## 4. Security Architecture & Hardening
+## 5. Security Architecture & Hardening
 
 1. **HTTP Security Headers (`next.config.mjs`)**:
    - `Content-Security-Policy (CSP)`: Restricts script, style, font, image, and frame origins.
@@ -127,7 +152,7 @@ CA_website/
 
 ---
 
-## 5. Safe Git Workflow — How to Push Code Without Issues
+## 6. Safe Git Workflow — How to Push Code Without Issues
 
 Follow these exact steps before committing or pushing code:
 
@@ -146,12 +171,12 @@ git status -s
 
 ### Step 3: Stage Required Files
 ```bash
-git add src/ public/ next.config.mjs README.md AGENTS.md
+git add src/ public/ next.config.mjs README.md AGENTS.md REGULATORY_COMPLIANCE.md
 ```
 
 ### Step 4: Commit with Clear Semantic Message
 ```bash
-git commit -m "feat: complete RSC India executive design, mobile responsiveness, and security hardening"
+git commit -m "docs: save inviolable RBI, ICAI, and Government compliance rules"
 ```
 
 ### Step 5: Push Safely to Main Branch
@@ -161,7 +186,7 @@ git push origin main
 
 ---
 
-## 6. Pre-Launch Checklist for CA Daksh Desai
+## 7. Pre-Launch Checklist for CA Daksh Desai
 - [ ] Confirm firm name exactly as approved in ICAI records.
 - [ ] Obtain and insert official Firm Registration Number (FRN).
 - [ ] Fill in yellow placeholder fields (`.fill` items on `/review`).

@@ -5,6 +5,8 @@ A production-grade, dignified, and compliant web application built with **Next.j
 
 Designed strictly adhering to the **Institute of Chartered Accountants of India (ICAI) Code of Ethics & Website Guidelines**, the **Reserve Bank of India (RBI) Regulations & Master Directions**, and the **Digital Personal Data Protection Act, 2023 (DPDP Act)**, featuring a bespoke Sovereign Architectural standard.
 
+> ⚖️ **Statutory Compliance Guide**: See [REGULATORY_COMPLIANCE.md](./REGULATORY_COMPLIANCE.md) for the complete, inviolable rulebook covering all ICAI, RBI, FEMA, Companies Act, and DPDP Act rules.
+
 ---
 
 ### Technology Stack
