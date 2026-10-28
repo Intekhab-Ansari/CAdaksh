@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import ThemeToggle from './ThemeToggle';
 
 export default function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -23,7 +22,7 @@ export default function Header() {
         <div className="container header-inner">
           <Link className="brand-lockup" href="/" aria-label="Daksh Desai & Associates Home">
             <div className="brand-emblem-wrap">
-              <Image src="/images/ca-logo.svg" alt="CA India Emblem" width={44} height={44} priority />
+              <Image src="/images/ca-logo.svg" alt="CA India Emblem" width={42} height={42} priority />
             </div>
             <div className="brand-text">
               <span className="brand-title">Daksh Desai &amp; Associates</span>
@@ -50,13 +49,12 @@ export default function Header() {
             <Link href="/faq" className={isActive('/faq') ? 'active' : ''} aria-current={isActive('/faq') ? 'page' : undefined}>
               FAQ
             </Link>
-            <Link href="/contact" className={isActive('/contact') ? 'active' : ''} aria-current={isActive('/contact') ? 'page' : undefined}>
-              Contact
-            </Link>
           </nav>
 
           <div className="header-actions">
-            <ThemeToggle />
+            <Link href="/contact" className="header-contact-btn">
+              Contact Us
+            </Link>
             <button
               type="button"
               className="mobile-toggle-btn"
@@ -64,8 +62,13 @@ export default function Header() {
               onClick={() => setDrawerOpen(!drawerOpen)}
               aria-expanded={drawerOpen}
               aria-controls="mobileDrawer"
+              aria-label="Toggle navigation menu"
             >
-              Menu
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
             </button>
           </div>
         </div>
@@ -83,46 +86,49 @@ export default function Header() {
         }}
       >
         <div className="mobile-drawer-content">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span className="brand-title" style={{ fontSize: '1.1rem' }}>Navigation</span>
+          <div className="mobile-drawer-header">
+            <div className="mobile-drawer-brand">
+              <Image src="/images/ca-logo.svg" alt="CA Logo" width={32} height={32} />
+              <div>
+                <strong style={{ display: 'block', fontSize: '0.95rem', color: 'var(--color-primary-navy)' }}>Daksh Desai &amp; Associates</strong>
+                <span style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>Chartered Accountants</span>
+              </div>
+            </div>
             <button
               type="button"
-              className="btn-pill-small"
+              className="mobile-close-btn"
               onClick={closeDrawer}
-              style={{ color: 'var(--ink-primary)', borderColor: 'var(--rule-hairline)' }}
+              aria-label="Close menu"
             >
-              Close ✕
+              ✕
             </button>
           </div>
+
           <div className="mobile-nav-links">
-            <Link href="/" onClick={closeDrawer}>Home</Link>
-            <Link href="/about" onClick={closeDrawer}>About Us</Link>
-            <Link href="/team" onClick={closeDrawer}>Our Team</Link>
-            <Link href="/services" onClick={closeDrawer}>Services Overview</Link>
-            <Link href="/services/income-tax" onClick={closeDrawer} style={{ paddingLeft: '1.25rem', fontSize: '0.92rem', color: 'var(--ink-secondary)' }}>
-              ↳ Income Tax
-            </Link>
-            <Link href="/services/gst" onClick={closeDrawer} style={{ paddingLeft: '1.25rem', fontSize: '0.92rem', color: 'var(--ink-secondary)' }}>
-              ↳ GST
-            </Link>
-            <Link href="/services/international-tax" onClick={closeDrawer} style={{ paddingLeft: '1.25rem', fontSize: '0.92rem', color: 'var(--ink-secondary)' }}>
-              ↳ International Taxation
-            </Link>
-            <Link href="/services/audit" onClick={closeDrawer} style={{ paddingLeft: '1.25rem', fontSize: '0.92rem', color: 'var(--ink-secondary)' }}>
-              ↳ Audit &amp; Assurance
-            </Link>
-            <Link href="/services/accounting" onClick={closeDrawer} style={{ paddingLeft: '1.25rem', fontSize: '0.92rem', color: 'var(--ink-secondary)' }}>
-              ↳ Accounting &amp; MIS
-            </Link>
-            <Link href="/services/cfo-advisory" onClick={closeDrawer} style={{ paddingLeft: '1.25rem', fontSize: '0.92rem', color: 'var(--ink-secondary)' }}>
-              ↳ Virtual CFO &amp; Advisory
-            </Link>
-            <Link href="/services/corporate-law" onClick={closeDrawer} style={{ paddingLeft: '1.25rem', fontSize: '0.92rem', color: 'var(--ink-secondary)' }}>
-              ↳ Labour &amp; Corporate Law
-            </Link>
-            <Link href="/insights" onClick={closeDrawer}>Insights</Link>
-            <Link href="/faq" onClick={closeDrawer}>FAQ</Link>
-            <Link href="/contact" onClick={closeDrawer}>Contact</Link>
+            <Link href="/" onClick={closeDrawer} className={isActive('/') ? 'active' : ''}>Home</Link>
+            <Link href="/about" onClick={closeDrawer} className={isActive('/about') ? 'active' : ''}>About Us</Link>
+            <Link href="/team" onClick={closeDrawer} className={isActive('/team') ? 'active' : ''}>Our Team</Link>
+            <Link href="/services" onClick={closeDrawer} className={isActive('/services') ? 'active' : ''}>All Services</Link>
+            
+            <div className="mobile-sublinks-group">
+              <span className="mobile-sublinks-title">Core Practice Areas</span>
+              <Link href="/services/income-tax" onClick={closeDrawer}>• Income Tax &amp; TDS</Link>
+              <Link href="/services/gst" onClick={closeDrawer}>• Goods &amp; Services Tax (GST)</Link>
+              <Link href="/services/international-tax" onClick={closeDrawer}>• International &amp; NRI Tax</Link>
+              <Link href="/services/audit" onClick={closeDrawer}>• Statutory &amp; Internal Audit</Link>
+              <Link href="/services/accounting" onClick={closeDrawer}>• Accounting &amp; MIS Reporting</Link>
+              <Link href="/services/cfo-advisory" onClick={closeDrawer}>• Virtual CFO &amp; Planning</Link>
+              <Link href="/services/corporate-law" onClick={closeDrawer}>• Corporate &amp; Labour Law</Link>
+            </div>
+
+            <Link href="/insights" onClick={closeDrawer} className={isActive('/insights') ? 'active' : ''}>Insights</Link>
+            <Link href="/faq" onClick={closeDrawer} className={isActive('/faq') ? 'active' : ''}>FAQ</Link>
+            
+            <div className="mobile-drawer-cta">
+              <Link href="/contact" onClick={closeDrawer} className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
+                Contact the Firm
+              </Link>
+            </div>
           </div>
         </div>
       </div>

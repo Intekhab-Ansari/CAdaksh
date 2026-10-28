@@ -67,7 +67,7 @@ export default function ContactPage() {
             <h2>From enquiry to action</h2>
           </div>
 
-          <ol className="steps-grid" style={{ gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' }}>
+          <ol className="steps-grid steps-grid-3">
             <li className="step-card">
               <span className="step-number">Step 1</span>
               <strong className="step-title">Share your requirement</strong>

@@ -114,9 +114,9 @@ export default function ContactForm() {
             className="form-status-alert"
             style={{
               display: 'block',
-              backgroundColor: status.error ? 'var(--fill-bg)' : 'var(--brass-soft)',
-              color: status.error ? 'var(--fill-fg)' : 'var(--brass-dark)',
-              borderColor: status.error ? 'var(--fill-bd)' : 'var(--brass)',
+              backgroundColor: status.error ? 'var(--fill-bg)' : 'var(--color-action-light)',
+              color: status.error ? 'var(--fill-fg)' : 'var(--color-action-blue)',
+              borderColor: status.error ? 'var(--fill-bd)' : 'var(--color-action-blue)',
             }}
           >
             {status.message}

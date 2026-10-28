@@ -12,21 +12,22 @@ export default function DisclaimerModal() {
     if (!hasAgreed) {
       setShow(true);
     }
+
+    const handleOpen = () => setShow(true);
+    window.addEventListener('open-icai-disclaimer', handleOpen);
+    return () => window.removeEventListener('open-icai-disclaimer', handleOpen);
   }, []);
 
   const handleAgree = () => {
     localStorage.setItem(DISCLAIMER_STORAGE_KEY, 'true');
     sessionStorage.setItem(DISCLAIMER_STORAGE_KEY, 'true');
     setShow(false);
-    const overlay = document.getElementById('icaiDisclaimerOverlay');
-    if (overlay) overlay.classList.remove('show');
   };
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
       sessionStorage.setItem(DISCLAIMER_STORAGE_KEY, 'true');
       setShow(false);
-      e.currentTarget.classList.remove('show');
     }
   };
 
@@ -35,17 +36,17 @@ export default function DisclaimerModal() {
       if (e.key === 'Escape') {
         sessionStorage.setItem(DISCLAIMER_STORAGE_KEY, 'true');
         setShow(false);
-        const overlay = document.getElementById('icaiDisclaimerOverlay');
-        if (overlay) overlay.classList.remove('show');
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  if (!show) return null;
+
   return (
     <div
-      className={`disclaimer-overlay ${show ? 'show' : ''}`}
+      className="disclaimer-overlay"
       id="icaiDisclaimerOverlay"
       role="dialog"
       aria-modal="true"
@@ -53,20 +54,24 @@ export default function DisclaimerModal() {
       onClick={handleBackdropClick}
     >
       <div className="disclaimer-modal">
-        <span className="eyebrow">Before you continue</span>
-        <h2 id="disclaimerModalTitle">Disclaimer</h2>
-        <p>The rules of the Institute of Chartered Accountants of India do not permit Chartered Accountants to solicit work or advertise. By clicking &quot;I agree&quot;, you confirm that:</p>
-        <ul className="disclaimer-points">
-          <li>you are seeking information about Daksh Desai &amp; Associates of your own accord, and there has been no advertisement, solicitation or inducement from the firm;</li>
-          <li>the information on this site is general and is not professional advice;</li>
-          <li>using this site does not create a client relationship.</li>
+        <span className="eyebrow-red">Before you continue</span>
+        <h2 id="disclaimerModalTitle" style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--color-primary-navy)', marginBottom: '0.85rem' }}>
+          ICAI Regulatory Disclaimer
+        </h2>
+        <p style={{ fontSize: '0.94rem', color: 'var(--color-text-body)', lineHeight: 1.6, marginBottom: '0.75rem' }}>
+          The rules of the Institute of Chartered Accountants of India do not permit Chartered Accountants to solicit work or advertise. By clicking &quot;I Agree &amp; Enter&quot;, you confirm that:
+        </p>
+        <ul style={{ paddingLeft: '1.25rem', marginBottom: '1.25rem', color: 'var(--color-text-body)', fontSize: '0.92rem', lineHeight: 1.6, display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+          <li>You are seeking information about Daksh Desai &amp; Associates of your own accord, and there has been no advertisement, solicitation or inducement from the firm;</li>
+          <li>The information on this site is general and is not professional advice;</li>
+          <li>Using this site does not create a client relationship.</li>
         </ul>
-        <div className="btn-group" style={{ marginTop: '0.5rem' }}>
+        <div className="disclaimer-actions">
           <button type="button" className="btn btn-primary" id="icaiDisclaimerAgree" onClick={handleAgree}>
-            I agree
+            I Agree &amp; Enter
           </button>
-          <a className="btn btn-ghost" href="https://www.google.com" rel="noopener">
-            Leave site
+          <a className="btn btn-outline" href="https://www.google.com" rel="noopener">
+            Leave Site
           </a>
         </div>
       </div>

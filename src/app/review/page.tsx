@@ -158,7 +158,7 @@ export default function ReviewPage() {
               <li><span>No ad scripts or tracking pixels. If analytics are used, add a consent banner.</span></li>
               <li><span>Page titles and meta descriptions must be factual (service + firm name + Mumbai), with no superlatives.</span></li>
               <li><span>.in redirects (301) to .com; HTTPS on both.</span></li>
-              <li><span>Mobile first; light and dark themes; keyboard accessible.</span></li>
+              <li><span>Mobile first; executive light corporate theme; keyboard accessible.</span></li>
               <li><span>Insights editable by Daksh without code.</span></li>
               <li><span>Remove this page and the yellow review bar before launch.</span></li>
             </ul>

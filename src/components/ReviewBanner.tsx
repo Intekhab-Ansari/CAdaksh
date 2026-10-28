@@ -19,12 +19,7 @@ export default function ReviewBanner() {
   };
 
   const openDisclaimer = () => {
-    const overlay = document.getElementById('icaiDisclaimerOverlay');
-    if (overlay) {
-      overlay.classList.add('show');
-      const agreeBtn = document.getElementById('icaiDisclaimerAgree');
-      if (agreeBtn) agreeBtn.focus();
-    }
+    window.dispatchEvent(new Event('open-icai-disclaimer'));
   };
 
   return (
