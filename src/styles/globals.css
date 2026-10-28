@@ -192,6 +192,7 @@ em {
   color: var(--color-text-main);
   letter-spacing: -0.025em;
   line-height: 1.18;
+  text-wrap: balance;
 }
 
 .editorial-heading em {
@@ -207,6 +208,7 @@ em {
   color: #FFFFFF;
   letter-spacing: -0.025em;
   line-height: 1.18;
+  text-wrap: balance;
 }
 
 /* Eyebrows */
@@ -2403,6 +2405,50 @@ footer.site-footer {
 .cal-action-arrow:hover {
   color: var(--color-gold-deep);
   transform: translateX(3px);
+}
+
+/* Expand / Collapse Control Button */
+.cal-expand-wrap {
+  margin: 2.25rem 0 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.cal-expand-btn {
+  background: #FFFFFF;
+  border: 1.5px solid var(--color-primary-navy);
+  color: var(--color-primary-navy);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0.85rem 2.2rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  box-shadow: 0 4px 16px rgba(11, 25, 48, 0.08);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.cal-expand-btn:hover {
+  background: var(--color-primary-navy);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(11, 25, 48, 0.2);
+}
+
+.cal-expand-btn .expand-chevron {
+  color: var(--color-gold-deep);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cal-expand-btn:hover .expand-chevron {
+  color: var(--color-gold);
+}
+
+.cal-expand-btn .expand-chevron.rotated {
+  transform: rotate(180deg);
 }
 
 .cal-statutory-footer {

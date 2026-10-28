@@ -120,69 +120,80 @@ const STATUTORY_DEADLINES: DueDateItem[] = [
     categoryLabel: 'MCA',
     shortDay: '30th',
     shortMonth: 'SEPT',
-    governingSection: 'Rule 12A · MCA Rules',
-    title: 'Annual Director KYC (DIR-3)',
-    applicability: 'Annual digital KYC verification for all active DIN holders on MCA portal.',
-    tag: 'All Registered Directors',
-    urgency: 'standard',
+    governingSection: 'Rule 12A · Companies Rules',
+    title: 'DIR-3 KYC Web / e-Form',
+    applicability: 'Mandatory annual KYC for every individual allotted Director Identification Number (DIN).',
+    tag: 'All DIN Holders as on March 31',
+    urgency: 'critical',
   },
   {
     id: 'aoc-4',
     category: 'mca',
     categoryLabel: 'MCA',
-    shortDay: '29th',
-    shortMonth: 'OCT',
+    shortDay: '30',
+    shortMonth: 'DAYS OF AGM',
     governingSection: 'Sec 137 · Companies Act',
-    title: 'Filing Financial Statements (AOC-4)',
-    applicability: 'Submission of audited Balance Sheet, P&L & Notes on MCA21 portal.',
-    tag: 'Private & Public Companies',
-    urgency: 'critical',
+    title: 'Form AOC-4 Financial Statements',
+    applicability: 'Filing adopted balance sheet, P&L, directors report & auditor report with ROC.',
+    tag: 'Companies Act, 2013',
+    urgency: 'standard',
   },
   {
     id: 'mgt-7',
     category: 'mca',
     categoryLabel: 'MCA',
-    shortDay: '29th',
-    shortMonth: 'NOV',
+    shortDay: '60',
+    shortMonth: 'DAYS OF AGM',
     governingSection: 'Sec 92 · Companies Act',
-    title: 'Annual Secretarial Return (MGT-7)',
-    applicability: 'Annual corporate return covering shareholders, governance & directors.',
-    tag: 'Form MGT-7 / MGT-7A',
-    urgency: 'critical',
+    title: 'Form MGT-7 / 7A Annual Return',
+    applicability: 'Filing annual return detailing shareholding, board meetings & compliance status.',
+    tag: 'Companies Act, 2013',
+    urgency: 'standard',
   },
   {
-    id: 'rbi-fla',
+    id: 'fla-return',
     category: 'rbi',
     categoryLabel: 'RBI / FEMA',
     shortDay: '15th',
     shortMonth: 'JULY',
-    governingSection: 'FEMA 1999 & RBI',
-    title: 'Foreign Liabilities & Assets (FLA)',
-    applicability: 'Annual filing on RBI FLAIR portal for entities with foreign investment.',
-    tag: 'FDI & ODI Recipient Entities',
+    governingSection: 'A.P. (DIR Series) · RBI',
+    title: 'FLA Return (Foreign Assets & Liabilities)',
+    applicability: 'Mandatory annual return on FLAIR portal for Indian entities with FDI or ODI.',
+    tag: 'FEMA, 1999 & RBI Directions',
     urgency: 'critical',
   },
   {
-    id: 'gstr-9',
-    category: 'gst',
-    categoryLabel: 'GST',
-    shortDay: '31st',
-    shortMonth: 'DEC',
-    governingSection: 'Sec 44 · CGST Act',
-    title: 'Annual GST Return & 9C',
-    applicability: 'Consolidated annual return & self-certified 9C reconciliation.',
-    tag: 'Regular Taxpayers (Turnover > ₹5Cr)',
+    id: 'form-15ca-cb',
+    category: 'rbi',
+    categoryLabel: 'FEMA Remittance',
+    shortDay: 'PRIOR',
+    shortMonth: 'TO REMIT',
+    governingSection: 'Sec 195(6) · IT Act & FEMA',
+    title: 'Form 15CA & 15CB Attestation',
+    applicability: 'Statutory CA certificate & electronic declaration prior to foreign foreign remittance.',
+    tag: 'Cross-Border Bank Remittance',
     urgency: 'critical',
   },
 ];
 
 export default function ComplianceCalendar() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   const filteredDeadlines =
     selectedCategory === 'all'
       ? STATUTORY_DEADLINES
       : STATUTORY_DEADLINES.filter((item) => item.category === selectedCategory);
+
+  // Show only 3 items initially, unless expanded
+  const displayedDeadlines = isExpanded
+    ? filteredDeadlines
+    : filteredDeadlines.slice(0, 3);
+
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category);
+    setIsExpanded(false);
+  };
 
   return (
     <div className="compliance-calendar-widget">
@@ -192,7 +203,7 @@ export default function ComplianceCalendar() {
           <button
             type="button"
             className={`cal-tab-btn ${selectedCategory === 'all' ? 'active' : ''}`}
-            onClick={() => setSelectedCategory('all')}
+            onClick={() => handleCategoryChange('all')}
           >
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
@@ -202,7 +213,7 @@ export default function ComplianceCalendar() {
           <button
             type="button"
             className={`cal-tab-btn ${selectedCategory === 'gst' ? 'active' : ''}`}
-            onClick={() => setSelectedCategory('gst')}
+            onClick={() => handleCategoryChange('gst')}
           >
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -212,7 +223,7 @@ export default function ComplianceCalendar() {
           <button
             type="button"
             className={`cal-tab-btn ${selectedCategory === 'direct-tax' ? 'active' : ''}`}
-            onClick={() => setSelectedCategory('direct-tax')}
+            onClick={() => handleCategoryChange('direct-tax')}
           >
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -222,7 +233,7 @@ export default function ComplianceCalendar() {
           <button
             type="button"
             className={`cal-tab-btn ${selectedCategory === 'mca' ? 'active' : ''}`}
-            onClick={() => setSelectedCategory('mca')}
+            onClick={() => handleCategoryChange('mca')}
           >
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <line x1="3" y1="21" x2="21" y2="21"></line>
@@ -233,7 +244,7 @@ export default function ComplianceCalendar() {
           <button
             type="button"
             className={`cal-tab-btn ${selectedCategory === 'rbi' ? 'active' : ''}`}
-            onClick={() => setSelectedCategory('rbi')}
+            onClick={() => handleCategoryChange('rbi')}
           >
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <circle cx="12" cy="12" r="10"></circle>
@@ -246,7 +257,7 @@ export default function ComplianceCalendar() {
 
       {/* BEAUTIFUL VISUAL DEADLINES GRID */}
       <div className="cal-cards-grid">
-        {filteredDeadlines.map((item) => (
+        {displayedDeadlines.map((item) => (
           <div key={item.id} className={`cal-visual-card card-theme-${item.category}`}>
             {/* Visual Calendar Chip */}
             <div className="cal-card-top-row">
@@ -282,6 +293,37 @@ export default function ComplianceCalendar() {
           </div>
         ))}
       </div>
+
+      {/* EXPAND / COLLAPSE BUTTON (SHOW MORE) */}
+      {filteredDeadlines.length > 3 && (
+        <div className="cal-expand-wrap">
+          <button
+            type="button"
+            className="cal-expand-btn"
+            onClick={() => setIsExpanded(!isExpanded)}
+            aria-expanded={isExpanded}
+          >
+            <span>
+              {isExpanded
+                ? 'Show Fewer Milestones'
+                : `View All ${filteredDeadlines.length} Statutory Milestones (${filteredDeadlines.length - 3} More)`}
+            </span>
+            <svg
+              className={`expand-chevron ${isExpanded ? 'rotated' : ''}`}
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+        </div>
+      )}
 
       {/* STATUTORY REGULATORY SEAL FOOTER */}
       <div className="cal-statutory-footer">
