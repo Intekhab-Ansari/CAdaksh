@@ -2141,115 +2141,22 @@ footer.site-footer {
    INTERACTIVE FEATURES: CALENDAR, DIAGNOSTIC, GATEWAY
    ========================================================================== */
 .compliance-calendar-widget {
-  background: #FFFFFF;
-  border: 1px solid var(--color-gold-border);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 12px 36px rgba(11, 25, 48, 0.08);
-  padding: clamp(1.5rem, 3.5vw, 2.75rem);
-  margin-top: 2rem;
-}
-
-/* 4 Statutory Authority Pillar Cards */
-.cal-authority-strip {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
-  margin-bottom: 2.25rem;
-}
-
-@media (max-width: 1040px) {
-  .cal-authority-strip {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .cal-authority-strip {
-    grid-template-columns: 1fr;
-  }
-}
-
-.cal-authority-card {
-  background: var(--color-surface-subtle);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: 1.25rem 1.15rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  position: relative;
-}
-
-.cal-authority-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(11, 25, 48, 0.08);
-}
-
-.cal-authority-card.gst-theme:hover { border-color: #059669; background: #F0FDF4; }
-.cal-authority-card.tax-theme:hover { border-color: var(--color-action-blue); background: #EFF6FF; }
-.cal-authority-card.mca-theme:hover { border-color: #7C3AED; background: #FAF5FF; }
-.cal-authority-card.rbi-theme:hover { border-color: var(--color-gold); background: var(--color-gold-soft); }
-
-.cal-auth-icon-wrap {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.gst-icon-bg { background: #ECFDF5; color: #059669; border: 1px solid #A7F3D0; }
-.tax-icon-bg { background: #EFF6FF; color: var(--color-action-blue); border: 1px solid #BFDBFE; }
-.mca-icon-bg { background: #FAF5FF; color: #7C3AED; border: 1px solid #DDD6FE; }
-.rbi-icon-bg { background: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; }
-
-.cal-auth-details {
-  display: flex;
-  flex-direction: column;
-}
-
-.cal-auth-label {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.cal-auth-cycle {
-  font-size: 0.98rem;
-  font-weight: 800;
-  color: var(--color-text-main);
-  margin: 0.15rem 0;
-}
-
-.cal-auth-chips {
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
-  font-family: var(--font-mono);
+  margin-top: 2.75rem;
 }
 
 /* Control Strip & Interactive Filter Tabs */
 .cal-control-strip {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding-bottom: 1.5rem;
-  margin-bottom: 1.75rem;
-  border-bottom: 1px solid var(--color-border);
-  flex-wrap: wrap;
-  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2.5rem;
 }
 
 .cal-filter-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.65rem;
+  justify-content: center;
+  gap: 0.75rem;
 }
 
 .cal-tab-btn {
