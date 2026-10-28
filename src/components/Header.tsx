@@ -18,30 +18,11 @@ export default function Header() {
 
   return (
     <>
-      {/* Top Institutional Credential Ribbon */}
-      <div className="header-top-bar">
-        <div className="container header-top-inner">
-          <div className="header-top-left">
-            <span className="inst-dot" aria-hidden="true" />
-            <span>Chartered Accountancy Practice · Mumbai, India</span>
-            <span className="inst-sep">|</span>
-            <span>FRN: <span className="fill">[FRN]</span></span>
-          </div>
-          <div className="header-top-right">
-            <span>ICAI Empanelled Register</span>
-            <span className="inst-sep">|</span>
-            <Link href="/disclaimer" className="header-top-link">ICAI Disclaimer</Link>
-            <span className="inst-sep">|</span>
-            <Link href="/privacy" className="header-top-link">DPDP 2023 Notice</Link>
-          </div>
-        </div>
-      </div>
-
       <header className="site-header">
         <div className="container header-inner">
           <Link className="brand-lockup" href="/" aria-label="Daksh Desai & Associates Home">
             <div className="brand-emblem-wrap">
-              <Image src="/images/ca-logo.svg" alt="CA India Emblem" width={44} height={44} priority />
+              <Image src="/images/ca-logo.svg" alt="CA India Emblem" width={42} height={42} priority />
             </div>
             <div className="brand-text">
               <span className="brand-title">Daksh Desai &amp; Associates</span>
@@ -72,7 +53,7 @@ export default function Header() {
 
           <div className="header-actions">
             <Link href="/contact" className="header-contact-btn">
-              Consult Office
+              Contact Us
             </Link>
             <button
               type="button"
@@ -138,22 +119,22 @@ export default function Header() {
               Our Team
             </Link>
             <Link href="/services" onClick={closeDrawer} className={isActive('/services') ? 'active' : ''}>
-              Services Directory
+              Services
             </Link>
             <Link href="/insights" onClick={closeDrawer} className={isActive('/insights') ? 'active' : ''}>
-              Tax &amp; Finance Insights
+              Insights
             </Link>
             <Link href="/faq" onClick={closeDrawer} className={isActive('/faq') ? 'active' : ''}>
-              FAQ &amp; Statutory Guidance
+              FAQ
             </Link>
             <Link href="/contact" onClick={closeDrawer} className={isActive('/contact') ? 'active' : ''}>
-              Contact &amp; Consultation
+              Contact
             </Link>
           </nav>
 
           <div className="mobile-drawer-footer">
             <Link href="/contact" onClick={closeDrawer} className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-              Schedule Consultation
+              Contact Us
             </Link>
             <p style={{ marginTop: '1rem', fontSize: '0.78rem', color: 'var(--color-text-muted)', textAlign: 'center' }}>
               Mumbai Practice Office · ICAI Reg. FRN <span className="fill">[FRN]</span>

@@ -4,17 +4,16 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ReviewBanner from '@/components/ReviewBanner';
 import DisclaimerModal from '@/components/DisclaimerModal';
-import QuickContactDock from '@/components/QuickContactDock';
 
 export const metadata: Metadata = {
   title: 'Daksh Desai & Associates | Chartered Accountants · Mumbai',
-  description: 'Daksh Desai & Associates, Chartered Accountants, Mumbai. Taxation, statutory audit, corporate law, and FEMA advisory for businesses, enterprises, professionals, and individuals.',
+  description: 'Daksh Desai & Associates, Chartered Accountants, Mumbai. Taxation, audit, accounting, and advisory services for businesses, professionals, and individuals.',
   icons: {
     icon: '/images/ca-logo.svg',
   },
   openGraph: {
     title: 'Daksh Desai & Associates | Chartered Accountants · Mumbai',
-    description: 'Taxation, statutory audit, corporate law, and FEMA advisory for businesses, enterprises, professionals, and individuals in Mumbai.',
+    description: 'Taxation, audit, accounting, and advisory services for businesses, professionals, and individuals in Mumbai.',
     type: 'website',
   },
 };
@@ -37,7 +36,6 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
-        <QuickContactDock />
         <DisclaimerModal />
       </body>
     </html>
