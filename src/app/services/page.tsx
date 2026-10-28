@@ -30,7 +30,6 @@ export default function ServicesPage() {
             <article className="rsc-sovereign-card">
               <div className="rsc-num-pill">01</div>
               <h2 className="rsc-service-title">Audit &amp; Assurance</h2>
-              <span className="rsc-service-tagline">INDEPENDENT. THOROUGH. TRUSTED.</span>
               <p className="rsc-service-desc">
                 Comprehensive audit services conducted with rigour and independence — from statutory audits to stock verification and investment certification.
               </p>
@@ -86,7 +85,6 @@ export default function ServicesPage() {
             <article className="rsc-sovereign-card">
               <div className="rsc-num-pill">02</div>
               <h2 className="rsc-service-title">Tax &amp; Compliance</h2>
-              <span className="rsc-service-tagline">COMPLIANT TODAY. PREPARED FOR TOMORROW.</span>
               <p className="rsc-service-desc">
                 End-to-end statutory compliance across Companies Act, Income Tax Act, GST, and allied business laws — keeping you on the right side of every regulation.
               </p>
@@ -142,7 +140,6 @@ export default function ServicesPage() {
             <article className="rsc-sovereign-card">
               <div className="rsc-num-pill">03</div>
               <h2 className="rsc-service-title">Accounting &amp; MIS</h2>
-              <span className="rsc-service-tagline">NUMBERS THAT TELL YOUR STORY.</span>
               <p className="rsc-service-desc">
                 Dedicated accounting teams manage your books end-to-end, paired with sharp MIS reporting that gives management real-time visibility into performance.
               </p>
@@ -201,7 +198,6 @@ export default function ServicesPage() {
             <article className="rsc-sovereign-card">
               <div className="rsc-num-pill">04</div>
               <h2 className="rsc-service-title">Corporate &amp; Allied Laws</h2>
-              <span className="rsc-service-tagline">GOVERNANCE. INTEGRITY. COMPLIANCE.</span>
               <p className="rsc-service-desc">
                 End-to-end Ministry of Corporate Affairs (MCA21) compliance, incorporation, and secretarial governance under the Companies Act, 2013.
               </p>
@@ -251,7 +247,6 @@ export default function ServicesPage() {
             <article className="rsc-sovereign-card">
               <div className="rsc-num-pill">05</div>
               <h2 className="rsc-service-title">Virtual CFO &amp; Advisory</h2>
-              <span className="rsc-service-tagline">STRATEGIC CLARITY. CAPITAL EFFICIENCY.</span>
               <p className="rsc-service-desc">
                 Dedicated financial leadership supporting promoters and management with forward-looking capital allocation, cash-flow discipline, and transactional due diligence.
               </p>

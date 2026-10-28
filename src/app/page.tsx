@@ -3,8 +3,6 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import TickerRibbon from '@/components/TickerRibbon';
 import ComplianceCalendar from '@/components/ComplianceCalendar';
-import AuditDiagnosticTool from '@/components/AuditDiagnosticTool';
-import RegulatoryGateway from '@/components/RegulatoryGateway';
 
 export const metadata: Metadata = {
   title: 'Daksh Desai & Associates | Chartered Accountants · Mumbai',
@@ -66,7 +64,6 @@ export default function HomePage() {
             <div className="rsc-navy-card">
               <div className="rsc-num-pill">01</div>
               <h3 className="rsc-service-title">Tax &amp; Compliance</h3>
-              <span className="rsc-service-tagline">COMPLIANT TODAY. PREPARED FOR TOMORROW.</span>
               <p className="rsc-service-desc">
                 End-to-end statutory compliance across Companies Act, Income Tax Act, GST, and allied business laws — keeping you on the right side of every regulation.
               </p>
@@ -137,7 +134,6 @@ export default function HomePage() {
             <div className="rsc-navy-card">
               <div className="rsc-num-pill">02</div>
               <h3 className="rsc-service-title">Audit &amp; Assurance</h3>
-              <span className="rsc-service-tagline">INDEPENDENT. THOROUGH. TRUSTED.</span>
               <p className="rsc-service-desc">
                 Comprehensive audit services conducted with rigour and independence — from statutory audits to stock verification and investment certification.
               </p>
@@ -207,7 +203,6 @@ export default function HomePage() {
             <div className="rsc-navy-card">
               <div className="rsc-num-pill">03</div>
               <h3 className="rsc-service-title">Accounting &amp; MIS</h3>
-              <span className="rsc-service-tagline">NUMBERS THAT TELL YOUR STORY.</span>
               <p className="rsc-service-desc">
                 Dedicated accounting teams manage your books end-to-end, paired with sharp MIS reporting that gives management real-time visibility into performance.
               </p>
@@ -416,13 +411,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* WHY CHOOSE US / THE DAKSH DESAI DIFFERENCE */}
+      {/* OUR APPROACH */}
       <section className="section" id="approach">
         <div className="container">
           <div className="section-head-center">
             <span className="eyebrow-red">✦ PRACTICE PHILOSOPHY</span>
             <h2 className="editorial-heading">
-              The Daksh Desai &amp; Associates <span className="hero-serif-accent">Difference</span>
+              Our <span className="hero-serif-accent">approach</span>
             </h2>
             <p className="section-head-lede">
               A disciplined, partner-led standard for finance, taxation, statutory audit, and corporate governance.
@@ -516,33 +511,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* STATUTORY TAX & AUDIT DIAGNOSTIC TOOL FEATURE */}
-      <section className="section section-ice" id="diagnostic-tool">
-        <div className="container">
-          <div className="section-head-center">
-            <span className="eyebrow-red">✦ DIAGNOSTIC ADVISORY AID</span>
-            <h2 className="editorial-heading">
-              Tax Audit &amp; <span className="hero-serif-accent">Applicability Navigator</span>
-            </h2>
-            <p className="section-head-lede">
-              Determine statutory audit obligations, presumptive tax eligibility, and GST e-invoicing thresholds based on your entity&apos;s turnover and banking transaction mix.
-            </p>
-          </div>
-
-          <AuditDiagnosticTool />
-        </div>
-      </section>
-
-      {/* EXECUTIVE SECTOR ADVISORY MATRIX (MIDNIGHT NAVY SECTION) */}
+      {/* INDUSTRIES WE SERVE (MIDNIGHT NAVY SECTION) */}
       <section className="section section-midnight" id="industries">
         <div className="container">
           <div className="section-head-center">
-            <span className="eyebrow-accent">✦ EXECUTIVE SECTOR ADVISORY MATRIX</span>
+            <span className="eyebrow-accent">✦ PRACTICE SECTORS</span>
             <h2 className="editorial-heading-light">
-              Trusted by Enterprises &amp; Professionals across India
+              Industries we <span className="hero-serif-accent" style={{ color: 'var(--color-gold)' }}>serve</span>
             </h2>
             <p className="section-head-lede-light">
-              From core industrial operations to cross-border ventures, we support diverse sectors with specialized taxation, audit, and regulatory expertise.
+              We support businesses across sectors with taxation, compliance, audit and advisory services.
             </p>
           </div>
 
@@ -639,9 +617,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* REGULATORY GATEWAY */}
-      <RegulatoryGateway />
 
       {/* INSIGHTS PREVIEW */}
       <section className="section" id="insights-preview">
