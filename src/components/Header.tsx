@@ -18,15 +18,34 @@ export default function Header() {
 
   return (
     <>
+      {/* Top Institutional Credential Ribbon */}
+      <div className="header-top-bar">
+        <div className="container header-top-inner">
+          <div className="header-top-left">
+            <span className="inst-dot" aria-hidden="true" />
+            <span>Chartered Accountancy Practice · Mumbai, India</span>
+            <span className="inst-sep">|</span>
+            <span>FRN: <span className="fill">[FRN]</span></span>
+          </div>
+          <div className="header-top-right">
+            <span>ICAI Empanelled Register</span>
+            <span className="inst-sep">|</span>
+            <Link href="/disclaimer" className="header-top-link">ICAI Disclaimer</Link>
+            <span className="inst-sep">|</span>
+            <Link href="/privacy" className="header-top-link">DPDP 2023 Notice</Link>
+          </div>
+        </div>
+      </div>
+
       <header className="site-header">
         <div className="container header-inner">
           <Link className="brand-lockup" href="/" aria-label="Daksh Desai & Associates Home">
             <div className="brand-emblem-wrap">
-              <Image src="/images/ca-logo.svg" alt="CA India Emblem" width={42} height={42} priority />
+              <Image src="/images/ca-logo.svg" alt="CA India Emblem" width={44} height={44} priority />
             </div>
             <div className="brand-text">
               <span className="brand-title">Daksh Desai &amp; Associates</span>
-              <span className="brand-subtitle">Chartered Accountants</span>
+              <span className="brand-subtitle">CHARTERED ACCOUNTANTS</span>
             </div>
           </Link>
 
@@ -53,7 +72,7 @@ export default function Header() {
 
           <div className="header-actions">
             <Link href="/contact" className="header-contact-btn">
-              Contact Us
+              Consult Office
             </Link>
             <button
               type="button"
@@ -88,47 +107,57 @@ export default function Header() {
         <div className="mobile-drawer-content">
           <div className="mobile-drawer-header">
             <div className="mobile-drawer-brand">
-              <Image src="/images/ca-logo.svg" alt="CA Logo" width={32} height={32} />
+              <Image src="/images/ca-logo.svg" alt="CA Logo" width={34} height={34} />
               <div>
-                <strong style={{ display: 'block', fontSize: '0.95rem', color: 'var(--color-primary-navy)' }}>Daksh Desai &amp; Associates</strong>
-                <span style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>Chartered Accountants</span>
+                <strong style={{ display: 'block', fontSize: '0.98rem', color: 'var(--color-primary-navy)' }}>
+                  Daksh Desai &amp; Associates
+                </strong>
+                <span style={{ fontSize: '0.72rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-muted)' }}>
+                  Chartered Accountants
+                </span>
               </div>
             </div>
             <button
               type="button"
               className="mobile-close-btn"
               onClick={closeDrawer}
-              aria-label="Close menu"
+              aria-label="Close navigation menu"
             >
               ✕
             </button>
           </div>
 
-          <div className="mobile-nav-links">
-            <Link href="/" onClick={closeDrawer} className={isActive('/') ? 'active' : ''}>Home</Link>
-            <Link href="/about" onClick={closeDrawer} className={isActive('/about') ? 'active' : ''}>About Us</Link>
-            <Link href="/team" onClick={closeDrawer} className={isActive('/team') ? 'active' : ''}>Our Team</Link>
-            <Link href="/services" onClick={closeDrawer} className={isActive('/services') ? 'active' : ''}>All Services</Link>
-            
-            <div className="mobile-sublinks-group">
-              <span className="mobile-sublinks-title">Core Practice Areas</span>
-              <Link href="/services/income-tax" onClick={closeDrawer}>• Income Tax &amp; TDS</Link>
-              <Link href="/services/gst" onClick={closeDrawer}>• Goods &amp; Services Tax (GST)</Link>
-              <Link href="/services/international-tax" onClick={closeDrawer}>• International &amp; NRI Tax</Link>
-              <Link href="/services/audit" onClick={closeDrawer}>• Statutory &amp; Internal Audit</Link>
-              <Link href="/services/accounting" onClick={closeDrawer}>• Accounting &amp; MIS Reporting</Link>
-              <Link href="/services/cfo-advisory" onClick={closeDrawer}>• Virtual CFO &amp; Planning</Link>
-              <Link href="/services/corporate-law" onClick={closeDrawer}>• Corporate &amp; Labour Law</Link>
-            </div>
+          <nav className="mobile-nav-links" aria-label="Mobile Main Navigation">
+            <Link href="/" onClick={closeDrawer} className={isActive('/') ? 'active' : ''}>
+              Home
+            </Link>
+            <Link href="/about" onClick={closeDrawer} className={isActive('/about') ? 'active' : ''}>
+              About Us
+            </Link>
+            <Link href="/team" onClick={closeDrawer} className={isActive('/team') ? 'active' : ''}>
+              Our Team
+            </Link>
+            <Link href="/services" onClick={closeDrawer} className={isActive('/services') ? 'active' : ''}>
+              Services Directory
+            </Link>
+            <Link href="/insights" onClick={closeDrawer} className={isActive('/insights') ? 'active' : ''}>
+              Tax &amp; Finance Insights
+            </Link>
+            <Link href="/faq" onClick={closeDrawer} className={isActive('/faq') ? 'active' : ''}>
+              FAQ &amp; Statutory Guidance
+            </Link>
+            <Link href="/contact" onClick={closeDrawer} className={isActive('/contact') ? 'active' : ''}>
+              Contact &amp; Consultation
+            </Link>
+          </nav>
 
-            <Link href="/insights" onClick={closeDrawer} className={isActive('/insights') ? 'active' : ''}>Insights</Link>
-            <Link href="/faq" onClick={closeDrawer} className={isActive('/faq') ? 'active' : ''}>FAQ</Link>
-            
-            <div className="mobile-drawer-cta">
-              <Link href="/contact" onClick={closeDrawer} className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-                Contact the Firm
-              </Link>
-            </div>
+          <div className="mobile-drawer-footer">
+            <Link href="/contact" onClick={closeDrawer} className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
+              Schedule Consultation
+            </Link>
+            <p style={{ marginTop: '1rem', fontSize: '0.78rem', color: 'var(--color-text-muted)', textAlign: 'center' }}>
+              Mumbai Practice Office · ICAI Reg. FRN <span className="fill">[FRN]</span>
+            </p>
           </div>
         </div>
       </div>

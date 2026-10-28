@@ -54,9 +54,9 @@ export default function DisclaimerModal() {
       onClick={handleBackdropClick}
     >
       <div className="disclaimer-modal">
-        <span className="eyebrow-red">Before you continue</span>
-        <h2 id="disclaimerModalTitle" style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--color-primary-navy)', marginBottom: '0.85rem' }}>
-          ICAI Regulatory Disclaimer
+        <span className="eyebrow-gold">ICAI COMPLIANCE NOTICE</span>
+        <h2 id="disclaimerModalTitle" className="disclaimer-title">
+          Mandatory Regulatory Disclaimer
         </h2>
         <p style={{ fontSize: '0.94rem', color: 'var(--color-text-body)', lineHeight: 1.6, marginBottom: '0.75rem' }}>
           The rules of the Institute of Chartered Accountants of India do not permit Chartered Accountants to solicit work or advertise. By clicking &quot;I Agree &amp; Enter&quot;, you confirm that:

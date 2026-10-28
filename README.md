@@ -3,7 +3,7 @@
 
 A production-grade, dignified, and compliant web application built with **Next.js 15 (App Router, TypeScript)** for **Daksh Desai & Associates, Chartered Accountants**.
 
-Designed strictly adhering to the **Institute of Chartered Accountants of India (ICAI) Code of Ethics & Website Guidelines**, the **Digital Personal Data Protection Act, 2023 (DPDP Act)**, and an executive corporate design standard inspired by **Ritesh Shah & Co. (rscindia.com)**.
+Designed strictly adhering to the **Institute of Chartered Accountants of India (ICAI) Code of Ethics & Website Guidelines**, the **Reserve Bank of India (RBI) Regulations & Master Directions**, and the **Digital Personal Data Protection Act, 2023 (DPDP Act)**, featuring a bespoke Sovereign Architectural standard.
 
 ---
 
@@ -13,7 +13,7 @@ Designed strictly adhering to the **Institute of Chartered Accountants of India 
 | :--- | :--- |
 | **Framework** | Next.js 15.5+ (App Router) |
 | **Language** | TypeScript (Strict mode) |
-| **Styling** | Vanilla CSS (`src/styles/globals.css`) — Fully responsive, no Tailwind dependency |
+| **Styling** | Vanilla CSS (`src/styles/globals.css`) — Fully responsive, bespoke design system |
 | **Fonts** | Plus Jakarta Sans, Cormorant Garamond, IBM Plex Mono |
 | **Database** | Supabase (`@supabase/supabase-js`) for contact enquiries |
 | **Security** | Strict CSP, HSTS, X-Frame-Options, anti-spam honeypot, rate limiting |
@@ -21,15 +21,17 @@ Designed strictly adhering to the **Institute of Chartered Accountants of India 
 
 ---
 
-### Design System & Visual Identity (RSC India Style)
+### Design System & Visual Identity (Bespoke Sovereign Architecture)
 
-- **Pure Executive Light Mode**: Dark mode has been completely removed in favor of an authoritative institutional corporate look.
-- **Deep Royal Navy (`#0F2D5C`)**: Primary headings, buttons, and brand elements.
-- **Midnight Navy (`#081B33`)**: High-contrast contrast sections (Industries We Serve, Footer).
-- **Ice Blue (`#F0F5FA`)**: Alternating clean background contrast.
-- **Continuous Red Ticker Ribbon (`#B8281F`)**: Highlighting firm specialties and practice areas.
-- **6-Card Hero Grid**: Alternating navy service cards and high-resolution photography.
-- **ICAI Institutional Particulars Bar**: Verified firm registration credentials and proprietor details.
+- **Pure Executive Light Palette**: Authoritative, clean architectural light palette with warm alabaster and crisp white surfaces.
+- **Deep Obsidian Slate Navy (`#0B1528`) & Oxford Navy (`#112540`)**: Primary typography, buttons, header bar, and structural framework.
+- **Sovereign Champagne Gold & Burnished Brass (`#C5A059` / `#B89047`)**: Premium hallmark of statutory precision replacing any third-party ticker ribbons.
+- **Asymmetric Editorial Hero**: Authoritative editorial title, live credentials dock, and the interactive **Statutory Desk Console**.
+- **Interactive Indian Compliance Calendar**: Live due-date tracker for Income Tax, GST, MCA, and RBI/FEMA filing deadlines.
+- **Statutory Audit & Tax Applicability Navigator**: Educational diagnostic tool for Section 44AB/44AD/44ADA and Companies Act 2013 audit requirements.
+- **Executive Sector Advisory Matrix**: 6-card sector focus (BFSI, Tech & SaaS, Manufacturing, Healthcare & Trusts, Real Estate & RERA, Family Offices & NRIs).
+- **Official Regulatory Gateway**: Verified direct links to official Indian Government, RBI, and ICAI portals.
+- **Mandatory 18-Digit ICAI UDIN Commitment**: Integrated in the footer and institutional register bars.
 
 ---
 

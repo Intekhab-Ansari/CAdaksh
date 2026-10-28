@@ -30,14 +30,19 @@ The website serves as the firm's official institutional digital portal, built st
 | **Database** | **Supabase (`@supabase/supabase-js`)** | Stores `/contact` form enquiries directly into the `enquiries` table |
 | **Deployment** | **Hostinger Node.js / Vercel** | Standalone production build (`npm run build`) |
 
-### Design Aesthetics & Color Palette (RSC India-Inspired)
-The visual identity follows an executive corporate standard inspired by **Ritesh Shah & Co. (rscindia.com)**:
-- **Light Mode Only**: **Dark mode has been removed**. The site is permanently styled in a clean, high-authority light palette.
-- **Deep Royal Navy (`#0F2D5C`)**: Hero titles, main buttons, active accents.
-- **Midnight Navy (`#081B33`)**: High-contrast contrast sections (e.g. Industries We Serve, Site Footer).
-- **Ice Blue (`#F0F5FA`)**: Alternating section backgrounds, card surfaces, table headers.
-- **Continuous Red Ticker (`#B8281F`)**: Signature animated ribbon showcasing core practice areas.
-- **Crisp White (`#FFFFFF`)**: Card surfaces, modals, floating header navigation.
+### Design Aesthetics & Color Palette (Bespoke Sovereign Architectural Standard)
+The visual identity is a bespoke, sovereign corporate standard tailored specifically for **Daksh Desai & Associates** in Mumbai:
+- **Light Mode Permanent**: Pristine, high-authority architectural light palette with warm alabaster and crisp white surfaces.
+- **Deep Obsidian Slate Navy (`#0B1528`) & Oxford Navy (`#112540`)**: Hero typography, primary buttons, structural framework, and footers.
+- **Sovereign Champagne Gold & Burnished Brass (`#C5A059` / `#B89047`)**: Replaces any third-party ticker ribbons with an institutional, luxury hallmark of statutory precision.
+- **Architectural Ribbon**: Sovereign deep obsidian navy ribbon with gold star markers (`✦`) highlighting core practice desks.
+- **Interactive Statutory Features (100% ICAI & RBI Compliant)**:
+  1. **Statutory Desk Console (`StatutoryDeskConsole.tsx`)**: Interactive multi-tabbed practice navigator in the hero section.
+  2. **Indian Statutory Compliance Due-Date Tracker (`ComplianceCalendar.tsx`)**: Interactive live calendar for Income Tax, GST, MCA, and RBI/FEMA filing deadlines.
+  3. **Statutory Audit & Tax Applicability Navigator (`AuditDiagnosticTool.tsx`)**: Diagnostic self-assessment tool under Income-tax Act Sec 44AB/44AD/44ADA and Companies Act 2013 Sec 139.
+  4. **Executive Sector Advisory Matrix**: Bespoke 6-card sector focus (BFSI, Tech & SaaS, Manufacturing, Healthcare & Trusts, Real Estate & RERA, Family Offices & NRIs).
+  5. **Regulatory & Statutory Gateway (`RegulatoryGateway.tsx`)**: Direct links to Income Tax e-Filing, GST Common Portal, MCA21 V3, RBI, TRACES, and ICAI UDIN.
+  6. **Floating Quick Consultation Dock (`QuickContactDock.tsx`)**: Unobtrusive bottom-right consultation launcher.
 
 ---
 
