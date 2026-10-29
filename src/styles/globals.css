@@ -2865,6 +2865,7 @@ footer.site-footer::before {
   color: #FFFFFF;
   font-size: 0.86rem;
   margin-bottom: 0;
+  white-space: nowrap;
 }
 
 .legal-links {
@@ -4594,8 +4595,16 @@ footer.site-footer::before {
     gap: 0.75rem !important;
     padding-top: 1.25rem !important;
   }
+  .legal-left {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
   .copyright-line {
-    font-size: 0.78rem !important;
+    font-size: clamp(0.55rem, 2.5vw, 0.78rem) !important;
+    white-space: nowrap !important;
+    letter-spacing: -0.015em !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .legal-links {
     flex-wrap: wrap;
@@ -4661,5 +4670,9 @@ footer.site-footer::before {
   .counsel-btn {
     font-size: 0.64rem !important;
     padding: 0.35rem 0.5rem !important;
+  }
+  .copyright-line {
+    font-size: clamp(0.5rem, 2.4vw, 0.66rem) !important;
+    letter-spacing: -0.025em !important;
   }
 }
