@@ -17,11 +17,11 @@ export default function SmoothScroll() {
       autoRaf: true,
       anchors: true,
       smoothWheel: true,
-      duration: 1.35,
+      duration: 1.4,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      wheelMultiplier: 0.98,
+      wheelMultiplier: 0.95,
       touchMultiplier: 1.2,
-      lerp: 0.07,
+      lerp: 0.065,
       respectReducedMotion: false,
     });
 

@@ -178,20 +178,90 @@ main {
   animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both, goldGlowPulse 4s ease-in-out infinite 1s;
 }
 
-.hero-main-title {
-  animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
-}
-
-.hero-sublede {
-  animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
-}
-
 .hero-btn-group {
-  animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+  animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
 }
 
 .hero-trust-badges {
-  animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+  animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.58s both;
+}
+
+/* --- EDITORIAL TEXT REVEAL & SHIMMER SYSTEM --- */
+.text-reveal-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.12em;
+}
+
+.text-reveal-line {
+  display: inline-block;
+  will-change: transform, opacity, filter;
+  animation: maskedLineReveal 1.05s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-main-title .text-reveal-mask:nth-child(1) .text-reveal-line {
+  animation-delay: 0.1s;
+}
+
+.hero-main-title .text-reveal-mask:nth-child(2) .text-reveal-line {
+  animation-delay: 0.22s;
+}
+
+@keyframes maskedLineReveal {
+  0% {
+    transform: translateY(115%) rotate(1.2deg);
+    opacity: 0;
+    filter: blur(8px);
+  }
+  100% {
+    transform: translateY(0%) rotate(0deg);
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+@keyframes heroTextFocus {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+.hero-sublede {
+  animation: heroTextFocus 1s cubic-bezier(0.16, 1, 0.3, 1) 0.36s both;
+}
+
+/* Sovereign Gold Shimmer Accent */
+@keyframes goldShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hero-serif-accent,
+.editorial-heading em,
+.cta-light-title em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  background: linear-gradient(135deg, #C5A059 0%, #E6CA85 30%, #9E7728 65%, #D4AF37 100%);
+  background-size: 240% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: goldShimmer 8s ease infinite;
+  display: inline-block;
 }
 
 /* Micro-interaction for primary button arrow */
@@ -208,14 +278,49 @@ main {
 .scroll-reveal-target {
   opacity: 0;
   transform: translateY(30px) scale(0.985);
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  filter: blur(4px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
   transform-origin: center bottom;
 }
 
 .scroll-reveal-target.scroll-animated {
   opacity: 1;
   transform: translateY(0) scale(1);
+  filter: blur(0px);
+}
+
+/* Section Headings Scroll Entrance Focus */
+.scroll-reveal-target .editorial-heading,
+.scroll-reveal-target .editorial-heading-light,
+.scroll-reveal-target .cta-light-title {
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(6px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
+}
+
+.scroll-reveal-target.scroll-animated .editorial-heading,
+.scroll-reveal-target.scroll-animated .editorial-heading-light,
+.scroll-reveal-target.scroll-animated .cta-light-title {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0px);
+}
+
+.scroll-reveal-target .section-head-lede {
+  opacity: 0;
+  transform: translateY(18px);
+  filter: blur(6px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.12s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.12s, filter 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.12s;
+  will-change: opacity, transform, filter;
+}
+
+.scroll-reveal-target.scroll-animated .section-head-lede {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0px);
 }
 
 /* Stagger effect for cards in grids */

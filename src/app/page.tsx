@@ -23,7 +23,14 @@ export default function HomePage() {
               CHARTERED ACCOUNTANTS · MUMBAI · ICAI REGISTERED PRACTICE
             </div>
             <h1 className="hero-main-title">
-              Taxation, Audit, Accounting &amp; <span className="hero-serif-accent">Advisory</span>
+              <span className="text-reveal-mask">
+                <span className="text-reveal-line">Taxation, Audit,</span>
+              </span>
+              <span className="text-reveal-mask">
+                <span className="text-reveal-line">
+                  Accounting &amp; <span className="hero-serif-accent">Advisory</span>
+                </span>
+              </span>
             </h1>
             <p className="hero-sublede">
               We provide comprehensive counsel across direct tax litigation, GST compliance, statutory audit, and corporate governance for enterprises, family offices, and professionals across India and abroad.
