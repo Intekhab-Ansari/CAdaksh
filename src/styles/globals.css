@@ -4203,15 +4203,57 @@ footer.site-footer::before {
   }
 }
 
-@media (max-width: 540px) {
-  .hero-btn-group {
-    flex-direction: column;
-    width: 100%;
-    gap: 0.75rem;
+@media (max-width: 640px) {
+  .hero-btn-group,
+  .cta-light-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 0.55rem !important;
   }
-  .hero-btn-group .btn {
-    width: 100%;
-    justify-content: center;
+  .hero-btn-group .btn,
+  .cta-light-actions .btn {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    width: 50% !important;
+    font-size: clamp(0.72rem, 2.85vw, 0.92rem) !important;
+    padding: 0.75rem clamp(0.3rem, 1.6vw, 0.75rem) !important;
+    white-space: nowrap !important;
+    justify-content: center !important;
+    letter-spacing: -0.015em !important;
+    text-align: center !important;
+  }
+  .hero-btn-group .btn-arrow-gold,
+  .cta-light-actions .btn-arrow-gold {
+    font-size: 0.88em !important;
+    margin-left: 0.2rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .hero-btn-group,
+  .cta-light-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    gap: 0.45rem !important;
+    justify-content: center !important;
+  }
+  .hero-btn-group .btn,
+  .cta-light-actions .btn {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    font-size: clamp(0.7rem, 2.75vw, 0.86rem) !important;
+    padding: 0.72rem clamp(0.2rem, 1.2vw, 0.55rem) !important;
+    white-space: nowrap !important;
+    justify-content: center !important;
   }
   .hero-trust-badges {
     display: grid;
@@ -4224,15 +4266,6 @@ footer.site-footer::before {
   .trust-badge-item {
     font-size: 0.75rem;
     gap: 0.35rem;
-  }
-  .cta-light-actions {
-    flex-direction: column;
-    width: 100%;
-    gap: 0.75rem;
-  }
-  .cta-light-actions .btn {
-    width: 100%;
-    justify-content: center;
   }
   .cta-reassurance-light {
     flex-direction: column;
@@ -4286,5 +4319,18 @@ footer.site-footer::before {
   .legal-links {
     flex-wrap: wrap;
     gap: 0.65rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-btn-group,
+  .cta-light-actions {
+    gap: 0.35rem !important;
+  }
+  .hero-btn-group .btn,
+  .cta-light-actions .btn {
+    font-size: 0.68rem !important;
+    padding: 0.65rem 0.2rem !important;
+    letter-spacing: -0.025em !important;
   }
 }
