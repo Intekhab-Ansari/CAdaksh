@@ -373,23 +373,12 @@ main {
   transform: translateY(0);
 }
 
-/* Staggered List Items in Service Cards */
+/* Staggered List Items in Service Cards — always visible by default to prevent layout void */
 .rsc-service-list li {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.scroll-animated .rsc-service-list li {
   opacity: 1;
   transform: translateY(0);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-.rsc-service-list li:nth-child(1) { transition-delay: 0.16s; }
-.rsc-service-list li:nth-child(2) { transition-delay: 0.23s; }
-.rsc-service-list li:nth-child(3) { transition-delay: 0.30s; }
-.rsc-service-list li:nth-child(4) { transition-delay: 0.37s; }
-.rsc-service-list li:nth-child(5) { transition-delay: 0.44s; }
 
 /* Micro-interaction title glide on card hover */
 .rsc-navy-card:hover .rsc-service-title {
@@ -4023,11 +4012,12 @@ footer.site-footer::before {
   }
   .rsc-hero-grid {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
+    gap: 1.15rem;
   }
   .rsc-image-card {
-    min-height: 220px;
-    max-height: 270px;
+    height: 180px;
+    min-height: 160px;
+    max-height: 200px;
   }
   .about-split-grid {
     grid-template-columns: 1fr;
@@ -4088,11 +4078,11 @@ footer.site-footer::before {
     margin: 0 auto 2.25rem auto;
   }
   .hero-rsc {
-    padding-top: 1.5rem;
-    padding-bottom: 3rem;
+    padding-top: 1.25rem;
+    padding-bottom: 2.25rem;
   }
   .hero-header-wrap {
-    margin: 0 auto 2.5rem auto;
+    margin: 0 auto 1.85rem auto;
   }
   .hero-main-title {
     font-size: clamp(1.95rem, 7.5vw, 2.75rem);
@@ -4114,17 +4104,83 @@ footer.site-footer::before {
     text-align: center;
     max-width: 100%;
   }
+  .rsc-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 1.15rem;
+    margin-bottom: 2.5rem;
+  }
   .rsc-navy-card,
   .rsc-sovereign-card {
-    padding: 1.85rem 1.35rem;
+    padding: 1.45rem 1.25rem;
     border-radius: 18px;
+    background: linear-gradient(168deg, #112544 0%, #091629 100%);
+    border: 1px solid rgba(197, 160, 89, 0.28);
+    box-shadow: 0 10px 30px rgba(5, 14, 28, 0.3);
+  }
+  .rsc-num-pill {
+    font-size: 0.72rem;
+    padding: 0.2rem 0.65rem;
+    margin-bottom: 0.65rem;
+    border-color: rgba(197, 160, 89, 0.45);
+    color: var(--color-gold);
   }
   .rsc-service-title {
-    font-size: 1.35rem;
+    font-size: 1.3rem;
+    font-weight: 800;
+    line-height: 1.25;
+    margin-bottom: 0.35rem;
   }
   .rsc-service-desc {
-    font-size: 0.88rem;
-    line-height: 1.55;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .rsc-service-list {
+    gap: 0.48rem;
+    margin-bottom: 0.85rem;
+  }
+  .rsc-service-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .bullet-dot {
+    width: 6px;
+    height: 6px;
+    margin-top: 0.4rem;
+  }
+  .bullet-text {
+    font-size: 0.82rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.92);
+  }
+  .rsc-pills-row {
+    padding-top: 0.65rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    gap: 0.35rem;
+  }
+  .rsc-keyword-pill {
+    font-size: 0.64rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .rsc-image-card {
+    height: 165px;
+    min-height: 145px;
+    max-height: 180px;
+    border-radius: 16px;
+    border: 1px solid rgba(197, 160, 89, 0.25);
+    overflow: hidden;
+  }
+  .overlay-pill {
+    font-size: 0.72rem;
+    padding: 0.3rem 0.7rem;
+    backdrop-filter: blur(8px);
   }
   .sectors-matrix-grid {
     grid-template-columns: 1fr;
@@ -4255,17 +4311,50 @@ footer.site-footer::before {
     white-space: nowrap !important;
     justify-content: center !important;
   }
+  .hero-header-wrap {
+    margin: 0 auto 1.35rem auto;
+  }
   .hero-trust-badges {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.75rem 0.5rem;
+    gap: 0.55rem 0.4rem;
     text-align: left;
-    margin-top: 1.75rem;
-    padding-top: 1.25rem;
+    margin-top: 1.15rem;
+    padding-top: 0.85rem;
   }
   .trust-badge-item {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     gap: 0.35rem;
+  }
+  .rsc-hero-grid {
+    gap: 0.85rem !important;
+  }
+  .rsc-navy-card,
+  .rsc-sovereign-card {
+    padding: 1.15rem 0.95rem !important;
+    border-radius: 16px !important;
+  }
+  .rsc-service-title {
+    font-size: 1.2rem !important;
+  }
+  .rsc-service-desc {
+    font-size: 0.82rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 0.75rem !important;
+  }
+  .rsc-service-list {
+    gap: 0.4rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  .bullet-text {
+    font-size: 0.78rem !important;
+    line-height: 1.35 !important;
+  }
+  .rsc-image-card {
+    height: 145px !important;
+    min-height: 130px !important;
+    max-height: 155px !important;
+    border-radius: 14px !important;
   }
   .cta-reassurance-light {
     flex-direction: column;

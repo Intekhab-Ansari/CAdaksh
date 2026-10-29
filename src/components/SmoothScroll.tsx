@@ -85,10 +85,12 @@ export default function SmoothScroll() {
       const elements = document.querySelectorAll(revealSelectors.join(', '));
       elements.forEach((el) => {
         const rect = el.getBoundingClientRect();
-        // Elements below viewport top get prepared for reveal
+        // Elements below viewport top get prepared for reveal; elements already visible are activated immediately
         if (rect.top > window.innerHeight * 0.8) {
           el.classList.add('scroll-reveal-target');
           observer?.observe(el);
+        } else {
+          el.classList.add('scroll-animated');
         }
       });
     };
