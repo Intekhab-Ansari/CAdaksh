@@ -136,19 +136,21 @@ export default function Footer() {
           </div>
 
           {/* Column 4: Practice Gateway */}
-          <div className="footer-nav-col">
-            <h4 className="footer-nav-title">
-              <span className="title-dot" aria-hidden="true">✦</span> Practice Gateway
-            </h4>
-            <ul className="footer-link-group">
-              <li><Link href="/about">About the Practice</Link></li>
-              <li><Link href="/team">Proprietor &amp; Practice Desks</Link></li>
-              <li><Link href="/services">Services Directory</Link></li>
-              <li><Link href="/insights">Knowledge &amp; Tax Bulletins</Link></li>
-              <li><Link href="/faq">Client FAQ &amp; Guidance</Link></li>
-              <li><Link href="/disclaimer">ICAI Mandatory Disclaimer</Link></li>
-              <li><Link href="/privacy">DPDP Act 2023 Privacy Notice</Link></li>
-            </ul>
+          <div className="footer-nav-col footer-col-gateway">
+            <div className="footer-gateway-links">
+              <h4 className="footer-nav-title">
+                <span className="title-dot" aria-hidden="true">✦</span> Practice Gateway
+              </h4>
+              <ul className="footer-link-group">
+                <li><Link href="/about">About the Practice</Link></li>
+                <li><Link href="/team">Proprietor &amp; Practice Desks</Link></li>
+                <li><Link href="/services">Services Directory</Link></li>
+                <li><Link href="/insights">Knowledge &amp; Tax Bulletins</Link></li>
+                <li><Link href="/faq">Client FAQ &amp; Guidance</Link></li>
+                <li><Link href="/disclaimer">ICAI Mandatory Disclaimer</Link></li>
+                <li><Link href="/privacy">DPDP Act 2023 Privacy Notice</Link></li>
+              </ul>
+            </div>
 
             <div className="footer-counsel-box">
               <span className="counsel-label">CHAMBER CONSULTATION</span>
