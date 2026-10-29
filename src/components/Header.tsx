@@ -81,6 +81,7 @@ export default function Header() {
         role="dialog"
         aria-modal="true"
         aria-label="Mobile Navigation"
+        data-lenis-prevent
         onClick={(e) => {
           if (e.target === e.currentTarget) closeDrawer();
         }}

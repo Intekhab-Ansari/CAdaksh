@@ -52,6 +52,7 @@ export default function DisclaimerModal() {
       aria-modal="true"
       aria-labelledby="disclaimerModalTitle"
       onClick={handleBackdropClick}
+      data-lenis-prevent
     >
       <div className="disclaimer-modal">
         <span className="eyebrow-gold">ICAI COMPLIANCE NOTICE</span>

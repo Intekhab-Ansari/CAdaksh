@@ -3,6 +3,7 @@ import '@/styles/globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import DisclaimerModal from '@/components/DisclaimerModal';
+import SmoothScroll from '@/components/SmoothScroll';
 
 export const metadata: Metadata = {
   title: 'Daksh Desai & Associates | Chartered Accountants · Mumbai',
@@ -31,6 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <SmoothScroll />
         <Header />
         <main>{children}</main>
         <Footer />
