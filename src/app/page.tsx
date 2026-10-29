@@ -315,15 +315,15 @@ export default function HomePage() {
               </div>
               <div className="register-item">
                 <span className="reg-label">ICAI FRN</span>
-                <span className="reg-val"><span className="fill">[FRN]</span></span>
+                <span className="reg-val">165505W</span>
               </div>
               <div className="register-item">
                 <span className="reg-label">Established</span>
-                <span className="reg-val"><span className="fill">[Year]</span></span>
+                <span className="reg-val">2026</span>
               </div>
               <div className="register-item">
-                <span className="reg-label">Head Office</span>
-                <span className="reg-val">Mumbai, Maharashtra</span>
+                <span className="reg-label">Head Office &amp; Chambers</span>
+                <span className="reg-val">Borivali West &amp; Nariman Point, Mumbai</span>
               </div>
               <div className="register-item">
                 <span className="reg-label">Core Focus</span>
@@ -331,11 +331,11 @@ export default function HomePage() {
               </div>
               <div className="register-item">
                 <span className="reg-label">Proprietor</span>
-                <span className="reg-val">CA Daksh Desai, ACA (M. No. <span className="fill">[M. No.]</span>)</span>
+                <span className="reg-val">CA Daksh Desai, ACA (M. No. 648747)</span>
               </div>
             </div>
             <div className="register-foot">
-              <span>Particulars as registered with the Institute of Chartered Accountants of India. Verified via ICAI Empanelled Register.</span>
+              <span>Particulars as registered with the Institute of Chartered Accountants of India (FRN: 165505W · M. No. 648747).</span>
               <span className="udin-note">All formal attestations bear an 18-digit Unique Document Identification Number (UDIN).</span>
             </div>
           </div>

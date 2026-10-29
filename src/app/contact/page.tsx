@@ -22,29 +22,97 @@ export default function ContactPage() {
       <section className="section" id="contact-channels">
         <div className="container contact-grid">
           {/* Ways to Connect */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <aside className="register-card" aria-label="Ways to connect">
-              <h3 style={{ fontSize: '1.15rem', fontFamily: 'var(--font-sans)', fontWeight: 700, marginBottom: '1rem' }}>
-                Ways to connect
+              <h3 style={{ fontSize: '1.15rem', fontFamily: 'var(--font-sans)', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-primary-navy)' }}>
+                Official Practice Channels
               </h3>
               <dl className="register-dl">
-                <dt className="register-dt">Email</dt>
-                <dd className="register-dd"><span className="fill">[e.g. info@cadakshdesaiassociates.com]</span></dd>
+                <dt className="register-dt">Statutory Email</dt>
+                <dd className="register-dd">
+                  <a href="mailto:cadakshdesai@outlook.com" style={{ color: 'var(--color-primary-navy)', fontWeight: 600, textDecoration: 'none' }}>
+                    cadakshdesai@outlook.com
+                  </a>
+                </dd>
+
+                <dt className="register-dt">Direct Counsel</dt>
+                <dd className="register-dd">
+                  <a href="mailto:dakshdesai0109@gmail.com" style={{ color: 'var(--color-primary-navy)', fontWeight: 600, textDecoration: 'none' }}>
+                    dakshdesai0109@gmail.com
+                  </a>
+                </dd>
                 
                 <dt className="register-dt">Call / WhatsApp</dt>
-                <dd className="register-dd"><span className="fill">[+91 number]</span></dd>
+                <dd className="register-dd" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <a href="tel:+919819647471" style={{ color: 'var(--color-primary-navy)', fontWeight: 600, textDecoration: 'none' }}>
+                    +91 98196 47471
+                  </a>
+                  <a
+                    href="https://wa.me/919819647471"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-pill-small"
+                    style={{ padding: '0.15rem 0.5rem', fontSize: '0.72rem', textDecoration: 'none' }}
+                  >
+                    WhatsApp ↗
+                  </a>
+                </dd>
                 
-                <dt className="register-dt">Office</dt>
-                <dd className="register-dd"><span className="fill">[full office address, Mumbai PIN]</span></dd>
-                
-                <dt className="register-dt">Office hours</dt>
-                <dd className="register-dd"><span className="fill">[e.g. Monday to Saturday, 10:00 AM – 7:00 PM IST]</span></dd>
+                <dt className="register-dt">Office Hours</dt>
+                <dd className="register-dd">Mon – Sat: 10:00 AM – 7:00 PM IST</dd>
                 
                 <dt className="register-dt">LinkedIn</dt>
-                <dd className="register-dd"><span className="fill">[profile URL, or remove]</span></dd>
+                <dd className="register-dd">
+                  <a
+                    href="https://www.linkedin.com/in/daksh-desai-787199204"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: '#0A66C2', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}
+                  >
+                    <span>CA Daksh Desai</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                </dd>
+
+                <dt className="register-dt">ICAI Register</dt>
+                <dd className="register-dd">FRN: 165505W · M. No. 648747</dd>
               </dl>
-              <p className="register-foot">Find us: <span className="fill">[Google Maps link]</span></p>
             </aside>
+
+            {/* Practice Chambers Locations */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div className="register-card" style={{ borderLeft: '3px solid var(--color-gold)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.45rem', flexWrap: 'wrap', gap: '0.35rem' }}>
+                  <span style={{ fontSize: '0.72rem', fontFamily: 'var(--font-mono)', fontWeight: 700, letterSpacing: '0.06em', color: 'var(--color-gold-deep)' }}>
+                    HEAD OFFICE · BORIVALI WEST
+                  </span>
+                  <a
+                    href="https://maps.app.goo.gl/DvLMyXd3KrBS66vo9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ fontSize: '0.75rem', color: 'var(--color-primary-navy)', fontWeight: 600, textDecoration: 'underline' }}
+                  >
+                    Google Maps ↗
+                  </a>
+                </div>
+                <p style={{ margin: 0, fontSize: '0.9rem', lineHeight: '1.5', color: 'var(--color-text-body)' }}>
+                  <strong>501, Fly Edge Building</strong>,<br />
+                  SV Road, Above Tirumala Showroom,<br />
+                  Borivali West, Mumbai – 400092, Maharashtra
+                </p>
+              </div>
+
+              <div className="register-card" style={{ borderLeft: '3px solid var(--color-primary-navy)' }}>
+                <span style={{ fontSize: '0.72rem', fontFamily: 'var(--font-mono)', fontWeight: 700, letterSpacing: '0.06em', color: 'var(--color-primary-navy)', display: 'block', marginBottom: '0.45rem' }}>
+                  SOUTH MUMBAI CHAMBERS · NARIMAN POINT
+                </span>
+                <p style={{ margin: 0, fontSize: '0.9rem', lineHeight: '1.5', color: 'var(--color-text-body)' }}>
+                  <strong>1004-05, Raheja Chambers</strong>,<br />
+                  Free Press Marg, Nariman Point,<br />
+                  Mumbai – 400021, Maharashtra
+                </p>
+              </div>
+            </div>
 
             <ul className="ruled-list">
               <li><strong>Strictly confidential</strong></li>

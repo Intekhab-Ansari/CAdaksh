@@ -26,20 +26,23 @@ export default function PrivacyPage() {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
           <h2 style={{ fontSize: '1.4rem' }}>How long we keep it</h2>
-          <p>Enquiries that do not lead to an engagement are deleted after <span className="fill">[period]</span>.</p>
+          <p>Enquiries that do not lead to an engagement are deleted after 90 days.</p>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
           <h2 style={{ fontSize: '1.4rem' }}>Cookies and analytics</h2>
-          <p><span className="fill">[State whether the site uses analytics. If yes, name the tool and add a consent banner.]</span></p>
+          <p>This website does not deploy third-party analytics trackers, advertising pixels, or cross-site tracking cookies. Only strictly necessary technical session cookies are utilized to preserve security and form validation.</p>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
           <h2 style={{ fontSize: '1.4rem' }}>Your rights</h2>
-          <p>You may ask us to access, correct or erase your information, or withdraw consent, by writing to <span className="fill">[grievance email]</span>. Contact person: <span className="fill">[name]</span>.</p>
+          <p>
+            Under the Digital Personal Data Protection Act, 2023 (DPDP Act), you may request access to, correction of, or erasure of your personal data, or withdraw consent at any time, by writing to{' '}
+            <a href="mailto:cadakshdesai@outlook.com" style={{ color: 'var(--color-primary-navy)', fontWeight: 600 }}>cadakshdesai@outlook.com</a>. Grievance Officer: CA Daksh Desai, Proprietor.
+          </p>
         </div>
 
-        <p style={{ fontSize: '0.9rem', color: 'var(--ink-muted)', marginTop: '0.5rem' }}>Last updated: <span className="fill">[date]</span></p>
+        <p style={{ fontSize: '0.9rem', color: 'var(--ink-muted)', marginTop: '0.5rem' }}>Last updated: October 2026</p>
       </div>
     </section>
   );

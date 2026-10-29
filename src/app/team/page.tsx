@@ -40,24 +40,73 @@ export default function TeamPage() {
                     CA Daksh Desai
                   </h3>
                   <p style={{ fontWeight: 600, color: 'var(--color-gold-deep)', margin: '0.25rem 0 0' }}>
-                    Proprietor &amp; Principal · ACA · M. No. <span className="fill">[M. No.]</span>
+                    Proprietor &amp; Principal · ACA, B.Com · M. No. 648747
                   </p>
                 </div>
                 
                 <div className="register-card" style={{ boxShadow: 'var(--shadow-subtle)', maxWidth: '480px' }}>
                   <dl className="register-dl">
                     <dt className="register-dt">Professional Qualification</dt>
-                    <dd className="register-dd">Chartered Accountant (ICAI)</dd>
+                    <dd className="register-dd">Associate Chartered Accountant (ACA, ICAI)</dd>
+
+                    <dt className="register-dt">Academic Degree</dt>
+                    <dd className="register-dd">Bachelor of Commerce (B.Com)</dd>
                     
                     <dt className="register-dt">ICAI Membership No.</dt>
-                    <dd className="register-dd"><span className="fill">[M. No.]</span></dd>
+                    <dd className="register-dd">648747</dd>
+
+                    <dt className="register-dt">Firm FRN</dt>
+                    <dd className="register-dd">165505W</dd>
                     
-                    <dt className="register-dt">Practice Jurisdiction</dt>
-                    <dd className="register-dd">Mumbai, Maharashtra</dd>
+                    <dt className="register-dt">Practice Chambers</dt>
+                    <dd className="register-dd">Borivali West &amp; Nariman Point, Mumbai</dd>
 
                     <dt className="register-dt">Core Practice Desks</dt>
                     <dd className="register-dd">Direct Tax · GST · Statutory Audit · Corporate Advisory</dd>
                   </dl>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+                  <a
+                    href="https://www.linkedin.com/in/daksh-desai-787199204"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-pill-small"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.45rem',
+                      padding: '0.45rem 0.9rem',
+                      background: 'rgba(10, 102, 194, 0.08)',
+                      borderColor: 'rgba(10, 102, 194, 0.3)',
+                      color: '#0A66C2',
+                      fontWeight: 600,
+                      textDecoration: 'none'
+                    }}
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.3a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+                    </svg>
+                    <span>Connect on LinkedIn</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
+
+                  <a
+                    href="https://maps.app.goo.gl/DvLMyXd3KrBS66vo9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-pill-small"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.45rem',
+                      padding: '0.45rem 0.9rem',
+                      textDecoration: 'none'
+                    }}
+                  >
+                    <span>Chambers Location</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
                 </div>
 
                 <p style={{ fontSize: '1rem', lineHeight: '1.65', color: 'var(--color-text-body)' }}>

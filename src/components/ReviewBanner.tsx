@@ -28,7 +28,7 @@ export default function ReviewBanner() {
         <div>
           <span className="review-badge">Preview for review</span>
           <span style={{ marginLeft: '0.5rem' }}>
-            Yellow fields need your input: <strong>{fillCount > 0 ? fillCount : '–'}</strong> on the site.
+            Yellow fields need your input: <strong>{fillCount > 0 ? fillCount : '0 (All credentials configured)'}</strong> on the site.
           </span>
         </div>
         <div className="review-actions">

@@ -13,7 +13,7 @@ export default function AboutPage() {
           <span className="eyebrow">About Us</span>
           <h1>Navigating finance and compliance with clarity and confidence</h1>
           <p className="hero-lede" style={{ marginTop: '1.25rem' }}>
-            Daksh Desai &amp; Associates is a Chartered Accountancy firm established in <span className="fill">[year]</span> by CA Daksh Desai.
+            Daksh Desai &amp; Associates is a Chartered Accountancy firm established in 2026 by CA Daksh Desai.
           </p>
         </div>
       </section>
@@ -28,19 +28,25 @@ export default function AboutPage() {
             <p>We are a Mumbai-based firm supporting businesses, entrepreneurs, professionals and individuals with finance, taxation and compliance.</p>
             <p>We go beyond routine compliance to give practical, technology-enabled advice suited to each client, so that financial information turns into sound business decisions.</p>
             
-            <aside className="register-card" style={{ marginTop: '0.75rem', maxWidth: '440px' }} aria-label="Firm registration details">
+            <aside className="register-card" style={{ marginTop: '0.75rem', maxWidth: '480px' }} aria-label="Firm registration details">
               <dl className="register-dl">
                 <dt className="register-dt">Established</dt>
-                <dd className="register-dd"><span className="fill">[year]</span></dd>
-                
-                <dt className="register-dt">Head office</dt>
-                <dd className="register-dd">Mumbai</dd>
-                
-                <dt className="register-dt">Core focus</dt>
-                <dd className="register-dd">Tax · Audit · Advisory</dd>
+                <dd className="register-dd">2026</dd>
                 
                 <dt className="register-dt">ICAI FRN</dt>
-                <dd className="register-dd"><span className="fill">[FRN]</span></dd>
+                <dd className="register-dd">165505W</dd>
+
+                <dt className="register-dt">Proprietor</dt>
+                <dd className="register-dd">CA Daksh Desai, ACA (M. No. 648747)</dd>
+
+                <dt className="register-dt">Head Office</dt>
+                <dd className="register-dd">501, Fly Edge, SV Road, Borivali West, Mumbai - 400092</dd>
+
+                <dt className="register-dt">South Mumbai</dt>
+                <dd className="register-dd">1004-05, Raheja Chambers, Nariman Point, Mumbai - 400021</dd>
+
+                <dt className="register-dt">Core Focus</dt>
+                <dd className="register-dd">Tax · Audit · Corporate Advisory</dd>
               </dl>
             </aside>
           </div>
