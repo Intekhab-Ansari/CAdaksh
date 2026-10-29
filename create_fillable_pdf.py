@@ -1,6 +1,7 @@
 """
 Script to generate an executive, interactive fillable PDF form
 for collecting client launch data for Daksh Desai & Associates.
+Precision-engineered layout with guaranteed zero overlapping.
 """
 
 from reportlab.lib.pagesizes import A4
@@ -10,88 +11,101 @@ from reportlab.pdfgen import canvas
 def draw_header(c, page_num, total_pages=2):
     width, height = A4
     
-    # Top Navy Banner
+    # Top Deep Navy Banner
     c.setFillColor(colors.HexColor("#0B1528"))
-    c.rect(0, height - 85, width, 85, fill=True, stroke=False)
+    c.rect(0, height - 76, width, 76, fill=True, stroke=False)
     
-    # Gold accent line
+    # Sovereign Gold Accent Hairline
     c.setFillColor(colors.HexColor("#C5A059"))
-    c.rect(0, height - 88, width, 3, fill=True, stroke=False)
+    c.rect(0, height - 79, width, 3, fill=True, stroke=False)
     
-    # Title Text in Banner
+    # Left Branding
     c.setFillColor(colors.white)
-    c.setFont("Helvetica-Bold", 17)
-    c.drawString(36, height - 38, "DAKSH DESAI & ASSOCIATES")
+    c.setFont("Helvetica-Bold", 16)
+    c.drawString(36, height - 36, "DAKSH DESAI & ASSOCIATES")
     
     c.setFillColor(colors.HexColor("#C5A059"))
-    c.setFont("Helvetica-Bold", 8.5)
-    c.drawString(36, height - 52, "CHARTERED ACCOUNTANTS * MUMBAI * ICAI REGISTERED PRACTICE")
+    c.setFont("Helvetica-Bold", 8)
+    c.drawString(36, height - 50, "CHARTERED ACCOUNTANTS * MUMBAI * ICAI REGISTERED PRACTICE")
     
+    # Right Document Title
     c.setFillColor(colors.HexColor("#E2E8F0"))
-    c.setFont("Helvetica", 9)
-    c.drawRightString(width - 36, height - 38, "WEBSITE LAUNCH DATA FORM")
+    c.setFont("Helvetica-Bold", 8.5)
+    c.drawRightString(width - 36, height - 36, "WEBSITE ONBOARDING DATA FORM")
+    
     c.setFillColor(colors.HexColor("#94A3B8"))
     c.setFont("Helvetica-Oblique", 7.5)
-    c.drawRightString(width - 36, height - 52, "Interactive Fillable PDF - Complete & Save")
+    c.drawRightString(width - 36, height - 50, "Interactive Fillable PDF - Type in fields & save")
     
-    # Footer
-    c.setStrokeColor(colors.HexColor("#E2E8F0"))
-    c.setLineWidth(0.8)
-    c.line(36, 42, width - 36, 42)
+    # Bottom Footer
+    c.setStrokeColor(colors.HexColor("#CBD5E1"))
+    c.setLineWidth(0.7)
+    c.line(36, 40, width - 36, 40)
     
     c.setFillColor(colors.HexColor("#64748B"))
     c.setFont("Helvetica", 7.5)
-    c.drawString(36, 30, "Daksh Desai & Associates - Strictly Compliant with ICAI Website Guidelines & Code of Ethics")
-    c.drawRightString(width - 36, 30, f"Page {page_num} of {total_pages}")
+    c.drawString(36, 28, "Daksh Desai & Associates - Strictly Compliant with ICAI Website Guidelines (1949 Act)")
+    c.drawRightString(width - 36, 28, f"Page {page_num} of {total_pages}")
 
 
-def draw_section_header(c, x, y, title, subtitle=None):
-    width, height = A4
+def draw_section_bar(c, x, y, title, subtitle=""):
+    width, _ = A4
     box_w = width - (x * 2)
+    h = 20
     
-    # Header bar
+    # Background
     c.setFillColor(colors.HexColor("#112540"))
-    c.rect(x, y - 22, box_w, 22, fill=True, stroke=False)
+    c.rect(x, y - h, box_w, h, fill=True, stroke=False)
     
-    # Gold marker
+    # Gold left bar
     c.setFillColor(colors.HexColor("#C5A059"))
-    c.rect(x, y - 22, 4, 22, fill=True, stroke=False)
+    c.rect(x, y - h, 4, h, fill=True, stroke=False)
     
+    # Title
     c.setFillColor(colors.white)
-    c.setFont("Helvetica-Bold", 9.5)
-    c.drawString(x + 12, y - 15, title)
-    
-    if subtitle:
-        c.setFillColor(colors.HexColor("#CBD5E1"))
-        c.setFont("Helvetica-Oblique", 7.5)
-        c.drawRightString(x + box_w - 10, y - 15, subtitle)
-
-
-def draw_field(c, x, y, w, h, field_name, label, hint="", default="", is_multiline=False):
-    # Field Label
-    c.setFillColor(colors.HexColor("#0F172A"))
     c.setFont("Helvetica-Bold", 8.5)
-    c.drawString(x, y + h + 4, label)
+    c.drawString(x + 10, y - 14, title)
     
-    # Optional hint
+    # Subtitle
+    if subtitle:
+        c.setFillColor(colors.HexColor("#94A3B8"))
+        c.setFont("Helvetica-Oblique", 7.2)
+        c.drawRightString(x + box_w - 10, y - 14, subtitle)
+
+
+def draw_field_clean(c, x, y_label, w, h, field_name, label, hint="", default=""):
+    """
+    Renders label strictly above the input box with zero collision.
+    y_label: baseline for label text
+    h: height of input box
+    """
+    c.setFillColor(colors.HexColor("#0F172A"))
+    c.setFont("Helvetica-Bold", 8)
+    label_w = c.stringWidth(label, "Helvetica-Bold", 8)
+    c.drawString(x, y_label, label)
+    
     if hint:
+        avail_w = w - label_w - 10
+        c.setFont("Helvetica-Oblique", 7)
         c.setFillColor(colors.HexColor("#64748B"))
-        c.setFont("Helvetica", 7)
-        c.drawString(x + c.stringWidth(label, "Helvetica-Bold", 8.5) + 6, y + h + 4, f"({hint})")
+        hint_text = f"({hint})"
+        if c.stringWidth(hint_text, "Helvetica-Oblique", 7) <= avail_w:
+            c.drawString(x + label_w + 6, y_label, hint_text)
     
-    # AcroForm Interactive Text Field
+    # Text input box placed cleanly 4pt below label baseline
+    input_y = y_label - 4 - h
     c.acroForm.textfield(
         name=field_name,
         tooltip=label,
         x=x,
-        y=y,
+        y=input_y,
         width=w,
         height=h,
         value=default,
         borderColor=colors.HexColor("#94A3B8"),
         fillColor=colors.HexColor("#F8FAFC"),
         textColor=colors.HexColor("#0B1528"),
-        fontSize=9,
+        fontSize=8.5,
         borderStyle='solid',
         borderWidth=1
     )
@@ -102,10 +116,13 @@ def build_pdf(filename="Daksh_Desai_Website_Data_Form.pdf"):
     c = canvas.Canvas(filename, pagesize=A4)
     c.setTitle("Daksh Desai & Associates - Website Launch Data Form")
     c.setAuthor("Daksh Desai & Associates")
-    c.setSubject("Client Onboarding & Practice Launch Form")
     
     margin_x = 36
     content_w = width - (margin_x * 2)
+    col_gap = 14
+    half_w = (content_w - col_gap) / 2
+    third_w = (content_w - (col_gap * 2)) / 3
+    box_h = 20  # standard input box height
     
     # =========================================================================
     # PAGE 1: STATUTORY CREDENTIALS & CONTACT CHANNELS
@@ -113,62 +130,66 @@ def build_pdf(filename="Daksh_Desai_Website_Data_Form.pdf"):
     draw_header(c, page_num=1, total_pages=2)
     
     # Instructions Box
-    curr_y = height - 102
+    curr_y = height - 92
+    inst_h = 32
     c.setFillColor(colors.HexColor("#F1F5F9"))
     c.setStrokeColor(colors.HexColor("#CBD5E1"))
     c.setLineWidth(0.8)
-    c.roundRect(margin_x, curr_y - 36, content_w, 36, 4, fill=True, stroke=True)
+    c.roundRect(margin_x, curr_y - inst_h, content_w, inst_h, 3, fill=True, stroke=True)
     
     c.setFillColor(colors.HexColor("#0F172A"))
-    c.setFont("Helvetica-Bold", 8)
-    c.drawString(margin_x + 12, curr_y - 14, "INSTRUCTIONS FOR CA DAKSH DESAI:")
-    c.setFillColor(colors.HexColor("#334155"))
-    c.setFont("Helvetica", 7.8)
-    c.drawString(margin_x + 12, curr_y - 26, "Please type your details directly into the shaded boxes below in Adobe Acrobat, Chrome, or Edge, and click Save.")
-    c.drawString(margin_x + 12, curr_y - 35, "All entries are used exclusively to populate your official, ICAI-compliant practice portal.")
+    c.setFont("Helvetica-Bold", 7.8)
+    c.drawString(margin_x + 10, curr_y - 12, "INSTRUCTIONS FOR CA DAKSH DESAI:")
+    c.setFillColor(colors.HexColor("#475569"))
+    c.setFont("Helvetica", 7.3)
+    c.drawString(margin_x + 10, curr_y - 23, "Please type directly into the shaded boxes below in Adobe Acrobat, Chrome, or Edge, and save the file.")
     
-    # SECTION 1: STATUTORY ICAI CREDENTIALS
-    curr_y = curr_y - 60
-    draw_section_header(c, margin_x, curr_y, "1. STATUTORY ICAI PRACTICE CREDENTIALS", "ICAI Registration Particulars")
+    # --- SECTION 1: STATUTORY ICAI CREDENTIALS ---
+    curr_y = curr_y - inst_h - 14  # y = 702
+    draw_section_bar(c, margin_x, curr_y, "1. STATUTORY ICAI PRACTICE CREDENTIALS", "ICAI Registration Records")
     
-    curr_y = curr_y - 32
-    col_gap = 14
-    half_w = (content_w - col_gap) / 2
+    # Row 1
+    curr_y = curr_y - 20 - 15  # 15pt space below section bar -> y_label = 667
+    draw_field_clean(c, margin_x, curr_y, half_w, box_h, "firm_name", "ICAI Approved Firm Name", "Exact legal name", "Daksh Desai & Associates")
+    draw_field_clean(c, margin_x + half_w + col_gap, curr_y, half_w, box_h, "frn_number", "Firm Registration Number (FRN)", "e.g. 1XXXXXW")
     
-    draw_field(c, margin_x, curr_y - 18, half_w, 20, "firm_name", "ICAI Approved Firm Name", "Exact legal spelling", "Daksh Desai & Associates")
-    draw_field(c, margin_x + half_w + col_gap, curr_y - 18, half_w, 20, "frn_number", "Firm Registration Number (FRN)", "Issued by ICAI, e.g. 1XXXXXW")
+    # Row 2
+    curr_y = curr_y - (box_h + 18)  # drop by 38pt -> y_label = 629
+    draw_field_clean(c, margin_x, curr_y, half_w, box_h, "proprietor_name", "Proprietor / Managing Partner Name", "With designation", "CA Daksh Desai, ACA")
+    draw_field_clean(c, margin_x + half_w + col_gap, curr_y, half_w, box_h, "membership_no", "ICAI Membership Number (M. No.)", "6-digit ID")
     
-    curr_y = curr_y - 48
-    draw_field(c, margin_x, curr_y - 18, half_w, 20, "proprietor_name", "Proprietor / Managing Partner Name", "Full name with designation", "CA Daksh Desai, ACA")
-    draw_field(c, margin_x + half_w + col_gap, curr_y - 18, half_w, 20, "membership_no", "ICAI Membership Number (M. No.)", "6-digit member ID")
+    # Row 3
+    curr_y = curr_y - (box_h + 18)  # drop by 38pt -> y_label = 591
+    draw_field_clean(c, margin_x, curr_y, half_w, box_h, "est_year", "Year of Establishment", "e.g. 2024 or 2026")
+    draw_field_clean(c, margin_x + half_w + col_gap, curr_y, half_w, box_h, "degrees", "Academic & Professional Degrees", "e.g. ACA, B.Com", "ACA, B.Com")
     
-    curr_y = curr_y - 48
-    draw_field(c, margin_x, curr_y - 18, half_w, 20, "est_year", "Year of Establishment", "e.g. 2024 or 2026")
-    draw_field(c, margin_x + half_w + col_gap, curr_y - 18, half_w, 20, "degrees", "Academic & Professional Degrees", "e.g. ACA, B.Com, LLB", "ACA, B.Com")
+    # --- SECTION 2: OFFICIAL PRACTICE CONTACT CHANNELS ---
+    curr_y = curr_y - (box_h + 24)  # drop by 44pt -> y = 527
+    draw_section_bar(c, margin_x, curr_y, "2. OFFICIAL PRACTICE CONTACT CHANNELS", "Displayed on Header, Footer & Contact Desk")
     
-    # SECTION 2: OFFICIAL PRACTICE CONTACT CHANNELS
-    curr_y = curr_y - 58
-    draw_section_header(c, margin_x, curr_y, "2. OFFICIAL PRACTICE CONTACT CHANNELS", "Displayed on Header, Footer & Contact Desk")
+    # Row 1
+    curr_y = curr_y - 20 - 15  # y_label = 492
+    draw_field_clean(c, margin_x, curr_y, half_w, box_h, "primary_phone", "Primary Direct / Mobile Number", "With WhatsApp")
+    draw_field_clean(c, margin_x + half_w + col_gap, curr_y, half_w, box_h, "alternate_phone", "Alternate / Office Landline", "Optional")
     
-    curr_y = curr_y - 32
-    draw_field(c, margin_x, curr_y - 18, half_w, 20, "primary_phone", "Primary Direct / Mobile Number", "With WhatsApp capability, e.g. +91 98XXX XXXXX")
-    draw_field(c, margin_x + half_w + col_gap, curr_y - 18, half_w, 20, "alternate_phone", "Alternate / Office Landline (Optional)", "e.g. 022-XXXXXXXX")
+    # Row 2
+    curr_y = curr_y - (box_h + 18)  # y_label = 454
+    draw_field_clean(c, margin_x, curr_y, half_w, box_h, "primary_email", "Statutory Practice Email", "e.g. info@domain.com")
+    draw_field_clean(c, margin_x + half_w + col_gap, curr_y, half_w, box_h, "office_hours", "Chambers Office Working Hours", "e.g. Mon-Sat 10am-7pm", "Mon-Sat: 10:00 AM - 7:00 PM IST")
     
-    curr_y = curr_y - 48
-    draw_field(c, margin_x, curr_y - 18, half_w, 20, "primary_email", "Statutory Practice Email", "For inquiries, e.g. info@cadakshdesaiassociates.com")
-    draw_field(c, margin_x + half_w + col_gap, curr_y - 18, half_w, 20, "office_hours", "Chambers Office Working Hours", "e.g. Mon-Sat: 10:00 AM - 7:00 PM IST", "Mon-Sat: 10:00 AM - 7:00 PM IST")
+    # Row 3
+    curr_y = curr_y - (box_h + 18)  # y_label = 416
+    draw_field_clean(c, margin_x, curr_y, content_w, box_h, "chambers_address_1", "Chambers Registered Address - Line 1", "Office/Suite No., Building Name")
     
-    curr_y = curr_y - 48
-    draw_field(c, margin_x, curr_y - 18, content_w, 20, "chambers_address_1", "Chambers Registered Address - Line 1", "Office / Suite No., Building Name")
+    # Row 4
+    curr_y = curr_y - (box_h + 18)  # y_label = 378
+    draw_field_clean(c, margin_x, curr_y, content_w, box_h, "chambers_address_2", "Chambers Registered Address - Line 2", "Street, Landmark, Area")
     
-    curr_y = curr_y - 42
-    draw_field(c, margin_x, curr_y - 18, content_w, 20, "chambers_address_2", "Chambers Registered Address - Line 2", "Street, Landmark, Area")
-    
-    curr_y = curr_y - 42
-    third_w = (content_w - (col_gap * 2)) / 3
-    draw_field(c, margin_x, curr_y - 18, third_w, 20, "city", "City", "", "Mumbai")
-    draw_field(c, margin_x + third_w + col_gap, curr_y - 18, third_w, 20, "pincode", "PIN Code", "e.g. 400001")
-    draw_field(c, margin_x + (third_w * 2) + (col_gap * 2), curr_y - 18, third_w, 20, "state", "State", "", "Maharashtra")
+    # Row 5
+    curr_y = curr_y - (box_h + 18)  # y_label = 340
+    draw_field_clean(c, margin_x, curr_y, third_w, box_h, "city", "City", "", "Mumbai")
+    draw_field_clean(c, margin_x + third_w + col_gap, curr_y, third_w, box_h, "pincode", "PIN Code", "e.g. 400001")
+    draw_field_clean(c, margin_x + (third_w * 2) + (col_gap * 2), curr_y, third_w, box_h, "state", "State", "", "Maharashtra")
     
     c.showPage()
     
@@ -177,90 +198,96 @@ def build_pdf(filename="Daksh_Desai_Website_Data_Form.pdf"):
     # =========================================================================
     draw_header(c, page_num=2, total_pages=2)
     
-    # SECTION 3: DIGITAL ASSETS & WEB PRESENCE
-    curr_y = height - 105
-    draw_section_header(c, margin_x, curr_y, "3. DIGITAL ASSETS & WEB PRESENCE", "Navigation & Professional Links")
+    # --- SECTION 3: DIGITAL ASSETS & WEB PRESENCE ---
+    curr_y = height - 92
+    draw_section_bar(c, margin_x, curr_y, "3. DIGITAL ASSETS & WEB PRESENCE", "Navigation & Professional Links")
     
-    curr_y = curr_y - 32
-    draw_field(c, margin_x, curr_y - 18, content_w, 20, "maps_url", "Google Maps Chamber Location Link", "Share link from Google Maps so clients can navigate directly")
+    # Row 1
+    curr_y = curr_y - 20 - 15  # y_label = 714
+    draw_field_clean(c, margin_x, curr_y, content_w, box_h, "maps_url", "Google Maps Chamber Location Link", "Share link from Google Maps for client navigation")
     
-    curr_y = curr_y - 48
-    draw_field(c, margin_x, curr_y - 18, half_w, 20, "linkedin_personal", "Proprietor LinkedIn Profile URL", "e.g. linkedin.com/in/daksh-desai")
-    draw_field(c, margin_x + half_w + col_gap, curr_y - 18, half_w, 20, "linkedin_firm", "Firm LinkedIn Page URL (Optional)", "e.g. linkedin.com/company/daksh-desai-associates")
+    # Row 2
+    curr_y = curr_y - (box_h + 18)  # y_label = 676
+    draw_field_clean(c, margin_x, curr_y, half_w, box_h, "linkedin_personal", "Proprietor LinkedIn Profile URL", "e.g. linkedin.com/in/...")
+    draw_field_clean(c, margin_x + half_w + col_gap, curr_y, half_w, box_h, "linkedin_firm", "Firm LinkedIn Page URL", "Optional")
     
-    curr_y = curr_y - 48
-    draw_field(c, margin_x, curr_y - 18, content_w, 20, "domain_url", "Official Website Domain Name", "Configured production domain", "dakshdesaiassociates.com")
+    # Row 3
+    curr_y = curr_y - (box_h + 18)  # y_label = 638
+    draw_field_clean(c, margin_x, curr_y, content_w, box_h, "domain_url", "Official Website Domain Name", "Configured production domain", "dakshdesaiassociates.com")
     
-    # SECTION 4: PRACTICE PROFILE & PHOTO CHECKLIST
-    curr_y = curr_y - 58
-    draw_section_header(c, margin_x, curr_y, "4. PROPRIETOR BIOGRAPHY & ATTACHMENTS", "Regulatory Verification")
+    # --- SECTION 4: PRACTICE PROFILE & PHOTO CHECKLIST ---
+    curr_y = curr_y - (box_h + 24)  # drop by 44pt -> y = 574
+    draw_section_bar(c, margin_x, curr_y, "4. PROPRIETOR BIOGRAPHY & ATTACHMENTS", "Regulatory Verification")
     
-    curr_y = curr_y - 32
-    draw_field(c, margin_x, curr_y - 18, content_w, 20, "expertise_headline", "Primary Practice Focus Line", "e.g. Direct Tax Litigation, Corporate Audits, FEMA & GST Advisory")
+    # Row 1
+    curr_y = curr_y - 20 - 15  # y_label = 539
+    draw_field_clean(c, margin_x, curr_y, content_w, box_h, "expertise_headline", "Primary Practice Focus Line", "e.g. Direct Tax Litigation, Corporate Audits, FEMA & GST Advisory")
     
-    curr_y = curr_y - 48
-    draw_field(c, margin_x, curr_y - 40, content_w, 42, "proprietor_bio", "Brief Practice Experience Summary (Optional)", "A few sentences highlighting past practice / Big 4 / litigation background")
+    # Row 2 (Multiline Bio)
+    curr_y = curr_y - (box_h + 18)  # y_label = 501
+    draw_field_clean(c, margin_x, curr_y, content_w, 36, "proprietor_bio", "Brief Practice Experience Summary", "Optional 2-3 sentences highlighting past practice / background")
     
-    # Checkbox items
-    curr_y = curr_y - 75
+    # Checklist items
+    curr_y = curr_y - 36 - 20  # y = 445
     c.setFillColor(colors.HexColor("#0F172A"))
-    c.setFont("Helvetica-Bold", 8.5)
-    c.drawString(margin_x, curr_y, "REQUIRED ATTACHMENT CHECKLIST:")
+    c.setFont("Helvetica-Bold", 8)
+    c.drawString(margin_x, curr_y, "REQUIRED ATTACHMENT & CONFIRMATION:")
     
-    # Checkbox 1: Passport photo
+    # Checkbox 1: Photo
     c.acroForm.checkbox(
         name="cb_photo",
         tooltip="Passport Photograph attached",
         x=margin_x,
-        y=curr_y - 20,
-        size=12,
+        y=curr_y - 18,
+        size=11,
         buttonStyle='check',
         borderColor=colors.HexColor("#94A3B8"),
         fillColor=colors.HexColor("#F8FAFC"),
         textColor=colors.HexColor("#0B1528")
     )
     c.setFillColor(colors.HexColor("#1E293B"))
-    c.setFont("Helvetica", 8)
-    c.drawString(margin_x + 18, curr_y - 17, "35x45mm Passport-format Photograph (High-resolution, neutral background, sober business attire as mandated by ICAI)")
+    c.setFont("Helvetica", 7.8)
+    c.drawString(margin_x + 16, curr_y - 15, "35x45mm Passport-format Photograph (High-resolution, neutral background, formal business attire per ICAI rules)")
     
     # Checkbox 2: Consent
     c.acroForm.checkbox(
         name="cb_verified",
         tooltip="Details verified with ICAI records",
         x=margin_x,
-        y=curr_y - 38,
-        size=12,
+        y=curr_y - 34,
+        size=11,
         buttonStyle='check',
         borderColor=colors.HexColor("#94A3B8"),
         fillColor=colors.HexColor("#F8FAFC"),
         textColor=colors.HexColor("#0B1528")
     )
-    c.drawString(margin_x + 18, curr_y - 35, "I confirm that all particulars above are authentic and accurately reflect ICAI registration records.")
+    c.drawString(margin_x + 16, curr_y - 31, "I confirm that all particulars above are authentic and accurately reflect ICAI registration records.")
     
-    # SECTION 5: SPECIAL INSTRUCTIONS / NOTES
-    curr_y = curr_y - 60
-    draw_section_header(c, margin_x, curr_y, "5. DEVELOPER NOTES & ADDITIONAL INSTRUCTIONS", "Any Special Requests")
+    # --- SECTION 5: SPECIAL INSTRUCTIONS / NOTES ---
+    curr_y = curr_y - 54  # y = 391
+    draw_section_bar(c, margin_x, curr_y, "5. DEVELOPER NOTES & ADDITIONAL INSTRUCTIONS", "Any Special Requests")
     
-    curr_y = curr_y - 32
-    draw_field(c, margin_x, curr_y - 42, content_w, 44, "additional_notes", "Additional Instructions or Notes for Web Engineering Team", "Type any specific requests, preferred email routing, or custom changes here...")
+    curr_y = curr_y - 20 - 15  # y_label = 356
+    draw_field_clean(c, margin_x, curr_y, content_w, 40, "additional_notes", "Additional Instructions or Notes for Web Engineering Team", "Type any specific requests here...")
     
-    # Bottom Confirmation Box
-    curr_y = curr_y - 72
+    # Bottom Confirmation Return Card
+    curr_y = curr_y - 40 - 24  # y = 292
+    confirm_h = 36
     c.setFillColor(colors.HexColor("#F8FAFC"))
     c.setStrokeColor(colors.HexColor("#C5A059"))
     c.setLineWidth(1)
-    c.roundRect(margin_x, curr_y - 36, content_w, 36, 4, fill=True, stroke=True)
+    c.roundRect(margin_x, curr_y - confirm_h, content_w, confirm_h, 3, fill=True, stroke=True)
     
     c.setFillColor(colors.HexColor("#0B1528"))
-    c.setFont("Helvetica-Bold", 8)
-    c.drawString(margin_x + 12, curr_y - 14, "RETURN COMPLETED FORM:")
+    c.setFont("Helvetica-Bold", 7.8)
+    c.drawString(margin_x + 10, curr_y - 12, "RETURN COMPLETED FORM:")
     c.setFillColor(colors.HexColor("#475569"))
-    c.setFont("Helvetica", 7.8)
-    c.drawString(margin_x + 12, curr_y - 25, "Save this PDF and email/WhatsApp it back to your web development team along with your passport photograph.")
-    c.drawString(margin_x + 12, curr_y - 34, "Your website at https://dakshdesaiassociates.com will be updated immediately upon receipt.")
+    c.setFont("Helvetica", 7.2)
+    c.drawString(margin_x + 10, curr_y - 22, "Save this PDF and email/WhatsApp it back along with your passport photograph.")
+    c.drawString(margin_x + 10, curr_y - 31, "Your website at https://dakshdesaiassociates.com will be updated immediately upon receipt.")
     
     c.save()
-    print(f"Fillable PDF successfully created at: {filename}")
+    print(f"Fillable PDF successfully rebuilt at: {filename}")
 
 if __name__ == "__main__":
     build_pdf()
