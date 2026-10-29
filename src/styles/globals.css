@@ -95,6 +95,18 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+/* Hide scrollbars across all browsers while preserving scrollability */
+*::-webkit-scrollbar,
+::-webkit-scrollbar,
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 html {
@@ -104,6 +116,8 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 body {
@@ -116,6 +130,8 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 main {
@@ -125,22 +141,6 @@ main {
 ::selection {
   background-color: var(--color-action-blue);
   color: #FFFFFF;
-}
-
-/* Slim Executive Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-track {
-  background: var(--color-surface-subtle);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--color-border-subdued);
-  border-radius: var(--radius-full);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-action-blue);
 }
 
 img, svg, picture {
