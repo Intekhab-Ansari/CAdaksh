@@ -85,13 +85,15 @@ export default function AboutPage() {
                 <dd className="register-dd">1004-05, Raheja Chambers, Nariman Point, Mumbai – 400021</dd>
 
                 <dt className="register-dt">Direct Counsel</dt>
-                <dd className="register-dd">
-                  <a href="tel:+919819647471" style={{ color: 'var(--color-primary-navy)', fontWeight: 600, textDecoration: 'none' }}>
+                <dd className="register-dd" style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+                  <a href="tel:+919819647471" style={{ color: 'var(--color-primary-navy)', fontWeight: 600, textDecoration: 'none', whiteSpace: 'nowrap' }}>
                     +91 98196 47471
                   </a>
-                  {' · '}
-                  <a href="mailto:cadakshdesai@outlook.com" style={{ color: 'var(--color-primary-navy)', fontWeight: 600, textDecoration: 'none' }}>
+                  <a href="mailto:cadakshdesai@outlook.com" style={{ color: 'var(--color-primary-navy)', fontWeight: 600, textDecoration: 'none', whiteSpace: 'nowrap' }}>
                     cadakshdesai@outlook.com
+                  </a>
+                  <a href="mailto:dakshdesai0109@gmail.com" style={{ color: 'var(--color-primary-navy)', fontWeight: 600, textDecoration: 'none', whiteSpace: 'nowrap' }}>
+                    dakshdesai0109@gmail.com
                   </a>
                 </dd>
               </dl>

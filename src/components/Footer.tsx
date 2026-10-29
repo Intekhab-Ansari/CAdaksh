@@ -98,20 +98,19 @@ export default function Footer() {
                 </span>
               </div>
 
-              <div className="footer-detail-item">
+              <div className="footer-detail-item footer-detail-emails">
                 <span className="detail-icon" aria-hidden="true">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 </span>
                 <span className="detail-label">Practice Email:</span>
-                <span className="detail-val">
-                  <a href="mailto:cadakshdesai@outlook.com" className="footer-link-subtle">
+                <div className="detail-val footer-emails-col">
+                  <a href="mailto:cadakshdesai@outlook.com" className="footer-link-subtle footer-email-link">
                     cadakshdesai@outlook.com
                   </a>
-                  {' · '}
-                  <a href="mailto:dakshdesai0109@gmail.com" className="footer-link-subtle">
+                  <a href="mailto:dakshdesai0109@gmail.com" className="footer-link-subtle footer-email-link">
                     dakshdesai0109@gmail.com
                   </a>
-                </span>
+                </div>
               </div>
 
               <div className="footer-detail-item">

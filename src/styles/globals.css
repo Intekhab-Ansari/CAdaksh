@@ -2637,6 +2637,20 @@ footer.site-footer::before {
   word-break: break-word;
 }
 
+.footer-emails-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  width: 100%;
+}
+
+.footer-email-link {
+  display: inline-block;
+  white-space: nowrap !important;
+  word-break: normal !important;
+  font-size: clamp(0.74rem, 1.05vw, 0.84rem);
+}
+
 .footer-link-subtle {
   color: #E2E8F0;
   text-decoration: none;
@@ -4554,6 +4568,10 @@ footer.site-footer::before {
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  .footer-email-link {
+    font-size: clamp(0.72rem, 3.2vw, 0.84rem) !important;
+    white-space: nowrap !important;
+  }
   .legal-links {
     flex-wrap: wrap;
     gap: 0.5rem !important;
@@ -4622,6 +4640,10 @@ footer.site-footer::before {
   .copyright-line {
     font-size: clamp(0.5rem, 2.4vw, 0.66rem) !important;
     letter-spacing: -0.025em !important;
+  }
+  .footer-email-link {
+    font-size: 0.68rem !important;
+    letter-spacing: -0.01em !important;
   }
 }
 
