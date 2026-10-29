@@ -115,7 +115,7 @@ html {
   scroll-padding-top: 5.5rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: clip;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -144,7 +144,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
+  overflow-x: clip;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -153,11 +153,43 @@ main {
   flex: 1;
 }
 
+/* --- LUXURY HERO ENTRANCE ANIMATIONS (Page Load) --- */
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-eyebrow-seal {
+  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-main-title {
+  animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+}
+
+.hero-sublede {
+  animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+}
+
+.hero-btn-group {
+  animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
+}
+
+.hero-trust-badges {
+  animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.42s both;
+}
+
 /* --- SCROLL-DRIVEN ENTRANCE & REVEAL ANIMATIONS --- */
 .scroll-reveal-target {
   opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(32px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
@@ -166,8 +198,33 @@ main {
   transform: translateY(0);
 }
 
+/* Stagger effect for cards in grids */
+.rsc-hero-grid > div.scroll-reveal-target:nth-child(1) { transition-delay: 0.05s; }
+.rsc-hero-grid > div.scroll-reveal-target:nth-child(2) { transition-delay: 0.12s; }
+.rsc-hero-grid > div.scroll-reveal-target:nth-child(3) { transition-delay: 0.19s; }
+.rsc-hero-grid > div.scroll-reveal-target:nth-child(4) { transition-delay: 0.26s; }
+.rsc-hero-grid > div.scroll-reveal-target:nth-child(5) { transition-delay: 0.33s; }
+.rsc-hero-grid > div.scroll-reveal-target:nth-child(6) { transition-delay: 0.40s; }
+
+.sector-matrix-card.scroll-reveal-target:nth-child(1) { transition-delay: 0.05s; }
+.sector-matrix-card.scroll-reveal-target:nth-child(2) { transition-delay: 0.12s; }
+.sector-matrix-card.scroll-reveal-target:nth-child(3) { transition-delay: 0.19s; }
+.sector-matrix-card.scroll-reveal-target:nth-child(4) { transition-delay: 0.26s; }
+.sector-matrix-card.scroll-reveal-target:nth-child(5) { transition-delay: 0.33s; }
+.sector-matrix-card.scroll-reveal-target:nth-child(6) { transition-delay: 0.40s; }
+
+.compliance-milestone-card.scroll-reveal-target:nth-child(1) { transition-delay: 0.05s; }
+.compliance-milestone-card.scroll-reveal-target:nth-child(2) { transition-delay: 0.12s; }
+.compliance-milestone-card.scroll-reveal-target:nth-child(3) { transition-delay: 0.19s; }
+
 @media (prefers-reduced-motion: reduce) {
+  .hero-eyebrow-seal,
+  .hero-main-title,
+  .hero-sublede,
+  .hero-btn-group,
+  .hero-trust-badges,
   .scroll-reveal-target {
+    animation: none !important;
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;

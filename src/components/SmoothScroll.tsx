@@ -13,54 +13,25 @@ export default function SmoothScroll() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    // Respect user's accessibility reduced motion preference
+    // Respect accessibility reduced-motion preference
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
 
     const lenis = new Lenis({
-      duration: 1.15,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Exponential deceleration
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
+      autoRaf: true,
+      anchors: true,
       smoothWheel: true,
-      wheelMultiplier: 1,
+      duration: 1.25,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      wheelMultiplier: 1.15,
       touchMultiplier: 1.5,
+      lerp: 0.08,
     });
 
     lenisRef.current = lenis;
     (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
 
-    let rafId: number;
-    function raf(time: number) {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    }
-    rafId = requestAnimationFrame(raf);
-
-    // Smoothly intercept in-page anchor links (e.g., #statutory-calendar, #cta-connect)
-    const handleAnchorClick = (e: MouseEvent) => {
-      const anchor = (e.target as HTMLElement)?.closest('a');
-      if (!anchor) return;
-
-      const href = anchor.getAttribute('href');
-      if (href && href.startsWith('#') && href.length > 1) {
-        const targetElement = document.querySelector(href);
-        if (targetElement) {
-          e.preventDefault();
-          lenis.scrollTo(targetElement as HTMLElement, {
-            offset: -85,
-            duration: 1.3,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-          });
-        }
-      }
-    };
-
-    document.addEventListener('click', handleAnchorClick);
-
     return () => {
-      cancelAnimationFrame(rafId);
-      document.removeEventListener('click', handleAnchorClick);
       lenis.destroy();
       lenisRef.current = null;
       delete (window as unknown as { __lenis?: Lenis }).__lenis;
@@ -71,7 +42,7 @@ export default function SmoothScroll() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    // Scroll to top smoothly on route change
+    // Scroll to top immediately on route change
     if (lenisRef.current) {
       lenisRef.current.scrollTo(0, { immediate: true });
     }
@@ -79,49 +50,60 @@ export default function SmoothScroll() {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
 
-    const observer = new IntersectionObserver(
-      (entries, obs) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('scroll-animated');
-            obs.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        root: null,
-        rootMargin: '0px 0px -40px 0px',
-        threshold: 0.08,
-      }
-    );
+    let observer: IntersectionObserver | null = null;
 
-    // Target major sections and key structural elements for reveal
-    const revealSelectors = [
-      'section:not(.hero)',
-      '.statutory-card',
-      '.audit-card',
-      '.industry-sector-card',
-      '.faq-item',
-      '.service-card',
-      '.proprietor-card',
-      '.team-desk-card',
-    ];
+    const initObserver = () => {
+      observer = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('scroll-animated');
+              obs.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          root: null,
+          rootMargin: '0px 0px -40px 0px',
+          threshold: 0.05,
+        }
+      );
 
-    const elements = document.querySelectorAll(revealSelectors.join(', '));
-    elements.forEach((el) => {
-      const rect = el.getBoundingClientRect();
-      // Only attach reveal to elements below initial viewport to prevent above-fold pop-in
-      if (rect.top > window.innerHeight * 0.85) {
-        el.classList.add('scroll-reveal-target');
-        observer.observe(el);
-      }
-    });
+      // Target all structural sections and major cards
+      const revealSelectors = [
+        'section:not(#home-hero)',
+        '.rsc-navy-card',
+        '.rsc-image-card',
+        '.approach-card',
+        '.compliance-milestone-card',
+        '.sector-matrix-card',
+        '.diagnostic-card',
+        '.faq-item',
+        '.service-card',
+        '.proprietor-card',
+        '.team-desk-card',
+        '.section-cta-light',
+      ];
+
+      const elements = document.querySelectorAll(revealSelectors.join(', '));
+      elements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        // Elements below viewport top threshold get attached to observer
+        if (rect.top > window.innerHeight * 0.75) {
+          el.classList.add('scroll-reveal-target');
+          observer?.observe(el);
+        }
+      });
+    };
+
+    // Small delay to ensure Next.js DOM has fully rendered
+    const timer = setTimeout(initObserver, 120);
 
     return () => {
-      observer.disconnect();
+      clearTimeout(timer);
+      observer?.disconnect();
     };
   }, [pathname]);
 
   return null;
 }
-
