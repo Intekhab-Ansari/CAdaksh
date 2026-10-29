@@ -189,9 +189,6 @@ export default function Footer() {
             <div className="copyright-line">
               © {new Date().getFullYear()} Daksh Desai &amp; Associates, Chartered Accountants. All rights reserved.
             </div>
-            <p className="ethics-statement">
-              This website is meant solely for the purpose of providing factual information regarding the firm and its professional services, in strict compliance with the Chartered Accountants Act, 1949 and Council Guidelines issued by the Institute of Chartered Accountants of India (ICAI). This portal does not constitute advertisement, personal communication, solicitation, invitation, or inducement of any sort whatsoever.
-            </p>
           </div>
           <div className="legal-links">
             <Link href="/disclaimer">ICAI Disclaimer</Link>
