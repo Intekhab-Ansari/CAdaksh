@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 export default function Header() {
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
   const isActive = (href: string) => {
@@ -14,24 +14,16 @@ export default function Header() {
     return pathname.startsWith(href);
   };
 
-  const closeDrawer = () => setDrawerOpen(false);
+  const closeMenu = () => setMenuOpen(false);
 
-  // Lock body scroll and listen for Escape key when drawer is open
+  // Close menu on Escape key press
   useEffect(() => {
-    if (drawerOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setDrawerOpen(false);
+      if (e.key === 'Escape') setMenuOpen(false);
     };
     window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.body.style.overflow = '';
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [drawerOpen]);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
     <>
@@ -74,17 +66,17 @@ export default function Header() {
               Contact Us
             </Link>
 
-            {/* Mobile Hamburger Toggle Button */}
+            {/* Mobile / Tablet Toggle Button */}
             <button
               type="button"
               className="mobile-toggle-btn"
               id="mobileNavBtn"
-              onClick={() => setDrawerOpen(!drawerOpen)}
-              aria-expanded={drawerOpen}
-              aria-controls="mobileDrawer"
-              aria-label="Toggle navigation menu"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-expanded={menuOpen}
+              aria-controls="mobileQuickMenu"
+              aria-label="Toggle Quick Navigation Menu"
             >
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -95,95 +87,127 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile Navigation Drawer */}
+      {/* Click-outside backdrop */}
+      {menuOpen && (
+        <div
+          className="quick-menu-backdrop"
+          onClick={closeMenu}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Compact Floating Quick Menu Popover */}
       <div
-        className={`mobile-drawer ${drawerOpen ? 'open' : ''}`}
-        id="mobileDrawer"
+        className={`quick-menu-card ${menuOpen ? 'open' : ''}`}
+        id="mobileQuickMenu"
         role="dialog"
         aria-modal="true"
-        aria-label="Mobile Navigation Drawer"
-        data-lenis-prevent
-        onClick={(e) => {
-          if (e.target === e.currentTarget) closeDrawer();
-        }}
+        aria-label="Quick Practice Menu"
       >
-        <div className="mobile-drawer-content">
-          <div className="mobile-drawer-header">
-            <div className="mobile-drawer-brand">
-              <Image src="/images/ca-logo.svg" alt="CA Logo" width={32} height={32} />
-              <div>
-                <strong style={{ display: 'block', fontSize: '0.98rem', color: 'var(--color-primary-navy)', lineHeight: 1.2 }}>
-                  Daksh Desai &amp; Associates
-                </strong>
-                <span style={{ fontSize: '0.68rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-gold)', fontWeight: 700 }}>
-                  CHARTERED ACCOUNTANTS · MUMBAI
-                </span>
-              </div>
-            </div>
-            <button
-              type="button"
-              className="mobile-close-btn"
-              onClick={closeDrawer}
-              aria-label="Close navigation menu"
-            >
-              ✕
-            </button>
-          </div>
+        {/* Card Header */}
+        <div className="quick-menu-header">
+          <span className="quick-menu-tag">QUICK MENU</span>
+          <button
+            type="button"
+            className="quick-menu-close"
+            onClick={closeMenu}
+            aria-label="Close menu"
+          >
+            ✕
+          </button>
+        </div>
 
-          <div className="mobile-nav-scroll">
-            <div className="mobile-nav-section-title">PRACTICE DIRECTORY</div>
-            <nav className="mobile-nav-links" aria-label="Mobile Main Navigation">
-              <Link href="/" onClick={closeDrawer} className={pathname === '/' ? 'active' : ''}>
-                <span>Home</span>
-                <span className="nav-arrow" aria-hidden="true">→</span>
-              </Link>
-              <Link href="/about" onClick={closeDrawer} className={isActive('/about') ? 'active' : ''}>
-                <span>About the Practice</span>
-                <span className="nav-arrow" aria-hidden="true">→</span>
-              </Link>
-              <Link href="/team" onClick={closeDrawer} className={isActive('/team') ? 'active' : ''}>
-                <span>Proprietor &amp; Practice Desks</span>
-                <span className="nav-arrow" aria-hidden="true">→</span>
-              </Link>
-              <Link href="/services" onClick={closeDrawer} className={isActive('/services') && pathname === '/services' ? 'active' : ''}>
-                <span>Services Directory</span>
-                <span className="nav-arrow" aria-hidden="true">→</span>
-              </Link>
+        {/* Top Segmented Tabs */}
+        <div className="quick-menu-tabs">
+          <Link href="/services" onClick={closeMenu} className={`quick-tab-pill ${isActive('/services') ? 'active' : ''}`}>
+            <span className="tab-icon">✦</span>
+            <span>Practice Desks</span>
+          </Link>
+          <Link href="/contact" onClick={closeMenu} className={`quick-tab-pill ${isActive('/contact') ? 'active' : ''}`}>
+            <span className="tab-icon">🏛</span>
+            <span>Chambers</span>
+          </Link>
+        </div>
 
-              {/* Sub-Desk Links */}
-              <div className="mobile-sub-nav">
-                <Link href="/services/income-tax" onClick={closeDrawer}>Income Tax &amp; AIS Scrutiny</Link>
-                <Link href="/services/gst" onClick={closeDrawer}>GST Returns &amp; 2B Matching</Link>
-                <Link href="/services/audit" onClick={closeDrawer}>Statutory &amp; Tax Audit (44AB)</Link>
-                <Link href="/services/accounting" onClick={closeDrawer}>Accounting &amp; MIS Bookkeeping</Link>
-                <Link href="/services/cfo-advisory" onClick={closeDrawer}>Virtual CFO &amp; Financial Advisory</Link>
-                <Link href="/services/international-tax" onClick={closeDrawer}>Form 15CA/15CB Foreign Remittance</Link>
-                <Link href="/services/corporate-law" onClick={closeDrawer}>Corporate Law &amp; MCA21 Filings</Link>
-              </div>
+        {/* Navigation Items List with Left Icons & Right Badges */}
+        <nav className="quick-menu-nav" aria-label="Quick Navigation Links">
+          <Link href="/" onClick={closeMenu} className={`quick-menu-item ${pathname === '/' ? 'active' : ''}`}>
+            <span className="item-left">
+              <span className="item-icon icon-cyan" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </span>
+              <span className="item-label">Home</span>
+            </span>
+            <span className="item-right-arrow" aria-hidden="true">›</span>
+          </Link>
 
-              <Link href="/insights" onClick={closeDrawer} className={isActive('/insights') ? 'active' : ''}>
-                <span>Tax Updates &amp; Bulletins</span>
-                <span className="nav-arrow" aria-hidden="true">→</span>
-              </Link>
-              <Link href="/faq" onClick={closeDrawer} className={isActive('/faq') ? 'active' : ''}>
-                <span>Client Guidance &amp; FAQ</span>
-                <span className="nav-arrow" aria-hidden="true">→</span>
-              </Link>
-              <Link href="/contact" onClick={closeDrawer} className={isActive('/contact') ? 'active' : ''}>
-                <span>Chamber Office &amp; Inquiries</span>
-                <span className="nav-arrow" aria-hidden="true">→</span>
-              </Link>
-            </nav>
-          </div>
+          <Link href="/about" onClick={closeMenu} className={`quick-menu-item ${isActive('/about') ? 'active' : ''}`}>
+            <span className="item-left">
+              <span className="item-icon icon-gold" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+              </span>
+              <span className="item-label">About Practice</span>
+            </span>
+            <span className="item-right-arrow" aria-hidden="true">›</span>
+          </Link>
 
-          <div className="mobile-drawer-footer">
-            <Link href="/contact" onClick={closeDrawer} className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-              Schedule Consultation →
-            </Link>
-            <p style={{ marginTop: '0.85rem', fontSize: '0.74rem', color: 'var(--color-text-muted)', textAlign: 'center', lineHeight: 1.4 }}>
-              Mumbai Practice Office · ICAI Reg. FRN <span className="fill">[FRN]</span>
-            </p>
-          </div>
+          <Link href="/team" onClick={closeMenu} className={`quick-menu-item ${isActive('/team') ? 'active' : ''}`}>
+            <span className="item-left">
+              <span className="item-icon icon-blue" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </span>
+              <span className="item-label">Proprietor &amp; Team</span>
+            </span>
+            <span className="item-right-arrow" aria-hidden="true">›</span>
+          </Link>
+
+          <Link href="/services" onClick={closeMenu} className={`quick-menu-item ${isActive('/services') ? 'active' : ''}`}>
+            <span className="item-left">
+              <span className="item-icon icon-gold" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              </span>
+              <span className="item-label">Services Scope</span>
+            </span>
+            <span className="item-badge gold-badge">7 Desks</span>
+          </Link>
+
+          <Link href="/insights" onClick={closeMenu} className={`quick-menu-item ${isActive('/insights') ? 'active' : ''}`}>
+            <span className="item-left">
+              <span className="item-icon icon-cyan" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              </span>
+              <span className="item-label">Tax Bulletins</span>
+            </span>
+            <span className="item-right-arrow" aria-hidden="true">›</span>
+          </Link>
+
+          <Link href="/faq" onClick={closeMenu} className={`quick-menu-item ${isActive('/faq') ? 'active' : ''}`}>
+            <span className="item-left">
+              <span className="item-icon icon-blue" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </span>
+              <span className="item-label">Client FAQ</span>
+            </span>
+            <span className="item-right-arrow" aria-hidden="true">›</span>
+          </Link>
+
+          <Link href="/contact" onClick={closeMenu} className={`quick-menu-item ${isActive('/contact') ? 'active' : ''}`}>
+            <span className="item-left">
+              <span className="item-icon icon-gold" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </span>
+              <span className="item-label">Chambers Office</span>
+            </span>
+            <span className="item-badge blue-badge">Mumbai</span>
+          </Link>
+        </nav>
+
+        {/* Card Footer Consultation CTA */}
+        <div className="quick-menu-foot">
+          <Link href="/contact" onClick={closeMenu} className="quick-menu-cta">
+            <span>Schedule Consultation</span>
+            <span className="cta-arrow" aria-hidden="true">→</span>
+          </Link>
         </div>
       </div>
     </>
