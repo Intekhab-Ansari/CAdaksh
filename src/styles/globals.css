@@ -2802,48 +2802,6 @@ footer.site-footer::before {
   box-shadow: 0 6px 20px rgba(197, 160, 89, 0.4);
 }
 
-/* Sovereign Governance Trust Strip */
-.footer-governance-bar {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.15rem;
-  padding: 0;
-  background: transparent;
-  border: none;
-  margin-bottom: 3rem;
-}
-
-.gov-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.65rem;
-  font-size: 0.78rem;
-  font-family: var(--font-mono);
-  color: #CBD5E1;
-  background: rgba(255, 255, 255, 0.028);
-  border: 1px solid rgba(197, 160, 89, 0.22);
-  border-radius: var(--radius-full);
-  padding: 0.8rem 1.2rem;
-  text-align: center;
-  transition: all var(--transition-fast);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-.gov-item:hover {
-  background: rgba(197, 160, 89, 0.1);
-  border-color: rgba(197, 160, 89, 0.5);
-  color: #FFFFFF;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-.gov-item svg {
-  color: var(--color-gold);
-  flex-shrink: 0;
-}
-
 /* Legal Disclaimers & Ethics */
 .footer-legal-bar {
   border-top: 1px solid rgba(197, 160, 89, 0.22);
@@ -4069,10 +4027,6 @@ footer.site-footer::before {
   .footer-counsel-box {
     margin-top: 0 !important;
   }
-  .footer-governance-bar {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.85rem;
-  }
   .contact-form {
     grid-template-columns: 1fr;
   }
@@ -4581,14 +4535,8 @@ footer.site-footer::before {
     font-size: 0.68rem !important;
     padding: 0.4rem 0.55rem !important;
   }
-  .footer-governance-bar {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.5rem !important;
-  }
-  .gov-item {
-    padding: 0.55rem 0.65rem !important;
-    font-size: 0.68rem !important;
-    justify-content: flex-start !important;
+  .footer-grid {
+    margin-bottom: 2rem !important;
   }
   .footer-legal-bar {
     flex-direction: column;
