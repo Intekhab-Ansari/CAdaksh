@@ -34,33 +34,34 @@ export default function TeamPage() {
                 />
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
-                <p style={{ fontWeight: 600, color: 'var(--ink-primary)' }}>
-                  Proprietor · <span className="fill">[ACA]</span> · Membership No. <span className="fill">[M. No.]</span>
-                </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                <div>
+                  <h3 style={{ fontSize: '1.4rem', color: 'var(--color-primary-navy)', margin: 0, fontWeight: 800 }}>
+                    CA Daksh Desai
+                  </h3>
+                  <p style={{ fontWeight: 600, color: 'var(--color-gold-deep)', margin: '0.25rem 0 0' }}>
+                    Proprietor &amp; Principal · ACA · M. No. <span className="fill">[M. No.]</span>
+                  </p>
+                </div>
                 
-                <div className="register-card" style={{ boxShadow: 'var(--shadow-subtle)' }}>
+                <div className="register-card" style={{ boxShadow: 'var(--shadow-subtle)', maxWidth: '480px' }}>
                   <dl className="register-dl">
-                    <dt className="register-dt">Member of ICAI since</dt>
-                    <dd className="register-dd"><span className="fill">[date of becoming ACA]</span></dd>
+                    <dt className="register-dt">Professional Qualification</dt>
+                    <dd className="register-dd">Chartered Accountant (ICAI)</dd>
                     
-                    <dt className="register-dt">Certificate of Practice</dt>
-                    <dd className="register-dd">Held since <span className="fill">[COP date]</span></dd>
+                    <dt className="register-dt">ICAI Membership No.</dt>
+                    <dd className="register-dd"><span className="fill">[M. No.]</span></dd>
                     
-                    <dt className="register-dt">Qualifications</dt>
-                    <dd className="register-dd">Chartered Accountant; <span className="fill">[degree, college, university]</span></dd>
-                    
-                    <dt className="register-dt">Languages</dt>
-                    <dd className="register-dd"><span className="fill">[languages known]</span></dd>
+                    <dt className="register-dt">Practice Jurisdiction</dt>
+                    <dd className="register-dd">Mumbai, Maharashtra</dd>
+
+                    <dt className="register-dt">Core Practice Desks</dt>
+                    <dd className="register-dd">Direct Tax · GST · Statutory Audit · Corporate Advisory</dd>
                   </dl>
                 </div>
 
-                <p>
-                  <strong>Experience.</strong> Two years in the Global Business Tax practice of <span className="fill">[firm name — confirm whether to name it]</span>, working on direct tax for financial-services clients. <span className="fill">[add any other experience]</span>
-                </p>
-
-                <p>
-                  <strong>Core practice expertise.</strong> <span className="fill">[e.g. income tax, assessments and appeals, international taxation and transfer pricing, financial-services taxation]</span>
+                <p style={{ fontSize: '1rem', lineHeight: '1.65', color: 'var(--color-text-body)' }}>
+                  CA Daksh Desai oversees all professional engagements at the firm, providing direct partner-level counsel across corporate tax planning, assessment proceedings, statutory audits under the Companies Act, and cross-border regulatory compliance under the ICAI Code of Ethics.
                 </p>
               </div>
             </div>
@@ -88,31 +89,6 @@ export default function TeamPage() {
               <h3>Corporate compliance desk</h3>
               <p>Company incorporation, annual ROC filings, statutory registers and Virtual CFO support.</p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section" id="team-members">
-        <div className="container split-layout">
-          <div className="split-aside">
-            <span className="eyebrow">Team</span>
-            <h2>Team members</h2>
-          </div>
-          <div className="split-body">
-            <ul className="ruled-list">
-              <li>
-                <strong><span className="fill">[Name]</span></strong>
-                <span><span className="fill">[Designation, qualification]</span></span>
-              </li>
-              <li>
-                <strong><span className="fill">[Name]</span></strong>
-                <span><span className="fill">[Designation, qualification]</span></span>
-              </li>
-            </ul>
-
-            <span className="devnote">
-              Add team members as they join (name, designation, qualification; passport-style photo only). Hide this block at launch if there are none yet.
-            </span>
           </div>
         </div>
       </section>

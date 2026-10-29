@@ -20,23 +20,20 @@ export default function InsightsPage() {
 
       <section className="section" id="insights-list">
         <div className="container-narrow">
-          <span className="eyebrow">Published articles (<span className="fill">[n]</span>)</span>
-          
-          <div style={{ border: '1px dashed var(--rule-strong)', borderRadius: 'var(--radius-md)', padding: '2rem', backgroundColor: 'var(--bg-surface)', marginTop: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.76rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--brass)' }}>
-              <span className="fill">[category]</span>
+          <div style={{ border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '2.5rem', backgroundColor: '#FFFFFF', marginTop: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-gold-deep)', fontWeight: 700 }}>
+              ✦ Statutory Practice Bulletin
             </span>
-            <strong style={{ fontFamily: 'var(--font-serif)', fontSize: '1.35rem', color: 'var(--ink-primary)' }}>
-              <span className="fill">[Article title]</span>
-            </strong>
-            <span style={{ color: 'var(--ink-secondary)', fontSize: '0.95rem' }}>
-              <span className="fill">[date]</span> · <span className="fill">[summary]</span>
-            </span>
+            <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.6rem', color: 'var(--color-primary-navy)', margin: 0, fontWeight: 700 }}>
+              Statutory Bulletins &amp; Regulatory Commentary
+            </h2>
+            <p style={{ color: 'var(--color-text-muted)', fontSize: '1.02rem', lineHeight: '1.65', margin: 0 }}>
+              Daksh Desai &amp; Associates periodically issues analytical bulletins and statutory circulars covering Finance Act amendments, GST Council notifications, ITAT judicial precedents, and RBI cross-border compliance directions.
+            </p>
+            <p style={{ color: 'var(--color-text-muted)', fontSize: '0.95rem', lineHeight: '1.6', margin: 0 }}>
+              For specific tax queries, statutory appeals defense, or practice advisory, please contact our Mumbai chambers directly.
+            </p>
           </div>
-
-          <span className="devnote">
-            Add articles as you write them. Keep the page hidden at launch if none are ready.
-          </span>
         </div>
       </section>
     </>

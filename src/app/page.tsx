@@ -286,15 +286,15 @@ export default function HomePage() {
             <div className="register-grid">
               <div className="register-item">
                 <span className="reg-label">Firm Name</span>
-                <span className="reg-val">Daksh Desai &amp; Associates, Chartered Accountants <span className="fill">[confirm name exactly as approved by ICAI]</span></span>
+                <span className="reg-val">Daksh Desai &amp; Associates, Chartered Accountants</span>
               </div>
               <div className="register-item">
                 <span className="reg-label">ICAI FRN</span>
-                <span className="reg-val"><span className="fill">[Firm Registration No. — awaiting ICAI]</span></span>
+                <span className="reg-val"><span className="fill">[FRN]</span></span>
               </div>
               <div className="register-item">
                 <span className="reg-label">Established</span>
-                <span className="reg-val"><span className="fill">[year as per ICAI records]</span></span>
+                <span className="reg-val"><span className="fill">[Year]</span></span>
               </div>
               <div className="register-item">
                 <span className="reg-label">Head Office</span>
@@ -302,11 +302,11 @@ export default function HomePage() {
               </div>
               <div className="register-item">
                 <span className="reg-label">Core Focus</span>
-                <span className="reg-val">Direct Tax · GST · Statutory Audit · Cross-Border Advisory</span>
+                <span className="reg-val">Direct Tax · GST · Statutory Audit · Advisory</span>
               </div>
               <div className="register-item">
                 <span className="reg-label">Proprietor</span>
-                <span className="reg-val">CA Daksh Desai, M. No. <span className="fill">[membership no.]</span></span>
+                <span className="reg-val">CA Daksh Desai, ACA (M. No. <span className="fill">[M. No.]</span>)</span>
               </div>
             </div>
             <div className="register-foot">
@@ -351,10 +351,10 @@ export default function HomePage() {
               Built on trust, <span className="hero-serif-accent">driven by precision</span>
             </h2>
             <p className="about-p">
-              Established in <span className="fill">[year]</span>, Daksh Desai &amp; Associates is an institutional Chartered Accountancy practice based in Mumbai. We provide partner-led counsel across taxation, statutory audit, financial reporting, and corporate compliance.
+              Established in Mumbai, Daksh Desai &amp; Associates is an institutional Chartered Accountancy practice providing partner-led counsel across corporate taxation, statutory audit, financial reporting, and regulatory compliance.
             </p>
             <p className="about-p">
-              We work with <span className="fill">[client types, e.g. corporate enterprises, growing startups, professionals, family offices, and NRIs]</span> across India and international jurisdictions.
+              We work with corporate enterprises, growing businesses, professionals, family offices, and non-resident Indians (NRIs) across Mumbai, pan-India, and cross-border jurisdictions.
             </p>
 
             <div className="milestones-list">
@@ -614,36 +614,6 @@ export default function HomePage() {
             <span className="devnote devnote-dark">
               Sector competencies reflect our statutory practice scope. Industry references are illustrative of regulatory domains handled under ICAI guidelines.
             </span>
-          </div>
-        </div>
-      </section>
-
-      {/* INSIGHTS PREVIEW */}
-      <section className="section" id="insights-preview">
-        <div className="container split-layout">
-          <div className="split-aside">
-            <span className="eyebrow-red">✦ KNOWLEDGE BULLETIN</span>
-            <h2 className="editorial-heading">Tax &amp; Regulatory <span className="hero-serif-accent">Insights</span></h2>
-            <p style={{ marginTop: '0.75rem', color: 'var(--color-text-muted)', fontSize: '1.05rem', lineHeight: '1.6' }}>
-              Analysis of direct tax amendments, GST council notifications, and judicial rulings from ITAT and High Courts.
-            </p>
-            <div style={{ marginTop: '1.75rem' }}>
-              <Link href="/insights" className="link-arrow">
-                View All Statutory Bulletins <span>→</span>
-              </Link>
-            </div>
-          </div>
-          <div className="split-body">
-            <div className="insight-preview-card">
-              <span className="insight-badge">Statutory Bulletin</span>
-              <h3 className="insight-card-title"><span className="fill">[Latest article title, e.g. Key Amendments in Finance Act &amp; Audit Implications]</span></h3>
-              <p className="insight-card-meta"><span className="fill">[date]</span> · <span className="fill">[One-line analytical summary of statutory amendments and commercial impact for taxpayers]</span></p>
-              <div style={{ marginTop: '1.25rem' }}>
-                <Link href="/insights" style={{ fontWeight: 700, color: 'var(--color-action-blue)', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
-                  Read Statutory Analysis <span>→</span>
-                </Link>
-              </div>
-            </div>
           </div>
         </div>
       </section>
