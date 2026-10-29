@@ -997,8 +997,67 @@ nav.desktop-nav a.active::after {
    IMAGE-RICH HERO SECTION (SOVEREIGN LUXURY & REFERENCE SCOPE)
    ========================================================================== */
 .hero-rsc {
-  padding-top: 2rem;
-  padding-bottom: 4.5rem;
+  position: relative;
+  padding-top: 2.5rem;
+  padding-bottom: 5rem;
+  overflow: hidden;
+}
+
+/* Architectural Ambient Hero Backdrop */
+.hero-backdrop-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-backdrop-img {
+  object-fit: cover;
+  object-position: center 20%;
+  transform: scale(1.02);
+  filter: saturate(1.12) brightness(1.02);
+  animation: heroBgSubtleFloat 30s ease-in-out infinite alternate;
+}
+
+@keyframes heroBgSubtleFloat {
+  0% {
+    transform: scale(1.02) translateY(0);
+  }
+  100% {
+    transform: scale(1.07) translateY(-14px);
+  }
+}
+
+.hero-backdrop-scrim {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 95% 65% at 50% 22%, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.92) 55%, rgba(248, 250, 252, 0.98) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.85) 45%, #FFFFFF 95%);
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
+}
+
+.hero-backdrop-glow {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 820px;
+  height: 420px;
+  background: radial-gradient(ellipse at center, rgba(197, 160, 89, 0.18) 0%, rgba(197, 160, 89, 0.04) 55%, transparent 75%);
+  pointer-events: none;
+}
+
+.hero-content-relative {
+  position: relative;
+  z-index: 2;
 }
 
 .hero-header-wrap {

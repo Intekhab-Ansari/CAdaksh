@@ -19,7 +19,22 @@ export default function HomePage() {
           HERO SECTION — BESPOKE SOVEREIGN 6-CARD SHOWCASE & IMAGES
           ========================================================================= */}
       <section className="section hero-rsc" id="home-hero">
-        <div className="container">
+        {/* Architectural Ambient Hero Background */}
+        <div className="hero-backdrop-container" aria-hidden="true">
+          <Image
+            src="/images/hero-bg.jpg"
+            alt=""
+            fill
+            priority
+            quality={92}
+            className="hero-backdrop-img"
+            sizes="100vw"
+          />
+          <div className="hero-backdrop-scrim" />
+          <div className="hero-backdrop-glow" />
+        </div>
+
+        <div className="container hero-content-relative">
           <div className="hero-header-wrap">
             <div className="hero-eyebrow-seal">
               <span className="seal-dot">✦</span>
