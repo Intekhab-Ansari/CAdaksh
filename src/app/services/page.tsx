@@ -10,15 +10,40 @@ export default function ServicesPage() {
   return (
     <>
       {/* SERVICES HERO HEADER */}
-      <section className="section" id="services-intro" style={{ paddingBottom: '2.5rem' }}>
-        <div className="container" style={{ textAlign: 'center', maxWidth: '880px', margin: '0 auto' }}>
-          <span className="eyebrow-red">✦ PRACTICE AREAS &amp; STATUTORY SCOPE</span>
-          <h1 className="editorial-heading" style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)', marginTop: '0.5rem' }}>
-            Taxation, Audit, Accounting &amp; <span className="hero-serif-accent">Advisory</span>
+      <section className="about-page-hero" id="services-hero" style={{ marginBottom: '2.5rem' }}>
+        <div className="container">
+          <div className="about-hero-badge">
+            <span aria-hidden="true">✦</span>
+            <span>STATUTORY PRACTICE SCOPE &amp; DIRECTORY · MUMBAI</span>
+          </div>
+
+          <h1 className="about-hero-title">
+            Taxation, audit, accounting &amp;{' '}
+            <span className="hero-serif-accent">regulatory advisory.</span>
           </h1>
-          <p className="hero-sublede" style={{ marginTop: '1.25rem', fontSize: '1.15rem' }}>
-            A comprehensive suite of integrated Chartered Accountancy services designed for corporate enterprises, family offices, startups, and professionals across India and abroad.
+
+          <p className="about-hero-lede">
+            A comprehensive suite of integrated Chartered Accountancy services designed for corporate enterprises, family offices, startups, and professionals across India and abroad. Partner-led execution under the ICAI Code of Ethics.
           </p>
+
+          <div className="about-hero-pillars">
+            <div className="about-pillar-card">
+              <span className="about-pillar-val">Direct Tax</span>
+              <span className="about-pillar-lbl">INCOME TAX &amp; SCRUTINY</span>
+            </div>
+            <div className="about-pillar-card">
+              <span className="about-pillar-val">Indirect Tax</span>
+              <span className="about-pillar-lbl">GSTR 1/3B &amp; 2B MATCHING</span>
+            </div>
+            <div className="about-pillar-card">
+              <span className="about-pillar-val">Assurance</span>
+              <span className="about-pillar-lbl">STATUTORY &amp; TAX AUDIT</span>
+            </div>
+            <div className="about-pillar-card">
+              <span className="about-pillar-val">Corporate Law</span>
+              <span className="about-pillar-lbl">MCA21, FEMA &amp; VIRTUAL CFO</span>
+            </div>
+          </div>
         </div>
       </section>
 

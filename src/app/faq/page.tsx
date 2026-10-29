@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import FaqSearch from '@/components/FaqSearch';
 
 export const metadata: Metadata = {
@@ -191,14 +192,86 @@ const FAQ_GROUPS = [
 export default function FaqPage() {
   return (
     <>
-      <section className="section" id="faq-intro">
-        <div className="container-narrow">
-          <span className="eyebrow">FAQ</span>
-          <h1>Frequently asked questions</h1>
-          <p className="hero-lede" style={{ marginTop: '1.1rem' }}>
-            Answers to common questions, grouped by service.
+      {/* SOVEREIGN HERO SECTION */}
+      <section className="about-page-hero" id="faq-hero">
+        <div className="container">
+          <div className="about-hero-badge">
+            <span aria-hidden="true">✦</span>
+            <span>CLIENT GUIDANCE &amp; STATUTORY REPOSITORY · FAQ</span>
+          </div>
+
+          <h1 className="about-hero-title">
+            Statutory clarity &amp;{' '}
+            <span className="hero-serif-accent">frequently asked questions.</span>
+          </h1>
+
+          <p className="about-hero-lede">
+            Authoritative answers across Indian Income Tax, GST compliance, International Remittances (15CA/15CB), Statutory Audits, and MCA Corporate Governance curated by Daksh Desai &amp; Associates.
           </p>
-          <FaqSearch groups={FAQ_GROUPS} />
+
+          <div className="about-hero-pillars">
+            <div className="about-pillar-card">
+              <span className="about-pillar-val">Income Tax</span>
+              <span className="about-pillar-lbl">AIS, NOTICES &amp; REGIMES</span>
+            </div>
+            <div className="about-pillar-card">
+              <span className="about-pillar-val">GST Compliance</span>
+              <span className="about-pillar-lbl">2B MATCHING &amp; REFUNDS</span>
+            </div>
+            <div className="about-pillar-card">
+              <span className="about-pillar-val">Statutory Audit</span>
+              <span className="about-pillar-lbl">SEC 44AB &amp; COMPANIES ACT</span>
+            </div>
+            <div className="about-pillar-card">
+              <span className="about-pillar-val">Cross-Border</span>
+              <span className="about-pillar-lbl">15CA/CB &amp; FEMA TREATIES</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SEARCH & INTERACTIVE FAQ ACCORDION */}
+      <section className="section" id="faq-content-section" style={{ background: '#F8FAFC', minHeight: '600px' }}>
+        <div className="container" style={{ maxWidth: '960px' }}>
+          <div
+            style={{
+              background: '#FFFFFF',
+              border: '1px solid var(--color-border)',
+              borderRadius: 'var(--radius-lg)',
+              padding: 'clamp(1.5rem, 3.5vw, 3rem)',
+              boxShadow: '0 10px 35px rgba(11, 21, 40, 0.04)',
+            }}
+          >
+            <FaqSearch groups={FAQ_GROUPS} />
+          </div>
+        </div>
+      </section>
+
+      {/* CHAMBERS CONSULTATION BANNER */}
+      <section className="section" id="faq-cta" style={{ paddingTop: '1rem', paddingBottom: '4rem' }}>
+        <div className="container">
+          <div className="about-cta-card">
+            <h2>Have a specific statutory inquiry or notice to discuss?</h2>
+            <p>
+              Schedule a formal consultation with CA Daksh Desai at our Borivali or Nariman Point office, or connect on WhatsApp.
+            </p>
+            <div className="about-cta-btns">
+              <Link href="/contact" className="btn btn-primary" style={{ background: 'linear-gradient(135deg, #C5A059 0%, #A68037 100%)', color: '#0B1528', fontWeight: 700 }}>
+                <span>Schedule Practice Consultation</span>
+                <span aria-hidden="true">→</span>
+              </Link>
+              <a
+                href="https://wa.me/919819647471?text=Hello%20CA%20Daksh%20Desai%2C%20I%20have%20a%20tax%20query."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-secondary"
+                style={{ borderColor: 'rgba(197, 160, 89, 0.5)', color: '#FFFFFF' }}
+              >
+                <span>Direct WhatsApp: +91 98196 47471</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </>

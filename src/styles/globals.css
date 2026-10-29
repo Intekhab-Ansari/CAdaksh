@@ -3484,22 +3484,62 @@ footer.site-footer::before {
 /* ==========================================================================
    SUBPAGES, SERVICES & FORMS
    ========================================================================== */
+#service-header {
+  background: 
+    radial-gradient(circle at 85% 15%, rgba(197, 160, 89, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 10% 80%, rgba(17, 37, 64, 0.035) 0%, transparent 50%),
+    linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
+  padding: clamp(3rem, 5vw, 4.5rem) 0 clamp(2.5rem, 4vw, 3.5rem) 0;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+  position: relative;
+}
+
+#service-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #F5D79E 25%, #C5A059 50%, #F5D79E 75%, transparent);
+}
+
+#service-header h1 {
+  font-size: clamp(2.2rem, 4.2vw, 3.2rem);
+  font-weight: 800;
+  color: var(--color-primary-navy);
+  letter-spacing: -0.025em;
+  line-height: 1.18;
+}
+
 .breadcrumb-nav {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-  margin-bottom: 1rem;
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--color-gold-deep);
+  background: rgba(197, 160, 89, 0.08);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  border-radius: var(--radius-full);
+  padding: 0.25rem 0.85rem;
+  margin-bottom: 1.25rem;
 }
+
 .breadcrumb-nav a {
-  color: var(--color-text-muted);
+  color: var(--color-primary-navy);
+  text-decoration: none;
+  transition: color var(--transition-fast);
 }
+
 .breadcrumb-nav a:hover {
-  color: var(--color-action-blue);
+  color: var(--color-gold-deep);
 }
+
 .breadcrumb-separator {
-  color: var(--color-border-subdued);
+  color: rgba(197, 160, 89, 0.6);
 }
 
 .steps-grid {

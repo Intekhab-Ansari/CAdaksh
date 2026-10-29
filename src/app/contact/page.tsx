@@ -9,13 +9,41 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <section className="section" id="contact-intro">
-        <div className="container-narrow">
-          <span className="eyebrow">Contact us</span>
-          <h1>Let&apos;s simplify your taxation and compliance</h1>
-          <p className="hero-lede" style={{ marginTop: '1.1rem' }}>
-            Reach out about income tax, GST, audit, accounting, international tax or corporate compliance.
+      {/* SOVEREIGN HERO SECTION */}
+      <section className="about-page-hero" id="contact-hero" style={{ marginBottom: '2.5rem' }}>
+        <div className="container">
+          <div className="about-hero-badge">
+            <span aria-hidden="true">✦</span>
+            <span>CHAMBERS CONSULTATION &amp; PRACTICE OFFICES · MUMBAI</span>
+          </div>
+
+          <h1 className="about-hero-title">
+            Let&apos;s simplify your taxation &amp;{' '}
+            <span className="hero-serif-accent">statutory compliance.</span>
+          </h1>
+
+          <p className="about-hero-lede">
+            Reach out regarding income tax, GST, statutory audits, corporate law, international remittances (15CA/15CB), or virtual CFO advisory. Direct partner counsel with CA Daksh Desai.
           </p>
+
+          <div className="about-hero-pillars">
+            <div className="about-pillar-card">
+              <span className="about-pillar-val">Borivali West</span>
+              <span className="about-pillar-lbl">REGISTERED HEAD OFFICE</span>
+            </div>
+            <div className="about-pillar-card">
+              <span className="about-pillar-val">Nariman Point</span>
+              <span className="about-pillar-lbl">SOUTH MUMBAI CHAMBERS</span>
+            </div>
+            <div className="about-pillar-card">
+              <span className="about-pillar-val">+91 98196 47471</span>
+              <span className="about-pillar-lbl">DIRECT TEL &amp; WHATSAPP</span>
+            </div>
+            <div className="about-pillar-card">
+              <span className="about-pillar-val">Mon–Sat 10–7</span>
+              <span className="about-pillar-lbl">OFFICE CONSULTATION HOURS</span>
+            </div>
+          </div>
         </div>
       </section>
 
