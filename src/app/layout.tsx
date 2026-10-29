@@ -5,6 +5,9 @@ import Footer from '@/components/Footer';
 import DisclaimerModal from '@/components/DisclaimerModal';
 import SmoothScroll from '@/components/SmoothScroll';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: 'Daksh Desai & Associates | Chartered Accountants · Mumbai',
   description: 'Daksh Desai & Associates, Chartered Accountants, Mumbai. Taxation, audit, accounting, and advisory services for businesses, professionals, and individuals.',

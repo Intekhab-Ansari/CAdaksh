@@ -65,17 +65,21 @@ export default function SmoothScroll() {
       // Target all structural sections and major cards
       const revealSelectors = [
         'section:not(#home-hero)',
+        '.section-head-center',
         '.rsc-navy-card',
         '.rsc-image-card',
         '.approach-card',
         '.compliance-milestone-card',
         '.sector-matrix-card',
+        '.audit-diagnostic-card',
         '.diagnostic-card',
+        '.cta-light-card',
+        '.section-cta-light',
+        '.footer-udin-bar',
         '.faq-item',
         '.service-card',
         '.proprietor-card',
         '.team-desk-card',
-        '.section-cta-light',
       ];
 
       const elements = document.querySelectorAll(revealSelectors.join(', '));

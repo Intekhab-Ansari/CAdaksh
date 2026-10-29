@@ -4,6 +4,9 @@ import type { Metadata } from 'next';
 import TickerRibbon from '@/components/TickerRibbon';
 import ComplianceCalendar from '@/components/ComplianceCalendar';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: 'Daksh Desai & Associates | Chartered Accountants · Mumbai',
   description: 'Taxation, audit, accounting and advisory services for businesses, professionals, and individuals in Mumbai.',
