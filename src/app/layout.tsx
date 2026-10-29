@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import DisclaimerModal from '@/components/DisclaimerModal';
 import SmoothScroll from '@/components/SmoothScroll';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -40,6 +41,7 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <DisclaimerModal />
+        <WhatsAppButton />
       </body>
     </html>
   );
