@@ -33,6 +33,11 @@ export default function Footer() {
         <div className="footer-grid">
           {/* Column 1: Firm Identity & Chambers */}
           <div className="footer-col-main">
+            <div className="footer-card-badge">
+              <span className="badge-pulse-dot" aria-hidden="true"></span>
+              <span>ICAI REGISTERED PRACTICE CHAMBERS</span>
+            </div>
+
             <div className="footer-brand">
               <div className="footer-crest-box">
                 <Image src="/images/ca-logo.svg" alt="CA India Emblem" width={36} height={36} />
@@ -81,7 +86,11 @@ export default function Footer() {
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 </span>
                 <span className="detail-label">Statutory Email:</span>
-                <span className="detail-val">info@cadakshdesaiassociates.com</span>
+                <span className="detail-val">
+                  <a href="mailto:info@cadakshdesaiassociates.com" className="footer-link-subtle">
+                    info@cadakshdesaiassociates.com
+                  </a>
+                </span>
               </div>
 
               <div className="footer-detail-item">
