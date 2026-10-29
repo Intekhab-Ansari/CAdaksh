@@ -19,9 +19,9 @@ export default function SmoothScroll() {
       smoothWheel: true,
       duration: 1.35,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      wheelMultiplier: 1.15,
-      touchMultiplier: 1.5,
-      lerp: 0.08,
+      wheelMultiplier: 0.98,
+      touchMultiplier: 1.2,
+      lerp: 0.07,
       respectReducedMotion: false,
     });
 
