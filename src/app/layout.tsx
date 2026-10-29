@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from 'next';
 import '@/styles/globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import ReviewBanner from '@/components/ReviewBanner';
 import DisclaimerModal from '@/components/DisclaimerModal';
 
 export const metadata: Metadata = {
@@ -32,7 +31,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ReviewBanner />
         <Header />
         <main>{children}</main>
         <Footer />
