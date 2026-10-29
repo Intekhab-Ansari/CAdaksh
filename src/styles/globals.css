@@ -1677,6 +1677,88 @@ nav.desktop-nav a.active::after {
   line-height: 1.55;
 }
 
+/* --- LIGHT ARCHITECTURAL CTA SUITE (WHITE ALTERNATING BLOCK) --- */
+.section-cta-light {
+  background-color: #F8FAFC;
+  padding: 5.5rem 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+}
+
+.cta-light-card {
+  background: #FFFFFF;
+  border: 1.5px solid var(--color-gold-border);
+  border-radius: var(--radius-xl);
+  padding: clamp(2.5rem, 5vw, 4.25rem) clamp(1.5rem, 4vw, 3.5rem);
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 20px 48px rgba(11, 25, 48, 0.07);
+  position: relative;
+}
+
+.cta-light-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: var(--color-gold-soft);
+  border: 1px solid var(--color-gold-border);
+  color: var(--color-gold-deep);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.4rem 1.15rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1.35rem;
+}
+
+.cta-light-title {
+  font-size: clamp(2.1rem, 3.8vw, 3rem);
+  font-weight: 800;
+  color: var(--color-primary-navy);
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  margin-bottom: 1.15rem;
+  text-wrap: balance;
+}
+
+.cta-light-desc {
+  font-size: clamp(1.02rem, 1.5vw, 1.15rem);
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  max-width: 720px;
+  margin: 0 auto 2.25rem auto;
+}
+
+.cta-light-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.25rem;
+}
+
+.cta-reassurance-light {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  font-size: 0.84rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.cta-reassurance-light .reassurance-dot {
+  color: var(--color-gold);
+}
+
 /* --- SOVEREIGN SLATE & GOLD CTA SUITE --- */
 .section-cta-sovereign {
   background: linear-gradient(160deg, #10243E 0%, #0B1930 100%);

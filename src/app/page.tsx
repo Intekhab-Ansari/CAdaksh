@@ -395,7 +395,7 @@ export default function HomePage() {
       </section>
 
       {/* INTERACTIVE COMPLIANCE CALENDAR FEATURE */}
-      <section className="section section-ice" id="statutory-calendar">
+      <section className="section" id="statutory-calendar">
         <div className="container">
           <div className="section-head-center">
             <span className="eyebrow-red">✦ STATUTORY DEADLINE TRACKER</span>
@@ -412,7 +412,7 @@ export default function HomePage() {
       </section>
 
       {/* OUR APPROACH */}
-      <section className="section" id="approach">
+      <section className="section section-ice" id="approach">
         <div className="container">
           <div className="section-head-center">
             <span className="eyebrow-red">✦ PRACTICE PHILOSOPHY</span>
@@ -618,28 +618,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* READY TO CONNECT (SOVEREIGN SLATE & GOLD CONSULTATION SUITE) */}
-      <section className="section section-cta-sovereign" id="cta-connect">
+      {/* READY TO CONNECT (LIGHT ARCHITECTURAL CONSULTATION SUITE) */}
+      <section className="section section-cta-light" id="cta-connect">
         <div className="container">
-          <div className="cta-sovereign-inner">
-            <div className="cta-sovereign-badge">
+          <div className="cta-light-card">
+            <div className="cta-light-badge">
               <span>✦</span> PRACTICE CONSULTATION
             </div>
-            <h2 className="cta-sovereign-title">
-              Schedule a Structured Practice Consultation
+            <h2 className="cta-light-title">
+              Schedule a Structured Practice <span className="hero-serif-accent">Consultation</span>
             </h2>
-            <p className="cta-sovereign-desc">
+            <p className="cta-light-desc">
               Whether you require guidance on corporate tax filings, statutory audits under the Companies Act, cross-border remittances under FEMA, or routine compliance management, write to our Mumbai office.
             </p>
-            <div className="cta-sovereign-actions">
-              <Link className="btn btn-gold btn-lg" href="/contact">
+            <div className="cta-light-actions">
+              <Link className="btn btn-primary btn-lg" href="/contact">
                 Consult Practice Office <span className="btn-arrow-gold">→</span>
               </Link>
-              <Link className="btn btn-ghost-light btn-lg" href="/services">
+              <Link className="btn btn-outline btn-lg" href="/services">
                 Explore Practice Scope
               </Link>
             </div>
-            <div className="cta-reassurance">
+            <div className="cta-reassurance-light">
               <span>✦ Direct Consultation with CA Daksh Desai</span>
               <span className="reassurance-dot">•</span>
               <span>✦ 100% Confidential under ICAI Code of Ethics</span>
