@@ -13,19 +13,16 @@ export default function SmoothScroll() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    // Respect accessibility reduced-motion preference
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return;
-
     const lenis = new Lenis({
       autoRaf: true,
       anchors: true,
       smoothWheel: true,
-      duration: 1.25,
+      duration: 1.35,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       wheelMultiplier: 1.15,
       touchMultiplier: 1.5,
       lerp: 0.08,
+      respectReducedMotion: false,
     });
 
     lenisRef.current = lenis;
@@ -42,13 +39,9 @@ export default function SmoothScroll() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    // Scroll to top immediately on route change
     if (lenisRef.current) {
       lenisRef.current.scrollTo(0, { immediate: true });
     }
-
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return;
 
     let observer: IntersectionObserver | null = null;
 
@@ -64,8 +57,8 @@ export default function SmoothScroll() {
         },
         {
           root: null,
-          rootMargin: '0px 0px -40px 0px',
-          threshold: 0.05,
+          rootMargin: '0px 0px -50px 0px',
+          threshold: 0.06,
         }
       );
 
@@ -88,16 +81,15 @@ export default function SmoothScroll() {
       const elements = document.querySelectorAll(revealSelectors.join(', '));
       elements.forEach((el) => {
         const rect = el.getBoundingClientRect();
-        // Elements below viewport top threshold get attached to observer
-        if (rect.top > window.innerHeight * 0.75) {
+        // Elements below viewport top get prepared for reveal
+        if (rect.top > window.innerHeight * 0.8) {
           el.classList.add('scroll-reveal-target');
           observer?.observe(el);
         }
       });
     };
 
-    // Small delay to ensure Next.js DOM has fully rendered
-    const timer = setTimeout(initObserver, 120);
+    const timer = setTimeout(initObserver, 80);
 
     return () => {
       clearTimeout(timer);
