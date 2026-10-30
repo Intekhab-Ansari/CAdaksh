@@ -338,8 +338,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* DISCIPLINED ENGAGEMENT WORKFLOW */}
-      <section className="section" id="how-we-work">
+      {/* DISCIPLINED ENGAGEMENT WORKFLOW (DEEP SOVEREIGN NAVY) */}
+      <section className="section section-navy" id="how-we-work">
         <div className="container">
           <div style={{ marginBottom: '2.5rem' }}>
             <span className="eyebrow">Disciplined Workflow</span>

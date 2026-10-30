@@ -247,6 +247,93 @@ export default function FaqPage() {
         </div>
       </section>
 
+      {/* OFFICIAL REGULATORY GATEWAY (DEEP SOVEREIGN NAVY) */}
+      <section className="section section-navy" id="statutory-portals">
+        <div className="container">
+          <div style={{ marginBottom: '2.5rem' }}>
+            <span className="eyebrow">Official Government Portals</span>
+            <h2>Direct Statutory &amp; Regulatory Gateway</h2>
+            <p style={{ maxWidth: '640px', marginTop: '0.5rem' }}>
+              Direct access to official Indian tax, corporate, banking, and statutory attestation portals for taxpayer verification.
+            </p>
+          </div>
+
+          <div className="about-desks-grid">
+            <div className="about-desk-card">
+              <div className="about-desk-top">
+                <span className="about-desk-tag">DIRECT TAX</span>
+                <span aria-hidden="true">✦</span>
+              </div>
+              <h3>Income Tax e-Filing 2.0</h3>
+              <p>Official CBDT portal for AIS, TIS, e-filing ITRs, 26AS tax credits, and faceless scrutiny submissions.</p>
+              <a href="https://www.incometax.gov.in" target="_blank" rel="noopener noreferrer" className="about-desk-link">
+                <span>incometax.gov.in ↗</span>
+              </a>
+            </div>
+
+            <div className="about-desk-card">
+              <div className="about-desk-top">
+                <span className="about-desk-tag">INDIRECT TAX</span>
+                <span aria-hidden="true">✦</span>
+              </div>
+              <h3>GST Common Portal</h3>
+              <p>CBIC portal for GSTR-1 &amp; GSTR-3B filings, auto-generated GSTR-2B ITC statements, and tax payments.</p>
+              <a href="https://www.gst.gov.in" target="_blank" rel="noopener noreferrer" className="about-desk-link">
+                <span>gst.gov.in ↗</span>
+              </a>
+            </div>
+
+            <div className="about-desk-card">
+              <div className="about-desk-top">
+                <span className="about-desk-tag">CORPORATE LAW</span>
+                <span aria-hidden="true">✦</span>
+              </div>
+              <h3>MCA21 V3 Portal</h3>
+              <p>Ministry of Corporate Affairs registry for company incorporation, annual AOC-4/MGT-7 filings, and DIN KYC.</p>
+              <a href="https://www.mca.gov.in" target="_blank" rel="noopener noreferrer" className="about-desk-link">
+                <span>mca.gov.in ↗</span>
+              </a>
+            </div>
+
+            <div className="about-desk-card">
+              <div className="about-desk-top">
+                <span className="about-desk-tag">TDS / TCS</span>
+                <span aria-hidden="true">✦</span>
+              </div>
+              <h3>TRACES Portal</h3>
+              <p>TDS Reconciliation Analysis and Correction Enabling System for Form 16, 16A, and 26AS verification.</p>
+              <a href="https://www.tdscpc.gov.in" target="_blank" rel="noopener noreferrer" className="about-desk-link">
+                <span>tdscpc.gov.in ↗</span>
+              </a>
+            </div>
+
+            <div className="about-desk-card">
+              <div className="about-desk-top">
+                <span className="about-desk-tag">CROSS-BORDER</span>
+                <span aria-hidden="true">✦</span>
+              </div>
+              <h3>Reserve Bank of India (FEMA)</h3>
+              <p>Central banking authority governing foreign remittances, FIRMS portal reporting, and FLA Returns.</p>
+              <a href="https://www.rbi.org.in" target="_blank" rel="noopener noreferrer" className="about-desk-link">
+                <span>rbi.org.in ↗</span>
+              </a>
+            </div>
+
+            <div className="about-desk-card">
+              <div className="about-desk-top">
+                <span className="about-desk-tag">ICAI UDIN</span>
+                <span aria-hidden="true">✦</span>
+              </div>
+              <h3>ICAI UDIN Authentication</h3>
+              <p>Mandatory 18-digit Unique Document Identification Number verification portal for all CA certificates and audit reports.</p>
+              <a href="https://udin.icai.org" target="_blank" rel="noopener noreferrer" className="about-desk-link">
+                <span>udin.icai.org ↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CHAMBERS CONSULTATION BANNER */}
       <section className="section" id="faq-cta" style={{ paddingTop: '1rem', paddingBottom: '4rem' }}>
         <div className="container">

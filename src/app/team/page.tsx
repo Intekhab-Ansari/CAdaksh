@@ -70,18 +70,19 @@ export default function TeamPage() {
               <div
                 style={{
                   position: 'relative',
-                  width: '210px',
-                  borderRadius: '12px',
+                  width: '260px',
+                  borderRadius: '16px',
                   overflow: 'hidden',
                   border: '2px solid rgba(197, 160, 89, 0.45)',
-                  boxShadow: '0 12px 30px rgba(11, 21, 40, 0.12)',
+                  boxShadow: '0 16px 36px rgba(11, 21, 40, 0.16)',
+                  flexShrink: 0,
                 }}
               >
                 <Image
-                  src="/images/ca-daksh-desai.jpg"
-                  alt="Passport-style photograph of CA Daksh Desai, ACA"
-                  width={210}
-                  height={270}
+                  src="/images/ca-daksh-desai-executive.jpg"
+                  alt="CA Daksh Desai, ACA, B.Com - Proprietor & Principal, Daksh Desai & Associates"
+                  width={260}
+                  height={330}
                   priority
                   style={{ display: 'block', width: '100%', height: 'auto', objectFit: 'cover' }}
                 />
@@ -89,16 +90,16 @@ export default function TeamPage() {
                   style={{
                     background: '#0B1528',
                     color: '#F5D79E',
-                    fontSize: '0.66rem',
+                    fontSize: '0.68rem',
                     fontFamily: 'var(--font-mono)',
                     fontWeight: 700,
                     letterSpacing: '0.08em',
-                    padding: '0.35rem 0.5rem',
+                    padding: '0.45rem 0.6rem',
                     textAlign: 'center',
                     borderTop: '1px solid rgba(197, 160, 89, 0.4)',
                   }}
                 >
-                  ACA · M. NO. 648747
+                  CA DAKSH DESAI · ACA · M. NO. 648747
                 </div>
               </div>
 
@@ -218,8 +219,8 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* SPECIALISED PRACTICE DESKS */}
-      <section className="section" id="specialised-desks" style={{ background: '#F8FAFC', borderTop: '1px solid rgba(197, 160, 89, 0.15)' }}>
+      {/* SPECIALISED PRACTICE DESKS (DEEP SOVEREIGN NAVY) */}
+      <section className="section section-navy" id="specialised-desks">
         <div className="container">
           <div style={{ marginBottom: '2.5rem' }}>
             <span className="eyebrow">Institutional Organization</span>

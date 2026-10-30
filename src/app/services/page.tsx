@@ -216,8 +216,20 @@ export default function ServicesPage() {
               </div>
             </article>
           </div>
+        </div>
+      </section>
 
-          {/* SECONDARY ROW: CORPORATE LAW & VIRTUAL CFO */}
+      {/* SECONDARY ROW: CORPORATE LAW & VIRTUAL CFO (DEEP SOVEREIGN NAVY) */}
+      <section className="section section-navy" id="corporate-advisory-scope">
+        <div className="container">
+          <div style={{ marginBottom: '2.5rem' }}>
+            <span className="eyebrow">Enterprise &amp; Advisory Scope</span>
+            <h2>Corporate Law &amp; Strategic Advisory</h2>
+            <p style={{ maxWidth: '640px', marginTop: '0.5rem' }}>
+              Specialised corporate governance under MCA21 V3, cross-border FEMA compliance, and dedicated Virtual CFO stewardship.
+            </p>
+          </div>
+
           <div className="rsc-cards-grid-2">
             {/* Card 4: Corporate & Allied Laws */}
             <article className="rsc-sovereign-card">
@@ -317,9 +329,13 @@ export default function ServicesPage() {
               </div>
             </article>
           </div>
+        </div>
+      </section>
 
-          {/* DIGNIFIED CONSULTATION CTA BANNER */}
-          <div className="section-cta-sovereign" style={{ borderRadius: '26px', padding: '4.5rem 2rem', marginTop: '1rem' }}>
+      {/* DIGNIFIED CONSULTATION CTA BANNER */}
+      <section className="section" id="services-cta" style={{ paddingTop: '2.5rem', paddingBottom: '4.5rem' }}>
+        <div className="container">
+          <div className="section-cta-sovereign" style={{ borderRadius: '26px', padding: '4.5rem 2rem' }}>
             <div className="cta-sovereign-inner">
               <div className="cta-sovereign-badge">
                 <span>✦</span> PRACTICE CONSULTATION

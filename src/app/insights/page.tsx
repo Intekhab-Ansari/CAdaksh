@@ -119,8 +119,8 @@ export default function InsightsPage() {
         </div>
       </section>
 
-      {/* CURATED INSIGHTS DIRECTORY */}
-      <section className="section" id="insights-grid-section" style={{ background: '#F8FAFC', borderTop: '1px solid rgba(197, 160, 89, 0.15)' }}>
+      {/* CURATED INSIGHTS DIRECTORY (DEEP SOVEREIGN NAVY) */}
+      <section className="section section-navy" id="insights-grid-section">
         <div className="container">
           <div style={{ marginBottom: '2.5rem' }}>
             <span className="eyebrow">Practice Circulars</span>

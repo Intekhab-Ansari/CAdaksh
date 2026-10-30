@@ -3592,64 +3592,87 @@ footer.site-footer::before {
 }
 
 /* ==========================================================================
-   SUBPAGES, SERVICES & FORMS
+   SUBPAGES, SERVICES & FORMS (SOVEREIGN NAVY HEADER)
    ========================================================================== */
 #service-header {
   background: 
-    radial-gradient(circle at 85% 15%, rgba(197, 160, 89, 0.08) 0%, transparent 60%),
-    radial-gradient(circle at 10% 80%, rgba(17, 37, 64, 0.035) 0%, transparent 50%),
-    linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
-  padding: clamp(3rem, 5vw, 4.5rem) 0 clamp(2.5rem, 4vw, 3.5rem) 0;
-  border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+    linear-gradient(180deg, rgba(7, 14, 27, 0.92) 0%, rgba(11, 21, 40, 0.96) 100%),
+    url('/images/hero-bg.jpg') center/cover no-repeat;
+  padding: clamp(4rem, 6.5vw, 5.8rem) 0 clamp(3rem, 5vw, 4.2rem) 0;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.32);
   position: relative;
+  overflow: hidden;
+  color: #FFFFFF;
 }
 
 #service-header::before {
   content: "";
   position: absolute;
   top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(197, 160, 89, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(197, 160, 89, 0.04) 1px, transparent 1px);
+  background-size: 52px 52px;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+#service-header::after {
+  content: "";
+  position: absolute;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 60%;
+  width: 70%;
   height: 2px;
   background: linear-gradient(90deg, transparent, #F5D79E 25%, #C5A059 50%, #F5D79E 75%, transparent);
 }
 
 #service-header h1 {
-  font-size: clamp(2.2rem, 4.2vw, 3.2rem);
+  font-size: clamp(2.3rem, 4.4vw, 3.4rem);
   font-weight: 800;
-  color: var(--color-primary-navy);
+  color: #FFFFFF;
   letter-spacing: -0.025em;
   line-height: 1.18;
+}
+
+#service-header .hero-lede {
+  color: #CBD5E1;
+  font-size: clamp(1.05rem, 1.6vw, 1.22rem);
+  line-height: 1.6;
 }
 
 .breadcrumb-nav {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-family: var(--font-mono);
   font-weight: 600;
-  color: var(--color-gold-deep);
-  background: rgba(197, 160, 89, 0.08);
-  border: 1px solid rgba(197, 160, 89, 0.3);
+  color: var(--color-gold);
+  background: rgba(197, 160, 89, 0.12);
+  border: 1px solid rgba(197, 160, 89, 0.4);
   border-radius: var(--radius-full);
-  padding: 0.25rem 0.85rem;
+  padding: 0.28rem 0.95rem;
   margin-bottom: 1.25rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
 }
 
 .breadcrumb-nav a {
-  color: var(--color-primary-navy);
+  color: #F1F5F9;
   text-decoration: none;
   transition: color var(--transition-fast);
 }
 
 .breadcrumb-nav a:hover {
-  color: var(--color-gold-deep);
+  color: var(--color-gold);
 }
 
 .breadcrumb-separator {
-  color: rgba(197, 160, 89, 0.6);
+  color: rgba(197, 160, 89, 0.7);
 }
 
 .steps-grid {
@@ -3690,6 +3713,35 @@ footer.site-footer::before {
   font-size: 0.88rem;
   color: var(--color-text-body);
   line-height: 1.5;
+}
+
+.section-navy .step-card {
+  background: rgba(255, 255, 255, 0.038) !important;
+  border: 1px solid rgba(197, 160, 89, 0.32) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.section-navy .step-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: var(--color-gold) !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  box-shadow: 0 16px 36px rgba(197, 160, 89, 0.25) !important;
+}
+
+.section-navy .step-number {
+  color: var(--color-gold) !important;
+  font-family: var(--font-mono);
+  font-weight: 800;
+}
+
+.section-navy .step-title {
+  color: #FFFFFF !important;
+}
+
+.section-navy .step-desc {
+  color: #CBD5E1 !important;
 }
 
 .qa-accordion {
@@ -4969,26 +5021,41 @@ footer.site-footer::before {
 }
 
 /* ==========================================================================
-   ABOUT PAGE SOVEREIGN ARCHITECTURE
+   SOVEREIGN SUB-PAGE ARCHITECTURE (ALTERNATING THEME STANDARD)
    ========================================================================== */
 .about-page-hero {
   background: 
-    radial-gradient(circle at 85% 15%, rgba(197, 160, 89, 0.09) 0%, transparent 60%),
-    radial-gradient(circle at 10% 80%, rgba(17, 37, 64, 0.04) 0%, transparent 50%),
-    linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
-  padding: clamp(3.5rem, 6vw, 5.5rem) 0 clamp(2.5rem, 4vw, 3.5rem) 0;
-  border-bottom: 1px solid rgba(197, 160, 89, 0.22);
+    linear-gradient(180deg, rgba(7, 14, 27, 0.92) 0%, rgba(11, 21, 40, 0.96) 100%),
+    url('/images/hero-bg.jpg') center/cover no-repeat;
+  padding: clamp(4.5rem, 7vw, 6.2rem) 0 clamp(3.2rem, 5vw, 4.5rem) 0;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.32);
   position: relative;
   overflow: hidden;
+  color: #FFFFFF;
 }
 
 .about-page-hero::before {
   content: "";
   position: absolute;
   top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(197, 160, 89, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(197, 160, 89, 0.04) 1px, transparent 1px);
+  background-size: 52px 52px;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.about-page-hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 70%;
+  width: 75%;
   height: 2px;
   background: linear-gradient(90deg, transparent, #F5D79E 25%, #C5A059 50%, #F5D79E 75%, transparent);
 }
@@ -4997,31 +5064,40 @@ footer.site-footer::before {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.35rem 0.95rem;
+  padding: 0.38rem 1rem;
   border-radius: var(--radius-full);
-  background: rgba(197, 160, 89, 0.1);
-  border: 1px solid rgba(197, 160, 89, 0.38);
-  color: var(--color-gold-deep);
+  background: rgba(197, 160, 89, 0.14);
+  border: 1px solid rgba(197, 160, 89, 0.45);
+  color: var(--color-gold);
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  margin-bottom: 1.25rem;
+  letter-spacing: 0.09em;
+  margin-bottom: 1.35rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  text-transform: uppercase;
 }
 
 .about-hero-title {
-  font-size: clamp(2.2rem, 4.4vw, 3.5rem);
+  font-size: clamp(2.3rem, 4.5vw, 3.6rem);
   font-weight: 800;
-  color: var(--color-primary-navy);
+  color: #FFFFFF;
   line-height: 1.15;
   letter-spacing: -0.03em;
   margin-bottom: 1.25rem;
   max-width: 980px;
 }
 
+.about-hero-title .hero-serif-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: #F5D79E;
+}
+
 .about-hero-lede {
-  font-size: clamp(1.05rem, 1.8vw, 1.24rem);
-  color: var(--color-text-body);
+  font-size: clamp(1.05rem, 1.8vw, 1.22rem);
+  color: #CBD5E1;
   line-height: 1.65;
   max-width: 840px;
   margin-bottom: 2.5rem;
@@ -5035,12 +5111,14 @@ footer.site-footer::before {
 }
 
 .about-pillar-card {
-  background: #FFFFFF;
-  border: 1px solid rgba(197, 160, 89, 0.28);
+  background: rgba(255, 255, 255, 0.038);
+  border: 1px solid rgba(197, 160, 89, 0.3);
   border-radius: var(--radius-md);
-  padding: 1.25rem 1.35rem;
-  box-shadow: 0 4px 16px rgba(11, 21, 40, 0.035);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  padding: 1.35rem 1.4rem;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
@@ -5056,33 +5134,29 @@ footer.site-footer::before {
   right: 0;
   height: 2px;
   background: linear-gradient(90deg, transparent, #C5A059, transparent);
-  opacity: 0;
-  transition: opacity 0.25s ease;
+  opacity: 0.7;
 }
 
 .about-pillar-card:hover {
   transform: translateY(-3px);
   border-color: var(--color-gold);
-  box-shadow: 0 10px 25px rgba(197, 160, 89, 0.15);
-}
-
-.about-pillar-card:hover::before {
-  opacity: 1;
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 14px 34px rgba(197, 160, 89, 0.25);
 }
 
 .about-pillar-val {
   font-family: var(--font-mono);
   font-size: 1.28rem;
   font-weight: 800;
-  color: var(--color-primary-navy);
+  color: #FFFFFF;
   letter-spacing: -0.02em;
 }
 
 .about-pillar-lbl {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--color-gold-deep);
+  letter-spacing: 0.08em;
+  color: var(--color-gold);
   text-transform: uppercase;
 }
 
@@ -5184,40 +5258,71 @@ footer.site-footer::before {
   line-height: 1.4;
 }
 
-/* Vision & Ethos Highlight */
+/* Vision & Ethos Highlight (Deep Sovereign Navy) */
 .about-vision-section {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
-  border-top: 1px solid rgba(197, 160, 89, 0.15);
-  border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+  background: 
+    linear-gradient(180deg, rgba(11, 21, 40, 0.93) 0%, rgba(7, 15, 30, 0.97) 100%),
+    url('/images/tax-law-books.jpg') center/cover no-repeat;
+  border-top: 1px solid rgba(197, 160, 89, 0.3);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+  color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-vision-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(197, 160, 89, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(197, 160, 89, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.about-vision-section h2 {
+  color: #FFFFFF !important;
+}
+
+.about-vision-section .eyebrow {
+  color: var(--color-gold) !important;
 }
 
 .about-quote-box {
-  background: rgba(197, 160, 89, 0.05);
-  border: 1px solid rgba(197, 160, 89, 0.35);
+  background: rgba(255, 255, 255, 0.038);
+  border: 1px solid rgba(197, 160, 89, 0.4);
   border-left: 4px solid var(--color-gold);
   border-radius: var(--radius-md);
-  padding: 2rem 2.5rem;
+  padding: 2.25rem 2.75rem;
   margin-bottom: 3.5rem;
   position: relative;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .about-quote-box blockquote {
   margin: 0;
   font-family: var(--font-serif);
-  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  font-size: clamp(1.4rem, 2.6vw, 1.95rem);
   line-height: 1.45;
-  color: var(--color-primary-navy);
+  color: #FFFFFF;
   font-style: italic;
 }
 
 .about-quote-box cite {
   display: block;
-  margin-top: 1rem;
+  margin-top: 1.15rem;
   font-family: var(--font-mono);
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--color-gold-deep);
+  color: var(--color-gold);
   font-style: normal;
 }
 
@@ -5228,12 +5333,14 @@ footer.site-footer::before {
 }
 
 .about-ethos-card {
-  background: #FFFFFF;
-  border: 1px solid rgba(197, 160, 89, 0.25);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(197, 160, 89, 0.32);
   border-radius: var(--radius-md);
-  padding: 1.75rem 1.5rem;
-  box-shadow: 0 4px 20px rgba(11, 21, 40, 0.035);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  padding: 1.85rem 1.6rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
   display: flex;
   flex-direction: column;
 }
@@ -5241,31 +5348,116 @@ footer.site-footer::before {
 .about-ethos-card:hover {
   transform: translateY(-4px);
   border-color: var(--color-gold);
-  box-shadow: 0 12px 30px rgba(197, 160, 89, 0.14);
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 16px 36px rgba(197, 160, 89, 0.2);
 }
 
 .about-ethos-num {
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 800;
-  color: var(--color-gold-deep);
+  color: var(--color-gold);
   margin-bottom: 0.85rem;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
 }
 
 .about-ethos-card h3 {
-  font-size: 1.22rem;
+  font-size: 1.25rem;
   font-weight: 750;
-  color: var(--color-primary-navy);
+  color: #FFFFFF;
   margin: 0 0 0.75rem 0;
   letter-spacing: -0.015em;
 }
 
 .about-ethos-card p {
   font-size: 0.94rem;
-  color: var(--color-text-body);
-  line-height: 1.6;
+  color: #CBD5E1;
+  line-height: 1.65;
   margin: 0;
+}
+
+/* ==========================================================================
+   SOVEREIGN DEEP NAVY ALTERNATING SECTIONS
+   ========================================================================== */
+.section-navy {
+  background: 
+    linear-gradient(180deg, rgba(11, 21, 40, 0.94) 0%, rgba(7, 14, 27, 0.97) 100%),
+    url('/images/hero-bg.jpg') center/cover no-repeat !important;
+  color: #FFFFFF !important;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(197, 160, 89, 0.28);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.28);
+}
+
+.section-navy::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(197, 160, 89, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(197, 160, 89, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.section-navy h2,
+.section-navy h3,
+.section-navy h4 {
+  color: #FFFFFF !important;
+}
+
+.section-navy p {
+  color: #CBD5E1 !important;
+}
+
+.section-navy .eyebrow {
+  color: var(--color-gold) !important;
+}
+
+.section-navy .about-desk-card {
+  background: rgba(255, 255, 255, 0.038) !important;
+  border: 1px solid rgba(197, 160, 89, 0.32) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.32) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.section-navy .about-desk-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-gold) !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  box-shadow: 0 16px 36px rgba(197, 160, 89, 0.25) !important;
+}
+
+.section-navy .about-desk-card h3 {
+  color: #FFFFFF !important;
+}
+
+.section-navy .about-desk-card p {
+  color: #CBD5E1 !important;
+}
+
+.section-navy .about-desk-tag {
+  background: rgba(197, 160, 89, 0.15) !important;
+  border: 1px solid rgba(197, 160, 89, 0.35) !important;
+  color: var(--color-gold) !important;
+}
+
+.section-navy .about-desk-link {
+  color: var(--color-gold) !important;
+}
+
+.section-navy .about-desk-link:hover {
+  color: #F8E3B6 !important;
+}
+
+.section-navy .about-desk-top span[aria-hidden="true"] {
+  color: var(--color-gold);
 }
 
 /* Practice Desks Grid */
@@ -5381,6 +5573,34 @@ footer.site-footer::before {
   color: var(--color-text-body);
   line-height: 1.55;
   margin: 0;
+}
+
+.section-navy .about-step-card {
+  background: rgba(255, 255, 255, 0.038) !important;
+  border: 1px solid rgba(197, 160, 89, 0.32) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.section-navy .about-step-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: var(--color-gold) !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  box-shadow: 0 16px 36px rgba(197, 160, 89, 0.25) !important;
+}
+
+.section-navy .about-step-num {
+  color: var(--color-gold) !important;
+  opacity: 0.9;
+}
+
+.section-navy .about-step-card h4 {
+  color: #FFFFFF !important;
+}
+
+.section-navy .about-step-card p {
+  color: #CBD5E1 !important;
 }
 
 /* Consultation Sovereign Card */

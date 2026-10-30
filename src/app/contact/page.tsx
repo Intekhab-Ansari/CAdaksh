@@ -156,7 +156,8 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="section" id="how-we-work-steps">
+      {/* HOW WE WORK (DEEP SOVEREIGN NAVY) */}
+      <section className="section section-navy" id="how-we-work-steps">
         <div className="container">
           <div style={{ marginBottom: '2rem' }}>
             <span className="eyebrow">How we work</span>

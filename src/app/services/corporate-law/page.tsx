@@ -50,7 +50,7 @@ export default function CorporateLawPage() {
         </div>
       </section>
 
-      <section className="section" id="service-process">
+      <section className="section section-navy" id="service-process">
         <div className="container">
           <div style={{ marginBottom: '2rem' }}>
             <span className="eyebrow">Process</span>
