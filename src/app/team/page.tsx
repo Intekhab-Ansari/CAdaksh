@@ -231,94 +231,178 @@ export default function TeamPage() {
           </div>
 
           <div className="about-desks-grid">
-            <div className="about-desk-card">
-              <div className="about-desk-top">
-                <span className="about-desk-tag">DIRECT TAX</span>
-                <span aria-hidden="true">✦</span>
+            <div className="about-desk-card has-media desk-tax">
+              <div className="about-desk-media">
+                <Image
+                  src="/images/tax-law-books.jpg"
+                  alt="Taxation & GST Desk"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="about-desk-img"
+                />
+                <div className="about-desk-scrim" />
+                <div className="about-desk-pill-bar">
+                  <span className="about-desk-tag">DIRECT TAX</span>
+                  <span className="about-desk-sparkle" aria-hidden="true">✦</span>
+                </div>
               </div>
-              <h3>Taxation &amp; GST Desk</h3>
-              <p>
-                Income tax return filings, AIS variance resolution, GSTR-1 &amp; 3B compliance, 2B ITC matching, and departmental notice representation.
-              </p>
-              <Link href="/services/income-tax" className="about-desk-link">
-                <span>View Practice Scope</span>
-                <span aria-hidden="true">→</span>
-              </Link>
+              <div className="about-desk-body">
+                <div>
+                  <h3>Taxation &amp; GST Desk</h3>
+                  <p>
+                    Income tax return filings, AIS variance resolution, GSTR-1 &amp; 3B compliance, 2B ITC matching, and departmental notice representation.
+                  </p>
+                </div>
+                <Link href="/services/income-tax" className="about-desk-link">
+                  <span>View Practice Scope</span>
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
             </div>
 
-            <div className="about-desk-card">
-              <div className="about-desk-top">
-                <span className="about-desk-tag">ASSURANCE</span>
-                <span aria-hidden="true">✦</span>
+            <div className="about-desk-card has-media desk-audit">
+              <div className="about-desk-media">
+                <Image
+                  src="/images/audit-assurance.jpg"
+                  alt="Audit & Assurance Desk"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="about-desk-img"
+                />
+                <div className="about-desk-scrim" />
+                <div className="about-desk-pill-bar">
+                  <span className="about-desk-tag">ASSURANCE</span>
+                  <span className="about-desk-sparkle" aria-hidden="true">✦</span>
+                </div>
               </div>
-              <h3>Audit &amp; Assurance Desk</h3>
-              <p>
-                Statutory audits under Companies Act 2013, Tax Audits under Section 44AB, Internal Financial Controls (IFCoFR), and physical inventory audits.
-              </p>
-              <Link href="/services/audit" className="about-desk-link">
-                <span>View Practice Scope</span>
-                <span aria-hidden="true">→</span>
-              </Link>
+              <div className="about-desk-body">
+                <div>
+                  <h3>Audit &amp; Assurance Desk</h3>
+                  <p>
+                    Statutory audits under Companies Act 2013, Tax Audits under Section 44AB, Internal Financial Controls (IFCoFR), and physical inventory audits.
+                  </p>
+                </div>
+                <Link href="/services/audit" className="about-desk-link">
+                  <span>View Practice Scope</span>
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
             </div>
 
-            <div className="about-desk-card">
-              <div className="about-desk-top">
-                <span className="about-desk-tag">MCA21</span>
-                <span aria-hidden="true">✦</span>
+            <div className="about-desk-card has-media desk-corp">
+              <div className="about-desk-media">
+                <Image
+                  src="/images/corporate-law.jpg"
+                  alt="Corporate Law & ROC Desk"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="about-desk-img"
+                />
+                <div className="about-desk-scrim" />
+                <div className="about-desk-pill-bar">
+                  <span className="about-desk-tag">MCA21</span>
+                  <span className="about-desk-sparkle" aria-hidden="true">✦</span>
+                </div>
               </div>
-              <h3>Corporate Law &amp; ROC Desk</h3>
-              <p>
-                Company &amp; LLP formation, annual ROC filings (AOC-4 &amp; MGT-7), Director KYC, share transfers, and statutory register maintenance.
-              </p>
-              <Link href="/services/corporate-law" className="about-desk-link">
-                <span>View Practice Scope</span>
-                <span aria-hidden="true">→</span>
-              </Link>
+              <div className="about-desk-body">
+                <div>
+                  <h3>Corporate Law &amp; ROC Desk</h3>
+                  <p>
+                    Company &amp; LLP formation, annual ROC filings (AOC-4 &amp; MGT-7), Director KYC, share transfers, and statutory register maintenance.
+                  </p>
+                </div>
+                <Link href="/services/corporate-law" className="about-desk-link">
+                  <span>View Practice Scope</span>
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
             </div>
 
-            <div className="about-desk-card">
-              <div className="about-desk-top">
-                <span className="about-desk-tag">CROSS-BORDER</span>
-                <span aria-hidden="true">✦</span>
+            <div className="about-desk-card has-media desk-fema">
+              <div className="about-desk-media">
+                <Image
+                  src="/images/international-tax.jpg"
+                  alt="International Tax & FEMA Desk"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="about-desk-img"
+                />
+                <div className="about-desk-scrim" />
+                <div className="about-desk-pill-bar">
+                  <span className="about-desk-tag">CROSS-BORDER</span>
+                  <span className="about-desk-sparkle" aria-hidden="true">✦</span>
+                </div>
               </div>
-              <h3>International Tax &amp; FEMA Desk</h3>
-              <p>
-                Form 15CA/15CB certifications for foreign outward remittances, DTAA withholding tax relief, RBI FLA Return reporting, and NRI tax advisory.
-              </p>
-              <Link href="/services/international-tax" className="about-desk-link">
-                <span>View Practice Scope</span>
-                <span aria-hidden="true">→</span>
-              </Link>
+              <div className="about-desk-body">
+                <div>
+                  <h3>International Tax &amp; FEMA Desk</h3>
+                  <p>
+                    Form 15CA/15CB certifications for foreign outward remittances, DTAA withholding tax relief, RBI FLA Return reporting, and NRI tax advisory.
+                  </p>
+                </div>
+                <Link href="/services/international-tax" className="about-desk-link">
+                  <span>View Practice Scope</span>
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
             </div>
 
-            <div className="about-desk-card">
-              <div className="about-desk-top">
-                <span className="about-desk-tag">ADVISORY</span>
-                <span aria-hidden="true">✦</span>
+            <div className="about-desk-card has-media desk-cfo">
+              <div className="about-desk-media">
+                <Image
+                  src="/images/ca-consulting.jpg"
+                  alt="Virtual CFO & Advisory Desk"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="about-desk-img"
+                />
+                <div className="about-desk-scrim" />
+                <div className="about-desk-pill-bar">
+                  <span className="about-desk-tag">ADVISORY</span>
+                  <span className="about-desk-sparkle" aria-hidden="true">✦</span>
+                </div>
               </div>
-              <h3>Virtual CFO &amp; Advisory Desk</h3>
-              <p>
-                Strategic budgeting, cash flow forecasting, MIS dashboard modeling, working capital planning, and bank CMA data preparation.
-              </p>
-              <Link href="/services/cfo-advisory" className="about-desk-link">
-                <span>View Practice Scope</span>
-                <span aria-hidden="true">→</span>
-              </Link>
+              <div className="about-desk-body">
+                <div>
+                  <h3>Virtual CFO &amp; Advisory Desk</h3>
+                  <p>
+                    Strategic budgeting, cash flow forecasting, MIS dashboard modeling, working capital planning, and bank CMA data preparation.
+                  </p>
+                </div>
+                <Link href="/services/cfo-advisory" className="about-desk-link">
+                  <span>View Practice Scope</span>
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
             </div>
 
-            <div className="about-desk-card">
-              <div className="about-desk-top">
-                <span className="about-desk-tag">REPORTING</span>
-                <span aria-hidden="true">✦</span>
+            <div className="about-desk-card has-media desk-accounts">
+              <div className="about-desk-media">
+                <Image
+                  src="/images/accounting-mis.jpg"
+                  alt="Accounting & MIS Desk"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="about-desk-img"
+                />
+                <div className="about-desk-scrim" />
+                <div className="about-desk-pill-bar">
+                  <span className="about-desk-tag">REPORTING</span>
+                  <span className="about-desk-sparkle" aria-hidden="true">✦</span>
+                </div>
               </div>
-              <h3>Accounting &amp; MIS Desk</h3>
-              <p>
-                Full-stack bookkeeping on Tally, Zoho Books, and SAP, monthly ledger reconciliation, and preparation of financial statements under Indian AS.
-              </p>
-              <Link href="/services/accounting" className="about-desk-link">
-                <span>View Practice Scope</span>
-                <span aria-hidden="true">→</span>
-              </Link>
+              <div className="about-desk-body">
+                <div>
+                  <h3>Accounting &amp; MIS Desk</h3>
+                  <p>
+                    Full-stack bookkeeping on Tally, Zoho Books, and SAP, monthly ledger reconciliation, and preparation of financial statements under Indian AS.
+                  </p>
+                </div>
+                <Link href="/services/accounting" className="about-desk-link">
+                  <span>View Practice Scope</span>
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
