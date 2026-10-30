@@ -542,7 +542,7 @@ export default function HomePage() {
           <div className="section-head-center">
             <span className="eyebrow-accent">✦ PRACTICE SECTORS</span>
             <h2 className="editorial-heading-light">
-              Industries we <span className="hero-serif-accent" style={{ color: 'var(--color-gold)' }}>serve</span>
+              Industries we <span className="hero-serif-accent">serve</span>
             </h2>
             <p className="section-head-lede-light">
               We support businesses across sectors with taxation, compliance, audit and advisory services.
