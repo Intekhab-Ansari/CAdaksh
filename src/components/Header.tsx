@@ -64,9 +64,6 @@ export default function Header() {
             <Link href="/services" className={isActive('/services') ? 'active' : ''} aria-current={isActive('/services') ? 'page' : undefined}>
               Services
             </Link>
-            <Link href="/insights" className={isActive('/insights') ? 'active' : ''} aria-current={isActive('/insights') ? 'page' : undefined}>
-              Insights
-            </Link>
             <Link href="/faq" className={isActive('/faq') ? 'active' : ''} aria-current={isActive('/faq') ? 'page' : undefined}>
               FAQ
             </Link>
@@ -194,16 +191,6 @@ export default function Header() {
               <span className="item-label">Services Scope</span>
             </span>
             <span className="item-badge gold-badge">7 Desks</span>
-          </Link>
-
-          <Link href="/insights" onClick={closeMenu} className={`quick-menu-item ${isActive('/insights') ? 'active' : ''}`}>
-            <span className="item-left">
-              <span className="item-icon icon-cyan" aria-hidden="true">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-              </span>
-              <span className="item-label">Tax Bulletins</span>
-            </span>
-            <span className="item-right-arrow" aria-hidden="true">›</span>
           </Link>
 
           <Link href="/faq" onClick={closeMenu} className={`quick-menu-item ${isActive('/faq') ? 'active' : ''}`}>

@@ -17,8 +17,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/services/international-tax',
     '/contact',
     '/faq',
-    '/insights',
-    '/disclaimer',
     '/privacy',
   ];
 

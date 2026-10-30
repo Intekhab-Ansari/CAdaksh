@@ -184,10 +184,8 @@ export default function Footer() {
                 <li><Link href="/about">About the Practice</Link></li>
                 <li><Link href="/team">Proprietor &amp; Practice Desks</Link></li>
                 <li><Link href="/services">Services Directory</Link></li>
-                <li><Link href="/insights">Knowledge &amp; Tax Bulletins</Link></li>
                 <li><Link href="/faq">Client FAQ &amp; Guidance</Link></li>
-                <li><Link href="/disclaimer">ICAI Mandatory Disclaimer</Link></li>
-                <li><Link href="/privacy">DPDP Act 2023 Privacy Notice</Link></li>
+                <li><Link href="/contact">Chambers Office &amp; Location</Link></li>
                 <li><a href="https://www.linkedin.com/in/daksh-desai-787199204" target="_blank" rel="noopener noreferrer">Proprietor LinkedIn ↗</a></li>
               </ul>
             </div>
@@ -203,7 +201,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Legal Disclaimers & Ethics */}
+        {/* Legal Attribution */}
         <div className="footer-legal-bar">
           <div className="legal-left">
             <div className="copyright-line">
@@ -220,13 +218,6 @@ export default function Footer() {
                 Sociial Mantraa ↗
               </a>
             </div>
-          </div>
-          <div className="legal-links">
-            <Link href="/disclaimer">ICAI Disclaimer</Link>
-            <span className="sep">•</span>
-            <Link href="/privacy">Privacy Notice</Link>
-            <span className="sep">•</span>
-            <Link href="/contact">Chamber Office</Link>
           </div>
         </div>
       </div>

@@ -3143,17 +3143,19 @@ footer.site-footer::before {
   padding-top: 2rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  gap: 1.5rem;
   font-size: 0.82rem;
 }
 
 .legal-left {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
-  max-width: 780px;
+  align-items: center;
+  text-align: center;
+  gap: 0.45rem;
+  width: 100%;
 }
 
 .copyright-line {
