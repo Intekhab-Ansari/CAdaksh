@@ -142,15 +142,15 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Top Segmented Tabs */}
+        {/* Top Segmented Tabs (Guaranteed Single-Line) */}
         <div className="quick-menu-tabs">
           <Link href="/services" onClick={closeMenu} className={`quick-tab-pill ${isActive('/services') ? 'active' : ''}`}>
-            <span className="tab-icon">✦</span>
-            <span>Practice Desks</span>
+            <span className="tab-icon" aria-hidden="true">✦</span>
+            <span style={{ whiteSpace: 'nowrap' }}>Practice Desks</span>
           </Link>
           <Link href="/contact" onClick={closeMenu} className={`quick-tab-pill ${isActive('/contact') ? 'active' : ''}`}>
-            <span className="tab-icon">🏛</span>
-            <span>Chambers</span>
+            <span className="tab-icon" aria-hidden="true">🏛</span>
+            <span style={{ whiteSpace: 'nowrap' }}>Chambers</span>
           </Link>
         </div>
 
