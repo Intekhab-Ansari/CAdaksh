@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
   const isActive = (href: string) => {
@@ -25,13 +26,23 @@ export default function Header() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  // Track scroll position for dynamic glassmorphism header elevation
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 15);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
-      <header className="site-header">
+      <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
         <div className="container header-inner">
           <Link className="brand-lockup" href="/" aria-label="Daksh Desai & Associates Home">
             <div className="brand-emblem-wrap">
-              <Image src="/images/ca-logo.svg" alt="CA India Emblem" width={40} height={40} priority />
+              <Image src="/images/ca-logo.svg" alt="CA India Emblem" width={38} height={38} priority />
             </div>
             <div className="brand-text">
               <span className="brand-title">Daksh Desai &amp; Associates</span>
@@ -62,8 +73,22 @@ export default function Header() {
           </nav>
 
           <div className="header-actions">
+            <a
+              href="tel:+919819647471"
+              className="header-chambers-badge"
+              title="Direct Chambers Telephone: +91 98196 47471"
+              aria-label="Direct Chambers Telephone: +91 98196 47471"
+            >
+              <span className="badge-pulse-dot" aria-hidden="true" />
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              <span className="badge-tel-num">+91 98196 47471</span>
+            </a>
+
             <Link href="/contact" className="header-contact-btn">
-              Contact Us
+              <span>Contact Us</span>
+              <span className="contact-btn-arrow" aria-hidden="true">→</span>
             </Link>
 
             {/* Mobile / Tablet Toggle Button */}
@@ -76,7 +101,7 @@ export default function Header() {
               aria-controls="mobileQuickMenu"
               aria-label="Toggle Quick Navigation Menu"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="18" x2="21" y2="18"></line>
