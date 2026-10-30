@@ -60,15 +60,40 @@ export default function TeamPage() {
             style={{
               background: 'linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)',
               border: '1px solid rgba(197, 160, 89, 0.35)',
-              borderRadius: 'var(--radius-lg)',
-              padding: 'clamp(2rem, 4vw, 3rem)',
-              boxShadow: '0 15px 40px rgba(11, 21, 40, 0.05)',
+              borderRadius: '24px',
+              padding: 'clamp(2.5rem, 5vw, 4rem)',
+              boxShadow: '0 20px 50px rgba(11, 21, 40, 0.06)',
             }}
           >
-            <div className="proprietor-grid">
+            <div
+              className="proprietor-flex-container"
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: 'clamp(2.5rem, 5vw, 4.5rem)',
+                alignItems: 'flex-start',
+              }}
+            >
               {/* Photo Card with Gold Trim & Prominent Dimensions */}
-              <div className="proprietor-photo-card">
-                <div className="proprietor-photo-wrapper">
+              <div
+                className="proprietor-photo-card"
+                style={{
+                  flex: '0 0 340px',
+                  width: '340px',
+                  maxWidth: '100%',
+                }}
+              >
+                <div
+                  className="proprietor-photo-wrapper"
+                  style={{
+                    position: 'relative',
+                    width: '100%',
+                    height: '440px',
+                    overflow: 'hidden',
+                    background: '#0B1528',
+                    borderRadius: '16px 16px 0 0',
+                  }}
+                >
                   <Image
                     src="/images/ca-daksh-desai-executive.jpg"
                     alt="CA Daksh Desai, ACA, B.Com - Proprietor & Principal, Daksh Desai & Associates"
@@ -76,43 +101,111 @@ export default function TeamPage() {
                     height={520}
                     priority
                     className="proprietor-photo-img"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      objectPosition: 'top center',
+                      display: 'block',
+                    }}
                   />
                 </div>
-                <div className="proprietor-photo-badge">
-                  <span className="badge-name">CA DAKSH DESAI</span>
-                  <span className="badge-meta">ACA (ICAI) · M. NO. 648747 · FRN 165505W</span>
+                <div
+                  className="proprietor-photo-badge"
+                  style={{
+                    background: '#0B1528',
+                    color: '#F5D79E',
+                    padding: '0.75rem 1rem',
+                    textAlign: 'center',
+                    borderTop: '1px solid rgba(197, 160, 89, 0.4)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.2rem',
+                    borderRadius: '0 0 16px 16px',
+                  }}
+                >
+                  <span
+                    className="badge-name"
+                    style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '0.8rem',
+                      fontWeight: 750,
+                      letterSpacing: '0.08em',
+                      color: '#FFF0BA',
+                    }}
+                  >
+                    CA DAKSH DESAI
+                  </span>
+                  <span
+                    className="badge-meta"
+                    style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '0.68rem',
+                      fontWeight: 600,
+                      letterSpacing: '0.06em',
+                      color: '#C5A059',
+                    }}
+                  >
+                    ACA (ICAI) · M. NO. 648747 · FRN 165505W
+                  </span>
                 </div>
               </div>
 
               {/* Bio & Credentials Details */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <div
+                className="proprietor-details-col"
+                style={{
+                  flex: '1 1 420px',
+                  minWidth: '280px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '1.5rem',
+                }}
+              >
                 <div>
-                  <h3 style={{ fontSize: '1.85rem', color: 'var(--color-primary-navy)', margin: 0, fontWeight: 800, letterSpacing: '-0.02em' }}>
+                  <h3 style={{ fontSize: '2rem', color: 'var(--color-primary-navy)', margin: '0 0 0.4rem 0', fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.2 }}>
                     CA Daksh Desai
                   </h3>
-                  <p style={{ fontWeight: 650, color: 'var(--color-gold-deep)', margin: '0.25rem 0 0', fontSize: '1.05rem' }}>
+                  <p style={{ fontWeight: 650, color: 'var(--color-gold-deep)', margin: 0, fontSize: '1.08rem' }}>
                     Proprietor &amp; Principal · Associate Chartered Accountant (ACA) · B.Com
                   </p>
                 </div>
 
-                <p style={{ fontSize: '1.02rem', lineHeight: '1.65', color: 'var(--color-text-body)', margin: 0, fontWeight: 500 }}>
+                <p style={{ fontSize: '1.05rem', lineHeight: '1.7', color: 'var(--color-text-body)', margin: 0, fontWeight: 500, maxWidth: '640px' }}>
                   Direct partner-led counsel across corporate taxation, statutory audits, GST compliance, and cross-border FEMA advisory.
                 </p>
 
-                <div className="register-card" style={{ boxShadow: 'var(--shadow-subtle)', maxWidth: '560px' }}>
-                  <dl className="register-dl">
-                    <dt className="register-dt">Qualification</dt>
-                    <dd className="register-dd">Associate Chartered Accountant (ACA, ICAI) · B.Com</dd>
+                <div
+                  className="register-card"
+                  style={{
+                    padding: '1.6rem 2rem',
+                    boxShadow: '0 8px 24px rgba(11, 21, 40, 0.04)',
+                    maxWidth: '640px',
+                    border: '1px solid rgba(197, 160, 89, 0.25)',
+                    borderRadius: '12px',
+                    background: '#FFFFFF',
+                  }}
+                >
+                  <dl
+                    className="register-dl"
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'minmax(120px, 150px) 1fr',
+                      gap: '0.9rem 1.6rem',
+                    }}
+                  >
+                    <dt className="register-dt" style={{ fontWeight: 650, color: 'var(--color-text-muted)' }}>Qualification</dt>
+                    <dd className="register-dd" style={{ fontWeight: 600, color: 'var(--color-primary-navy)', margin: 0 }}>Associate Chartered Accountant (ACA, ICAI) · B.Com</dd>
 
-                    <dt className="register-dt">Registration</dt>
-                    <dd className="register-dd">ICAI M. No. 648747 · Firm FRN: 165505W</dd>
+                    <dt className="register-dt" style={{ fontWeight: 650, color: 'var(--color-text-muted)' }}>Registration</dt>
+                    <dd className="register-dd" style={{ fontWeight: 600, color: 'var(--color-primary-navy)', margin: 0 }}>ICAI M. No. 648747 · Firm FRN: 165505W</dd>
 
-                    <dt className="register-dt">Chambers</dt>
-                    <dd className="register-dd">Borivali West &amp; Nariman Point, Mumbai</dd>
+                    <dt className="register-dt" style={{ fontWeight: 650, color: 'var(--color-text-muted)' }}>Chambers</dt>
+                    <dd className="register-dd" style={{ margin: 0 }}>Borivali West &amp; Nariman Point, Mumbai</dd>
 
-                    <dt className="register-dt">Direct Contact</dt>
-                    <dd className="register-dd" style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                      <a href="tel:+919819647471" style={{ color: 'var(--color-primary-navy)', fontWeight: 600, textDecoration: 'none' }}>
+                    <dt className="register-dt" style={{ fontWeight: 650, color: 'var(--color-text-muted)' }}>Direct Contact</dt>
+                    <dd className="register-dd" style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem', margin: 0 }}>
+                      <a href="tel:+919819647471" style={{ color: 'var(--color-primary-navy)', fontWeight: 650, textDecoration: 'none' }}>
                         +91 98196 47471
                       </a>
                       <a href="mailto:cadakshdesai@outlook.com" style={{ color: 'var(--color-primary-navy)', fontWeight: 600, textDecoration: 'none' }}>
@@ -125,7 +218,7 @@ export default function TeamPage() {
                   </dl>
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap', marginTop: '0.25rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', flexWrap: 'wrap', marginTop: '0.25rem' }}>
                   <a
                     href="https://www.linkedin.com/in/daksh-desai-787199204"
                     target="_blank"

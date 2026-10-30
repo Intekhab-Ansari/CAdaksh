@@ -3918,11 +3918,20 @@ footer.site-footer::before {
   font-weight: 700;
 }
 
-.proprietor-grid {
-  display: grid;
-  grid-template-columns: 360px minmax(0, 1fr);
-  gap: clamp(2rem, 3.5vw, 3.5rem);
-  align-items: start;
+.proprietor-grid,
+.proprietor-flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: flex-start;
+}
+
+.proprietor-details-col {
+  flex: 1 1 420px;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .proprietor-photo-card {
