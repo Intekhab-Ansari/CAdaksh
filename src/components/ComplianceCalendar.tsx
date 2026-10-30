@@ -303,21 +303,27 @@ export default function ComplianceCalendar() {
             onClick={() => setIsExpanded(!isExpanded)}
             aria-expanded={isExpanded}
           >
-            <span>
-              {isExpanded
-                ? 'Show Fewer Milestones'
-                : `View All ${filteredDeadlines.length} Statutory Milestones (${filteredDeadlines.length - 4} More)`}
+            <span className="cal-btn-label">
+              {isExpanded ? (
+                'Show Fewer Milestones'
+              ) : (
+                <>
+                  <span>View All {filteredDeadlines.length} Milestones</span>
+                  <span className="cal-btn-counter">+{filteredDeadlines.length - 4}</span>
+                </>
+              )}
             </span>
             <svg
               className={`expand-chevron ${isExpanded ? 'rotated' : ''}`}
-              width="16"
-              height="16"
+              width="15"
+              height="15"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
+              aria-hidden="true"
             >
               <polyline points="6 9 12 15 18 9" />
             </svg>
