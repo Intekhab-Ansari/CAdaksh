@@ -5101,6 +5101,39 @@ footer.site-footer::before {
     width: 100%;
     justify-content: center;
   }
+  .footer-legal-bar {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 0.85rem !important;
+    padding-top: 1.5rem !important;
+  }
+  .legal-left {
+    width: 100% !important;
+    max-width: 100% !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .copyright-line {
+    text-align: center !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    line-height: 1.45 !important;
+  }
+  .agency-credit-line {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+  }
+  .legal-links {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
   /* Prevent iOS Safari from auto-zooming input fields */
   .form-input,
   .form-select,
@@ -5361,20 +5394,34 @@ footer.site-footer::before {
     margin-bottom: 2rem !important;
   }
   .footer-legal-bar {
-    flex-direction: column;
-    gap: 0.75rem !important;
+    flex-direction: column !important;
+    gap: 0.85rem !important;
     padding-top: 1.25rem !important;
+    align-items: center !important;
+    text-align: center !important;
   }
   .legal-left {
     width: 100% !important;
     max-width: 100% !important;
+    align-items: center !important;
+    text-align: center !important;
   }
   .copyright-line {
-    font-size: clamp(0.55rem, 2.5vw, 0.78rem) !important;
-    white-space: nowrap !important;
-    letter-spacing: -0.015em !important;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: clamp(0.72rem, 3vw, 0.82rem) !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    line-height: 1.45 !important;
+    text-align: center !important;
+  }
+  .agency-credit-line {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    font-size: 0.76rem !important;
+    margin: 0 auto !important;
   }
   .footer-email-link {
     font-size: clamp(0.72rem, 3.2vw, 0.84rem) !important;
@@ -5382,6 +5429,8 @@ footer.site-footer::before {
   }
   .legal-links {
     flex-wrap: wrap;
+    justify-content: center !important;
+    text-align: center !important;
     gap: 0.5rem !important;
     font-size: 0.76rem !important;
   }
