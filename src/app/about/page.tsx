@@ -52,16 +52,16 @@ export default function AboutPage() {
       <section className="section" id="the-firm">
         <div className="container about-heritage-grid">
           <div className="about-heritage-text">
-            <span className="eyebrow">Practice Foundation</span>
-            <h2>Sovereign advisory built on statutory precision</h2>
+            <span className="eyebrow">Founder &amp; Practice Leadership</span>
+            <h2>Sovereign advisory led directly by CA Daksh Desai</h2>
             <p>
-              Founded by CA Daksh Desai, <strong>Daksh Desai &amp; Associates</strong> was established to provide corporations, entrepreneurs, family offices, and high-net-worth individuals with transparent, highly technical, and partner-led Chartered Accountancy counsel.
+              Founded and led by <strong>CA Daksh Desai</strong>, <strong>Daksh Desai &amp; Associates</strong> was established in Mumbai with an uncompromising standard: to provide corporate enterprises, growth businesses, family offices, and professionals with disciplined, partner-led Chartered Accountancy counsel.
             </p>
             <p>
-              In an environment of continuously evolving tax jurisprudence, automated compliance portals, and rigorous regulatory scrutiny, we ensure that every client assignment receives direct partner-level analysis — completely eliminating intermediate proxy relays or junior delegation.
+              In an environment of continuously evolving tax jurisprudence, faceless assessment frameworks, and stringent regulatory compliance, CA Daksh Desai ensures that every client engagement receives direct principal-level attention — completely eliminating proxy relays and junior delegation.
             </p>
             <p>
-              Our practice is conducted in strict compliance with the Chartered Accountants Act, 1949, the ICAI Code of Ethics, and applicable quality standards, ensuring our opinions and audit attestations carry undisputed statutory authority.
+              Our practice is conducted in strict compliance with the Chartered Accountants Act, 1949, the ICAI Code of Ethics, and applicable quality control standards, ensuring our tax defense, audit attestations, and corporate filings carry undisputed statutory credibility.
             </p>
 
             <aside className="register-card" style={{ marginTop: '1.75rem', borderLeft: '3px solid var(--color-gold)' }} aria-label="Firm registration particulars">
@@ -97,25 +97,93 @@ export default function AboutPage() {
                   </a>
                 </dd>
               </dl>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexWrap: 'wrap', marginTop: '1.25rem', paddingTop: '1rem', borderTop: '1px solid var(--color-border)' }}>
+                <a
+                  href="https://www.linkedin.com/in/daksh-desai-787199204"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-pill-small"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.4rem',
+                    padding: '0.35rem 0.8rem',
+                    background: 'rgba(10, 102, 194, 0.08)',
+                    borderColor: 'rgba(10, 102, 194, 0.3)',
+                    color: '#0A66C2',
+                    fontSize: '0.74rem',
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                  }}
+                >
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.3a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
+                  </svg>
+                  <span>Connect on LinkedIn</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+
+                <a
+                  href="https://wa.me/919819647471?text=Hello%20CA%20Daksh%20Desai%2C%20I%20would%20like%20to%20enquire%20regarding%20statutory%20services."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-pill-small"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.4rem',
+                    padding: '0.35rem 0.8rem',
+                    background: 'rgba(37, 211, 102, 0.08)',
+                    borderColor: 'rgba(37, 211, 102, 0.3)',
+                    color: '#128C7E',
+                    fontSize: '0.74rem',
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                  }}
+                >
+                  <span>Direct WhatsApp</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+
+                <a
+                  href="https://maps.app.goo.gl/DvLMyXd3KrBS66vo9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-pill-small"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.4rem',
+                    padding: '0.35rem 0.8rem',
+                    fontSize: '0.74rem',
+                    textDecoration: 'none',
+                  }}
+                >
+                  <span>Chambers Location</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
             </aside>
           </div>
 
           <div className="about-heritage-visual">
             <div className="about-heritage-img-box">
               <Image
-                src="/images/tax-law-books.jpg"
-                alt="Bare Acts, Tax Law, and Statutory Volumes at Daksh Desai & Associates"
+                src="/images/ca-daksh-desai-executive.jpg"
+                alt="CA Daksh Desai, ACA, B.Com - Proprietor & Principal, Daksh Desai & Associates"
                 fill
+                priority
                 sizes="(max-width: 900px) 100vw, 45vw"
                 className="about-heritage-img"
               />
               <div className="about-stamp-pill">
                 <span aria-hidden="true">✦</span>
-                <span>PARTNER-LED PRACTICE · MUMBAI</span>
+                <span>CA DAKSH DESAI · PROPRIETOR &amp; PRINCIPAL</span>
               </div>
               <div className="about-floating-caption">
-                <strong>Chartered Accountants Act, 1949</strong>
-                <span>Strict statutory independence, professional privilege, and ICAI Standards on Auditing.</span>
+                <strong>CA Daksh Desai, ACA, B.Com</strong>
+                <span>Chartered Accountant · ICAI Membership No. 648747 · Direct Practice Leadership</span>
               </div>
             </div>
           </div>
