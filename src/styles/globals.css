@@ -3920,9 +3920,68 @@ footer.site-footer::before {
 
 .proprietor-grid {
   display: grid;
-  grid-template-columns: 200px minmax(0, 1fr);
-  gap: 2rem;
+  grid-template-columns: 360px minmax(0, 1fr);
+  gap: clamp(2rem, 3.5vw, 3.5rem);
   align-items: start;
+}
+
+.proprietor-photo-card {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 2px solid rgba(197, 160, 89, 0.45);
+  box-shadow: 0 20px 45px rgba(11, 21, 40, 0.16);
+  background: #0B1528;
+}
+
+.proprietor-photo-wrapper {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  overflow: hidden;
+  background: #0B1528;
+}
+
+.proprietor-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.proprietor-photo-card:hover .proprietor-photo-img {
+  transform: scale(1.03);
+}
+
+.proprietor-photo-badge {
+  background: #0B1528;
+  color: #F5D79E;
+  padding: 0.65rem 0.85rem;
+  text-align: center;
+  border-top: 1px solid rgba(197, 160, 89, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.proprietor-photo-badge .badge-name {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  color: #FFF0BA;
+}
+
+.proprietor-photo-badge .badge-meta {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #C5A059;
 }
 
 .passport-photo-box {
@@ -4276,6 +4335,11 @@ footer.site-footer::before {
   }
   .proprietor-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .proprietor-photo-card {
+    max-width: 360px;
+    margin: 0 auto;
   }
   .practice-desks-grid {
     grid-template-columns: 1fr;
@@ -5558,7 +5622,7 @@ footer.site-footer::before {
 .about-desk-media {
   position: relative;
   width: 100%;
-  height: 165px;
+  height: 195px;
   overflow: hidden;
   background: #0B1528;
 }

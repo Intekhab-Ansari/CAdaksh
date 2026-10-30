@@ -264,7 +264,7 @@ export default function AboutPage() {
                 <div>
                   <h3>Income Tax &amp; Scrutiny Defense</h3>
                   <p>
-                    Filing complex ITRs, AIS/TIS variance reconciliation, Section 148 notice response, faceless assessment defense, and CIT(Appeals) submissions.
+                    ITR filing, AIS reconciliation, Section 148 notice response, and CIT(Appeals) defense.
                   </p>
                 </div>
                 <Link href="/services/income-tax" className="about-desk-link">
@@ -293,7 +293,7 @@ export default function AboutPage() {
                 <div>
                   <h3>Goods &amp; Services Tax (GST)</h3>
                   <p>
-                    Monthly GSTR-1 &amp; 3B filing, automated GSTR-2B ITC matching, DRC-01 notice defense, inverted duty structure refunds, and departmental audit assistance.
+                    Monthly GSTR-1 &amp; 3B filing, 2B ITC matching, DRC-01 defense, and refund assistance.
                   </p>
                 </div>
                 <Link href="/services/gst" className="about-desk-link">
@@ -322,7 +322,7 @@ export default function AboutPage() {
                 <div>
                   <h3>Statutory &amp; Tax Audits</h3>
                   <p>
-                    Audits under Section 139 of the Companies Act 2013, Tax Audits under Section 44AB, Internal Financial Controls (IFCoFR), and inventory physical audits.
+                    Audits under Section 139 of Companies Act, Section 44AB Tax Audits, and IFCoFR controls.
                   </p>
                 </div>
                 <Link href="/services/audit" className="about-desk-link">
@@ -351,7 +351,7 @@ export default function AboutPage() {
                 <div>
                   <h3>MCA21 &amp; Corporate Governance</h3>
                   <p>
-                    Company &amp; LLP incorporation, annual ROC compliance (AOC-4 &amp; MGT-7), Director KYC, share allotments, and statutory register maintenance.
+                    Company &amp; LLP formation, annual ROC compliance (AOC-4/MGT-7), and Director KYC.
                   </p>
                 </div>
                 <Link href="/services/corporate-law" className="about-desk-link">
@@ -380,7 +380,7 @@ export default function AboutPage() {
                 <div>
                   <h3>International Tax &amp; FEMA</h3>
                   <p>
-                    Form 15CA and Form 15CB certifications, DTAA treaty relief, foreign outward remittances, RBI FLA return filing, and NRI property tax advisory.
+                    Form 15CA/15CB remittance certifications, DTAA treaty relief, and RBI FLA return filing.
                   </p>
                 </div>
                 <Link href="/services/international-tax" className="about-desk-link">
@@ -409,7 +409,7 @@ export default function AboutPage() {
                 <div>
                   <h3>Virtual CFO &amp; MIS Modeling</h3>
                   <p>
-                    Strategic budgeting, cash flow forecasting, financial statement preparation under AS/Ind-AS, bank loan syndication CMA data, and board MIS dashboards.
+                    Cash flow forecasting, budgeting, board MIS dashboards, and bank loan CMA data.
                   </p>
                 </div>
                 <Link href="/services/cfo-advisory" className="about-desk-link">

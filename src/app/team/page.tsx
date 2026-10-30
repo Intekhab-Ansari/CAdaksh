@@ -66,67 +66,46 @@ export default function TeamPage() {
             }}
           >
             <div className="proprietor-grid">
-              {/* Photo Box with Gold Trim */}
-              <div
-                style={{
-                  position: 'relative',
-                  width: '260px',
-                  borderRadius: '16px',
-                  overflow: 'hidden',
-                  border: '2px solid rgba(197, 160, 89, 0.45)',
-                  boxShadow: '0 16px 36px rgba(11, 21, 40, 0.16)',
-                  flexShrink: 0,
-                }}
-              >
-                <Image
-                  src="/images/ca-daksh-desai-executive.jpg"
-                  alt="CA Daksh Desai, ACA, B.Com - Proprietor & Principal, Daksh Desai & Associates"
-                  width={260}
-                  height={330}
-                  priority
-                  style={{ display: 'block', width: '100%', height: 'auto', objectFit: 'cover' }}
-                />
-                <div
-                  style={{
-                    background: '#0B1528',
-                    color: '#F5D79E',
-                    fontSize: '0.68rem',
-                    fontFamily: 'var(--font-mono)',
-                    fontWeight: 700,
-                    letterSpacing: '0.08em',
-                    padding: '0.45rem 0.6rem',
-                    textAlign: 'center',
-                    borderTop: '1px solid rgba(197, 160, 89, 0.4)',
-                  }}
-                >
-                  CA DAKSH DESAI · ACA · M. NO. 648747
+              {/* Photo Card with Gold Trim & Prominent Dimensions */}
+              <div className="proprietor-photo-card">
+                <div className="proprietor-photo-wrapper">
+                  <Image
+                    src="/images/ca-daksh-desai-executive.jpg"
+                    alt="CA Daksh Desai, ACA, B.Com - Proprietor & Principal, Daksh Desai & Associates"
+                    width={400}
+                    height={520}
+                    priority
+                    className="proprietor-photo-img"
+                  />
+                </div>
+                <div className="proprietor-photo-badge">
+                  <span className="badge-name">CA DAKSH DESAI</span>
+                  <span className="badge-meta">ACA (ICAI) · M. NO. 648747 · FRN 165505W</span>
                 </div>
               </div>
 
               {/* Bio & Credentials Details */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                 <div>
-                  <h3 style={{ fontSize: '1.6rem', color: 'var(--color-primary-navy)', margin: 0, fontWeight: 800 }}>
+                  <h3 style={{ fontSize: '1.85rem', color: 'var(--color-primary-navy)', margin: 0, fontWeight: 800, letterSpacing: '-0.02em' }}>
                     CA Daksh Desai
                   </h3>
-                  <p style={{ fontWeight: 600, color: 'var(--color-gold-deep)', margin: '0.25rem 0 0', fontSize: '1rem' }}>
+                  <p style={{ fontWeight: 650, color: 'var(--color-gold-deep)', margin: '0.25rem 0 0', fontSize: '1.05rem' }}>
                     Proprietor &amp; Principal · Associate Chartered Accountant (ACA) · B.Com
                   </p>
                 </div>
 
-                <div className="register-card" style={{ boxShadow: 'var(--shadow-subtle)', maxWidth: '520px' }}>
+                <p style={{ fontSize: '1.02rem', lineHeight: '1.65', color: 'var(--color-text-body)', margin: 0, fontWeight: 500 }}>
+                  Direct partner-led counsel across corporate taxation, statutory audits, GST compliance, and cross-border FEMA advisory.
+                </p>
+
+                <div className="register-card" style={{ boxShadow: 'var(--shadow-subtle)', maxWidth: '560px' }}>
                   <dl className="register-dl">
                     <dt className="register-dt">Qualification</dt>
-                    <dd className="register-dd">Associate Chartered Accountant (ACA, ICAI)</dd>
+                    <dd className="register-dd">Associate Chartered Accountant (ACA, ICAI) · B.Com</dd>
 
-                    <dt className="register-dt">Degree</dt>
-                    <dd className="register-dd">Bachelor of Commerce (B.Com)</dd>
-
-                    <dt className="register-dt">ICAI M. No.</dt>
-                    <dd className="register-dd">648747</dd>
-
-                    <dt className="register-dt">Firm FRN</dt>
-                    <dd className="register-dd">165505W</dd>
+                    <dt className="register-dt">Registration</dt>
+                    <dd className="register-dd">ICAI M. No. 648747 · Firm FRN: 165505W</dd>
 
                     <dt className="register-dt">Chambers</dt>
                     <dd className="register-dd">Borivali West &amp; Nariman Point, Mumbai</dd>
@@ -145,10 +124,6 @@ export default function TeamPage() {
                     </dd>
                   </dl>
                 </div>
-
-                <p style={{ fontSize: '1rem', lineHeight: '1.7', color: 'var(--color-text-body)', margin: 0 }}>
-                  CA Daksh Desai personally oversees all professional engagements at the practice. With extensive technical mastery across the Income-tax Act 1961, CGST Act 2017, and Companies Act 2013, he delivers authoritative guidance in corporate tax structuring, faceless scrutiny proceedings before the Income Tax Department, statutory audits, and FEMA cross-border certifications (Form 15CA/15CB).
-                </p>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap', marginTop: '0.25rem' }}>
                   <a
@@ -250,7 +225,7 @@ export default function TeamPage() {
                 <div>
                   <h3>Taxation &amp; GST Desk</h3>
                   <p>
-                    Income tax return filings, AIS variance resolution, GSTR-1 &amp; 3B compliance, 2B ITC matching, and departmental notice representation.
+                    ITR filings, AIS reconciliation, GSTR-1 &amp; 3B compliance, 2B ITC matching, and notice defense.
                   </p>
                 </div>
                 <Link href="/services/income-tax" className="about-desk-link">
@@ -279,7 +254,7 @@ export default function TeamPage() {
                 <div>
                   <h3>Audit &amp; Assurance Desk</h3>
                   <p>
-                    Statutory audits under Companies Act 2013, Tax Audits under Section 44AB, Internal Financial Controls (IFCoFR), and physical inventory audits.
+                    Statutory audits under Companies Act, Section 44AB Tax Audits, IFCoFR controls, and stock audits.
                   </p>
                 </div>
                 <Link href="/services/audit" className="about-desk-link">
@@ -308,7 +283,7 @@ export default function TeamPage() {
                 <div>
                   <h3>Corporate Law &amp; ROC Desk</h3>
                   <p>
-                    Company &amp; LLP formation, annual ROC filings (AOC-4 &amp; MGT-7), Director KYC, share transfers, and statutory register maintenance.
+                    Company &amp; LLP formation, annual ROC filings (AOC-4/MGT-7), Director KYC, and statutory registers.
                   </p>
                 </div>
                 <Link href="/services/corporate-law" className="about-desk-link">
@@ -337,7 +312,7 @@ export default function TeamPage() {
                 <div>
                   <h3>International Tax &amp; FEMA Desk</h3>
                   <p>
-                    Form 15CA/15CB certifications for foreign outward remittances, DTAA withholding tax relief, RBI FLA Return reporting, and NRI tax advisory.
+                    Form 15CA/15CB remittance certificates, DTAA withholding relief, RBI FLA returns, and NRI tax advisory.
                   </p>
                 </div>
                 <Link href="/services/international-tax" className="about-desk-link">
@@ -366,7 +341,7 @@ export default function TeamPage() {
                 <div>
                   <h3>Virtual CFO &amp; Advisory Desk</h3>
                   <p>
-                    Strategic budgeting, cash flow forecasting, MIS dashboard modeling, working capital planning, and bank CMA data preparation.
+                    Strategic budgeting, cash flow forecasting, MIS dashboard modeling, and bank CMA data preparation.
                   </p>
                 </div>
                 <Link href="/services/cfo-advisory" className="about-desk-link">
@@ -395,7 +370,7 @@ export default function TeamPage() {
                 <div>
                   <h3>Accounting &amp; MIS Desk</h3>
                   <p>
-                    Full-stack bookkeeping on Tally, Zoho Books, and SAP, monthly ledger reconciliation, and preparation of financial statements under Indian AS.
+                    Bookkeeping on Tally, Zoho &amp; SAP, monthly ledger reconciliation, and Ind-AS financial statements.
                   </p>
                 </div>
                 <Link href="/services/accounting" className="about-desk-link">
