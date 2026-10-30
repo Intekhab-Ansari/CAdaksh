@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import NewsletterSubscribe from '@/components/NewsletterSubscribe';
 
 export default function Footer() {
   return (
@@ -200,6 +201,9 @@ export default function Footer() {
             </div>
           </div>
         </div>
+
+        {/* Statutory Newsletter & Practice Circular Strip */}
+        <NewsletterSubscribe />
 
         {/* Legal Attribution */}
         <div className="footer-legal-bar">
