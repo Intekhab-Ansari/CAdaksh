@@ -20,7 +20,7 @@ export default function TeamPage() {
 
           <h1 className="about-hero-title">
             Leadership &amp; specialised{' '}
-            <span className="hero-serif-accent">practice desks.</span>
+            <span className="hero-gold-accent">practice desks.</span>
           </h1>
 
           <p className="about-hero-lede">
@@ -277,9 +277,9 @@ export default function TeamPage() {
       <section className="section section-navy" id="specialised-desks">
         <div className="container">
           <div style={{ marginBottom: '2.5rem' }}>
-            <span className="eyebrow">Institutional Organization</span>
-            <h2>Specialised Practice Desks</h2>
-            <p style={{ maxWidth: '640px', color: 'var(--color-text-body)', marginTop: '0.5rem' }}>
+            <span className="eyebrow" style={{ color: '#F5D79E' }}>✦ Institutional Organization</span>
+            <h2 style={{ color: '#FFFFFF' }}>Specialised Practice Desks</h2>
+            <p style={{ maxWidth: '640px', color: '#CBD5E1', marginTop: '0.5rem' }}>
               Our firm is structured into specialized functional practice desks, each dedicated to statutory precision and regulatory excellence.
             </p>
           </div>

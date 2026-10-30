@@ -2188,12 +2188,14 @@ nav.desktop-nav a.active::after {
 }
 
 /* --- WHY CHOOSE US / APPROACH SECTION --- */
+.approach-grid,
 .approach-grid-rsc {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.75rem;
 }
 
+.approach-card,
 .approach-card-rsc {
   background-color: #FFFFFF;
   border-radius: var(--radius-lg);
@@ -2205,6 +2207,7 @@ nav.desktop-nav a.active::after {
   flex-direction: column;
 }
 
+.approach-card:hover,
 .approach-card-rsc:hover {
   transform: translateY(-5px);
   box-shadow: 0 16px 36px rgba(11, 25, 48, 0.1);
@@ -2279,10 +2282,29 @@ nav.desktop-nav a.active::after {
 }
 
 .sector-matrix-card:hover {
-  background: #FFFFFF;
   border-color: var(--color-gold);
   transform: translateY(-5px);
   box-shadow: 0 24px 50px rgba(0, 0, 0, 0.38);
+}
+
+/* Individual Topic Ambient Backgrounds for Sector Cards */
+.sector-matrix-card:nth-child(1) {
+  background: radial-gradient(circle at 100% 0%, rgba(20, 78, 140, 0.08) 0%, transparent 60%), #FFFFFF;
+}
+.sector-matrix-card:nth-child(2) {
+  background: radial-gradient(circle at 100% 0%, rgba(16, 185, 129, 0.08) 0%, transparent 60%), #FFFFFF;
+}
+.sector-matrix-card:nth-child(3) {
+  background: radial-gradient(circle at 100% 0%, rgba(99, 102, 241, 0.08) 0%, transparent 60%), #FFFFFF;
+}
+.sector-matrix-card:nth-child(4) {
+  background: radial-gradient(circle at 100% 0%, rgba(245, 158, 11, 0.08) 0%, transparent 60%), #FFFFFF;
+}
+.sector-matrix-card:nth-child(5) {
+  background: radial-gradient(circle at 100% 0%, rgba(197, 160, 89, 0.1) 0%, transparent 60%), #FFFFFF;
+}
+.sector-matrix-card:nth-child(6) {
+  background: radial-gradient(circle at 100% 0%, rgba(166, 128, 55, 0.1) 0%, transparent 60%), #FFFFFF;
 }
 
 .sector-card-top {
@@ -4950,10 +4972,12 @@ footer.site-footer::before {
     backdrop-filter: blur(8px);
   }
   /* Our Approach 2-Column Grid on Mobile View */
+  .approach-grid,
   .approach-grid-rsc {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 0.85rem !important;
   }
+  .approach-card,
   .approach-card-rsc {
     padding: 1.25rem 1.05rem !important;
     border-radius: 16px !important;
@@ -5249,9 +5273,11 @@ footer.site-footer::before {
     max-height: 155px !important;
     border-radius: 14px !important;
   }
+  .approach-grid,
   .approach-grid-rsc {
     gap: 0.65rem !important;
   }
+  .approach-card,
   .approach-card-rsc {
     padding: 1rem 0.85rem !important;
     border-radius: 14px !important;
@@ -5447,9 +5473,11 @@ footer.site-footer::before {
     padding: 0.65rem 0.2rem !important;
     letter-spacing: -0.025em !important;
   }
+  .approach-grid,
   .approach-grid-rsc {
     gap: 0.5rem !important;
   }
+  .approach-card,
   .approach-card-rsc {
     padding: 0.85rem 0.65rem !important;
   }
@@ -6492,4 +6520,396 @@ footer.site-footer::before {
     font-size: 0.78rem;
   }
 }
+
+/* ==========================================================================
+   BESPOKE SOVEREIGN STEWARDSHIP SECTION (HOMEPAGE)
+   Unique identity for Daksh Desai & Associates (Zero cloned elements)
+   ========================================================================== */
+.home-stewardship-section {
+  position: relative;
+  background: 
+    radial-gradient(circle at 15% 30%, rgba(197, 160, 89, 0.12) 0%, transparent 55%),
+    radial-gradient(circle at 85% 75%, rgba(20, 78, 140, 0.15) 0%, transparent 60%),
+    linear-gradient(145deg, #060E1A 0%, #0B1930 50%, #0E2242 100%);
+  padding: clamp(4.5rem, 8vw, 7.5rem) 0;
+  border-top: 1px solid rgba(197, 160, 89, 0.28);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.28);
+  overflow: hidden;
+  color: #FFFFFF;
+}
+
+.home-stewardship-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(197, 160, 89, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(197, 160, 89, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.stewardship-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(320px, 440px) 1fr;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+/* Executive Portrait Frame */
+.stewardship-photo-col {
+  position: relative;
+}
+
+.stewardship-photo-frame {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(197, 160, 89, 0.45);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55), 0 0 30px rgba(197, 160, 89, 0.15);
+  background: #0B1930;
+}
+
+.stewardship-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stewardship-photo-frame:hover .stewardship-photo-img {
+  transform: scale(1.03);
+}
+
+.stewardship-floating-badge {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  background: rgba(6, 14, 26, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+.stewardship-ca-crest {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: rgba(197, 160, 89, 0.12);
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stewardship-badge-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+}
+
+.stewardship-badge-title {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  color: #FFF0BA;
+}
+
+.stewardship-badge-sub {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #C5A059;
+}
+
+/* Stewardship Content Side */
+.stewardship-content-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.stewardship-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #F5D79E;
+  text-transform: uppercase;
+}
+
+.stewardship-eyebrow-sparkle {
+  color: #C5A059;
+}
+
+.stewardship-title {
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.hero-gold-accent {
+  font-family: inherit !important;
+  font-style: normal !important;
+  font-weight: 850 !important;
+  color: #FFF0BA !important;
+  background: linear-gradient(135deg, #FFF5D0 0%, #F5D79E 35%, #E5BE64 70%, #D4AF37 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 2px 8px rgba(197, 160, 89, 0.28));
+  display: inline-block;
+}
+
+.stewardship-lede {
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+  line-height: 1.7;
+  color: #CBD5E1;
+  margin: 0;
+  max-width: 650px;
+}
+
+/* Bespoke Feature Cards Stack */
+.stewardship-cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.stewardship-feature-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(197, 160, 89, 0.22);
+  border-radius: 14px;
+  padding: 1.2rem 1.4rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.stewardship-feature-card:hover {
+  background: rgba(255, 255, 255, 0.065);
+  border-color: rgba(197, 160, 89, 0.55);
+  transform: translateX(4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 16px rgba(197, 160, 89, 0.15);
+}
+
+.stewardship-card-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(197, 160, 89, 0.25) 0%, rgba(197, 160, 89, 0.08) 100%);
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  color: #F5D79E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.stewardship-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.stewardship-card-text strong {
+  font-size: 1.05rem;
+  font-weight: 750;
+  color: #FFFFFF;
+}
+
+.stewardship-card-text p {
+  font-size: 0.9rem;
+  color: #94A3B8;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Action Buttons */
+.stewardship-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.btn-stewardship-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, #C5A059 0%, #A68037 100%);
+  color: #060E1A;
+  padding: 0.85rem 1.6rem;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 750;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(197, 160, 89, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-stewardship-gold:hover {
+  background: linear-gradient(135deg, #D4AF37 0%, #B89047 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(197, 160, 89, 0.5);
+  color: #060E1A;
+}
+
+.btn-stewardship-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(197, 160, 89, 0.45);
+  color: #FFFFFF;
+  padding: 0.85rem 1.6rem;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-stewardship-outline:hover {
+  background: rgba(197, 160, 89, 0.12);
+  border-color: #C5A059;
+  color: #FFF0BA;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+  .stewardship-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .stewardship-photo-frame {
+    height: 420px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 540px) {
+  .stewardship-photo-frame {
+    height: 380px;
+  }
+  .stewardship-floating-badge {
+    padding: 0.75rem 0.9rem;
+    gap: 0.75rem;
+  }
+  .stewardship-ca-crest {
+    width: 36px;
+    height: 36px;
+  }
+  .stewardship-badge-title {
+    font-size: 0.75rem;
+  }
+  .stewardship-badge-sub {
+    font-size: 0.62rem;
+  }
+  .stewardship-feature-card {
+    padding: 1rem 1.1rem;
+    gap: 0.85rem;
+  }
+  .stewardship-card-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 0.85rem;
+  }
+  .stewardship-card-text strong {
+    font-size: 0.95rem;
+  }
+  .stewardship-card-text p {
+    font-size: 0.82rem;
+  }
+  .btn-stewardship-gold,
+  .btn-stewardship-outline {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Dark Styling Overrides for Vision Ethos on Navy Sections */
+.about-vision-section.section-navy {
+  background: 
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(197, 160, 89, 0.12), transparent 70%),
+    linear-gradient(180deg, #070F1E 0%, #0B1930 100%) !important;
+  border-top: 1px solid rgba(197, 160, 89, 0.25);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.25);
+  color: #FFFFFF !important;
+}
+
+.about-vision-section.section-navy .about-quote-box {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(197, 160, 89, 0.35) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.about-vision-section.section-navy .about-quote-box blockquote {
+  color: #FFFFFF !important;
+}
+
+.about-vision-section.section-navy .about-quote-box cite {
+  color: #F5D79E !important;
+}
+
+.about-vision-section.section-navy .about-ethos-card {
+  background: rgba(255, 255, 255, 0.035) !important;
+  border: 1px solid rgba(197, 160, 89, 0.25) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+  backdrop-filter: blur(8px);
+}
+
+.about-vision-section.section-navy .about-ethos-card:hover {
+  transform: translateY(-4px) !important;
+  background: rgba(255, 255, 255, 0.065) !important;
+  border-color: rgba(197, 160, 89, 0.6) !important;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45), 0 0 20px rgba(197, 160, 89, 0.2) !important;
+}
+
+.about-vision-section.section-navy .about-ethos-num {
+  color: #F5D79E !important;
+}
+
+.about-vision-section.section-navy .about-ethos-card h3 {
+  color: #FFFFFF !important;
+}
+
+.about-vision-section.section-navy .about-ethos-card p {
+  color: #CBD5E1 !important;
+}
+
 

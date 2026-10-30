@@ -20,7 +20,7 @@ export default function AboutPage() {
 
           <h1 className="about-hero-title">
             Navigating finance &amp; statutory compliance with{' '}
-            <span className="hero-serif-accent">clarity &amp; confidence.</span>
+            <span className="hero-gold-accent">clarity &amp; confidence.</span>
           </h1>
 
           <p className="about-hero-lede">
@@ -173,8 +173,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* FOUNDATIONAL ETHOS & VISION */}
-      <section className="section about-vision-section" id="vision-ethos">
+      {/* FOUNDATIONAL ETHOS & VISION (DEEP SOVEREIGN NAVY) */}
+      <section className="section section-navy about-vision-section" id="vision-ethos">
         <div className="container">
           <div className="about-quote-box">
             <blockquote>
@@ -184,8 +184,8 @@ export default function AboutPage() {
           </div>
 
           <div style={{ marginBottom: '2.5rem' }}>
-            <span className="eyebrow">Foundational Ethos</span>
-            <h2>Core tenets governing our chambers</h2>
+            <span className="eyebrow" style={{ color: '#F5D79E' }}>✦ Foundational Ethos</span>
+            <h2 style={{ color: '#FFFFFF' }}>Core tenets governing our chambers</h2>
           </div>
 
           <div className="about-ethos-grid">
@@ -409,9 +409,9 @@ export default function AboutPage() {
       <section className="section section-navy" id="how-we-work">
         <div className="container">
           <div style={{ marginBottom: '2.5rem' }}>
-            <span className="eyebrow">Disciplined Workflow</span>
-            <h2>How we execute professional assignments</h2>
-            <p style={{ maxWidth: '640px', color: 'var(--color-text-body)', marginTop: '0.5rem' }}>
+            <span className="eyebrow" style={{ color: '#F5D79E' }}>✦ Disciplined Workflow</span>
+            <h2 style={{ color: '#FFFFFF' }}>How we execute professional assignments</h2>
+            <p style={{ maxWidth: '640px', color: '#CBD5E1', marginTop: '0.5rem' }}>
               Every assignment follows a standardized, verifiable quality protocol designed to ensure 100% compliance with ICAI standards.
             </p>
           </div>

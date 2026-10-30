@@ -1,43 +1,44 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Our Services | Daksh Desai & Associates · Chartered Accountants',
-  description: 'Comprehensive Chartered Accountancy practice areas: Audit & Assurance, Tax & Compliance, Accounting & MIS, Corporate Law, and Virtual CFO Advisory in Mumbai.',
+  title: 'Our Practice Services | Daksh Desai & Associates · Chartered Accountants',
+  description: 'Comprehensive Chartered Accountancy practice areas: Audit & Assurance, Direct Taxation & Scrutiny Defense, GST Governance, Corporate Law (MCA21), International Tax (FEMA 15CA/15CB), and Virtual CFO Advisory in Mumbai.',
 };
 
 export default function ServicesPage() {
   return (
     <>
       {/* SERVICES HERO HEADER */}
-      <section className="about-page-hero" id="services-hero" style={{ marginBottom: '2.5rem' }}>
+      <section className="about-page-hero" id="services-hero">
         <div className="container">
           <div className="about-hero-badge">
             <span aria-hidden="true">✦</span>
-            <span>STATUTORY PRACTICE SCOPE &amp; DIRECTORY · MUMBAI</span>
+            <span>STATUTORY PRACTICE DIRECTORY · MUMBAI CHAMBERS</span>
           </div>
 
           <h1 className="about-hero-title">
-            Taxation, audit, accounting &amp;{' '}
-            <span className="hero-serif-accent">regulatory advisory.</span>
+            Taxation, audit, assurance &amp;{' '}
+            <span className="hero-gold-accent">strategic counsel.</span>
           </h1>
 
           <p className="about-hero-lede">
-            A comprehensive suite of integrated Chartered Accountancy services designed for corporate enterprises, family offices, startups, and professionals across India and abroad. Partner-led execution under the ICAI Code of Ethics.
+            A comprehensive suite of integrated Chartered Accountancy services designed for corporate enterprises, family offices, growth ventures, and professionals across Mumbai and pan-India. Direct partner-led execution under strict ICAI Code of Ethics.
           </p>
 
           <div className="about-hero-pillars">
             <div className="about-pillar-card">
+              <span className="about-pillar-val">Assurance</span>
+              <span className="about-pillar-lbl">COMPANIES ACT &amp; 44AB AUDITS</span>
+            </div>
+            <div className="about-pillar-card">
               <span className="about-pillar-val">Direct Tax</span>
-              <span className="about-pillar-lbl">INCOME TAX &amp; SCRUTINY</span>
+              <span className="about-pillar-lbl">CORPORATE ITR &amp; SCRUTINY</span>
             </div>
             <div className="about-pillar-card">
               <span className="about-pillar-val">Indirect Tax</span>
-              <span className="about-pillar-lbl">GSTR 1/3B &amp; 2B MATCHING</span>
-            </div>
-            <div className="about-pillar-card">
-              <span className="about-pillar-val">Assurance</span>
-              <span className="about-pillar-lbl">STATUTORY &amp; TAX AUDIT</span>
+              <span className="about-pillar-lbl">GSTR 1/3B &amp; 2B ITC MATCHING</span>
             </div>
             <div className="about-pillar-card">
               <span className="about-pillar-val">Corporate Law</span>
@@ -47,287 +48,244 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* CORE 3 SOVEREIGN PRACTICE CARDS (EXACT REFERENCE AESTHETIC) */}
-      <section className="section" id="services-categories" style={{ paddingTop: '0' }}>
+      {/* CORE 6 SPECIALISED STATUTORY PRACTICE DESKS (LIGHT SOVEREIGN SECTION) */}
+      <section className="section" id="core-practice-desks">
         <div className="container">
-          <div className="rsc-cards-grid-3">
+          <div style={{ marginBottom: '2.5rem' }}>
+            <span className="eyebrow">✦ Practice Scope</span>
+            <h2>Integrated Statutory &amp; Advisory Capabilities</h2>
+            <p style={{ maxWidth: '680px', color: 'var(--color-text-body)', marginTop: '0.5rem' }}>
+              Structured into specialized functional practice desks, each delivering technical mastery, regulatory rigor, and direct partner-level accountability.
+            </p>
+          </div>
+
+          <div className="about-desks-grid">
             {/* Card 1: Audit & Assurance */}
-            <article className="rsc-sovereign-card">
-              <div className="rsc-num-pill">01</div>
-              <h2 className="rsc-service-title">Audit &amp; Assurance</h2>
-              <p className="rsc-service-desc">
-                Comprehensive audit services conducted with rigour and independence — from statutory audits to stock verification and investment certification.
-              </p>
-
-              <ul className="rsc-service-list">
-                <li>
-                  <span className="bullet-dot dot-red-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/audit" style={{ color: 'inherit' }}>Statutory Audit under the Companies Act</Link>
-                  </span>
-                </li>
-                <li>
-                  <span className="bullet-dot dot-blue-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/audit" style={{ color: 'inherit' }}>Tax Audit under Income Tax Act</Link>
-                  </span>
-                </li>
-                <li>
-                  <span className="bullet-dot dot-red-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/audit" style={{ color: 'inherit' }}>GST Audit &amp; Reconciliation (GSTR-9C)</Link>
-                  </span>
-                </li>
-                <li>
-                  <span className="bullet-dot dot-blue-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/audit" style={{ color: 'inherit' }}>Internal Audit — Statutory &amp; Management</Link>
-                  </span>
-                </li>
-                <li>
-                  <span className="bullet-dot dot-red-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/audit" style={{ color: 'inherit' }}>Stock Audit — physical verification &amp; inspection</Link>
-                  </span>
-                </li>
-                <li>
-                  <span className="bullet-dot dot-blue-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/audit" style={{ color: 'inherit' }}>Certification of Investments &amp; Debtors</Link>
-                  </span>
-                </li>
-              </ul>
-
-              <div className="rsc-pills-row">
-                <span className="rsc-keyword-pill">STATUTORY</span>
-                <span className="rsc-keyword-pill">TAX AUDIT</span>
-                <span className="rsc-keyword-pill">GST AUDIT</span>
-                <span className="rsc-keyword-pill">INTERNAL</span>
+            <div className="about-desk-card has-media desk-audit">
+              <div className="about-desk-media">
+                <Image
+                  src="/images/audit-assurance.jpg"
+                  alt="Audit & Assurance Desk"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="about-desk-img"
+                />
+                <div className="about-desk-scrim" />
+                <div className="about-desk-pill-bar">
+                  <span className="about-desk-tag">ASSURANCE</span>
+                  <span className="about-desk-sparkle" aria-hidden="true">✦</span>
+                </div>
               </div>
-            </article>
-
-            {/* Card 2: Tax & Compliance */}
-            <article className="rsc-sovereign-card">
-              <div className="rsc-num-pill">02</div>
-              <h2 className="rsc-service-title">Tax &amp; Compliance</h2>
-              <p className="rsc-service-desc">
-                End-to-end statutory compliance across Companies Act, Income Tax Act, GST, and allied business laws — keeping you on the right side of every regulation.
-              </p>
-
-              <ul className="rsc-service-list">
-                <li>
-                  <span className="bullet-dot dot-red-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/income-tax" style={{ color: 'inherit' }}>Statutory compliance — Companies Act, IT Act &amp; GST</Link>
-                  </span>
-                </li>
-                <li>
-                  <span className="bullet-dot dot-blue-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/income-tax" style={{ color: 'inherit' }}>Tax planning for firms, companies &amp; individuals</Link>
-                  </span>
-                </li>
-                <li>
-                  <span className="bullet-dot dot-red-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/income-tax" style={{ color: 'inherit' }}>TDS returns filing &amp; reconciliation</Link>
-                  </span>
-                </li>
-                <li>
-                  <span className="bullet-dot dot-blue-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/corporate-law" style={{ color: 'inherit' }}>ROC related work &amp; filings</Link>
-                  </span>
-                </li>
-                <li>
-                  <span className="bullet-dot dot-red-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/international-tax" style={{ color: 'inherit' }}>Form 15CA &amp; 15CB foreign remittance certificates</Link>
-                  </span>
-                </li>
-                <li>
-                  <span className="bullet-dot dot-blue-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/gst" style={{ color: 'inherit' }}>GSTR-1, 3B &amp; 2B Input Tax Credit reconciliation</Link>
-                  </span>
-                </li>
-              </ul>
-
-              <div className="rsc-pills-row">
-                <span className="rsc-keyword-pill">INCOME TAX</span>
-                <span className="rsc-keyword-pill">GST</span>
-                <span className="rsc-keyword-pill">TDS</span>
-                <span className="rsc-keyword-pill">ROC</span>
+              <div className="about-desk-body">
+                <div>
+                  <h3>Audit &amp; Assurance Desk</h3>
+                  <p>
+                    Statutory audits under Companies Act 2013, Section 44AB Tax Audits, Internal Financial Controls (IFCoFR), physical stock verifications, and mandatory 18-digit UDIN certifications.
+                  </p>
+                </div>
+                <Link href="/services/audit" className="about-desk-link">
+                  <span>Explore Audit Scope</span>
+                  <span aria-hidden="true">→</span>
+                </Link>
               </div>
-            </article>
+            </div>
 
-            {/* Card 3: Accounting & MIS */}
-            <article className="rsc-sovereign-card">
-              <div className="rsc-num-pill">03</div>
-              <h2 className="rsc-service-title">Accounting &amp; MIS</h2>
-              <p className="rsc-service-desc">
-                Dedicated accounting teams manage your books end-to-end, paired with sharp MIS reporting that gives management real-time visibility into performance.
-              </p>
-
-              <ul className="rsc-service-list">
-                <li>
-                  <span className="bullet-dot dot-red-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/accounting" style={{ color: 'inherit' }}>MIS reporting — Sales, Expenses &amp; Budgeting</Link>
-                  </span>
-                </li>
-                <li>
-                  <span className="bullet-dot dot-blue-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/accounting" style={{ color: 'inherit' }}>Debtor analysis &amp; working capital review</Link>
-                  </span>
-                </li>
-                <li>
-                  <span className="bullet-dot dot-red-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/accounting" style={{ color: 'inherit' }}>Full accounts department outsourcing</Link>
-                  </span>
-                </li>
-                <li>
-                  <span className="bullet-dot dot-blue-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/accounting" style={{ color: 'inherit' }}>Internal controls via Tally ERP Software</Link>
-                  </span>
-                </li>
-                <li>
-                  <span className="bullet-dot dot-red-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/accounting" style={{ color: 'inherit' }}>Bank, credit card &amp; vendor ledger reconciliations</Link>
-                  </span>
-                </li>
-                <li>
-                  <span className="bullet-dot dot-blue-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/accounting" style={{ color: 'inherit' }}>Periodic Balance Sheet, P&amp;L &amp; Trial Balance</Link>
-                  </span>
-                </li>
-              </ul>
-
-              <div className="rsc-pills-row">
-                <span className="rsc-keyword-pill">MIS</span>
-                <span className="rsc-keyword-pill">ACCOUNTING</span>
-                <span className="rsc-keyword-pill">BUDGETING</span>
-                <span className="rsc-keyword-pill">TALLY ERP</span>
+            {/* Card 2: Direct Tax & Scrutiny */}
+            <div className="about-desk-card has-media desk-tax">
+              <div className="about-desk-media">
+                <Image
+                  src="/images/tax-law-books.jpg"
+                  alt="Direct Taxation & Scrutiny Defense Desk"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="about-desk-img"
+                />
+                <div className="about-desk-scrim" />
+                <div className="about-desk-pill-bar">
+                  <span className="about-desk-tag">DIRECT TAX</span>
+                  <span className="about-desk-sparkle" aria-hidden="true">✦</span>
+                </div>
               </div>
-            </article>
+              <div className="about-desk-body">
+                <div>
+                  <h3>Direct Taxation &amp; Scrutiny</h3>
+                  <p>
+                    Corporate &amp; individual ITR filing, AIS variance reconciliation, advance tax computational modeling, Section 148 notice response, and CIT(Appeals) faceless representation.
+                  </p>
+                </div>
+                <Link href="/services/income-tax" className="about-desk-link">
+                  <span>Explore Direct Tax Scope</span>
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </div>
+
+            {/* Card 3: GST & Indirect Tax */}
+            <div className="about-desk-card has-media desk-tax">
+              <div className="about-desk-media">
+                <Image
+                  src="/images/finance-desk.jpg"
+                  alt="GST & Indirect Taxation Desk"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="about-desk-img"
+                />
+                <div className="about-desk-scrim" />
+                <div className="about-desk-pill-bar">
+                  <span className="about-desk-tag">INDIRECT TAX</span>
+                  <span className="about-desk-sparkle" aria-hidden="true">✦</span>
+                </div>
+              </div>
+              <div className="about-desk-body">
+                <div>
+                  <h3>GST &amp; Indirect Taxation</h3>
+                  <p>
+                    Monthly GSTR-1 &amp; 3B filing, automated GSTR-2B purchase ledger matching, Input Tax Credit (ITC) optimization, export refund processing, and departmental audit defense.
+                  </p>
+                </div>
+                <Link href="/services/gst" className="about-desk-link">
+                  <span>Explore GST Scope</span>
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </div>
+
+            {/* Card 4: Corporate Law & ROC */}
+            <div className="about-desk-card has-media desk-corp">
+              <div className="about-desk-media">
+                <Image
+                  src="/images/corporate-law.jpg"
+                  alt="Corporate Law & ROC Governance Desk"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="about-desk-img"
+                />
+                <div className="about-desk-scrim" />
+                <div className="about-desk-pill-bar">
+                  <span className="about-desk-tag">MCA21 V3</span>
+                  <span className="about-desk-sparkle" aria-hidden="true">✦</span>
+                </div>
+              </div>
+              <div className="about-desk-body">
+                <div>
+                  <h3>Corporate Law &amp; ROC</h3>
+                  <p>
+                    Private Limited &amp; LLP formation, annual ROC filings (Form AOC-4 Financials &amp; MGT-7 Return), Director DIR-3 KYC, share transfers, and statutory register maintenance.
+                  </p>
+                </div>
+                <Link href="/services/corporate-law" className="about-desk-link">
+                  <span>Explore Corporate Law Scope</span>
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </div>
+
+            {/* Card 5: International Tax & FEMA */}
+            <div className="about-desk-card has-media desk-fema">
+              <div className="about-desk-media">
+                <Image
+                  src="/images/international-tax.jpg"
+                  alt="International Tax & FEMA Desk"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="about-desk-img"
+                />
+                <div className="about-desk-scrim" />
+                <div className="about-desk-pill-bar">
+                  <span className="about-desk-tag">CROSS-BORDER</span>
+                  <span className="about-desk-sparkle" aria-hidden="true">✦</span>
+                </div>
+              </div>
+              <div className="about-desk-body">
+                <div>
+                  <h3>International Tax &amp; FEMA</h3>
+                  <p>
+                    Form 15CA/15CB remittance certifications, DTAA withholding tax treaty relief, RBI Foreign Liabilities and Assets (FLA) Return reporting, and NRI repatriation counsel.
+                  </p>
+                </div>
+                <Link href="/services/international-tax" className="about-desk-link">
+                  <span>Explore FEMA Scope</span>
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </div>
+
+            {/* Card 6: Virtual CFO & Accounting */}
+            <div className="about-desk-card has-media desk-cfo">
+              <div className="about-desk-media">
+                <Image
+                  src="/images/ca-consulting.jpg"
+                  alt="Virtual CFO & Advisory Desk"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="about-desk-img"
+                />
+                <div className="about-desk-scrim" />
+                <div className="about-desk-pill-bar">
+                  <span className="about-desk-tag">ADVISORY</span>
+                  <span className="about-desk-sparkle" aria-hidden="true">✦</span>
+                </div>
+              </div>
+              <div className="about-desk-body">
+                <div>
+                  <h3>Virtual CFO &amp; Advisory</h3>
+                  <p>
+                    Strategic budgeting, 13-week cash flow modeling, executive board MIS dashboards, working capital review, bank loan CMA data, and Ind-AS accounting supervision.
+                  </p>
+                </div>
+                <Link href="/services/cfo-advisory" className="about-desk-link">
+                  <span>Explore CFO Scope</span>
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* SECONDARY ROW: CORPORATE LAW & VIRTUAL CFO (DEEP SOVEREIGN NAVY) */}
-      <section className="section section-navy" id="corporate-advisory-scope">
+      {/* DISCIPLINED ENGAGEMENT WORKFLOW (DEEP SOVEREIGN NAVY — ALTERNATING THEME) */}
+      <section className="section section-navy" id="engagement-methodology">
         <div className="container">
           <div style={{ marginBottom: '2.5rem' }}>
-            <span className="eyebrow">Enterprise &amp; Advisory Scope</span>
-            <h2>Corporate Law &amp; Strategic Advisory</h2>
-            <p style={{ maxWidth: '640px', marginTop: '0.5rem' }}>
-              Specialised corporate governance under MCA21 V3, cross-border FEMA compliance, and dedicated Virtual CFO stewardship.
+            <span className="eyebrow" style={{ color: '#F5D79E' }}>✦ Quality Protocol</span>
+            <h2 style={{ color: '#FFFFFF' }}>Disciplined Assignment Execution</h2>
+            <p style={{ maxWidth: '640px', color: '#CBD5E1', marginTop: '0.5rem' }}>
+              Every statutory engagement follows a verifiable quality assurance protocol, ensuring absolute technical accuracy, timely filings, and compliance with ICAI standards.
             </p>
           </div>
 
-          <div className="rsc-cards-grid-2">
-            {/* Card 4: Corporate & Allied Laws */}
-            <article className="rsc-sovereign-card">
-              <div className="rsc-num-pill">04</div>
-              <h2 className="rsc-service-title">Corporate &amp; Allied Laws</h2>
-              <p className="rsc-service-desc">
-                End-to-end Ministry of Corporate Affairs (MCA21) compliance, incorporation, and secretarial governance under the Companies Act, 2013.
+          <div className="about-steps-grid">
+            <div className="about-step-card">
+              <div className="about-step-num">01</div>
+              <h4>Preliminary Discovery</h4>
+              <p>
+                Comprehensive review of entity constitution, past return history, active departmental notices, and immediate statutory timelines.
               </p>
+            </div>
 
-              <ul className="rsc-service-list">
-                <li>
-                  <span className="bullet-dot dot-red-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/corporate-law" style={{ color: 'inherit' }}>Company &amp; LLP incorporation in Mumbai</Link>
-                  </span>
-                </li>
-                <li>
-                  <span className="bullet-dot dot-blue-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/corporate-law" style={{ color: 'inherit' }}>Annual ROC filings — Form AOC-4 Financials &amp; MGT-7 Return</Link>
-                  </span>
-                </li>
-                <li>
-                  <span className="bullet-dot dot-red-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/corporate-law" style={{ color: 'inherit' }}>Annual Director KYC (DIR-3 KYC / Web) &amp; DIN validations</Link>
-                  </span>
-                </li>
-                <li>
-                  <span className="bullet-dot dot-blue-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/corporate-law" style={{ color: 'inherit' }}>ESIC, EPFO, Professional Tax &amp; MSME Registrations</Link>
-                  </span>
-                </li>
-                <li>
-                  <span className="bullet-dot dot-red-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/corporate-law" style={{ color: 'inherit' }}>Drafting Board resolutions, AGM/EGM notices &amp; statutory registers</Link>
-                  </span>
-                </li>
-              </ul>
-
-              <div className="rsc-pills-row">
-                <span className="rsc-keyword-pill">COMPANY LAW</span>
-                <span className="rsc-keyword-pill">ROC</span>
-                <span className="rsc-keyword-pill">MCA21</span>
-                <span className="rsc-keyword-pill">LABOUR LAW</span>
-              </div>
-            </article>
-
-            {/* Card 5: Virtual CFO & Advisory */}
-            <article className="rsc-sovereign-card">
-              <div className="rsc-num-pill">05</div>
-              <h2 className="rsc-service-title">Virtual CFO &amp; Advisory</h2>
-              <p className="rsc-service-desc">
-                Dedicated financial leadership supporting promoters and management with forward-looking capital allocation, cash-flow discipline, and transactional due diligence.
+            <div className="about-step-card">
+              <div className="about-step-num">02</div>
+              <h4>Mandate &amp; Scope Formalization</h4>
+              <p>
+                Execution of formal engagement terms compliant with ICAI Council regulations with clearly specified deliverables and milestones.
               </p>
+            </div>
 
-              <ul className="rsc-service-list">
-                <li>
-                  <span className="bullet-dot dot-red-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/cfo-advisory" style={{ color: 'inherit' }}>Virtual CFO guidance for growing enterprises &amp; founders</Link>
-                  </span>
-                </li>
-                <li>
-                  <span className="bullet-dot dot-blue-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/cfo-advisory" style={{ color: 'inherit' }}>Rolling 13-week cash flow forecasting &amp; financial modeling</Link>
-                  </span>
-                </li>
-                <li>
-                  <span className="bullet-dot dot-red-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/cfo-advisory" style={{ color: 'inherit' }}>Unit economics, gross margins &amp; break-even analysis</Link>
-                  </span>
-                </li>
-                <li>
-                  <span className="bullet-dot dot-blue-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/cfo-advisory" style={{ color: 'inherit' }}>Investor due diligence preparation, data room &amp; cap table support</Link>
-                  </span>
-                </li>
-                <li>
-                  <span className="bullet-dot dot-red-bg" />
-                  <span className="bullet-text">
-                    <Link href="/services/international-tax" style={{ color: 'inherit' }}>Cross-border FEMA filings (RBI FIRMS / FLAIR / FLA Return)</Link>
-                  </span>
-                </li>
-              </ul>
+            <div className="about-step-card">
+              <div className="about-step-num">03</div>
+              <h4>Dual-Layer Technical Verification</h4>
+              <p>
+                Computational reconciliation, statutory Bare Act cross-referencing, case law analysis, and direct partner verification.
+              </p>
+            </div>
 
-              <div className="rsc-pills-row">
-                <span className="rsc-keyword-pill">VIRTUAL CFO</span>
-                <span className="rsc-keyword-pill">CASH FLOW</span>
-                <span className="rsc-keyword-pill">FEMA</span>
-                <span className="rsc-keyword-pill">DUE DILIGENCE</span>
-              </div>
-            </article>
+            <div className="about-step-card">
+              <div className="about-step-num">04</div>
+              <h4>UDIN &amp; Portal Submission</h4>
+              <p>
+                Attestation with verifiable 18-digit ICAI UDIN, timely government portal filing, and delivery of archived statutory dossiers.
+              </p>
+            </div>
           </div>
         </div>
       </section>

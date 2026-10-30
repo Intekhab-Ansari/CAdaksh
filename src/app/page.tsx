@@ -46,7 +46,7 @@ export default function HomePage() {
               </span>
               <span className="text-reveal-mask">
                 <span className="text-reveal-line">
-                  Accounting &amp; <span className="hero-serif-accent">Advisory</span>
+                  Accounting &amp; <span className="hero-gold-accent">Advisory</span>
                 </span>
               </span>
             </h1>
@@ -345,75 +345,85 @@ export default function HomePage() {
       {/* CONTINUOUS TICKER RIBBON */}
       <TickerRibbon />
 
-      {/* ABOUT THE FIRM (WITH PAN-INDIA PHOTO & SOVEREIGN BADGE) */}
-      <section className="section" id="about-snippet">
-        <div className="container about-split-grid">
-          <div className="about-visual-side">
-            <div className="about-img-frame">
-              <Image
-                src="/images/india-map-advisory.jpg"
-                alt="Pan-India Chartered Accountancy Advisory and Consultation"
-                fill
-                sizes="(max-width: 900px) 100vw, 45vw"
-                className="about-img-cover"
-              />
-              <div className="about-chamber-stamp">
-                <Image src="/images/ca-logo.svg" alt="CA Logo" width={20} height={20} />
-                <span>MUMBAI CHAMBERS · ESTABLISHED PRACTICE</span>
-              </div>
-              <div className="about-map-floating-card">
-                <div className="floating-card-badge">✦ PAN-INDIA ADVISORY REACH</div>
-                <p className="floating-card-text">Direct representation &amp; filings across Central &amp; State tax jurisdictions from Mumbai.</p>
-              </div>
-            </div>
-          </div>
-          <div className="about-content-side">
-            <div className="about-eyebrow-wrap">
-              <span className="about-eyebrow-tag">✦ ABOUT THE PRACTICE</span>
-              <span className="about-eyebrow-code">ESTD. MUMBAI</span>
-            </div>
-            <h2 className="editorial-heading">
-              Built on trust, <span className="hero-serif-accent">driven by precision</span>
-            </h2>
-            <p className="about-p">
-              Established in Mumbai, Daksh Desai &amp; Associates is an institutional Chartered Accountancy practice providing partner-led counsel across corporate taxation, statutory audit, financial reporting, and regulatory compliance.
-            </p>
-            <p className="about-p">
-              We work with corporate enterprises, growing businesses, professionals, family offices, and non-resident Indians (NRIs) across Mumbai, pan-India, and cross-border jurisdictions.
-            </p>
-
-            <div className="milestones-list">
-              <div className="milestone-card">
-                <div className="milestone-number-badge">01</div>
-                <div className="milestone-text">
-                  <div className="milestone-tag">ORIGIN &amp; ETHICS</div>
-                  <strong>Founded upon Qualifying from ICAI</strong>
-                  <p>Built the practice ground-up in Mumbai with an uncompromising dedication to professional ethics and statutory independence.</p>
-                </div>
-              </div>
-              <div className="milestone-card">
-                <div className="milestone-number-badge">02</div>
-                <div className="milestone-text">
-                  <div className="milestone-tag">JURISDICTION</div>
-                  <strong>Pan-India Compliance &amp; Cross-Border Remittances</strong>
-                  <p>Advising corporate entities, growing businesses, and professionals across Mumbai and major Indian industrial centers.</p>
-                </div>
-              </div>
-              <div className="milestone-card">
-                <div className="milestone-number-badge">03</div>
-                <div className="milestone-text">
-                  <div className="milestone-tag">PRINCIPAL ACCESS</div>
-                  <strong>Direct Oversight by CA Daksh Desai</strong>
-                  <p>Every assignment is managed with personalized attention, strict adherence to statutory deadlines, and partner-level accountability.</p>
+      {/* BESPOKE SOVEREIGN PRACTICE STEWARDSHIP (EXCLUSIVE DAKSH DESAI & ASSOCIATES) */}
+      <section className="home-stewardship-section" id="about-snippet">
+        <div className="container">
+          <div className="stewardship-grid">
+            {/* Left: Executive Portrait & Statutory Verification Frame */}
+            <div className="stewardship-photo-col">
+              <div className="stewardship-photo-frame">
+                <Image
+                  src="/images/ca-daksh-desai-executive.jpg"
+                  alt="CA Daksh Desai, ACA, B.Com - Proprietor & Principal, Daksh Desai & Associates"
+                  fill
+                  sizes="(max-width: 900px) 100vw, 42vw"
+                  className="stewardship-photo-img"
+                  priority
+                />
+                <div className="stewardship-floating-badge">
+                  <div className="stewardship-ca-crest">
+                    <Image src="/images/ca-logo.svg" alt="ICAI Emblem" width={26} height={26} />
+                  </div>
+                  <div className="stewardship-badge-meta">
+                    <span className="stewardship-badge-title">CA DAKSH DESAI · ACA</span>
+                    <span className="stewardship-badge-sub">M. NO. 648747 · FRN: 165505W · MUMBAI</span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div style={{ marginTop: '2.25rem' }}>
-              <Link href="/about" className="btn-executive-pill">
-                <span>Explore Practice Profile &amp; Firm Particulars</span>
-                <span className="arrow" aria-hidden="true">→</span>
-              </Link>
+            {/* Right: Authoritative Practice Scope & Dual Chambers Matrix */}
+            <div className="stewardship-content-col">
+              <div className="stewardship-eyebrow">
+                <span className="stewardship-eyebrow-sparkle" aria-hidden="true">✦</span>
+                <span>INSTITUTIONAL STEWARDSHIP · MUMBAI CHAMBERS</span>
+              </div>
+
+              <h2 className="stewardship-title">
+                Statutory Rigour.{' '}
+                <span className="hero-gold-accent">Strategic Clarity.</span>
+              </h2>
+
+              <p className="stewardship-lede">
+                Daksh Desai &amp; Associates is an independent Chartered Accountancy practice established in Mumbai. We provide corporate enterprises, growth ventures, family offices, and professionals with disciplined, partner-led statutory counsel across direct taxation, GST governance, statutory audits, and regulatory advisory.
+              </p>
+
+              <div className="stewardship-cards-stack">
+                <div className="stewardship-feature-card">
+                  <div className="stewardship-card-icon" aria-hidden="true">01</div>
+                  <div className="stewardship-card-text">
+                    <strong>Direct Partner-Led Accountability</strong>
+                    <p>Every audit attestation, tax computation, and departmental representation is personally supervised by CA Daksh Desai — eliminating proxy relays and junior delegation.</p>
+                  </div>
+                </div>
+
+                <div className="stewardship-feature-card">
+                  <div className="stewardship-card-icon" aria-hidden="true">02</div>
+                  <div className="stewardship-card-text">
+                    <strong>Dual Strategic Mumbai Chambers</strong>
+                    <p>Operating from corporate chambers at <strong>Fly Edge, Borivali West</strong> (Suburban Head Office) and <strong>Raheja Chambers, Nariman Point</strong> (South Mumbai Financial District).</p>
+                  </div>
+                </div>
+
+                <div className="stewardship-feature-card">
+                  <div className="stewardship-card-icon" aria-hidden="true">03</div>
+                  <div className="stewardship-card-text">
+                    <strong>18-Digit UDIN Statutory Guarantee</strong>
+                    <p>Every audit report, foreign remittance certificate (15CB), and net worth certificate carries a verified ICAI Unique Document Identification Number for undisputed legal standing.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="stewardship-actions">
+                <Link href="/about" className="btn-stewardship-gold">
+                  <span>Explore Practice Profile &amp; Ethics</span>
+                  <span aria-hidden="true">→</span>
+                </Link>
+                <Link href="/contact" className="btn-stewardship-outline">
+                  <span>Consult Mumbai Chambers</span>
+                  <span aria-hidden="true">↗</span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -425,7 +435,7 @@ export default function HomePage() {
           <div className="section-head-center">
             <span className="eyebrow-red">✦ STATUTORY DEADLINE TRACKER</span>
             <h2 className="editorial-heading">
-              Indian Statutory <span className="hero-serif-accent">Compliance Calendar</span>
+              Indian Statutory <span className="hero-gold-accent">Compliance Calendar</span>
             </h2>
             <p className="section-head-lede">
               A real-time monitor for businesses and professionals to track statutory filing deadlines under Income Tax, GST, MCA, and RBI/FEMA regulations.
@@ -442,15 +452,15 @@ export default function HomePage() {
           <div className="section-head-center">
             <span className="eyebrow-red">✦ PRACTICE PHILOSOPHY</span>
             <h2 className="editorial-heading">
-              Our <span className="hero-serif-accent">approach</span>
+              Our <span className="hero-gold-accent">approach</span>
             </h2>
             <p className="section-head-lede">
               A disciplined, partner-led standard for finance, taxation, statutory audit, and corporate governance.
             </p>
           </div>
 
-          <div className="approach-grid-rsc">
-            <div className="approach-card-rsc">
+          <div className="approach-grid">
+            <div className="approach-card">
               <div className="approach-card-top-bar">
                 <span className="approach-num">01</span>
                 <div className="approach-icon-circle">
@@ -468,7 +478,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="approach-card-rsc">
+            <div className="approach-card">
               <div className="approach-card-top-bar">
                 <span className="approach-num">02</span>
                 <div className="approach-icon-circle">
@@ -483,7 +493,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="approach-card-rsc">
+            <div className="approach-card">
               <div className="approach-card-top-bar">
                 <span className="approach-num">03</span>
                 <div className="approach-icon-circle">
@@ -499,7 +509,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="approach-card-rsc">
+            <div className="approach-card">
               <div className="approach-card-top-bar">
                 <span className="approach-num">04</span>
                 <div className="approach-icon-circle">
@@ -515,7 +525,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="approach-card-rsc">
+            <div className="approach-card">
               <div className="approach-card-top-bar">
                 <span className="approach-num">05</span>
                 <div className="approach-icon-circle">
@@ -542,7 +552,7 @@ export default function HomePage() {
           <div className="section-head-center">
             <span className="eyebrow-accent">✦ PRACTICE SECTORS</span>
             <h2 className="editorial-heading-light">
-              Industries we <span className="hero-serif-accent">serve</span>
+              Industries we <span className="hero-gold-accent">serve</span>
             </h2>
             <p className="section-head-lede-light">
               We support businesses across sectors with taxation, compliance, audit and advisory services.
@@ -651,7 +661,7 @@ export default function HomePage() {
               <span>✦</span> PRACTICE CONSULTATION
             </div>
             <h2 className="cta-light-title">
-              Schedule a Structured Practice <span className="hero-serif-accent">Consultation</span>
+              Schedule a Structured Practice <span className="hero-gold-accent">Consultation</span>
             </h2>
             <p className="cta-light-desc">
               Whether you require guidance on corporate tax filings, statutory audits under the Companies Act, cross-border remittances under FEMA, or routine compliance management, write to our Mumbai office.
