@@ -185,10 +185,10 @@ export default function ComplianceCalendar() {
       ? STATUTORY_DEADLINES
       : STATUTORY_DEADLINES.filter((item) => item.category === selectedCategory);
 
-  // Show only 3 items initially, unless expanded
+  // Show 4 items initially in grid format (2x2 on mobile, 4-col on desktop), unless expanded
   const displayedDeadlines = isExpanded
     ? filteredDeadlines
-    : filteredDeadlines.slice(0, 3);
+    : filteredDeadlines.slice(0, 4);
 
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category);
@@ -295,7 +295,7 @@ export default function ComplianceCalendar() {
       </div>
 
       {/* EXPAND / COLLAPSE BUTTON (SHOW MORE) */}
-      {filteredDeadlines.length > 3 && (
+      {filteredDeadlines.length > 4 && (
         <div className="cal-expand-wrap">
           <button
             type="button"
@@ -306,7 +306,7 @@ export default function ComplianceCalendar() {
             <span>
               {isExpanded
                 ? 'Show Fewer Milestones'
-                : `View All ${filteredDeadlines.length} Statutory Milestones (${filteredDeadlines.length - 3} More)`}
+                : `View All ${filteredDeadlines.length} Statutory Milestones (${filteredDeadlines.length - 4} More)`}
             </span>
             <svg
               className={`expand-chevron ${isExpanded ? 'rotated' : ''}`}
