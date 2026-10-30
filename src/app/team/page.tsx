@@ -131,13 +131,15 @@ export default function TeamPage() {
                     <dd className="register-dd">Borivali West &amp; Nariman Point, Mumbai</dd>
 
                     <dt className="register-dt">Direct Contact</dt>
-                    <dd className="register-dd">
+                    <dd className="register-dd" style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
                       <a href="tel:+919819647471" style={{ color: 'var(--color-primary-navy)', fontWeight: 600, textDecoration: 'none' }}>
                         +91 98196 47471
                       </a>
-                      {' · '}
                       <a href="mailto:cadakshdesai@outlook.com" style={{ color: 'var(--color-primary-navy)', fontWeight: 600, textDecoration: 'none' }}>
                         cadakshdesai@outlook.com
+                      </a>
+                      <a href="mailto:dakshdesai0109@gmail.com" style={{ color: 'var(--color-primary-navy)', fontWeight: 600, textDecoration: 'none' }}>
+                        dakshdesai0109@gmail.com
                       </a>
                     </dd>
                   </dl>
