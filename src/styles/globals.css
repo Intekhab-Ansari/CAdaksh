@@ -2913,6 +2913,9 @@ footer.site-footer::before {
 }
 
 .legal-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
   max-width: 780px;
 }
 
@@ -2922,6 +2925,29 @@ footer.site-footer::before {
   font-size: 0.86rem;
   margin-bottom: 0;
   white-space: nowrap;
+}
+
+.agency-credit-line {
+  font-size: 0.78rem;
+  color: #94A3B8;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-sans);
+}
+
+.agency-credit-link {
+  color: var(--color-gold);
+  font-weight: 700;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  border-bottom: 1px dotted rgba(197, 160, 89, 0.45);
+}
+
+.agency-credit-link:hover {
+  color: #F8E3B6;
+  border-bottom-color: var(--color-gold);
+  transform: translateX(2px);
 }
 
 .legal-links {

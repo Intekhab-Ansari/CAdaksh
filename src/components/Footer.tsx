@@ -209,6 +209,17 @@ export default function Footer() {
             <div className="copyright-line">
               © {new Date().getFullYear()} Daksh Desai &amp; Associates, Chartered Accountants. All rights reserved.
             </div>
+            <div className="agency-credit-line">
+              <span>Design and Developed by</span>{' '}
+              <a
+                href="https://sociialmantraa.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="agency-credit-link"
+              >
+                Sociial Mantraa ↗
+              </a>
+            </div>
           </div>
           <div className="legal-links">
             <Link href="/disclaimer">ICAI Disclaimer</Link>
