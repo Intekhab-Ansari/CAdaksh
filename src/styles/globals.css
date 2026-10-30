@@ -270,10 +270,13 @@ main {
 /* Light Background Headings (High Contrast Burnished Gold) */
 .editorial-heading .hero-serif-accent,
 .editorial-heading em,
-section:not(.section-midnight):not(.section-navy):not(.about-page-hero) .editorial-heading .hero-serif-accent,
-section:not(.section-midnight):not(.section-navy):not(.about-page-hero) .editorial-heading em {
-  color: #9E7728 !important;
-  background: linear-gradient(135deg, #B88E3E 0%, #9E7728 50%, #7D5716 100%) !important;
+.hero-main-title .hero-serif-accent,
+.cta-light-title .hero-serif-accent,
+.hero-gold-accent,
+section:not(.section-midnight):not(.section-navy):not(.home-stewardship-section):not(.about-page-hero) .editorial-heading .hero-serif-accent,
+section:not(.section-midnight):not(.section-navy):not(.home-stewardship-section):not(.about-page-hero) .editorial-heading em {
+  color: #8C5D0E !important;
+  background: linear-gradient(135deg, #8C5D0E 0%, #B8860B 45%, #6B4307 100%) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   filter: none !important;
@@ -281,11 +284,11 @@ section:not(.section-midnight):not(.section-navy):not(.about-page-hero) .editori
 
 /* Dark Background Headings (Luminous Sovereign Gold on Navy) */
 .editorial-heading-light .hero-serif-accent,
-.hero-main-title .hero-serif-accent,
 .about-hero-title .hero-serif-accent,
 .section-midnight .hero-serif-accent,
 .section-navy .hero-serif-accent,
-.cta-light-title .hero-serif-accent,
+.home-stewardship-section .hero-gold-accent,
+.home-stewardship-section .hero-serif-accent,
 .section-midnight .editorial-heading-light em,
 .section-navy .editorial-heading-light em {
   color: #FFF0BA !important;
@@ -6710,12 +6713,23 @@ footer.site-footer::before {
   font-family: inherit !important;
   font-style: normal !important;
   font-weight: 850 !important;
+  color: #8C5D0E !important;
+  background: linear-gradient(135deg, #8C5D0E 0%, #B8860B 45%, #6B4307 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 1px 1px rgba(140, 93, 14, 0.12));
+  display: inline-block;
+}
+
+.home-stewardship-section .hero-gold-accent,
+.section-navy .hero-gold-accent,
+.section-midnight .hero-gold-accent,
+.site-footer .hero-gold-accent {
   color: #FFF0BA !important;
   background: linear-gradient(135deg, #FFF5D0 0%, #F5D79E 35%, #E5BE64 70%, #D4AF37 100%) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
-  filter: drop-shadow(0 2px 8px rgba(197, 160, 89, 0.28));
-  display: inline-block;
+  filter: drop-shadow(0 2px 8px rgba(197, 160, 89, 0.35));
 }
 
 .stewardship-lede {
