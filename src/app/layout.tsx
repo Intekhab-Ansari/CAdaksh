@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import DisclaimerModal from '@/components/DisclaimerModal';
 import SmoothScroll from '@/components/SmoothScroll';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import { SiteConfigProvider } from '@/context/SiteConfigContext';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -36,12 +37,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <SmoothScroll />
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <DisclaimerModal />
-        <WhatsAppButton />
+        <SiteConfigProvider>
+          <SmoothScroll />
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <DisclaimerModal />
+          <WhatsAppButton />
+        </SiteConfigProvider>
       </body>
     </html>
   );

@@ -4,8 +4,10 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { useSiteConfig } from '@/context/SiteConfigContext';
 
 export default function Header() {
+  const { config } = useSiteConfig();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
@@ -71,16 +73,16 @@ export default function Header() {
 
           <div className="header-actions">
             <a
-              href="tel:+919819647471"
+              href={`tel:${config.phone}`}
               className="header-chambers-badge"
-              title="Direct Chambers Telephone: +91 98196 47471"
-              aria-label="Direct Chambers Telephone: +91 98196 47471"
+              title={`Direct Chambers Telephone: ${config.phoneFormatted}`}
+              aria-label={`Direct Chambers Telephone: ${config.phoneFormatted}`}
             >
               <span className="badge-pulse-dot" aria-hidden="true" />
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
               </svg>
-              <span className="badge-tel-num">+91 98196 47471</span>
+              <span className="badge-tel-num">{config.phoneFormatted}</span>
             </a>
 
             <Link href="/contact" className="header-contact-btn">

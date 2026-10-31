@@ -1,9 +1,13 @@
 'use client';
 
 import React from 'react';
+import { useSiteConfig } from '@/context/SiteConfigContext';
 
 export default function WhatsAppButton() {
-  const whatsappUrl = 'https://wa.me/919819647471?text=Hello%20CA%20Daksh%20Desai%2C%20I%20would%20like%20to%20enquire%20regarding%20statutory%20practice%20services.';
+  const { config } = useSiteConfig();
+  const cleanNumber = (config.whatsapp || config.phone || '919819647471').replace(/[^0-9]/g, '');
+  const firmOrProprietor = config.proprietorName || config.firmName || 'CA Daksh Desai';
+  const whatsappUrl = `https://wa.me/${cleanNumber}?text=Hello%20${encodeURIComponent(firmOrProprietor)}%2C%20I%20would%20like%20to%20enquire%20regarding%20statutory%20practice%20services.`;
 
   return (
     <aside aria-label="Direct WhatsApp Contact">
@@ -12,12 +16,12 @@ export default function WhatsAppButton() {
         target="_blank"
         rel="noopener noreferrer"
         className="floating-whatsapp"
-        aria-label="Direct WhatsApp consultation with CA Daksh Desai (+91 98196 47471)"
-        title="Chat on WhatsApp (+91 98196 47471)"
+        aria-label={`Direct WhatsApp consultation with ${firmOrProprietor} (${config.phoneFormatted})`}
+        title={`Chat on WhatsApp (${config.phoneFormatted})`}
       >
         <span className="floating-whatsapp-tooltip">
           <strong>Direct WhatsApp</strong>
-          <span>+91 98196 47471</span>
+          <span>{config.phoneFormatted}</span>
         </span>
         <span className="floating-whatsapp-icon" aria-hidden="true">
           <svg
@@ -35,4 +39,3 @@ export default function WhatsAppButton() {
     </aside>
   );
 }
-

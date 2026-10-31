@@ -201,6 +201,9 @@ For specific clarifications on statutory applicability, you may schedule a consu
             </p>
           </div>
           <div className="console-top-actions">
+            <Link href="/admin" className="btn-console-secondary" style={{ textDecoration: 'none' }}>
+              ← Master Admin Panel
+            </Link>
             <button
               onClick={() => {
                 sessionStorage.removeItem('dda_admin_key');

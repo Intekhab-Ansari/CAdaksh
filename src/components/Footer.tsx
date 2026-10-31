@@ -1,8 +1,13 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import NewsletterSubscribe from '@/components/NewsletterSubscribe';
+import { useSiteConfig } from '@/context/SiteConfigContext';
 
 export default function Footer() {
+  const { config } = useSiteConfig();
+
   return (
     <footer className="site-footer">
       <div className="container">
@@ -15,7 +20,7 @@ export default function Footer() {
             <div className="udin-bar-content">
               <div className="udin-bar-tag">ICAI STATUTORY PROTOCOL</div>
               <p className="udin-bar-text">
-                Every certificate, tax audit, and attestation issued by <strong>Daksh Desai &amp; Associates</strong> carries a mandatory, verifiable 18-digit Unique Document Identification Number (UDIN).
+                Every certificate, tax audit, and attestation issued by <strong>{config.firmName}</strong> carries a mandatory, verifiable 18-digit Unique Document Identification Number (UDIN).
               </p>
             </div>
           </div>
@@ -44,7 +49,7 @@ export default function Footer() {
                 <Image src="/images/ca-logo.svg" alt="CA India Emblem" width={36} height={36} />
               </div>
               <div className="footer-brand-title-wrap">
-                <span className="footer-firm-name">Daksh Desai &amp; Associates</span>
+                <span className="footer-firm-name">{config.firmName}</span>
                 <span className="footer-firm-sub">CHARTERED ACCOUNTANTS · MUMBAI</span>
               </div>
             </div>
@@ -56,7 +61,7 @@ export default function Footer() {
                 </span>
                 <div className="footer-detail-content">
                   <span className="detail-label">ICAI REGISTRATION</span>
-                  <span className="detail-val">FRN: 165505W</span>
+                  <span className="detail-val">FRN: {config.frn}</span>
                 </div>
               </div>
 
@@ -66,7 +71,7 @@ export default function Footer() {
                 </span>
                 <div className="footer-detail-content">
                   <span className="detail-label">PROPRIETOR &amp; PRINCIPAL</span>
-                  <span className="detail-val">CA Daksh Desai, ACA (M. No. 648747)</span>
+                  <span className="detail-val">{config.proprietorName} (M. No. {config.memberNo})</span>
                 </div>
               </div>
 
@@ -77,15 +82,17 @@ export default function Footer() {
                 <div className="footer-detail-content">
                   <span className="detail-label">HEAD OFFICE · BORIVALI WEST</span>
                   <span className="detail-val">
-                    501, Fly Edge, SV Rd, Borivali West, Mumbai – 400092{' '}
-                    <a
-                      href="https://maps.app.goo.gl/DvLMyXd3KrBS66vo9"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="footer-map-badge"
-                    >
-                      Map ↗
-                    </a>
+                    {config.addressBorivali}{' '}
+                    {config.mapLinkBorivali && (
+                      <a
+                        href={config.mapLinkBorivali}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="footer-map-badge"
+                      >
+                        Map ↗
+                      </a>
+                    )}
                   </span>
                 </div>
               </div>
@@ -96,7 +103,19 @@ export default function Footer() {
                 </span>
                 <div className="footer-detail-content">
                   <span className="detail-label">SOUTH MUMBAI CHAMBERS · NARIMAN POINT</span>
-                  <span className="detail-val">1004-05, Raheja Chambers, Free Press Journal Marg, Nariman Point, Mumbai – 400021</span>
+                  <span className="detail-val">
+                    {config.addressNarimanPoint}{' '}
+                    {config.mapLinkNarimanPoint && (
+                      <a
+                        href={config.mapLinkNarimanPoint}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="footer-map-badge"
+                      >
+                        Map ↗
+                      </a>
+                    )}
+                  </span>
                 </div>
               </div>
 
@@ -107,8 +126,8 @@ export default function Footer() {
                 <div className="footer-detail-content">
                   <span className="detail-label">DIRECT COUNSEL &amp; WHATSAPP</span>
                   <span className="detail-val">
-                    <a href="tel:+919819647471" className="footer-link-subtle">
-                      +91 98196 47471
+                    <a href={`tel:${config.phone}`} className="footer-link-subtle">
+                      {config.phoneFormatted}
                     </a>
                   </span>
                 </div>
@@ -121,12 +140,14 @@ export default function Footer() {
                 <div className="footer-detail-content">
                   <span className="detail-label">PRACTICE EMAIL (OFFICIAL &amp; DIRECT)</span>
                   <div className="detail-val footer-emails-col">
-                    <a href="mailto:cadakshdesai@outlook.com" className="footer-email-link">
-                      <span className="email-dot">▪</span> cadakshdesai@outlook.com
+                    <a href={`mailto:${config.emailPrimary}`} className="footer-email-link">
+                      <span className="email-dot">▪</span> {config.emailPrimary}
                     </a>
-                    <a href="mailto:dakshdesai0109@gmail.com" className="footer-email-link">
-                      <span className="email-dot">▪</span> dakshdesai0109@gmail.com
-                    </a>
+                    {config.emailSecondary && (
+                      <a href={`mailto:${config.emailSecondary}`} className="footer-email-link">
+                        <span className="email-dot">▪</span> {config.emailSecondary}
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
@@ -137,7 +158,7 @@ export default function Footer() {
                 </span>
                 <div className="footer-detail-content">
                   <span className="detail-label">OFFICE HOURS</span>
-                  <span className="detail-val">Mon–Sat: 10:00 AM – 7:00 PM IST</span>
+                  <span className="detail-val">{config.officeHours}</span>
                 </div>
               </div>
             </div>
@@ -187,7 +208,13 @@ export default function Footer() {
                 <li><Link href="/services">Services Directory</Link></li>
                 <li><Link href="/faq">Client FAQ &amp; Guidance</Link></li>
                 <li><Link href="/contact">Chambers Office &amp; Location</Link></li>
-                <li><a href="https://www.linkedin.com/in/daksh-desai-787199204" target="_blank" rel="noopener noreferrer">Proprietor LinkedIn ↗</a></li>
+                {config.linkedinUrl && (
+                  <li>
+                    <a href={config.linkedinUrl} target="_blank" rel="noopener noreferrer">
+                      Proprietor LinkedIn ↗
+                    </a>
+                  </li>
+                )}
               </ul>
             </div>
 
@@ -209,7 +236,7 @@ export default function Footer() {
         <div className="footer-legal-bar">
           <div className="legal-left">
             <div className="copyright-line">
-              © {new Date().getFullYear()} Daksh Desai &amp; Associates, Chartered Accountants. All rights reserved.
+              © {new Date().getFullYear()} {config.firmName}, Chartered Accountants. All rights reserved.
             </div>
             <div className="agency-credit-line">
               <span>Design and Developed by</span>{' '}
