@@ -31,6 +31,9 @@ yarn-error.log*
 .env*
 !.env.example
 
+# local runtime cache
+/data/
+
 # vercel
 .vercel
 

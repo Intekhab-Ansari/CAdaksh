@@ -23,6 +23,17 @@ interface Enquiry {
   created_at: string;
 }
 
+export interface SessionInfo {
+  token: string;
+  createdAt: number;
+  lastActiveAt: number;
+  expiresAt: number;
+  deviceType: 'desktop' | 'mobile' | 'tablet';
+  deviceLabel: string;
+  ip: string;
+  isCurrent?: boolean;
+}
+
 type TabType = 'contact' | 'firm' | 'hero' | 'media' | 'newsletter' | 'enquiries' | 'security';
 
 export default function AdminDashboardPage() {
@@ -31,6 +42,16 @@ export default function AdminDashboardPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [authError, setAuthError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+
+  // Sessions & Multi-Device State
+  const [sessions, setSessions] = useState<SessionInfo[]>([]);
+  const [totalDevices, setTotalDevices] = useState(1);
+  const [loadingSessions, setLoadingSessions] = useState(false);
+  const [sessionActionMsg, setSessionActionMsg] = useState('');
+  const [sessionActionError, setSessionActionError] = useState('');
+
+  // Password Change Multi-Device Logout Option
+  const [logoutAllDevicesOption, setLogoutAllDevicesOption] = useState<boolean>(false);
 
   // Forgot Password / OTP Flow State
   const [loginMode, setLoginMode] = useState<'passkey' | 'forgot_request' | 'forgot_verify'>('passkey');
@@ -106,6 +127,86 @@ For specific clarifications on statutory applicability, you may schedule a consu
     return () => clearInterval(timer);
   }, [resendCooldown]);
 
+  const formatTimeAgo = (timestamp: number): string => {
+    const diffSec = Math.max(0, Math.floor((Date.now() - timestamp) / 1000));
+    if (diffSec < 45) return 'Active just now';
+    const diffMin = Math.floor(diffSec / 60);
+    if (diffMin < 60) return `${diffMin}m ago`;
+    const diffHour = Math.floor(diffMin / 60);
+    if (diffHour < 24) return `${diffHour}h ago`;
+    const diffDays = Math.floor(diffHour / 24);
+    return `${diffDays}d ago`;
+  };
+
+  const loadSessions = async (token?: string) => {
+    const key = token || passkey || (typeof window !== 'undefined' ? sessionStorage.getItem('dda_admin_key') : '') || '';
+    if (!key) return;
+    setLoadingSessions(true);
+    try {
+      const res = await fetch(`/api/admin/auth/sessions?token=${encodeURIComponent(key)}`);
+      if (res.ok) {
+        const data = await res.json();
+        setSessions(data.sessions || []);
+        setTotalDevices(data.totalDevices || (data.sessions ? data.sessions.length : 1));
+      }
+    } catch (err) {
+      console.warn('Failed to load active sessions:', err);
+    } finally {
+      setLoadingSessions(false);
+    }
+  };
+
+  const handleTerminateSession = async (targetToken: string) => {
+    const key = passkey || sessionStorage.getItem('dda_admin_key') || '';
+    setSessionActionMsg('');
+    setSessionActionError('');
+    try {
+      const res = await fetch('/api/admin/auth/sessions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          token: key,
+          action: 'terminate',
+          targetToken,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to disconnect device');
+      }
+      setSessionActionMsg(data.message || 'Device disconnected successfully.');
+      if (data.sessions) setSessions(data.sessions);
+      if (data.totalDevices !== undefined) setTotalDevices(data.totalDevices);
+    } catch (err: unknown) {
+      setSessionActionError(err instanceof Error ? err.message : 'Error disconnecting device');
+    }
+  };
+
+  const handleTerminateAllOtherSessions = async () => {
+    const key = passkey || sessionStorage.getItem('dda_admin_key') || '';
+    setSessionActionMsg('');
+    setSessionActionError('');
+    try {
+      const res = await fetch('/api/admin/auth/sessions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          token: key,
+          action: 'terminate_all_others',
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to disconnect other devices');
+      }
+      setSessionActionMsg(data.message || 'All other devices have been disconnected.');
+      if (data.sessions) setSessions(data.sessions);
+      if (data.totalDevices !== undefined) setTotalDevices(data.totalDevices);
+    } catch (err: unknown) {
+      setSessionActionError(err instanceof Error ? err.message : 'Error disconnecting devices');
+    }
+  };
+
   // Auto-login if key is saved in sessionStorage
   useEffect(() => {
     const saved = sessionStorage.getItem('dda_admin_key');
@@ -115,34 +216,47 @@ For specific clarifications on statutory applicability, you may schedule a consu
     }
   }, []);
 
-  const verifyLogin = async (keyToVerify: string) => {
-    setAuthError('');
+  const loadSubscribers = async (key: string) => {
     try {
-      // Validate key by fetching subscribers and settings
       const res = await fetch('/api/admin/newsletter/subscribers', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ passkey: keyToVerify }),
+        body: JSON.stringify({ passkey: key }),
       });
+      if (res.ok) {
+        const data = await res.json();
+        setSubscribers(data.subscribers || []);
+        setActiveCount(data.activeCount || 0);
+        setTotalSubscribers(data.total || 0);
+      }
+    } catch (err) {
+      console.warn('Failed to load subscribers:', err);
+    }
+  };
 
+  const verifyLogin = async (keyToVerify: string) => {
+    setAuthError('');
+    try {
+      const res = await fetch(`/api/admin/auth/sessions?token=${encodeURIComponent(keyToVerify)}`);
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error || 'Authentication failed');
+        throw new Error(data.error || 'Session expired or invalid credentials');
       }
 
       setIsAuthenticated(true);
       sessionStorage.setItem('dda_admin_key', keyToVerify);
-      setSubscribers(data.subscribers || []);
-      setActiveCount(data.activeCount || 0);
-      setTotalSubscribers(data.total || 0);
+      setSessions(data.sessions || []);
+      setTotalDevices(data.totalDevices || (data.sessions ? data.sessions.length : 1));
 
-      // Load Settings
+      // Load Settings, Enquiries & Subscribers
       loadSettings();
-      // Load Enquiries
       loadEnquiries(keyToVerify);
+      loadSubscribers(keyToVerify);
     } catch (err: unknown) {
-      setAuthError(err instanceof Error ? err.message : 'Invalid Admin Passkey');
+      console.warn('Authentication check failed:', err);
+      sessionStorage.removeItem('dda_admin_key');
       setIsAuthenticated(false);
+      setAuthError(err instanceof Error ? err.message : 'Session expired. Please log in again.');
     }
   };
 
@@ -179,10 +293,38 @@ For specific clarifications on statutory applicability, you may schedule a consu
     }
   };
 
-  const handleLoginSubmit = (e: React.FormEvent) => {
+  const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!passkey.trim()) return;
-    verifyLogin(passkey.trim());
+    setAuthError('');
+    try {
+      const res = await fetch('/api/admin/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ passkey: passkey.trim() }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Invalid Admin Passkey');
+      }
+
+      const sessionToken = data.sessionToken || passkey.trim();
+      sessionStorage.setItem('dda_admin_key', sessionToken);
+      setPasskey(sessionToken);
+      setIsAuthenticated(true);
+      setTotalDevices(data.totalDevices || 1);
+      if (data.session) {
+        setSessions([data.session]);
+      }
+
+      loadSessions(sessionToken);
+      loadSettings();
+      loadEnquiries(sessionToken);
+      loadSubscribers(sessionToken);
+    } catch (err: unknown) {
+      setAuthError(err instanceof Error ? err.message : 'Invalid Admin Passkey');
+      setIsAuthenticated(false);
+    }
   };
 
   // OTP Request Handler
@@ -246,23 +388,10 @@ For specific clarifications on statutory applicability, you may schedule a consu
       setSaveSuccessMsg(data.message || 'Authenticated successfully! Welcome back.');
 
       // Load data
+      loadSessions(authToken);
       loadSettings();
       loadEnquiries(authToken);
-      // Fetch subscribers with token
-      fetch('/api/admin/newsletter/subscribers', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ passkey: authToken }),
-      })
-        .then((r) => r.json())
-        .then((sData) => {
-          if (sData.subscribers) {
-            setSubscribers(sData.subscribers);
-            setActiveCount(sData.activeCount || 0);
-            setTotalSubscribers(sData.total || 0);
-          }
-        })
-        .catch(() => {});
+      loadSubscribers(authToken);
     } catch (err: unknown) {
       setAuthError(err instanceof Error ? err.message : 'Invalid verification code');
     } finally {
@@ -295,6 +424,7 @@ For specific clarifications on statutory applicability, you may schedule a consu
         body: JSON.stringify({
           passkey: activeKey,
           newPasskey: newPasskeyInDash.trim(),
+          logoutAllDevices: logoutAllDevicesOption,
         }),
       });
 
@@ -304,8 +434,15 @@ For specific clarifications on statutory applicability, you may schedule a consu
       }
 
       setPasskeyChangeSuccess(data.message || 'Passkey updated successfully!');
-      sessionStorage.setItem('dda_admin_key', newPasskeyInDash.trim());
-      setPasskey(newPasskeyInDash.trim());
+      if (data.sessions) setSessions(data.sessions);
+      if (data.totalDevices !== undefined) setTotalDevices(data.totalDevices);
+
+      // If activeKey was a raw passkey (not a session token), update sessionStorage
+      if (!activeKey.startsWith('dda_sess_')) {
+        sessionStorage.setItem('dda_admin_key', newPasskeyInDash.trim());
+        setPasskey(newPasskeyInDash.trim());
+      }
+
       setNewPasskeyInDash('');
       setConfirmPasskeyInDash('');
       setCurrentPasskeyInDash('');
@@ -317,11 +454,21 @@ For specific clarifications on statutory applicability, you may schedule a consu
   };
 
   const handleSignOut = () => {
+    const key = passkey || sessionStorage.getItem('dda_admin_key') || '';
+    if (key && key.startsWith('dda_sess_')) {
+      fetch('/api/admin/auth/sessions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: key, action: 'terminate', targetToken: key }),
+      }).catch(() => {});
+    }
     sessionStorage.removeItem('dda_admin_key');
     setIsAuthenticated(false);
     setPasskey('');
     setLoginMode('passkey');
     setOtpInput('');
+    setSessions([]);
+    setTotalDevices(1);
   };
 
   const handleFieldChange = (key: keyof SiteConfig, value: string) => {
@@ -774,10 +921,11 @@ For specific clarifications on statutory applicability, you may schedule a consu
             <button
               type="button"
               onClick={() => setActiveTab('security')}
-              className={`admin-btn-outline ${activeTab === 'security' ? 'active' : ''}`}
-              title="Manage security passkey and access"
+              className={`admin-btn-outline admin-device-btn ${activeTab === 'security' ? 'active' : ''}`}
+              title="View and manage connected devices"
             >
-              <span>🔒 Security</span>
+              <span className="admin-device-dot">●</span>
+              <span>{totalDevices} {totalDevices === 1 ? 'Device' : 'Devices'} Logged In</span>
             </button>
 
             <button
@@ -883,7 +1031,10 @@ For specific clarifications on statutory applicability, you may schedule a consu
             onClick={() => setActiveTab('security')}
           >
             <span className="tab-icon">🔒</span>
-            <span>Security &amp; Passkey</span>
+            <span>Security &amp; Devices</span>
+            <span className="tab-count-badge" style={{ background: totalDevices > 1 ? '#0B1528' : '#64748B' }}>
+              {totalDevices}
+            </span>
           </button>
         </nav>
 
@@ -1953,13 +2104,110 @@ For specific clarifications on statutory applicability, you may schedule a consu
             ========================================================================= */}
         {activeTab === 'security' && (
           <div className="admin-section-card">
-            <div className="admin-card-header">
+            <div className="admin-card-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem' }}>
               <div>
-                <h2 className="admin-card-title">Practice Security &amp; Access Control</h2>
+                <h2 className="admin-card-title">Practice Security, Devices &amp; Access Control</h2>
                 <p className="admin-card-desc">
-                  Manage your master administrative credentials, authorized email address, and brute-force lockout defenses.
+                  Manage master administrative credentials, view authenticated devices logged into your console, and terminate unrecognized sessions.
                 </p>
               </div>
+              <div className="admin-devices-count-pill">
+                <span className="admin-device-dot">●</span>
+                <span>{totalDevices} {totalDevices === 1 ? 'Device Currently Active' : 'Devices Currently Active'}</span>
+              </div>
+            </div>
+
+            {/* Connected Devices Manager */}
+            <div className="admin-devices-manager">
+              <div className="admin-devices-top">
+                <div>
+                  <h3 className="admin-subheading">Connected Devices &amp; Active Browser Sessions</h3>
+                  <p className="admin-subdesc">
+                    Every computer or mobile phone logged into the administrative portal is assigned an authenticated session token. Review active devices below or disconnect any unfamiliar session.
+                  </p>
+                </div>
+                {sessions.filter((s) => !s.isCurrent).length > 0 && (
+                  <button
+                    type="button"
+                    onClick={handleTerminateAllOtherSessions}
+                    className="admin-btn-kill-all"
+                  >
+                    <span>⚠️ Disconnect All Other Devices ({sessions.filter((s) => !s.isCurrent).length})</span>
+                  </button>
+                )}
+              </div>
+
+              {sessionActionMsg && (
+                <div className="admin-alert admin-alert-success" style={{ margin: '1rem 0' }}>
+                  {sessionActionMsg}
+                </div>
+              )}
+              {sessionActionError && (
+                <div className="admin-alert admin-alert-error" style={{ margin: '1rem 0' }}>
+                  {sessionActionError}
+                </div>
+              )}
+
+              {loadingSessions ? (
+                <div style={{ padding: '1.5rem', textAlign: 'center', color: '#64748B', fontSize: '0.85rem' }}>
+                  Refreshing active devices...
+                </div>
+              ) : (
+                <div className="admin-devices-grid">
+                  {sessions.length === 0 ? (
+                    <div className="admin-device-card current">
+                      <div className="admin-device-icon-col">
+                        <span className="admin-device-icon">💻</span>
+                      </div>
+                      <div className="admin-device-details-col">
+                        <div className="admin-device-title-row">
+                          <span className="admin-device-label">Current Web Browser Session</span>
+                          <span className="admin-device-badge-current">● Current Device</span>
+                        </div>
+                        <div className="admin-device-meta-row">
+                          <span className="admin-meta-item">🌐 IP: <strong>Authorized Network</strong></span>
+                          <span className="admin-meta-sep">•</span>
+                          <span className="admin-meta-item">⏱️ Active now</span>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    sessions.map((sess) => (
+                      <div key={sess.token} className={`admin-device-card ${sess.isCurrent ? 'current' : ''}`}>
+                        <div className="admin-device-icon-col">
+                          <span className="admin-device-icon">
+                            {sess.deviceType === 'mobile' ? '📱' : sess.deviceType === 'tablet' ? '📟' : '💻'}
+                          </span>
+                        </div>
+                        <div className="admin-device-details-col">
+                          <div className="admin-device-title-row">
+                            <span className="admin-device-label">{sess.deviceLabel}</span>
+                            {sess.isCurrent ? (
+                              <span className="admin-device-badge-current">● Current Device</span>
+                            ) : (
+                              <button
+                                type="button"
+                                onClick={() => handleTerminateSession(sess.token)}
+                                className="admin-device-btn-disconnect"
+                                title="Terminate session on this device"
+                              >
+                                Disconnect
+                              </button>
+                            )}
+                          </div>
+                          <div className="admin-device-meta-row">
+                            <span className="admin-meta-item">🌐 IP: <strong>{sess.ip}</strong></span>
+                            <span className="admin-meta-sep">•</span>
+                            <span className="admin-meta-item">⏱️ {formatTimeAgo(sess.lastActiveAt)}</span>
+                            <span className="admin-meta-sep">•</span>
+                            <span className="admin-meta-item">📅 {new Date(sess.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}</span>
+                          </div>
+                        </div>
+                      </div>
+                    ))
+                  )}
+                </div>
+              )}
             </div>
 
             <div className="admin-security-grid">
@@ -2055,6 +2303,48 @@ For specific clarifications on statutory applicability, you may schedule a consu
                     />
                   </div>
 
+                  {/* 2 Explicit Options Requested: Only change password vs Change & logout from all devices */}
+                  <div className="admin-security-field">
+                    <label className="admin-label">Device Session Security Option:</label>
+                    <div className="admin-passkey-options-grid">
+                      <label
+                        className={`admin-passkey-radio-card ${!logoutAllDevicesOption ? 'selected' : ''}`}
+                        onClick={() => setLogoutAllDevicesOption(false)}
+                      >
+                        <div className="radio-card-header">
+                          <input
+                            type="radio"
+                            name="logoutDevicesOption"
+                            checked={!logoutAllDevicesOption}
+                            onChange={() => setLogoutAllDevicesOption(false)}
+                          />
+                          <span className="radio-card-title">Option 1: Only Change Passkey</span>
+                        </div>
+                        <p className="radio-card-desc">
+                          Keep all currently logged-in computers and mobile phones signed in across your chambers.
+                        </p>
+                      </label>
+
+                      <label
+                        className={`admin-passkey-radio-card ${logoutAllDevicesOption ? 'selected' : ''}`}
+                        onClick={() => setLogoutAllDevicesOption(true)}
+                      >
+                        <div className="radio-card-header">
+                          <input
+                            type="radio"
+                            name="logoutDevicesOption"
+                            checked={logoutAllDevicesOption}
+                            onChange={() => setLogoutAllDevicesOption(true)}
+                          />
+                          <span className="radio-card-title">Option 2: Change Passkey &amp; Logout From All Devices</span>
+                        </div>
+                        <p className="radio-card-desc">
+                          Immediately disconnect all other active devices. Only this current device will stay logged in.
+                        </p>
+                      </label>
+                    </div>
+                  </div>
+
                   {passkeyChangeError && (
                     <div className="admin-alert admin-alert-error" style={{ marginBottom: '1rem' }}>
                       {passkeyChangeError}
@@ -2070,9 +2360,13 @@ For specific clarifications on statutory applicability, you may schedule a consu
                     type="submit"
                     disabled={isChangingPasskey || !newPasskeyInDash}
                     className="admin-btn-primary"
-                    style={{ width: '100%', marginTop: '0.5rem' }}
+                    style={{ width: '100%', marginTop: '0.75rem' }}
                   >
-                    {isChangingPasskey ? 'Updating Passkey...' : '✓ Update & Lock New Passkey'}
+                    {isChangingPasskey
+                      ? 'Updating Passkey...'
+                      : logoutAllDevicesOption
+                      ? '🔒 Change Passkey & Disconnect All Other Devices'
+                      : '✓ Change Passkey (Keep Devices Logged In)'}
                   </button>
                 </form>
 

@@ -9341,3 +9341,275 @@ footer.site-footer::before {
   font-weight: 800;
 }
 
+/* =========================================================================
+   Admin Multi-Device & Session Security Management
+   ========================================================================= */
+
+.admin-device-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 700;
+  border-color: #0B1528 !important;
+  color: #0B1528 !important;
+  background: rgba(11, 21, 40, 0.04) !important;
+}
+
+.admin-device-btn:hover {
+  background: #0B1528 !important;
+  color: #FFFFFF !important;
+}
+
+.admin-device-btn.active {
+  background: #0B1528 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 8px rgba(11, 21, 40, 0.2);
+}
+
+.admin-device-dot {
+  color: #16A34A;
+  font-size: 0.85rem;
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+.admin-devices-count-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.85rem;
+  background: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1E40AF;
+}
+
+.admin-devices-manager {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 1.75rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 16px rgba(11, 21, 40, 0.04);
+}
+
+.admin-devices-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #F1F5F9;
+}
+
+.admin-subheading {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0B1528;
+}
+
+.admin-subdesc {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #64748B;
+  max-width: 620px;
+  line-height: 1.5;
+}
+
+.admin-btn-kill-all {
+  padding: 0.55rem 1.1rem;
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  border-radius: 8px;
+  color: #DC2626;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-btn-kill-all:hover {
+  background: #DC2626;
+  border-color: #DC2626;
+  color: #FFFFFF;
+}
+
+.admin-devices-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1rem;
+}
+
+.admin-device-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.15rem;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.admin-device-card:hover {
+  border-color: #CBD5E1;
+  background: #FFFFFF;
+  box-shadow: 0 3px 10px rgba(11, 21, 40, 0.05);
+}
+
+.admin-device-card.current {
+  border-color: #C5A059;
+  background: #FDFBF7;
+}
+
+.admin-device-icon-col {
+  flex-shrink: 0;
+}
+
+.admin-device-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  font-size: 1.25rem;
+}
+
+.admin-device-card.current .admin-device-icon {
+  background: #0B1528;
+  border-color: #0B1528;
+}
+
+.admin-device-details-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-device-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.admin-device-label {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #0B1528;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.admin-device-badge-current {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.55rem;
+  background: #DCFCE7;
+  color: #15803D;
+  border: 1px solid #BBF7D0;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.admin-device-btn-disconnect {
+  padding: 0.25rem 0.65rem;
+  background: #FFFFFF;
+  border: 1px solid #FCA5A5;
+  border-radius: 6px;
+  color: #DC2626;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.admin-device-btn-disconnect:hover {
+  background: #DC2626;
+  color: #FFFFFF;
+  border-color: #DC2626;
+}
+
+.admin-device-meta-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 0.74rem;
+  color: #64748B;
+}
+
+.admin-meta-sep {
+  color: #CBD5E1;
+}
+
+/* Password Change 2-Option Radio Cards */
+.admin-passkey-options-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.admin-passkey-radio-card {
+  display: block;
+  position: relative;
+  border: 1.5px solid #E2E8F0;
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-passkey-radio-card:hover {
+  border-color: #CBD5E1;
+  background: #F8FAFC;
+}
+
+.admin-passkey-radio-card.selected {
+  border-color: #0B1528;
+  background: #F8FAFC;
+  box-shadow: 0 2px 8px rgba(11, 21, 40, 0.06);
+}
+
+.admin-passkey-radio-card input[type="radio"] {
+  accent-color: #0B1528;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.radio-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.35rem;
+}
+
+.radio-card-title {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #0B1528;
+}
+
+.radio-card-desc {
+  margin: 0 0 0 1.65rem;
+  font-size: 0.76rem;
+  color: #64748B;
+  line-height: 1.45;
+}
+

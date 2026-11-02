@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
-import { validateAdminKey, updateAdminPasskey } from '@/lib/adminAuth';
+import { validateAdminKey, updateAdminPasskeyWithOptions, listActiveSessions } from '@/lib/adminAuth';
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { passkey, newPasskey } = body;
+    const { passkey, newPasskey, logoutAllDevices } = body;
 
     const authCheck = await validateAdminKey(passkey);
     if (!authCheck.valid) {
@@ -21,11 +21,25 @@ export async function POST(request: Request) {
       );
     }
 
-    await updateAdminPasskey(newPasskey.trim());
+    const { terminatedCount } = await updateAdminPasskeyWithOptions(
+      newPasskey.trim(),
+      passkey,
+      Boolean(logoutAllDevices)
+    );
+
+    const { sessions, total } = await listActiveSessions(passkey);
+
+    const message = logoutAllDevices
+      ? `Security passkey updated successfully, and ${terminatedCount} other device(s) have been logged out. Only this device remains active.`
+      : 'Security passkey updated successfully. All existing devices remain connected.';
 
     return NextResponse.json({
       success: true,
-      message: 'Admin passkey updated successfully. Please note this for your next login.',
+      message,
+      logoutAllDevices: Boolean(logoutAllDevices),
+      terminatedCount,
+      sessions,
+      totalDevices: total,
     });
   } catch (err: unknown) {
     console.error('Change passkey route error:', err);
@@ -35,4 +49,3 @@ export async function POST(request: Request) {
     );
   }
 }
-

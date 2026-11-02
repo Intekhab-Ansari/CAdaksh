@@ -33,15 +33,19 @@ export async function POST(request: Request) {
       passkeyUpdated = true;
     }
 
-    // 3. Create persistent authenticated session
-    const sessionToken = await createAdminSession();
+    // 3. Create persistent authenticated session with device info
+    const userAgent = request.headers.get('user-agent') || '';
+    const forwarded = request.headers.get('x-forwarded-for');
+    const ip = (forwarded ? forwarded.split(',')[0].trim() : request.headers.get('x-real-ip')) || '127.0.0.1';
+    const session = await createAdminSession(userAgent, ip);
 
     return NextResponse.json({
       success: true,
       message: passkeyUpdated
         ? 'Security verification successful! New Admin Passkey has been updated.'
         : 'Security verification successful! Welcome back CA Daksh Desai.',
-      sessionToken,
+      sessionToken: session.token,
+      session,
       passkeyUpdated,
     });
   } catch (err: unknown) {
