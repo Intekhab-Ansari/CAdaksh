@@ -1,10 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import '@/styles/globals.css';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import DisclaimerModal from '@/components/DisclaimerModal';
-import SmoothScroll from '@/components/SmoothScroll';
-import WhatsAppButton from '@/components/WhatsAppButton';
+import ClientShell from '@/components/ClientShell';
 import { SiteConfigProvider } from '@/context/SiteConfigContext';
 
 export const dynamic = 'force-dynamic';
@@ -195,12 +191,7 @@ export default function RootLayout({
       </head>
       <body>
         <SiteConfigProvider>
-          <SmoothScroll />
-          <Header />
-          <main>{children}</main>
-          <Footer />
-          <DisclaimerModal />
-          <WhatsAppButton />
+          <ClientShell>{children}</ClientShell>
         </SiteConfigProvider>
       </body>
     </html>

@@ -1,15 +1,15 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
-
-const ADMIN_PASSKEY = process.env.ADMIN_NEWSLETTER_KEY || 'daksh2026';
+import { validateAdminKey } from '@/lib/adminAuth';
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
     const { passkey } = body;
 
-    if (!passkey || passkey !== ADMIN_PASSKEY) {
-      return NextResponse.json({ error: 'Unauthorized: Invalid Admin Passkey.' }, { status: 401 });
+    const authCheck = await validateAdminKey(passkey);
+    if (!authCheck.valid) {
+      return NextResponse.json({ error: authCheck.reason || 'Unauthorized: Invalid Admin Passkey.' }, { status: 401 });
     }
 
     if (!supabase) {

@@ -23,7 +23,7 @@ interface Enquiry {
   created_at: string;
 }
 
-type TabType = 'contact' | 'firm' | 'hero' | 'media' | 'newsletter' | 'enquiries';
+type TabType = 'contact' | 'firm' | 'hero' | 'media' | 'newsletter' | 'enquiries' | 'security';
 
 export default function AdminDashboardPage() {
   // Authentication State
@@ -31,6 +31,23 @@ export default function AdminDashboardPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [authError, setAuthError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+
+  // Forgot Password / OTP Flow State
+  const [loginMode, setLoginMode] = useState<'passkey' | 'forgot_request' | 'forgot_verify'>('passkey');
+  const [otpInput, setOtpInput] = useState('');
+  const [newPasskeyOnReset, setNewPasskeyOnReset] = useState('');
+  const [isSendingOtp, setIsSendingOtp] = useState(false);
+  const [isVerifyingOtp, setIsVerifyingOtp] = useState(false);
+  const [otpNoticeMsg, setOtpNoticeMsg] = useState('');
+  const [resendCooldown, setResendCooldown] = useState(0);
+
+  // In-Dashboard Passkey Change State
+  const [currentPasskeyInDash, setCurrentPasskeyInDash] = useState('');
+  const [newPasskeyInDash, setNewPasskeyInDash] = useState('');
+  const [confirmPasskeyInDash, setConfirmPasskeyInDash] = useState('');
+  const [isChangingPasskey, setIsChangingPasskey] = useState(false);
+  const [passkeyChangeSuccess, setPasskeyChangeSuccess] = useState('');
+  const [passkeyChangeError, setPasskeyChangeError] = useState('');
 
   // Active Tab
   const [activeTab, setActiveTab] = useState<TabType>('contact');
@@ -44,6 +61,7 @@ export default function AdminDashboardPage() {
 
   // Upload state
   const [uploadingField, setUploadingField] = useState<string | null>(null);
+  const [uploadFeedback, setUploadFeedback] = useState<{ [key: string]: string }>({});
 
   // Newsletter State
   const [subscribers, setSubscribers] = useState<Subscriber[]>([]);
@@ -78,6 +96,15 @@ For specific clarifications on statutory applicability, you may schedule a consu
 
   // File Input References
   const fileInputRefs = useRef<{ [key: string]: HTMLInputElement | null }>({});
+
+  // Cooldown countdown timer for OTP resend
+  useEffect(() => {
+    if (resendCooldown <= 0) return;
+    const timer = setInterval(() => {
+      setResendCooldown((prev) => (prev > 0 ? prev - 1 : 0));
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [resendCooldown]);
 
   // Auto-login if key is saved in sessionStorage
   useEffect(() => {
@@ -158,10 +185,143 @@ For specific clarifications on statutory applicability, you may schedule a consu
     verifyLogin(passkey.trim());
   };
 
+  // OTP Request Handler
+  const handleRequestOtp = async () => {
+    setIsSendingOtp(true);
+    setAuthError('');
+    setOtpNoticeMsg('');
+    try {
+      const res = await fetch('/api/admin/auth/forgot-password', {
+        method: 'POST',
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to send OTP');
+      }
+      setLoginMode('forgot_verify');
+      setResendCooldown(60);
+      setOtpNoticeMsg(data.message || 'Verification code dispatched to registered email.');
+    } catch (err: unknown) {
+      setAuthError(err instanceof Error ? err.message : 'Error sending verification code');
+    } finally {
+      setIsSendingOtp(false);
+    }
+  };
+
+  // OTP Verification Handler
+  const handleVerifyOtp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!otpInput.trim()) {
+      setAuthError('Please enter the 6-digit verification code.');
+      return;
+    }
+
+    if (newPasskeyOnReset && newPasskeyOnReset.trim().length < 6) {
+      setAuthError('New passkey must be at least 6 characters long.');
+      return;
+    }
+
+    setIsVerifyingOtp(true);
+    setAuthError('');
+    try {
+      const res = await fetch('/api/admin/auth/verify-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          otp: otpInput.trim(),
+          newPasskey: newPasskeyOnReset.trim() || undefined,
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Verification failed');
+      }
+
+      // Successful OTP authentication!
+      const authToken = data.sessionToken || (newPasskeyOnReset ? newPasskeyOnReset.trim() : 'daksh2026');
+      sessionStorage.setItem('dda_admin_key', authToken);
+      setPasskey(authToken);
+      setIsAuthenticated(true);
+      setSaveSuccessMsg(data.message || 'Authenticated successfully! Welcome back.');
+
+      // Load data
+      loadSettings();
+      loadEnquiries(authToken);
+      // Fetch subscribers with token
+      fetch('/api/admin/newsletter/subscribers', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ passkey: authToken }),
+      })
+        .then((r) => r.json())
+        .then((sData) => {
+          if (sData.subscribers) {
+            setSubscribers(sData.subscribers);
+            setActiveCount(sData.activeCount || 0);
+            setTotalSubscribers(sData.total || 0);
+          }
+        })
+        .catch(() => {});
+    } catch (err: unknown) {
+      setAuthError(err instanceof Error ? err.message : 'Invalid verification code');
+    } finally {
+      setIsVerifyingOtp(false);
+    }
+  };
+
+  // In-Dashboard Passkey Change Handler
+  const handleChangePasskeyInDashboard = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setPasskeyChangeError('');
+    setPasskeyChangeSuccess('');
+
+    if (!newPasskeyInDash || newPasskeyInDash.length < 6) {
+      setPasskeyChangeError('New passkey must be at least 6 characters long.');
+      return;
+    }
+
+    if (newPasskeyInDash !== confirmPasskeyInDash) {
+      setPasskeyChangeError('New passkeys do not match. Please verify.');
+      return;
+    }
+
+    setIsChangingPasskey(true);
+    try {
+      const activeKey = passkey || sessionStorage.getItem('dda_admin_key') || '';
+      const res = await fetch('/api/admin/auth/change-passkey', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          passkey: activeKey,
+          newPasskey: newPasskeyInDash.trim(),
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to update passkey');
+      }
+
+      setPasskeyChangeSuccess(data.message || 'Passkey updated successfully!');
+      sessionStorage.setItem('dda_admin_key', newPasskeyInDash.trim());
+      setPasskey(newPasskeyInDash.trim());
+      setNewPasskeyInDash('');
+      setConfirmPasskeyInDash('');
+      setCurrentPasskeyInDash('');
+    } catch (err: unknown) {
+      setPasskeyChangeError(err instanceof Error ? err.message : 'Error changing passkey');
+    } finally {
+      setIsChangingPasskey(false);
+    }
+  };
+
   const handleSignOut = () => {
     sessionStorage.removeItem('dda_admin_key');
     setIsAuthenticated(false);
     setPasskey('');
+    setLoginMode('passkey');
+    setOtpInput('');
   };
 
   const handleFieldChange = (key: keyof SiteConfig, value: string) => {
@@ -201,6 +361,18 @@ For specific clarifications on statutory applicability, you may schedule a consu
   const handleFileUpload = async (fieldKey: keyof SiteConfig, file: File) => {
     setUploadingField(fieldKey);
     try {
+      // Detect image dimensions locally for user clarity
+      if (typeof window !== 'undefined') {
+        const imgObj = new window.Image();
+        imgObj.onload = () => {
+          setUploadFeedback((prev) => ({
+            ...prev,
+            [fieldKey]: `✓ Uploaded ${imgObj.width} × ${imgObj.height} px · Smart auto-fit enabled!`,
+          }));
+        };
+        imgObj.src = URL.createObjectURL(file);
+      }
+
       const formData = new FormData();
       formData.append('passkey', passkey || sessionStorage.getItem('dda_admin_key') || '');
       formData.append('file', file);
@@ -217,7 +389,7 @@ For specific clarifications on statutory applicability, you may schedule a consu
 
       // Update config with newly uploaded URL
       handleFieldChange(fieldKey, data.url);
-      setSaveSuccessMsg(`✓ Photo uploaded! Click "Save Website Changes" to finalize.`);
+      setSaveSuccessMsg(`✓ Photo uploaded! Click "Save All Changes" to publish across all pages.`);
     } catch (err: unknown) {
       alert(err instanceof Error ? err.message : 'Failed to upload photo');
     } finally {
@@ -333,7 +505,7 @@ For specific clarifications on statutory applicability, you may schedule a consu
       (e.message && e.message.toLowerCase().includes(enquirySearch.toLowerCase()))
   );
 
-  // If not authenticated, render Sovereign Login Screen
+  // If not authenticated, render Sovereign Login Screen with Passkey & Email OTP options
   if (!isAuthenticated) {
     return (
       <div className="admin-login-wrap">
@@ -344,45 +516,227 @@ For specific clarifications on statutory applicability, you may schedule a consu
           <span className="admin-login-badge">✦ OFFICIAL PRACTICE CONSOLE</span>
           <h1 className="admin-login-title">Daksh Desai &amp; Associates</h1>
           <p className="admin-login-sub">
-            Chambers CMS &amp; Master Administration Dashboard. Enter authorized security passkey to manage practice details, phone numbers, imagery, and circulars.
+            Chambers CMS &amp; Master Administration Dashboard. Direct partner control over practice contact, compliance details, visual media, and bulletins.
           </p>
 
-          <form onSubmit={handleLoginSubmit} className="admin-login-form">
-            <div className="admin-field-group">
-              <label htmlFor="adminKeyInput" className="admin-label">
-                Security Passkey
-              </label>
-              <div className="admin-input-wrap">
-                <input
-                  id="adminKeyInput"
-                  type={showPassword ? 'text' : 'password'}
-                  className="admin-input"
-                  placeholder="Enter Passkey"
-                  value={passkey}
-                  onChange={(e) => setPasskey(e.target.value)}
-                  autoFocus
-                />
+          {/* Mode Switcher Tabs */}
+          <div className="admin-login-tabs">
+            <button
+              type="button"
+              className={`admin-login-tab-btn ${loginMode === 'passkey' ? 'active' : ''}`}
+              onClick={() => {
+                setLoginMode('passkey');
+                setAuthError('');
+                setOtpNoticeMsg('');
+              }}
+            >
+              🔑 Master Passkey
+            </button>
+            <button
+              type="button"
+              className={`admin-login-tab-btn ${loginMode !== 'passkey' ? 'active' : ''}`}
+              onClick={() => {
+                setLoginMode('forgot_request');
+                setAuthError('');
+                setOtpNoticeMsg('');
+              }}
+            >
+              ✉️ Email OTP Verification
+            </button>
+          </div>
+
+          {/* Mode 1: Standard Passkey Access */}
+          {loginMode === 'passkey' && (
+            <form onSubmit={handleLoginSubmit} className="admin-login-form">
+              <div className="admin-field-group">
+                <label htmlFor="adminKeyInput" className="admin-label">
+                  Security Passkey
+                </label>
+                <div className="admin-input-wrap">
+                  <input
+                    id="adminKeyInput"
+                    type={showPassword ? 'text' : 'password'}
+                    className="admin-input"
+                    placeholder="Enter Passkey (e.g. daksh2026)"
+                    value={passkey}
+                    onChange={(e) => setPasskey(e.target.value)}
+                    autoFocus
+                  />
+                  <button
+                    type="button"
+                    className="admin-toggle-pwd"
+                    onClick={() => setShowPassword(!showPassword)}
+                    aria-label="Toggle password visibility"
+                  >
+                    {showPassword ? 'Hide' : 'Show'}
+                  </button>
+                </div>
+              </div>
+
+              {authError && <div className="admin-alert admin-alert-error">{authError}</div>}
+
+              <button type="submit" className="admin-btn-primary" style={{ width: '100%', marginTop: '0.75rem' }}>
+                <span>Access Master Console</span>
+                <span aria-hidden="true">→</span>
+              </button>
+
+              <div style={{ textAlign: 'center', marginTop: '1.25rem' }}>
                 <button
                   type="button"
-                  className="admin-toggle-pwd"
-                  onClick={() => setShowPassword(!showPassword)}
-                  aria-label="Toggle password visibility"
+                  className="admin-btn-link"
+                  onClick={() => {
+                    setLoginMode('forgot_request');
+                    setAuthError('');
+                  }}
                 >
-                  {showPassword ? 'Hide' : 'Show'}
+                  Forgot Passkey? Reset via Email OTP →
+                </button>
+              </div>
+            </form>
+          )}
+
+          {/* Mode 2: Step 1 - Request OTP */}
+          {loginMode === 'forgot_request' && (
+            <div className="admin-login-form">
+              <div style={{ marginBottom: '1.25rem', textAlign: 'left' }}>
+                <div style={{ fontSize: '0.82rem', fontWeight: 700, color: '#0B1528', marginBottom: '0.4rem' }}>
+                  Registered Administrative Email:
+                </div>
+                <div className="admin-email-display">
+                  <span>dakshdesai0109@gmail.com</span>
+                  <span className="admin-email-badge">✓ Verified Principal</span>
+                </div>
+                <p style={{ fontSize: '0.78rem', color: '#64748B', marginTop: '0.65rem', lineHeight: 1.5 }}>
+                  Click below to dispatch a secure 6-digit one-time passcode (OTP) to this address. Valid for 10 minutes.
+                </p>
+              </div>
+
+              {authError && <div className="admin-alert admin-alert-error">{authError}</div>}
+              {otpNoticeMsg && <div className="admin-alert admin-alert-success">{otpNoticeMsg}</div>}
+
+              <button
+                type="button"
+                onClick={handleRequestOtp}
+                disabled={isSendingOtp}
+                className="admin-btn-primary"
+                style={{ width: '100%', marginTop: '0.5rem' }}
+              >
+                {isSendingOtp ? (
+                  <span>Sending Security Code...</span>
+                ) : (
+                  <>
+                    <span>📨 Send 6-Digit OTP to Email</span>
+                    <span aria-hidden="true">→</span>
+                  </>
+                )}
+              </button>
+
+              <div style={{ textAlign: 'center', marginTop: '1.25rem' }}>
+                <button
+                  type="button"
+                  className="admin-btn-link"
+                  onClick={() => {
+                    setLoginMode('passkey');
+                    setAuthError('');
+                  }}
+                >
+                  ← Return to Passkey Login
                 </button>
               </div>
             </div>
+          )}
 
-            {authError && <div className="admin-alert admin-alert-error">{authError}</div>}
+          {/* Mode 2: Step 2 - Verify OTP & Set Passkey */}
+          {loginMode === 'forgot_verify' && (
+            <form onSubmit={handleVerifyOtp} className="admin-login-form">
+              {otpNoticeMsg && <div className="admin-alert admin-alert-success">{otpNoticeMsg}</div>}
 
-            <button type="submit" className="admin-btn-primary" style={{ width: '100%', marginTop: '1rem' }}>
-              <span>Access Master Console</span>
-              <span aria-hidden="true">→</span>
-            </button>
-          </form>
+              <div className="admin-field-group">
+                <label htmlFor="otpCodeInput" className="admin-label">
+                  Enter 6-Digit OTP Code
+                </label>
+                <input
+                  id="otpCodeInput"
+                  type="text"
+                  maxLength={6}
+                  pattern="[0-9]*"
+                  inputMode="numeric"
+                  className="admin-input admin-otp-input"
+                  placeholder="••••••"
+                  value={otpInput}
+                  onChange={(e) => setOtpInput(e.target.value.replace(/[^0-9]/g, ''))}
+                  autoFocus
+                />
+                <div className="admin-otp-hint">
+                  <span>Sent to dakshdesai0109@gmail.com</span>
+                  {resendCooldown > 0 ? (
+                    <span style={{ color: '#94A3B8' }}>Resend in {resendCooldown}s</span>
+                  ) : (
+                    <button
+                      type="button"
+                      className="admin-btn-link"
+                      onClick={handleRequestOtp}
+                      disabled={isSendingOtp}
+                    >
+                      Resend Code
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              <div className="admin-field-group">
+                <label htmlFor="newPasskeyInput" className="admin-label">
+                  Set New Passkey <span style={{ fontWeight: 400, color: '#64748B' }}>(Optional)</span>
+                </label>
+                <input
+                  id="newPasskeyInput"
+                  type="text"
+                  className="admin-input"
+                  placeholder="Leave blank to login, or type new passkey"
+                  value={newPasskeyOnReset}
+                  onChange={(e) => setNewPasskeyOnReset(e.target.value)}
+                />
+                <span className="admin-field-hint">
+                  If set, this will be your new master passkey for all future logins.
+                </span>
+              </div>
+
+              {authError && <div className="admin-alert admin-alert-error">{authError}</div>}
+
+              <button
+                type="submit"
+                disabled={isVerifyingOtp}
+                className="admin-btn-primary"
+                style={{ width: '100%', marginTop: '0.75rem' }}
+              >
+                {isVerifyingOtp ? (
+                  <span>Verifying Code...</span>
+                ) : (
+                  <>
+                    <span>Verify Code &amp; Enter Console</span>
+                    <span aria-hidden="true">✓</span>
+                  </>
+                )}
+              </button>
+
+              <div style={{ textAlign: 'center', marginTop: '1.25rem' }}>
+                <button
+                  type="button"
+                  className="admin-btn-link"
+                  onClick={() => {
+                    setLoginMode('passkey');
+                    setAuthError('');
+                    setOtpInput('');
+                  }}
+                >
+                  ← Return to Passkey Login
+                </button>
+              </div>
+            </form>
+          )}
 
           <div className="admin-login-foot">
-            <span>Western India Regional Council (WIRC) · FRN: 165505W</span>
+            <span>Western India Regional Council (WIRC) · FRN: 165505W · M. No. 648747</span>
           </div>
         </div>
       </div>
@@ -416,6 +770,15 @@ For specific clarifications on statutory applicability, you may schedule a consu
               <span>View Live Website</span>
               <span aria-hidden="true">↗</span>
             </Link>
+
+            <button
+              type="button"
+              onClick={() => setActiveTab('security')}
+              className={`admin-btn-outline ${activeTab === 'security' ? 'active' : ''}`}
+              title="Manage security passkey and access"
+            >
+              <span>🔒 Security</span>
+            </button>
 
             <button
               type="button"
@@ -512,6 +875,15 @@ For specific clarifications on statutory applicability, you may schedule a consu
             <span className="tab-icon">📋</span>
             <span>Consultation Enquiries</span>
             <span className="tab-count-badge">{enquiries.length}</span>
+          </button>
+
+          <button
+            type="button"
+            className={`admin-tab-btn ${activeTab === 'security' ? 'active' : ''}`}
+            onClick={() => setActiveTab('security')}
+          >
+            <span className="tab-icon">🔒</span>
+            <span>Security &amp; Passkey</span>
           </button>
         </nav>
 
@@ -843,33 +1215,86 @@ For specific clarifications on statutory applicability, you may schedule a consu
               <div>
                 <h2 className="admin-card-title">Website Visual Assets &amp; Photographs</h2>
                 <p className="admin-card-desc">
-                  Replace any image on the website instantly. You can directly upload a new photo from your computer (auto-saved to the server) or paste a custom image URL.
+                  Replace any image on the website instantly. Direct file uploads are auto-saved to the production server. Custom image URLs are also fully supported.
                 </p>
+              </div>
+            </div>
+
+            {/* Master Image Specifications & Smart Auto-Fit Guide */}
+            <div className="admin-guide-banner">
+              <div className="admin-guide-header">
+                <h3 className="admin-guide-title">
+                  <span>📐 Master Image Format &amp; Dimension Specifications</span>
+                </h3>
+                <span className="admin-guide-badge">
+                  <span>🛡️</span>
+                  <span>Smart Auto-Fit Engine Active</span>
+                </span>
+              </div>
+
+              <div className="admin-guide-grid">
+                {/* Spec 1: Portrait */}
+                <div className="admin-guide-card">
+                  <div className="admin-guide-card-type">01 · PROPRIETOR PORTRAIT</div>
+                  <div className="admin-guide-card-dim">800 × 1066 px</div>
+                  <div className="admin-guide-card-ratio">Aspect Ratio 3:4 or 4:5 · Vertical</div>
+                  <p className="admin-guide-card-desc">
+                    Used on Homepage Stewardship, About Us heritage frame, and Team bio. Sober executive studio or passport format. Subject&apos;s face should be centered in the upper 35% of the frame.
+                  </p>
+                </div>
+
+                {/* Spec 2: Hero Backdrop */}
+                <div className="admin-guide-card">
+                  <div className="admin-guide-card-type">02 · HERO AMBIENT BACKDROP</div>
+                  <div className="admin-guide-card-dim">1920 × 1080 px</div>
+                  <div className="admin-guide-card-ratio">Aspect Ratio 16:9 · Full Widescreen</div>
+                  <p className="admin-guide-card-desc">
+                    Used behind the main hero section under the sovereign dark scrim. High-resolution ambient architectural light pattern, financial district, or subtle texture.
+                  </p>
+                </div>
+
+                {/* Spec 3: Practice & Desk */}
+                <div className="admin-guide-card">
+                  <div className="admin-guide-card-type">03 · PRACTICE &amp; CHAMBERS DESK</div>
+                  <div className="admin-guide-card-dim">1200 × 800 px</div>
+                  <div className="admin-guide-card-ratio">Aspect Ratio 3:2 · Horizontal Landscape</div>
+                  <p className="admin-guide-card-desc">
+                    Used across Practice Consultation, Tax Bare Acts Library, Financial Advisory Desk, and Pan-India NRI Gateway. Professional workspace or library visuals.
+                  </p>
+                </div>
+              </div>
+
+              <div className="admin-autofit-note">
+                <strong>✦ Smart Auto-Fit Guarantee:</strong> You never need graphic design software to manually crop images. If you upload an image with a non-standard size (such as a smartphone photo, 1:1 square, or ultra-wide panorama), our intelligent responsive CSS engine dynamically anchors the focal point and crops it cleanly with <code>object-fit: cover</code> — completely preventing distortion, stretching, or broken page layouts across all mobile, tablet, and desktop screens.
               </div>
             </div>
 
             <div className="admin-media-grid">
               {/* Image 1: Proprietor Portrait */}
               <div className="admin-media-card">
-                <div className="admin-media-thumb">
+                <div className="admin-media-thumb thumb-portrait">
                   <Image
                     src={config.proprietorPhoto || '/images/ca-daksh-desai-executive.jpg'}
                     alt="Proprietor Portrait Preview"
                     fill
-                    style={{ objectFit: 'cover' }}
+                    style={{ objectFit: 'cover', objectPosition: 'center top' }}
                   />
                   {uploadingField === 'proprietorPhoto' && (
                     <div className="admin-media-overlay">Uploading...</div>
                   )}
                 </div>
                 <div className="admin-media-info">
+                  <div className="admin-media-spec-row">
+                    <span className="admin-spec-pill">📐 Ideal: 800 × 1066 px (3:4)</span>
+                    <span className="admin-autofit-pill">🛡️ Auto-Fit Protected</span>
+                  </div>
                   <h3 className="admin-media-title">Proprietor Executive Portrait</h3>
                   <p className="admin-media-sub">Displayed on Homepage Stewardship, About Us, and Team page.</p>
 
                   <div className="admin-media-actions">
                     <input
                       type="file"
-                      accept="image/*"
+                      accept="image/jpeg,image/png,image/webp"
                       style={{ display: 'none' }}
                       ref={(el) => { fileInputRefs.current['proprietorPhoto'] = el; }}
                       onChange={(e) => {
@@ -882,7 +1307,7 @@ For specific clarifications on statutory applicability, you may schedule a consu
                       className="admin-btn-upload"
                       onClick={() => fileInputRefs.current['proprietorPhoto']?.click()}
                     >
-                      📁 Upload New Photo
+                      📁 Upload Photo
                     </button>
                     <button
                       type="button"
@@ -893,6 +1318,12 @@ For specific clarifications on statutory applicability, you may schedule a consu
                       Reset Default
                     </button>
                   </div>
+
+                  {uploadFeedback['proprietorPhoto'] && (
+                    <div style={{ fontSize: '0.74rem', color: '#15803D', fontWeight: 600 }}>
+                      {uploadFeedback['proprietorPhoto']}
+                    </div>
+                  )}
 
                   <input
                     type="text"
@@ -906,7 +1337,7 @@ For specific clarifications on statutory applicability, you may schedule a consu
 
               {/* Image 2: Hero Consulting */}
               <div className="admin-media-card">
-                <div className="admin-media-thumb">
+                <div className="admin-media-thumb thumb-landscape">
                   <Image
                     src={config.heroConsultingImage || '/images/ca-consulting.jpg'}
                     alt="Hero Consultation Preview"
@@ -918,13 +1349,17 @@ For specific clarifications on statutory applicability, you may schedule a consu
                   )}
                 </div>
                 <div className="admin-media-info">
+                  <div className="admin-media-spec-row">
+                    <span className="admin-spec-pill">📐 Ideal: 1200 × 800 px (3:2)</span>
+                    <span className="admin-autofit-pill">🛡️ Auto-Fit Protected</span>
+                  </div>
                   <h3 className="admin-media-title">Practice Consultation Photo</h3>
                   <p className="admin-media-sub">Professional chartered accountancy workspace visual.</p>
 
                   <div className="admin-media-actions">
                     <input
                       type="file"
-                      accept="image/*"
+                      accept="image/jpeg,image/png,image/webp"
                       style={{ display: 'none' }}
                       ref={(el) => { fileInputRefs.current['heroConsultingImage'] = el; }}
                       onChange={(e) => {
@@ -937,7 +1372,7 @@ For specific clarifications on statutory applicability, you may schedule a consu
                       className="admin-btn-upload"
                       onClick={() => fileInputRefs.current['heroConsultingImage']?.click()}
                     >
-                      📁 Upload New Photo
+                      📁 Upload Photo
                     </button>
                     <button
                       type="button"
@@ -947,6 +1382,12 @@ For specific clarifications on statutory applicability, you may schedule a consu
                       Reset Default
                     </button>
                   </div>
+
+                  {uploadFeedback['heroConsultingImage'] && (
+                    <div style={{ fontSize: '0.74rem', color: '#15803D', fontWeight: 600 }}>
+                      {uploadFeedback['heroConsultingImage']}
+                    </div>
+                  )}
 
                   <input
                     type="text"
@@ -960,7 +1401,7 @@ For specific clarifications on statutory applicability, you may schedule a consu
 
               {/* Image 3: Tax Books */}
               <div className="admin-media-card">
-                <div className="admin-media-thumb">
+                <div className="admin-media-thumb thumb-landscape">
                   <Image
                     src={config.heroTaxBooksImage || '/images/tax-law-books.jpg'}
                     alt="Tax Books Preview"
@@ -972,13 +1413,17 @@ For specific clarifications on statutory applicability, you may schedule a consu
                   )}
                 </div>
                 <div className="admin-media-info">
+                  <div className="admin-media-spec-row">
+                    <span className="admin-spec-pill">📐 Ideal: 1200 × 800 px (3:2)</span>
+                    <span className="admin-autofit-pill">🛡️ Auto-Fit Protected</span>
+                  </div>
                   <h3 className="admin-media-title">Statutory Bare Acts &amp; Tax Law Library</h3>
                   <p className="admin-media-sub">Direct Tax Bare Acts and Indian jurisprudence library photo.</p>
 
                   <div className="admin-media-actions">
                     <input
                       type="file"
-                      accept="image/*"
+                      accept="image/jpeg,image/png,image/webp"
                       style={{ display: 'none' }}
                       ref={(el) => { fileInputRefs.current['heroTaxBooksImage'] = el; }}
                       onChange={(e) => {
@@ -991,7 +1436,7 @@ For specific clarifications on statutory applicability, you may schedule a consu
                       className="admin-btn-upload"
                       onClick={() => fileInputRefs.current['heroTaxBooksImage']?.click()}
                     >
-                      📁 Upload New Photo
+                      📁 Upload Photo
                     </button>
                     <button
                       type="button"
@@ -1001,6 +1446,12 @@ For specific clarifications on statutory applicability, you may schedule a consu
                       Reset Default
                     </button>
                   </div>
+
+                  {uploadFeedback['heroTaxBooksImage'] && (
+                    <div style={{ fontSize: '0.74rem', color: '#15803D', fontWeight: 600 }}>
+                      {uploadFeedback['heroTaxBooksImage']}
+                    </div>
+                  )}
 
                   <input
                     type="text"
@@ -1014,7 +1465,7 @@ For specific clarifications on statutory applicability, you may schedule a consu
 
               {/* Image 4: Finance Desk */}
               <div className="admin-media-card">
-                <div className="admin-media-thumb">
+                <div className="admin-media-thumb thumb-landscape">
                   <Image
                     src={config.heroFinanceDeskImage || '/images/finance-desk.jpg'}
                     alt="Finance Desk Preview"
@@ -1026,13 +1477,17 @@ For specific clarifications on statutory applicability, you may schedule a consu
                   )}
                 </div>
                 <div className="admin-media-info">
+                  <div className="admin-media-spec-row">
+                    <span className="admin-spec-pill">📐 Ideal: 1200 × 800 px (3:2)</span>
+                    <span className="admin-autofit-pill">🛡️ Auto-Fit Protected</span>
+                  </div>
                   <h3 className="admin-media-title">Financial Analysis &amp; Advisory Desk</h3>
                   <p className="admin-media-sub">Financial statements and accounting ledger desk photo.</p>
 
                   <div className="admin-media-actions">
                     <input
                       type="file"
-                      accept="image/*"
+                      accept="image/jpeg,image/png,image/webp"
                       style={{ display: 'none' }}
                       ref={(el) => { fileInputRefs.current['heroFinanceDeskImage'] = el; }}
                       onChange={(e) => {
@@ -1045,7 +1500,7 @@ For specific clarifications on statutory applicability, you may schedule a consu
                       className="admin-btn-upload"
                       onClick={() => fileInputRefs.current['heroFinanceDeskImage']?.click()}
                     >
-                      📁 Upload New Photo
+                      📁 Upload Photo
                     </button>
                     <button
                       type="button"
@@ -1055,6 +1510,12 @@ For specific clarifications on statutory applicability, you may schedule a consu
                       Reset Default
                     </button>
                   </div>
+
+                  {uploadFeedback['heroFinanceDeskImage'] && (
+                    <div style={{ fontSize: '0.74rem', color: '#15803D', fontWeight: 600 }}>
+                      {uploadFeedback['heroFinanceDeskImage']}
+                    </div>
+                  )}
 
                   <input
                     type="text"
@@ -1068,7 +1529,7 @@ For specific clarifications on statutory applicability, you may schedule a consu
 
               {/* Image 5: Hero Backdrop */}
               <div className="admin-media-card">
-                <div className="admin-media-thumb">
+                <div className="admin-media-thumb thumb-wide">
                   <Image
                     src={config.heroBackdropImage || '/images/hero-bg.jpg'}
                     alt="Hero Backdrop Preview"
@@ -1080,13 +1541,17 @@ For specific clarifications on statutory applicability, you may schedule a consu
                   )}
                 </div>
                 <div className="admin-media-info">
+                  <div className="admin-media-spec-row">
+                    <span className="admin-spec-pill">📐 Ideal: 1920 × 1080 px (16:9)</span>
+                    <span className="admin-autofit-pill">🛡️ Auto-Fit Protected</span>
+                  </div>
                   <h3 className="admin-media-title">Architectural Ambient Hero Background</h3>
                   <p className="admin-media-sub">Ambient architectural light pattern for the main hero section.</p>
 
                   <div className="admin-media-actions">
                     <input
                       type="file"
-                      accept="image/*"
+                      accept="image/jpeg,image/png,image/webp"
                       style={{ display: 'none' }}
                       ref={(el) => { fileInputRefs.current['heroBackdropImage'] = el; }}
                       onChange={(e) => {
@@ -1099,7 +1564,7 @@ For specific clarifications on statutory applicability, you may schedule a consu
                       className="admin-btn-upload"
                       onClick={() => fileInputRefs.current['heroBackdropImage']?.click()}
                     >
-                      📁 Upload New Photo
+                      📁 Upload Photo
                     </button>
                     <button
                       type="button"
@@ -1109,6 +1574,12 @@ For specific clarifications on statutory applicability, you may schedule a consu
                       Reset Default
                     </button>
                   </div>
+
+                  {uploadFeedback['heroBackdropImage'] && (
+                    <div style={{ fontSize: '0.74rem', color: '#15803D', fontWeight: 600 }}>
+                      {uploadFeedback['heroBackdropImage']}
+                    </div>
+                  )}
 
                   <input
                     type="text"
@@ -1122,7 +1593,7 @@ For specific clarifications on statutory applicability, you may schedule a consu
 
               {/* Image 6: Pan-India Advisory */}
               <div className="admin-media-card">
-                <div className="admin-media-thumb">
+                <div className="admin-media-thumb thumb-landscape">
                   <Image
                     src={config.aboutPanIndiaImage || '/images/india-map-advisory.jpg'}
                     alt="Pan-India Advisory Preview"
@@ -1134,13 +1605,17 @@ For specific clarifications on statutory applicability, you may schedule a consu
                   )}
                 </div>
                 <div className="admin-media-info">
+                  <div className="admin-media-spec-row">
+                    <span className="admin-spec-pill">📐 Ideal: 1200 × 800 px (3:2)</span>
+                    <span className="admin-autofit-pill">🛡️ Auto-Fit Protected</span>
+                  </div>
                   <h3 className="admin-media-title">Pan-India Regulatory Reach Visual</h3>
                   <p className="admin-media-sub">Advisory presence graphic across corporate corridors in India.</p>
 
                   <div className="admin-media-actions">
                     <input
                       type="file"
-                      accept="image/*"
+                      accept="image/jpeg,image/png,image/webp"
                       style={{ display: 'none' }}
                       ref={(el) => { fileInputRefs.current['aboutPanIndiaImage'] = el; }}
                       onChange={(e) => {
@@ -1153,7 +1628,7 @@ For specific clarifications on statutory applicability, you may schedule a consu
                       className="admin-btn-upload"
                       onClick={() => fileInputRefs.current['aboutPanIndiaImage']?.click()}
                     >
-                      📁 Upload New Photo
+                      📁 Upload Photo
                     </button>
                     <button
                       type="button"
@@ -1163,6 +1638,12 @@ For specific clarifications on statutory applicability, you may schedule a consu
                       Reset Default
                     </button>
                   </div>
+
+                  {uploadFeedback['aboutPanIndiaImage'] && (
+                    <div style={{ fontSize: '0.74rem', color: '#15803D', fontWeight: 600 }}>
+                      {uploadFeedback['aboutPanIndiaImage']}
+                    </div>
+                  )}
 
                   <input
                     type="text"
@@ -1463,6 +1944,144 @@ For specific clarifications on statutory applicability, you may schedule a consu
                   )}
                 </tbody>
               </table>
+            </div>
+          </div>
+        )}
+
+        {/* =========================================================================
+            TAB 7: SECURITY & MASTER ACCESS
+            ========================================================================= */}
+        {activeTab === 'security' && (
+          <div className="admin-section-card">
+            <div className="admin-card-header">
+              <div>
+                <h2 className="admin-card-title">Practice Security &amp; Access Control</h2>
+                <p className="admin-card-desc">
+                  Manage your master administrative credentials, authorized email address, and brute-force lockout defenses.
+                </p>
+              </div>
+            </div>
+
+            <div className="admin-security-grid">
+              {/* Box 1: Registered Administrative Mailbox */}
+              <div className="admin-security-box">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '1rem' }}>
+                  <span style={{ fontSize: '1.4rem' }}>🛡️</span>
+                  <div>
+                    <h3 style={{ margin: 0, fontSize: '1.05rem', fontWeight: 800, color: '#0B1528' }}>
+                      Registered Practice Mailbox
+                    </h3>
+                    <span style={{ fontSize: '0.74rem', color: '#64748B' }}>Primary Security Dispatch Channel</span>
+                  </div>
+                </div>
+
+                <div className="admin-security-field">
+                  <label className="admin-label">Authorized Verification Email</label>
+                  <div className="admin-email-display">
+                    <span>dakshdesai0109@gmail.com</span>
+                    <span className="admin-email-badge">✓ Active &amp; Verified</span>
+                  </div>
+                  <span className="admin-field-hint" style={{ marginTop: '0.5rem' }}>
+                    All security verification OTP codes, passkey resets, and confidential circular confirmations are routed exclusively through this mailbox.
+                  </span>
+                </div>
+
+                <div style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: '10px', padding: '1rem', marginTop: '1.25rem' }}>
+                  <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#0B1528', marginBottom: '0.25rem' }}>
+                    ✦ ICAI Statutory Registry Match
+                  </div>
+                  <div style={{ fontSize: '0.75rem', color: '#64748B', lineHeight: 1.5 }}>
+                    Firm Registration: <strong>FRN {config.frn}</strong> · Principal Member: <strong>M. No. {config.memberNo}</strong><br />
+                    Proprietor: <strong>{config.proprietorName}</strong>
+                  </div>
+                </div>
+
+                <div style={{ marginTop: '1.5rem' }}>
+                  <button
+                    type="button"
+                    onClick={handleRequestOtp}
+                    disabled={isSendingOtp}
+                    className="admin-btn-outline"
+                    style={{ borderColor: '#0B1528', color: '#0B1528', width: '100%', justifyContent: 'center' }}
+                  >
+                    {isSendingOtp ? 'Dispatching Test OTP...' : '📨 Test Security OTP Dispatch to Mailbox'}
+                  </button>
+                  {otpNoticeMsg && (
+                    <div style={{ fontSize: '0.76rem', color: '#15803D', fontWeight: 600, marginTop: '0.5rem', textAlign: 'center' }}>
+                      {otpNoticeMsg}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Box 2: Update Master Passkey */}
+              <div className="admin-security-box highlight">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '1rem' }}>
+                  <span style={{ fontSize: '1.4rem' }}>🔑</span>
+                  <div>
+                    <h3 style={{ margin: 0, fontSize: '1.05rem', fontWeight: 800, color: '#0B1528' }}>
+                      Update Master Passkey
+                    </h3>
+                    <span style={{ fontSize: '0.74rem', color: '#B45309', fontWeight: 600 }}>Set a custom password for your console</span>
+                  </div>
+                </div>
+
+                <form onSubmit={handleChangePasskeyInDashboard}>
+                  <div className="admin-security-field">
+                    <label htmlFor="newPasskeyDash" className="admin-label">
+                      New Security Passkey
+                    </label>
+                    <input
+                      id="newPasskeyDash"
+                      type="password"
+                      className="admin-input"
+                      placeholder="Enter new passkey (min 6 characters)"
+                      value={newPasskeyInDash}
+                      onChange={(e) => setNewPasskeyInDash(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="admin-security-field">
+                    <label htmlFor="confirmPasskeyDash" className="admin-label">
+                      Confirm New Passkey
+                    </label>
+                    <input
+                      id="confirmPasskeyDash"
+                      type="password"
+                      className="admin-input"
+                      placeholder="Re-type new passkey"
+                      value={confirmPasskeyInDash}
+                      onChange={(e) => setConfirmPasskeyInDash(e.target.value)}
+                    />
+                  </div>
+
+                  {passkeyChangeError && (
+                    <div className="admin-alert admin-alert-error" style={{ marginBottom: '1rem' }}>
+                      {passkeyChangeError}
+                    </div>
+                  )}
+                  {passkeyChangeSuccess && (
+                    <div className="admin-alert admin-alert-success" style={{ marginBottom: '1rem' }}>
+                      {passkeyChangeSuccess}
+                    </div>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={isChangingPasskey || !newPasskeyInDash}
+                    className="admin-btn-primary"
+                    style={{ width: '100%', marginTop: '0.5rem' }}
+                  >
+                    {isChangingPasskey ? 'Updating Passkey...' : '✓ Update & Lock New Passkey'}
+                  </button>
+                </form>
+
+                <div style={{ marginTop: '1.5rem', paddingTop: '1rem', borderTop: '1px solid rgba(197, 160, 89, 0.3)' }}>
+                  <div style={{ fontSize: '0.76rem', color: '#64748B', lineHeight: 1.5 }}>
+                    <strong>Brute-Force Guard Active:</strong> 5 consecutive incorrect attempts will automatically freeze console access for 15 minutes unless unlocked via verified Email OTP.
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         )}

@@ -1,8 +1,7 @@
 import { NextResponse } from 'next/server';
 import { promises as fs } from 'fs';
 import path from 'path';
-
-const ADMIN_PASSKEY = process.env.ADMIN_NEWSLETTER_KEY || 'daksh2026';
+import { validateAdminKey } from '@/lib/adminAuth';
 
 export async function POST(request: Request) {
   try {
@@ -10,8 +9,9 @@ export async function POST(request: Request) {
     const passkey = formData.get('passkey') as string;
     const file = formData.get('file') as File | null;
 
-    if (!passkey || passkey !== ADMIN_PASSKEY) {
-      return NextResponse.json({ error: 'Unauthorized: Invalid Admin Passkey.' }, { status: 401 });
+    const authCheck = await validateAdminKey(passkey);
+    if (!authCheck.valid) {
+      return NextResponse.json({ error: authCheck.reason || 'Unauthorized: Invalid Admin Passkey.' }, { status: 401 });
     }
 
     if (!file) {

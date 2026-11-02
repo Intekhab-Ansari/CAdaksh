@@ -3,8 +3,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import { supabase } from '@/lib/supabase';
 import { defaultSiteConfig, SiteConfig } from '@/lib/siteConfig';
-
-const ADMIN_PASSKEY = process.env.ADMIN_NEWSLETTER_KEY || 'daksh2026';
+import { validateAdminKey } from '@/lib/adminAuth';
 const LOCAL_CONFIG_PATH = path.join(process.cwd(), 'data', 'site-config.json');
 
 async function readLocalConfig(): Promise<Partial<SiteConfig> | null> {
@@ -68,8 +67,9 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { passkey, config } = body;
 
-    if (!passkey || passkey !== ADMIN_PASSKEY) {
-      return NextResponse.json({ error: 'Unauthorized: Invalid Admin Passkey.' }, { status: 401 });
+    const authCheck = await validateAdminKey(passkey);
+    if (!authCheck.valid) {
+      return NextResponse.json({ error: authCheck.reason || 'Unauthorized: Invalid Admin Passkey.' }, { status: 401 });
     }
 
     if (!config || typeof config !== 'object') {

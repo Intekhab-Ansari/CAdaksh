@@ -8959,3 +8959,385 @@ footer.site-footer::before {
     grid-template-columns: 1fr;
   }
 }
+
+/* =========================================================================
+   SOVEREIGN ADMIN SUITE UPGRADES (ISOLATED PORTAL, OTP AUTH, MEDIA GUIDES)
+   ========================================================================= */
+
+.admin-app-root {
+  min-height: 100vh;
+  background-color: #0B1528;
+  color: #1E293B;
+  font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+}
+
+/* Master Obsidian Login Screen */
+.admin-login-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  background: radial-gradient(circle at 50% 10%, rgba(197, 160, 89, 0.18) 0%, rgba(11, 21, 40, 0.98) 60%), #060E1A;
+  position: relative;
+}
+
+.admin-login-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(197, 160, 89, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(197, 160, 89, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.admin-login-card {
+  max-width: 520px;
+  width: 100%;
+  background: #FFFFFF;
+  border: 1.5px solid rgba(197, 160, 89, 0.45);
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45), 0 0 40px rgba(197, 160, 89, 0.12);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.admin-login-crest {
+  display: inline-flex;
+  padding: 0.95rem;
+  background: #0B1528;
+  border-radius: 50%;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  border: 2px solid #C5A059;
+}
+
+.admin-login-tabs {
+  display: flex;
+  background: #F1F5F9;
+  padding: 0.3rem;
+  border-radius: 10px;
+  margin-bottom: 1.75rem;
+  border: 1px solid #E2E8F0;
+}
+
+.admin-login-tab-btn {
+  flex: 1;
+  padding: 0.6rem 0.75rem;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #64748B;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-login-tab-btn.active {
+  background: #0B1528;
+  color: #FFF0BA;
+  box-shadow: 0 2px 8px rgba(11, 21, 40, 0.15);
+}
+
+.admin-otp-input {
+  font-family: var(--font-mono, monospace);
+  font-size: 1.85rem !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.35em !important;
+  text-align: center;
+  padding: 0.85rem 1rem !important;
+  color: #0B1528 !important;
+  background: #FDFBF7 !important;
+  border: 2px solid #C5A059 !important;
+  border-radius: 12px !important;
+}
+
+.admin-otp-input:focus {
+  outline: none;
+  border-color: #B89047 !important;
+  box-shadow: 0 0 0 4px rgba(197, 160, 89, 0.25) !important;
+}
+
+.admin-otp-hint {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  color: #64748B;
+}
+
+.admin-btn-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #B45309;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.admin-btn-link:hover:not(:disabled) {
+  color: #78350F;
+}
+
+.admin-btn-link:disabled {
+  color: #94A3B8;
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+/* Media Specifications Guide Banner */
+.admin-guide-banner {
+  background: linear-gradient(135deg, #0B1528 0%, #112540 100%);
+  border: 1.5px solid rgba(197, 160, 89, 0.45);
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  margin-bottom: 2rem;
+  color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(11, 21, 40, 0.12);
+}
+
+.admin-guide-banner::after {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(197, 160, 89, 0.18) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.admin-guide-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding-bottom: 1rem;
+}
+
+.admin-guide-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0;
+}
+
+.admin-guide-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  background: rgba(16, 185, 129, 0.18);
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 750;
+  color: #34D399;
+}
+
+.admin-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .admin-guide-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.admin-guide-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.15rem;
+  transition: all 0.2s ease;
+}
+
+.admin-guide-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(197, 160, 89, 0.4);
+}
+
+.admin-guide-card-type {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #C5A059;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.35rem;
+}
+
+.admin-guide-card-dim {
+  font-size: 1.15rem;
+  font-weight: 850;
+  color: #FFFFFF;
+  margin-bottom: 0.25rem;
+}
+
+.admin-guide-card-ratio {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.76rem;
+  color: #94A3B8;
+  margin-bottom: 0.5rem;
+}
+
+.admin-guide-card-desc {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: #CBD5E1;
+  margin: 0;
+}
+
+.admin-autofit-note {
+  background: rgba(197, 160, 89, 0.1);
+  border-left: 3px solid #C5A059;
+  padding: 0.85rem 1.15rem;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: #FFF0BA;
+}
+
+.admin-autofit-note strong {
+  color: #FFFFFF;
+}
+
+/* Individual Media Card Upgrades */
+.admin-media-spec-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 0.35rem;
+}
+
+.admin-spec-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.6rem;
+  background: #E2E8F0;
+  color: #0B1528;
+  border-radius: 6px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 750;
+}
+
+.admin-autofit-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.55rem;
+  background: #DCFCE7;
+  color: #15803D;
+  border: 1px solid #86EFAC;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 750;
+}
+
+/* Media Thumb Aspect Ratio Enhancements */
+.admin-media-thumb.thumb-portrait {
+  aspect-ratio: 3 / 4;
+  height: 280px;
+}
+
+.admin-media-thumb.thumb-landscape {
+  aspect-ratio: 3 / 2;
+  height: 220px;
+}
+
+.admin-media-thumb.thumb-wide {
+  aspect-ratio: 16 / 9;
+  height: 200px;
+}
+
+.admin-media-thumb img {
+  object-fit: cover !important;
+  object-position: center top !important;
+  transition: transform 0.4s ease;
+}
+
+.admin-media-card:hover .admin-media-thumb img {
+  transform: scale(1.02);
+}
+
+/* Security & Access Section */
+.admin-security-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 900px) {
+  .admin-security-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.admin-security-box {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 2rem;
+  box-shadow: 0 4px 16px rgba(11, 21, 40, 0.04);
+}
+
+.admin-security-box.highlight {
+  border: 1.5px solid rgba(197, 160, 89, 0.45);
+  background: #FDFBF7;
+}
+
+.admin-security-field {
+  margin-bottom: 1.25rem;
+}
+
+.admin-email-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.15rem;
+  background: #F1F5F9;
+  border: 1px solid #CBD5E1;
+  border-radius: 8px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0B1528;
+}
+
+.admin-email-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.5rem;
+  background: #DCFCE7;
+  color: #15803D;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+

@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { supabase } from '@/lib/supabase';
+import { validateAdminKey } from '@/lib/adminAuth';
 
-const ADMIN_PASSKEY = process.env.ADMIN_NEWSLETTER_KEY || 'daksh2026';
 const GMAIL_USER = process.env.GMAIL_USER || 'dakshdesai0109@gmail.com';
 const GMAIL_APP_PASSWORD = process.env.GMAIL_APP_PASSWORD || '';
 
@@ -109,8 +109,9 @@ export async function POST(request: Request) {
     const { passkey, subject, heading, content, testOnly } = body;
 
     // Verify Admin Passkey
-    if (!passkey || passkey !== ADMIN_PASSKEY) {
-      return NextResponse.json({ error: 'Unauthorized: Invalid Admin Passkey.' }, { status: 401 });
+    const authCheck = await validateAdminKey(passkey);
+    if (!authCheck.valid) {
+      return NextResponse.json({ error: authCheck.reason || 'Unauthorized: Invalid Admin Passkey.' }, { status: 401 });
     }
 
     if (!subject || !content) {
