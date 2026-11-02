@@ -147,7 +147,12 @@ For specific clarifications on statutory applicability, you may schedule a consu
       if (res.ok) {
         const data = await res.json();
         setSessions(data.sessions || []);
-        setTotalDevices(data.totalDevices || (data.sessions ? data.sessions.length : 1));
+        const safeTotal = Math.max(1, data.totalDevices || (data.sessions ? data.sessions.length : 1));
+        setTotalDevices(safeTotal);
+        if (data.newSessionToken) {
+          sessionStorage.setItem('dda_admin_key', data.newSessionToken);
+          setPasskey(data.newSessionToken);
+        }
       }
     } catch (err) {
       console.warn('Failed to load active sessions:', err);
@@ -176,7 +181,7 @@ For specific clarifications on statutory applicability, you may schedule a consu
       }
       setSessionActionMsg(data.message || 'Device disconnected successfully.');
       if (data.sessions) setSessions(data.sessions);
-      if (data.totalDevices !== undefined) setTotalDevices(data.totalDevices);
+      if (data.totalDevices !== undefined) setTotalDevices(Math.max(1, data.totalDevices));
     } catch (err: unknown) {
       setSessionActionError(err instanceof Error ? err.message : 'Error disconnecting device');
     }
@@ -201,7 +206,7 @@ For specific clarifications on statutory applicability, you may schedule a consu
       }
       setSessionActionMsg(data.message || 'All other devices have been disconnected.');
       if (data.sessions) setSessions(data.sessions);
-      if (data.totalDevices !== undefined) setTotalDevices(data.totalDevices);
+      if (data.totalDevices !== undefined) setTotalDevices(Math.max(1, data.totalDevices));
     } catch (err: unknown) {
       setSessionActionError(err instanceof Error ? err.message : 'Error disconnecting devices');
     }
@@ -244,14 +249,17 @@ For specific clarifications on statutory applicability, you may schedule a consu
       }
 
       setIsAuthenticated(true);
-      sessionStorage.setItem('dda_admin_key', keyToVerify);
+      const effectiveKey = data.newSessionToken || keyToVerify;
+      sessionStorage.setItem('dda_admin_key', effectiveKey);
+      setPasskey(effectiveKey);
       setSessions(data.sessions || []);
-      setTotalDevices(data.totalDevices || (data.sessions ? data.sessions.length : 1));
+      const safeTotal = Math.max(1, data.totalDevices || (data.sessions ? data.sessions.length : 1));
+      setTotalDevices(safeTotal);
 
       // Load Settings, Enquiries & Subscribers
       loadSettings();
-      loadEnquiries(keyToVerify);
-      loadSubscribers(keyToVerify);
+      loadEnquiries(effectiveKey);
+      loadSubscribers(effectiveKey);
     } catch (err: unknown) {
       console.warn('Authentication check failed:', err);
       sessionStorage.removeItem('dda_admin_key');
@@ -435,7 +443,7 @@ For specific clarifications on statutory applicability, you may schedule a consu
 
       setPasskeyChangeSuccess(data.message || 'Passkey updated successfully!');
       if (data.sessions) setSessions(data.sessions);
-      if (data.totalDevices !== undefined) setTotalDevices(data.totalDevices);
+      if (data.totalDevices !== undefined) setTotalDevices(Math.max(1, data.totalDevices));
 
       // If activeKey was a raw passkey (not a session token), update sessionStorage
       if (!activeKey.startsWith('dda_sess_')) {

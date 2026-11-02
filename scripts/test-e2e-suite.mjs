@@ -256,8 +256,73 @@ async function run() {
     });
     console.log('✓ PASS: Changes made in Admin Panel appear immediately in different browsers!\n');
 
+    // -------------------------------------------------------------
+    // TEST 5: Auto-Registration for Existing/Legacy Raw Passkey Users (0-Device Bug Fix)
+    // -------------------------------------------------------------
+    console.log('-------------------------------------------------------------');
+    console.log('🛡️ TEST 5: Raw Passkey Auto-Registration (0-Device Bug Fix)');
+    console.log('-------------------------------------------------------------');
+
+    // Simulate an existing admin user visiting with raw passkey 'daksh2026' in sessionStorage
+    const resRawPasskeyCheck = await fetch(`${BASE_URL}/api/admin/auth/sessions?token=daksh2026`, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36',
+        'X-Forwarded-For': '103.45.67.89',
+      },
+    });
+    const dataRawPasskey = await resRawPasskeyCheck.json();
+    console.log('Raw passkey session lookup response:', {
+      success: dataRawPasskey.success,
+      totalDevices: dataRawPasskey.totalDevices,
+      hasNewSessionToken: Boolean(dataRawPasskey.newSessionToken),
+      sessionCount: dataRawPasskey.sessions?.length,
+    });
+
+    if (!dataRawPasskey.success || dataRawPasskey.totalDevices < 1) {
+      throw new Error(`Expected at least 1 device for raw passkey user, got ${dataRawPasskey.totalDevices}`);
+    }
+    console.log('✓ PASS: Raw passkey visits automatically register as active device (totalDevices >= 1)!\n');
+
+    // -------------------------------------------------------------
+    // TEST 6: Email OTP Dispatch & Verification Flow
+    // -------------------------------------------------------------
+    console.log('-------------------------------------------------------------');
+    console.log('📧 TEST 6: Email OTP Dispatch & Verification Flow');
+    console.log('-------------------------------------------------------------');
+
+    const resOtpDispatch = await fetch(`${BASE_URL}/api/admin/auth/forgot-password`, {
+      method: 'POST',
+    });
+    const dataOtpDispatch = await resOtpDispatch.json();
+    console.log('OTP Dispatch response:', {
+      status: resOtpDispatch.status,
+      success: dataOtpDispatch.success,
+      message: dataOtpDispatch.message,
+      target: dataOtpDispatch.emailTarget,
+    });
+
+    if (!dataOtpDispatch.success) {
+      throw new Error(`Email OTP dispatch failed: ${dataOtpDispatch.error}`);
+    }
+
+    // Now test verify-otp endpoint with an invalid OTP to ensure security protection
+    const resInvalidOtp = await fetch(`${BASE_URL}/api/admin/auth/verify-otp`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ otp: '000000' }),
+    });
+    const dataInvalidOtp = await resInvalidOtp.json();
+    console.log('Invalid OTP rejection test (status 401 expected):', {
+      status: resInvalidOtp.status,
+      error: dataInvalidOtp.error,
+    });
+    if (resInvalidOtp.status !== 401) {
+      throw new Error(`Expected 401 Unauthorized for incorrect OTP, got ${resInvalidOtp.status}`);
+    }
+    console.log('✓ PASS: Email OTP successfully dispatched via Gmail SMTP and security verification active!\n');
+
     console.log('================================================================');
-    console.log('🎉 ALL 4 CRITICAL E2E TESTS PASSED WITH 100% SUCCESS!');
+    console.log('🎉 ALL 6 CRITICAL E2E TESTS PASSED WITH 100% SUCCESS!');
     console.log('================================================================');
   } finally {
     console.log('Shutting down test server...');

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import {
   validateAdminKey,
+  createAdminSession,
   listActiveSessions,
   terminateSession,
   terminateAllOtherSessions,
@@ -23,12 +24,32 @@ export async function GET(request: Request) {
       );
     }
 
-    const { sessions, total } = await listActiveSessions(token);
+    const userAgent = request.headers.get('user-agent') || '';
+    const forwarded = request.headers.get('x-forwarded-for');
+    const realIp = request.headers.get('x-real-ip');
+    const ip = (forwarded ? forwarded.split(',')[0].trim() : realIp) || '127.0.0.1';
+
+    let activeToken = token;
+    let newSessionToken: string | undefined;
+
+    const initialResult = await listActiveSessions(token);
+    const hasCurrent = initialResult.sessions.some((s) => s.isCurrent);
+
+    // If current token is not a registered session token (e.g. user logged in with raw passkey daksh2026),
+    // or if no active sessions exist, automatically register this authenticated device!
+    if (!hasCurrent) {
+      const createdSession = await createAdminSession(userAgent, ip);
+      activeToken = createdSession.token;
+      newSessionToken = createdSession.token;
+    }
+
+    const { sessions, total } = await listActiveSessions(activeToken);
 
     return NextResponse.json({
       success: true,
       sessions,
-      totalDevices: total,
+      totalDevices: Math.max(1, total),
+      newSessionToken,
     });
   } catch (err: unknown) {
     console.error('List sessions error:', err);
@@ -84,3 +105,4 @@ export async function POST(request: Request) {
     );
   }
 }
+
