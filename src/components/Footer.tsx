@@ -232,13 +232,16 @@ export default function Footer() {
         {/* Statutory Newsletter & Practice Circular Strip */}
         <NewsletterSubscribe />
 
-        {/* Legal Attribution */}
+        {/* Legal Attribution & Statutory Regulatory Bar */}
         <div className="footer-legal-bar">
           <div className="legal-left">
             <div className="copyright-line">
-              © {new Date().getFullYear()} {config.firmName}, Chartered Accountants. All rights reserved.
+              © {new Date().getFullYear()} {config.firmName}, Chartered Accountants · FRN {config.frn}. All rights reserved.
             </div>
-            <div className="agency-credit-line">
+            <div className="statutory-note-line" style={{ fontSize: '0.74rem', color: '#94A3B8', marginTop: '0.25rem', lineHeight: 1.5 }}>
+              This portal is an informational write-up published strictly pursuant to the ICAI Code of Ethics on a voluntary pull basis and does not constitute advertisement or solicitation.
+            </div>
+            <div className="agency-credit-line" style={{ marginTop: '0.4rem' }}>
               <span>Design and Developed by</span>{' '}
               <a
                 href="https://sociialmantraa.com/"
@@ -249,6 +252,16 @@ export default function Footer() {
                 Sociial Mantraa ↗
               </a>
             </div>
+          </div>
+
+          <div className="legal-right" style={{ display: 'flex', gap: '0.85rem', alignItems: 'center', flexWrap: 'wrap' }}>
+            <Link href="/disclaimer" style={{ color: '#C5A059', fontSize: '0.76rem', fontWeight: 600, textDecoration: 'underline' }}>
+              ICAI Statutory Disclaimer
+            </Link>
+            <span style={{ color: '#475569' }}>·</span>
+            <Link href="/privacy" style={{ color: '#94A3B8', fontSize: '0.76rem', textDecoration: 'underline' }}>
+              Privacy Policy (DPDP Act)
+            </Link>
           </div>
         </div>
       </div>

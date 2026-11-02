@@ -4,7 +4,6 @@ import React from 'react';
 import { usePathname } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import DisclaimerModal from '@/components/DisclaimerModal';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import SmoothScroll from '@/components/SmoothScroll';
 
@@ -26,7 +25,6 @@ export default function ClientShell({ children }: { children: React.ReactNode })
       <Header />
       <main id="main-content">{children}</main>
       <Footer />
-      <DisclaimerModal />
       <WhatsAppButton />
     </>
   );

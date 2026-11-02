@@ -35,7 +35,7 @@ All AI models and developers editing this repository **MUST STRICTLY COMPLY** wi
 6. **No Modeling / Glamour Photos**: Proprietor and partner photos must strictly adhere to the sober **35×45mm passport photo format**.
 
 ### ✅ MANDATORY INCLUSIONS (Must ALWAYS be preserved):
-1. **Mandatory ICAI Disclaimer Modal (`DisclaimerModal.tsx`)**: Must remain active and require acknowledgment before site browsing.
+1. **Statutory ICAI Disclaimer**: Prominently displayed across all pages in the footer bar and on the dedicated `/disclaimer` page. (Intrusive entry pop-up modal removed per firm direction for seamless user experience).
 2. **Firm Particulars**: Accurate representation of ICAI Firm Registration Number (FRN), Member No., Constitution, and Mumbai Office.
 3. **Mandatory 18-Digit UDIN**: All references to audit reports and certifications must emphasize the mandatory ICAI Unique Document Identification Number.
 4. **DPDP Act 2023 Consent Checkbox**: Every form must have an unticked, mandatory consent checkbox linked to `/privacy`.

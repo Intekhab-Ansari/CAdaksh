@@ -24,8 +24,8 @@ Under the **Chartered Accountants Act, 1949 (First Schedule, Part I, Clauses 6 a
    - Partner and proprietor photographs must strictly follow the **passport-style photograph format** (35×45mm ratio, sober attire, neutral background). Glamour, modeling, or advertising-style photo shoots are strictly prohibited.
 
 ### ✅ MANDATORY INCLUSIONS (Must Always Be Present)
-1. **Mandatory Entry Disclaimer Modal (`DisclaimerModal.tsx`)**:
-   - Every visitor entering the website must encounter a non-intrusive disclaimer modal requiring acknowledgment that they are seeking information of their own volition, that the firm is not soliciting or advertising, and that the website does not constitute formal legal/audit opinion.
+1. **Statutory ICAI Disclaimer**:
+   - The website must clearly display the disclaimer confirming that the firm does not solicit or advertise, that information is provided on a voluntary pull basis, and that visiting the site does not constitute formal legal/audit opinion. Housed permanently in the universal footer bar and on `/disclaimer`. (Intrusive entry pop-up modal removed per firm direction).
 2. **Firm Registration Particulars**:
    - Must clearly state: Firm Name (as approved by ICAI), ICAI Firm Registration Number (FRN), Constitution (Sole Proprietorship / Partnership), Head Office address in Mumbai, and Proprietor Membership Number.
 3. **Mandatory 18-Digit ICAI UDIN Authentication**:
