@@ -45,8 +45,8 @@ export const defaultSiteConfig: SiteConfig = {
   emailSecondary: 'dakshdesai0109@gmail.com',
   addressBorivali: '501, Fly Edge, SV Rd, Borivali West, Mumbai – 400092',
   addressNarimanPoint: '1004-05, Raheja Chambers, Free Press Journal Marg, Nariman Point, Mumbai – 400021',
-  mapLinkBorivali: 'https://maps.app.goo.gl/DvLMyXd3KrBS66vo9',
-  mapLinkNarimanPoint: 'https://maps.app.goo.gl/DvLMyXd3KrBS66vo9',
+  mapLinkBorivali: 'https://maps.google.com/?q=Fly+Edge,+SV+Rd,+Above+Tirumala+Showroom,+Borivali+West,+Mumbai,+Maharashtra+400092',
+  mapLinkNarimanPoint: 'https://maps.google.com/?q=Raheja+Chambers,+Free+Press+Journal+Marg,+Nariman+Point,+Mumbai,+Maharashtra+400021',
   officeHours: 'Mon–Sat: 10:00 AM – 7:00 PM IST',
 
   firmName: 'Daksh Desai & Associates',
