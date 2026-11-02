@@ -58,13 +58,29 @@ Designed strictly adhering to the **Institute of Chartered Accountants of India 
 | `/disclaimer` | Disclaimer | ICAI regulatory disclaimer |
 | `/privacy` | Privacy Notice | DPDP Act 2023 data collection, retention, and rights policy |
 | `/review` | Developer Notes | Pre-launch blank tracker (`.fill` counters), provenance, and blocker notes |
+| `/admin` | Master Console | Multi-device console for practice configuration, media, devices & security |
+| `/admin/newsletter`| Circular Broadcaster | Compose & dispatch statutory alerts with 1-click unsubscribe protocol |
 | `/api/contact` | API Route | Secure POST endpoint with rate limiting, honeypot, and Supabase integration |
+| `/api/settings` | API Route | Live site configuration endpoint synced with Supabase `site_settings` |
+| `/api/admin/auth/*` | Auth API Routes | Multi-device sessions (`/sessions`), login (`/login`), 2-option passkey (`/change-passkey`), OTP (`/forgot-password`, `/verify-otp`) |
 
 ---
 
-### Security Features & Hardening
+### Security Features & Multi-Device Session Engine
 
-1. **HTTP Security Headers (`next.config.mjs`)**:
+1. **Multi-Device Admin Session Management (`src/lib/adminAuth.ts`)**:
+   - **Device Telemetry**: Automatically parses incoming User-Agents to identify browser (Chrome, Safari, Firefox, Edge) and OS (Windows, macOS, iOS, Android).
+   - **Real-Time Counter**: Displays live count of active devices in topbar (`● X Devices Logged In`) and tab badge.
+   - **Active Session Center**: View all authenticated sessions, inspect IPs, and disconnect individual devices or all other devices at once.
+   - **Two Passkey Change Options**:
+     - *Option 1: Only Change Passkey* — Updates the password while keeping all other phones and computers logged in.
+     - *Option 2: Change Passkey & Logout All Devices* — Updates password and immediately revokes all other active sessions, forcing immediate logout.
+
+2. **Email OTP Verification (`src/app/api/admin/auth/forgot-password/route.ts`)**:
+   - Dispatches 6-digit one-time security passcodes via verified Gmail SMTP (`dakshdesai0109@gmail.com`).
+   - Protected by SHA-256 hashing, 10-minute expiry, and a 5-attempt brute-force lockout guard.
+
+3. **HTTP Security Headers (`next.config.mjs`)**:
    - `Content-Security-Policy (CSP)`: Enforces safe origins for scripts, fonts, stylesheets, images, and API connections.
    - `Strict-Transport-Security (HSTS)`: `max-age=63072000; includeSubDomains; preload` enforces HTTPS everywhere.
    - `X-Frame-Options: DENY`: Prevents clickjacking attacks.
@@ -73,15 +89,18 @@ Designed strictly adhering to the **Institute of Chartered Accountants of India 
    - `Permissions-Policy: camera=(), microphone=(), geolocation=()`: Disables unused client APIs.
    - `poweredByHeader: false`: Hides server technology fingerprints.
 
-2. **Form & API Protection (`src/app/api/contact/route.ts`)**:
+4. **Form & API Protection (`src/app/api/contact/route.ts`)**:
    - **Rate Limiting**: Protects against denial-of-service and automated form spam (5 requests / 60 seconds).
    - **Input Sanitization**: Strips HTML tags (`<`, `>`) to guard against XSS.
    - **Strict String Bounds**: Enforces maximum character limits on all inputs.
    - **Email Regex**: Validates email format before processing.
    - **Honeypot Trap**: Invisible field that catches spam bots silently without consuming database resources.
 
-3. **Dependency Security**:
-   - Verified with `npm audit` — **0 vulnerabilities**.
+5. **Automated Verification Suite (`scripts/test-e2e-suite.mjs`)**:
+   - Comprehensive 6-test suite that validates multi-device login, the 2 passkey change options, live cross-browser updates, raw passkey auto-registration, and email OTP dispatch against a standalone Next.js instance:
+   ```bash
+   node scripts/test-e2e-suite.mjs
+   ```
 
 ---
 
@@ -89,29 +108,34 @@ Designed strictly adhering to the **Institute of Chartered Accountants of India 
 
 To ensure smooth deployments and prevent build breakages or leaked secrets, follow these steps:
 
-#### 1. Verify Production Build Locally
+#### 1. Run the Automated Test Suite
+```bash
+node scripts/test-e2e-suite.mjs
+```
+
+#### 2. Verify Production Build Locally
 ```bash
 npm run build
 ```
-Ensure it returns: `✓ Generating static pages (21/21)` with **0 errors**.
+Ensure it returns: `✓ Generating static pages (16/16)` with **0 errors**.
 
-#### 2. Check Untracked & Modified Files
+#### 3. Check Untracked & Modified Files
 ```bash
 git status -s
 ```
-Verify that no secret files (like `.env`, `.env.local`, or temporary debug logs) are included.
+Verify that no secret files (like `.env`, `.env.local`, or `/data/`) are included.
 
-#### 3. Stage All Required Changes
+#### 4. Stage All Required Changes
 ```bash
-git add .
+git add src/ public/ scripts/ next.config.mjs .gitignore README.md AGENTS.md REGULATORY_COMPLIANCE.md
 ```
 
-#### 4. Commit with a Clear Descriptive Message
+#### 5. Commit with a Clear Descriptive Message
 ```bash
-git commit -m "feat: complete RSC India redesign, mobile responsiveness, and security hardening"
+git commit -m "feat: complete multi-device session tracking, 2-option passkey management, and OTP verification"
 ```
 
-#### 5. Push to Remote Main Branch
+#### 6. Push to Remote Main Branch
 ```bash
 git push origin main
 ```
