@@ -4,8 +4,19 @@ import Link from 'next/link';
 import TeamProprietorClient from '@/components/TeamProprietorClient';
 
 export const metadata: Metadata = {
-  title: 'Our Team & Leadership | Daksh Desai & Associates · Chartered Accountants',
-  description: 'Meet the leadership and professionals at Daksh Desai & Associates, Chartered Accountants in Mumbai. Proprietor CA Daksh Desai, ACA, B.Com (M. No. 648747, FRN: 165505W) and specialized practice desks.',
+  title: 'Our Leadership & Practice Desks | Daksh Desai & Associates · Chartered Accountants',
+  description:
+    'Meet the leadership and professionals at Daksh Desai & Associates, Chartered Accountants in Mumbai. Proprietor CA Daksh Desai, ACA, B.Com (M. No. 648747, FRN: 165505W) and specialized practice desks.',
+  keywords: [
+    'CA Daksh Desai ACA BCom',
+    'Chartered Accountant Leadership Mumbai',
+    'ICAI Member 648747',
+    'Practice Desks Taxation Audit Corporate Law',
+    'Daksh Desai Associates Team',
+  ],
+  alternates: {
+    canonical: 'https://dakshdesaiassociates.com/team',
+  },
 };
 
 export default function TeamPage() {

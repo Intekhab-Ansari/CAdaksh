@@ -2,8 +2,20 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Audit & Assurance | Daksh Desai & Associates · Chartered Accountants',
-  description: 'Statutory audits under Companies Act 2013, Tax Audits u/s 44AB, GST Audits, internal financial controls, and stock audits in Mumbai.',
+  title: 'Statutory & Tax Audit Firm in Mumbai | Daksh Desai & Associates',
+  description:
+    'Statutory audits under Companies Act 2013, Tax Audits u/s 44AB, internal financial controls (IFCoFR), UDIN verified attestations, and stock audits in Mumbai.',
+  keywords: [
+    'Statutory Audit Companies Act 2013 Mumbai',
+    'Tax Audit Section 44AB Chartered Accountant',
+    'Internal Financial Controls IFCoFR Mumbai',
+    'Stock Audit and Inventory Verification CA',
+    'UDIN Verified Audit Report Mumbai',
+    'Independent Auditor Chartered Accountant Borivali',
+  ],
+  alternates: {
+    canonical: 'https://dakshdesaiassociates.com/services/audit',
+  },
 };
 
 export default function AuditPage() {

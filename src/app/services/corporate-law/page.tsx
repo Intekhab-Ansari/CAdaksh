@@ -2,8 +2,20 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Labour & Corporate Law | Daksh Desai & Associates · Chartered Accountants',
-  description: 'Company & LLP incorporation via MCA SPICe+, annual ROC filings (AOC-4, MGT-7), DIR-3 KYC, and ESIC/PF labour law compliance in Mumbai.',
+  title: 'Company Registration & ROC Annual Filings in Mumbai | Daksh Desai & Associates',
+  description:
+    'Private Limited Company & LLP incorporation via MCA SPICe+, annual ROC filings (AOC-4, MGT-7), DIR-3 KYC, and corporate legal compliance in Mumbai.',
+  keywords: [
+    'Company Incorporation Mumbai CA',
+    'Private Limited Registration Borivali',
+    'LLP Formation MCA SPICe+',
+    'ROC Annual Filings AOC-4 MGT-7 Mumbai',
+    'Director KYC DIR-3 Filing CA',
+    'Startup Legal and Corporate Structuring India',
+  ],
+  alternates: {
+    canonical: 'https://dakshdesaiassociates.com/services/corporate-law',
+  },
 };
 
 export default function CorporateLawPage() {

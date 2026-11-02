@@ -3,8 +3,19 @@ import Link from 'next/link';
 import FaqSearch from '@/components/FaqSearch';
 
 export const metadata: Metadata = {
-  title: 'Frequently Asked Questions | Daksh Desai & Associates · Chartered Accountants',
-  description: 'Clear answers to common questions about Income Tax, GST, International Taxation, Audits, Accounting, Virtual CFO, and Corporate Law in India.',
+  title: 'Client FAQ & Tax Compliance Guidance | Daksh Desai & Associates · Chartered Accountants',
+  description:
+    'Clear statutory answers to common questions about Income Tax, GST, International Taxation (15CA/15CB), Audits, Accounting, Virtual CFO, and Corporate Law in India.',
+  keywords: [
+    'Tax FAQ Mumbai Chartered Accountant',
+    'GST Filing Questions Answers CA',
+    'Income Tax Regime Old vs New Guidance',
+    'Form 15CA 15CB FAQ India',
+    'Statutory Audit Questions Companies Act',
+  ],
+  alternates: {
+    canonical: 'https://dakshdesaiassociates.com/faq',
+  },
 };
 
 const FAQ_GROUPS = [

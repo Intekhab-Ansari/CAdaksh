@@ -9,8 +9,27 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export const metadata: Metadata = {
-  title: 'Daksh Desai & Associates | Chartered Accountants · Mumbai',
-  description: 'Taxation, audit, accounting and advisory services for businesses, professionals, and individuals in Mumbai.',
+  title: 'Chartered Accountants in Mumbai · Borivali West & Nariman Point | Daksh Desai & Associates',
+  description:
+    'Daksh Desai & Associates is an ICAI-registered Chartered Accountancy firm in Mumbai (FRN: 165505W). Direct partner-led counsel across Direct Tax, GST, Statutory Audit, Form 15CA/15CB, Company Formation, and Virtual CFO advisory.',
+  keywords: [
+    'Chartered Accountants in Mumbai',
+    'Chartered Accountant Borivali West',
+    'CA Nariman Point Mumbai',
+    'Tax Consultant Mumbai',
+    'Income Tax Return Filing Mumbai',
+    'GST Consultant Mumbai',
+    'Statutory Audit Firm Mumbai',
+    'Tax Audit 44AB Mumbai',
+    'Form 15CA 15CB CA Mumbai',
+    'NRI Tax Advisory Mumbai',
+    'Company Formation MCA Mumbai',
+    'CA Daksh Desai',
+    'FRN 165505W',
+  ],
+  alternates: {
+    canonical: 'https://dakshdesaiassociates.com',
+  },
 };
 
 export default function HomePage() {

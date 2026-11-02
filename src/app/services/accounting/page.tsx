@@ -2,8 +2,19 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Accounting & MIS Services | Daksh Desai & Associates · Chartered Accountants',
-  description: 'Outsourced bookkeeping, Tally/Zoho/QuickBooks/SAP, bank reconciliations, payroll compliance, and monthly executive MIS reporting in Mumbai.',
+  title: 'Bookkeeping & Accounting MIS Services in Mumbai | Daksh Desai & Associates',
+  description:
+    'Outsourced bookkeeping, Tally, Zoho Books, QuickBooks, bank reconciliations, payroll compliance, and monthly executive MIS reporting in Mumbai.',
+  keywords: [
+    'Accounting and Bookkeeping Services Mumbai',
+    'Tally Zoho Books Accounting CA Borivali',
+    'Preparation of Financial Statements Schedule III',
+    'Monthly MIS Reporting and Bank Reconciliation',
+    'Payroll Processing and Compliance Mumbai',
+  ],
+  alternates: {
+    canonical: 'https://dakshdesaiassociates.com/services/accounting',
+  },
 };
 
 export default function AccountingPage() {

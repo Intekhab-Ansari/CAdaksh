@@ -2,8 +2,20 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'International Taxation | Daksh Desai & Associates · Chartered Accountants',
-  description: 'Foreign remittances Form 15CA/15CB CA certification, DTAA tax treaty relief, transfer pricing benchmarking, and NRI taxation. Daksh Desai & Associates, Mumbai.',
+  title: 'Form 15CA 15CB & NRI Taxation CA in Mumbai | Daksh Desai & Associates',
+  description:
+    'Foreign remittances Form 15CA/15CB CA certification, DTAA tax treaty relief, RBI FEMA compliance, and NRI property tax advisory in Mumbai.',
+  keywords: [
+    'Form 15CA 15CB Certification Mumbai',
+    'Foreign Remittance CA Certificate India',
+    'NRI Property Sale Repatriation 15CB',
+    'DTAA Double Taxation Relief CA Mumbai',
+    'RBI FEMA Compliance Advisory',
+    'NRI Income Tax Return Filing Mumbai',
+  ],
+  alternates: {
+    canonical: 'https://dakshdesaiassociates.com/services/international-tax',
+  },
 };
 
 export default function InternationalTaxPage() {

@@ -3,8 +3,19 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Our Practice Services | Daksh Desai & Associates · Chartered Accountants',
-  description: 'Comprehensive Chartered Accountancy practice areas: Audit & Assurance, Direct Taxation & Scrutiny Defense, GST Governance, Corporate Law (MCA21), International Tax (FEMA 15CA/15CB), and Virtual CFO Advisory in Mumbai.',
+  title: 'Chartered Accountancy Practice Desks & Services in Mumbai | Daksh Desai & Associates',
+  description:
+    'Comprehensive Chartered Accountancy practice areas: Audit & Assurance, Direct Taxation & Scrutiny Defense, GST Governance, Corporate Law (MCA21), International Tax (FEMA 15CA/15CB), and Virtual CFO Advisory in Mumbai.',
+  keywords: [
+    'Chartered Accountant Services Mumbai',
+    'Taxation Audit Accounting Services CA',
+    'Statutory Practice Desks Mumbai Borivali',
+    'GST and Direct Tax Advisory India',
+    'Corporate Law and Compliance CA Mumbai',
+  ],
+  alternates: {
+    canonical: 'https://dakshdesaiassociates.com/services',
+  },
 };
 
 export default function ServicesPage() {

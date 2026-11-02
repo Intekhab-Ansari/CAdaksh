@@ -2,8 +2,21 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'GST Services | Daksh Desai & Associates · Chartered Accountants',
-  description: 'GST registration, monthly GSTR-1/3B filings, strict GSTR-2B ITC matching, annual returns (GSTR-9/9C), refunds, and departmental audit defense in Mumbai.',
+  title: 'GST Consultant & Return Filing in Mumbai | Daksh Desai & Associates',
+  description:
+    'GST registration, monthly GSTR-1/3B filings, strict GSTR-2B ITC matching, annual returns (GSTR-9/9C), GST refunds, and departmental audit defense in Mumbai.',
+  keywords: [
+    'GST Consultant Mumbai',
+    'GST Return Filing GSTR 3B GSTR 1',
+    'GSTR 2B Input Tax Credit Matching',
+    'GST Audit and Departmental Notice Defense',
+    'GST Refund Export Inverted Duty Structure',
+    'GST Registration CA Borivali West',
+    'GST Annual Return GSTR 9 9C Mumbai',
+  ],
+  alternates: {
+    canonical: 'https://dakshdesaiassociates.com/services/gst',
+  },
 };
 
 export default function GstPage() {

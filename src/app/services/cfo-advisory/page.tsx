@@ -2,8 +2,19 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Business Advisory & Virtual CFO | Daksh Desai & Associates · Chartered Accountants',
-  description: 'Part-time CFO support, dynamic 13-week cash flow forecasting, operating budgets, cap table clean-up, and board financial advisory in Mumbai.',
+  title: 'Virtual CFO Services & Financial Advisory Mumbai | Daksh Desai & Associates',
+  description:
+    'Virtual CFO advisory, cash flow forecasting, operating budgets, financial modeling, cap table clean-up, and board reporting in Mumbai.',
+  keywords: [
+    'Virtual CFO Services Mumbai',
+    'Part Time CFO for Startups Mumbai',
+    'Cash Flow Modeling and Forecasting CA',
+    'MIS Reporting and Budgeting Advisor',
+    'Financial Due Diligence and Governance Mumbai',
+  ],
+  alternates: {
+    canonical: 'https://dakshdesaiassociates.com/services/cfo-advisory',
+  },
 };
 
 export default function CfoAdvisoryPage() {

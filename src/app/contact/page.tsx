@@ -2,8 +2,19 @@ import type { Metadata } from 'next';
 import ContactChannelsClient from '@/components/ContactChannelsClient';
 
 export const metadata: Metadata = {
-  title: 'Contact Us | Daksh Desai & Associates · Chartered Accountants',
-  description: 'Reach out to Daksh Desai & Associates, Chartered Accountants in Mumbai for income tax, GST, audits, accounting, and corporate compliance.',
+  title: 'Chambers Consultation & Contact Offices in Mumbai | Daksh Desai & Associates',
+  description:
+    'Schedule a formal statutory consultation with CA Daksh Desai. Dual practice chambers at Fly Edge, Borivali West and Raheja Chambers, Nariman Point, Mumbai.',
+  keywords: [
+    'Chartered Accountant Office Borivali West',
+    'CA Office Nariman Point Mumbai',
+    'CA Daksh Desai Contact Number',
+    'Chartered Accountant Consultation Mumbai',
+    'Direct Tax and GST Consultant Appointment',
+  ],
+  alternates: {
+    canonical: 'https://dakshdesaiassociates.com/contact',
+  },
 };
 
 export default function ContactPage() {

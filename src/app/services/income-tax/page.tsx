@@ -2,8 +2,22 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Income Tax Services | Daksh Desai & Associates · Chartered Accountants',
-  description: 'Income tax return filing, tax planning, advance tax, TDS/TCS, scrutiny notices, and appeals before CIT(A) and ITAT. Daksh Desai & Associates, Mumbai.',
+  title: 'Income Tax Return Filing & Scrutiny Appeals in Mumbai | Daksh Desai & Associates',
+  description:
+    'Income tax return filing, tax planning, advance tax, TDS/TCS compliance, assessment scrutiny notices, and appeals before CIT(A) and ITAT in Mumbai.',
+  keywords: [
+    'Income Tax Return Filing Mumbai',
+    'ITR Filing CA Borivali West',
+    'Tax Scrutiny Notice Defense 148',
+    'CIT Appeals Mumbai Chartered Accountant',
+    'Advance Tax Calculation India',
+    'TDS TCS Returns 24Q 26Q Mumbai',
+    'Capital Gains Tax Consultation Mumbai',
+    'Direct Tax Advisory CA Mumbai',
+  ],
+  alternates: {
+    canonical: 'https://dakshdesaiassociates.com/services/income-tax',
+  },
 };
 
 export default function IncomeTaxPage() {

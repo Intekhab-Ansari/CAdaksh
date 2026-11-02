@@ -4,8 +4,19 @@ import Link from 'next/link';
 import AboutHeroClient from '@/components/AboutHeroClient';
 
 export const metadata: Metadata = {
-  title: 'About Us | Daksh Desai & Associates · Chartered Accountants',
-  description: 'Daksh Desai & Associates is an ICAI-registered Chartered Accountancy practice in Mumbai (FRN: 165505W). Founded by CA Daksh Desai, ACA, delivering partner-led statutory counsel across direct tax, GST, audits, and corporate law.',
+  title: 'About the Practice & Firm Registry | Daksh Desai & Associates · Chartered Accountants',
+  description:
+    'Daksh Desai & Associates is an ICAI-registered Chartered Accountancy practice in Mumbai (FRN: 165505W). Founded by CA Daksh Desai, ACA, delivering partner-led statutory counsel across direct tax, GST, audits, and corporate law.',
+  keywords: [
+    'About Daksh Desai Associates',
+    'ICAI Registered Firm 165505W',
+    'Chartered Accountancy Firm Mumbai',
+    'CA Daksh Desai Profile ACA BCom',
+    'Sole Proprietorship CA Firm WIRC Mumbai',
+  ],
+  alternates: {
+    canonical: 'https://dakshdesaiassociates.com/about',
+  },
 };
 
 export default function AboutPage() {
